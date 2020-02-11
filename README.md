@@ -22,7 +22,7 @@
 
 ### State
 
-Use the following state:
+You can use the following state:
 
 ```javascript
 {
