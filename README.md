@@ -67,4 +67,4 @@ You can use the following state:
 
 ## Rubric
 
-![calculatorRubric](./calculatorRubric.png)
+![calculatorRubric](./images/calculatorRubric.png)
