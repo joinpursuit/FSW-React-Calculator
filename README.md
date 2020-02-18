@@ -1,70 +1,67 @@
 # Pursuit-Core-Web-React-Calculator-Lab
 
-## Simple Calculator
-
-### Task
+## Overview
 
 - You will create a React app that mimics a simple calculator
 - Please use `create-react-app` to generate your project
 - Break your application down to necessary components
-- Your app should look, feel and work like this: [Live Example](https://wizardly-benz-647f72.netlify.com/)
 
-### Functionality
+## UI
 
-- AC: Clears all of the data in the screen
-- C: Clears only what is being displayed
-- %: Converts the current value into a percentage. So just `x / 100`
-- ±: Toggles between negative and positive number
-- . : Adds decimal point to the current number
-- Operations: Queues the operation
-- Equal to: Invokes the operation to happen
-- Play around with the [Live Example](https://wizardly-benz-647f72.netlify.com/)
+Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
 
-### State
+![exampleScreenshotOne](./images/exampleScreenshotOne.png)
+![exampleScreenshotTwo](./images/exampleScreenshotTwo.png)
+![exampleScreenshotThree](./images/exampleScreenshotThree.png)
 
-You can use the following state:
+## Functionality
 
-```javascript
-{
-  displayValue: '0',
-  previousValue: null,
-  operation: null,
-  waitingForNewValue: false
-}
-```
+You must implement all features in the MVP list.  After those are completed, look at and implement as many of the stretch features as you want to.
 
-### Styling
+### MVP
 
-- Center your calculator so it takes up `50%` of the screen
+Ensure that your app has each of the following:
 
-- You may use the following button css to get started quickly:
-  ```css
-  .button {
-    background-color: #E0E0E6;
-    font-size: 40px;
-    text-align: center;
-    color: #666666;
-    border-left: 1px solid #666666;
-    border-bottom: 1px solid #666666;
-    user-select: none;
-    cursor: pointer;
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    display: block;
-  }
+- Buttons 0-9 that can be used to input numbers
+- Addition button
+- Subtraction button
+- Multiplication button
+- Division button that support integer division
+- Equals button that executes the current operation
+- Clear button that resets everything
+- ± button that toggles between negative and positive numbers
+- Add commas appropriately in numbers (e.g turn "1000" into "1,000")
 
-  button:active {
-    box-shadow: inset 0px 0px 80px 0px rgba(0,0,0,0.25);
-  }
+### Stretch Features
 
-  .orange {
-    background-color: #EE9B3E;
-    color: #fff;
-  }
-  ```
-- Try your best to make it look like the example
+- `.` button that adds a decimal point to the current number
+- `%` button that converts the current value into a percentage
+- Support large and small numbers with [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#E_notation)
+- Change the clear button to toggle between:
+    - AC Clears all of the data in the screen
+    - C: Clears only what is being displayed
+- Chain together multiple operands
+    - ex:  5 + 5 + 5
+- Chain together multiple equals sign button pushes
+    - ex: `5` `+` `5` `=` `=` `=` should display `20`
+- `()` buttons to support order of operations
+- Support exponentiation and square roots
+- Support geometric operations
+
+Helpful Libraries for Decimals:
+- [decimal.js](https://mikemcl.github.io/decimal.js/)
+- [math.js](https://mathjs.org/)
+
+
+## State
+
+State will be an important component of your application.  It may be helpful to think about incorporating the following elements into your state:
+
+- displayValue (What the screen currently displays)
+- previousValue (What value the user selected before pressing an operation button)
+- operation (What operation the user is performing (+/-/÷/x))
 
 
 ## Rubric
 
-![calculatorRubric](./calculatorRubric.png)
+![calculatorRubric](./images/calculatorRubric.png)
