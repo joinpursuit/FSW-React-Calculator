@@ -10,11 +10,9 @@
 
 Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
 
-<image height=400 width=400></image>
-
-<img src="./images/exampleScreenshotOne.png" alt="Example One" height="400" width="400">
-<img src="./images/exampleScreenshotTwo.png" alt="Example Two" height="400" width="400">
-<img src="./images/exampleScreenshotThree.png" alt="Example Three" height="400" width="400">
+<img src="./images/exampleScreenshotOne.png" alt="Example One" height="400">
+<img src="./images/exampleScreenshotTwo.png" alt="Example Two" height="400">
+<img src="./images/exampleScreenshotThree.png" alt="Example Three" height="400">
 
 ## Functionality
 
