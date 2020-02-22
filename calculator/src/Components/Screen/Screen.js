@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import './../../css/Screen.css'
 
 class Screen extends Component {
     render = () => {
         return (
-            <div>Screen</div>
+            <div className="screen">0</div>
         )
     }
 }
