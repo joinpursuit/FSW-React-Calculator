@@ -6,7 +6,8 @@ class Calculator extends Component {
     state = {
         operation: null,
         operandOne: "",
-        operandTwo: ""
+        operandTwo: "",
+        res: ""
     }
 
     addToScreen = (number) => {
@@ -32,15 +33,29 @@ class Calculator extends Component {
     } // End of changeValue() function
 
     resetScreen = () => {
-        this.setState({operandOne: "", operandTwo: "", operation: null});
-    } // End of resetScreen();
+        this.setState({operandOne: "", operandTwo: "", operation: null, res: ""});
+    } // End of resetScreen() function
+
+    calculate = () => {
+        let {operation, operandOne, operandTwo} = this.state;
+        if(!operation || !operandOne || !operandTwo) console.log("Missing values");
+        else if(operation === "+") this.add(operandOne, operandTwo);
+        else if(operation === "-") this.subtract(operandOne, operandTwo);
+        else if(operation === "*") this.multiply(operandOne, operandTwo);
+        else if(operation === "/") this.divide(operandOne, operandTwo);
+    } // End of calculate() function
+
+    add = (num1, num2) => {
+        this.setState({operandOne: "", operandTwo: "", operation: null, res: num1 + num2});
+    } // End of add() function
     
     render = () => {
         let screenText = "0";
-        let {operandOne, operation, operandTwo}  = this.state;
+        let {operandOne, operation, operandTwo, res}  = this.state;
         if(operandOne) screenText = operandOne;
         if(operation) screenText = operandOne + operation;
         if(operandTwo) screenText = operandOne + operation + operandTwo;
+        if(res) screenText = res;
         console.log(this.state);
         return (
             <div className={this.props.className}>
@@ -61,7 +76,7 @@ class Calculator extends Component {
                 <Button onclick={this.addToScreen} text={"9"}/>
                 <Button className="operand" onclick={this.addToScreen} text={"/"}/>
                 <Button className="zero" onclick={this.addToScreen} text={"0"}/>
-                <Button className="operand" onclick={this.addToScreen} text={"="}/>
+                <Button className="operand" onclick={this.calculate} text={"="}/>
             </div>
         )
     }
