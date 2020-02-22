@@ -15,7 +15,8 @@ function App() {
   return (
     <div className="calculator">
       <Screen className="screen"/>
-      <Button className="left first" onclick={changeValue} text={"+/-"}/>
+      <Button className="center first" onclick={changeValue} text={"+/-"}/>
+      <Button className="right first" onclick={changeValue} text={"C"}/>
       <Button className="left second" onclick={addToScreen} text={1}/>
       <Button className="center second" onclick={addToScreen} text={2}/>
       <Button className="right second" onclick={addToScreen} text={3}/>
@@ -26,7 +27,12 @@ function App() {
       <Button className="center fourth" onclick={addToScreen} text={8}/>
       <Button className="right fourth" onclick={addToScreen} text={9}/>
       <Button className="zero" onclick={addToScreen} text={0}/>
-
+      <Button className="operand" onclick={addToScreen} text={"+"}/>
+      <Button className="operand" onclick={addToScreen} text={"-"}/>
+      <Button className="operand" onclick={addToScreen} text={"*"}/>
+      <Button className="operand" onclick={addToScreen} text={"/"}/>
+      <Button className="operand" onclick={addToScreen} text={"="}/>
+      
     </div>
   );
 }
