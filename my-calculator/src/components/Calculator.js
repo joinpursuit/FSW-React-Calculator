@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Display from './Display';
+import KeyPad from './KeyPad';
 
 class Calculator extends Component{
     state = {
@@ -14,6 +15,7 @@ class Calculator extends Component{
         return (
             <div>
                 <Display displayValue={displayValue}/>
+                <KeyPad />
             </div>
         )
     }
