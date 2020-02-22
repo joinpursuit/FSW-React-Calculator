@@ -1,15 +1,33 @@
 import React, { Component } from 'react'
+import {numbers, operators, modify} from './buttonValues'
 import './master.css'
 
 class Button extends Component{
     state = {
-
+        input: "",
+        numbers: [0,1,2,3,4,5,6,7,8,9],
+        displayValue: "",
+        perviousValue: ""
     }
 
+    handleChange = (e) => {
+    
+
+    }
+ populateButtons = (arr) => {
+    return  arr.map((button,index) => {
+        return(
+            <button key={index} className= "allNums"></button>    
+            )
+     })
+ }
     render(){
-        return (
+        const {numbers, input, displayValue, perviousValue } = this.set
+    return (
+             
     <div className="allButtons">
-        <div className="allNumbers">
+    populateButtons(numbers)
+        <div className="AllNumbers" onClick=" ">
             <button className="0">0</button>
             <button className="1">1</button>
             <button className="2">2</button>
@@ -25,14 +43,16 @@ class Button extends Component{
             <button className="+">+</button>
             <button className="-">-</button>
             <button className="*">*</button>
-            <button className="/">/</button>
+            <button className="/">÷</button>
             <button className="=">=</button>
             <button className="clear">C</button>
 
         </div>
+         
     </div>
         )
     }
 }
+
 
 export default Button;

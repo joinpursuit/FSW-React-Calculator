@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 
 class Display extends Component{
     state = {
-        initialValue = 0
+        displayValue: "",
+        previousValue: "",
+        operation: ["+","-","*","/"]
     }
     render(){
         return(
             <div className="display">
-
+                test
             </div>
         )
     }
