@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from './button'
+import Display from '/display'
 import './master.css'
 
 class Calculator extends Component {
@@ -12,6 +13,7 @@ class Calculator extends Component {
         return(
         <div>
         <Button/>
+        <Display/>
         </div>
         
         )
