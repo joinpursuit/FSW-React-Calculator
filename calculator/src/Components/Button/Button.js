@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
-class Screen extends Component {
+class Button extends Component {
     render = () => {
         return (
-            <div>Screen</div>
+            <button>1</button>
         )
     }
 }
 
-export default Screen;
+export default Button;

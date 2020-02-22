@@ -1,0 +1,6 @@
+.calculator {
+    background: grey;
+    display: grid;
+    margin-top: 45px;
+    text-align: center;
+}
