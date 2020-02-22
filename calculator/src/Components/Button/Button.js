@@ -5,11 +5,12 @@ class Button extends Component {
         super()
         this.onclick = props.onclick;
         this.text = props.text;
+        this.className = props.className;
     }
 
     render = () => {
         return (
-            <button onClick={() => this.onclick(this.text)}>{this.text}</button>
+            <button className={this.className} onClick={() => this.onclick(this.text)}>{this.text}</button>
         )
     }
 }
