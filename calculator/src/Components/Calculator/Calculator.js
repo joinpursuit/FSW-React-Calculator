@@ -100,6 +100,20 @@ class Calculator extends Component {
         }
     } // End of sin() function
 
+    cos = () => {
+        let {operandOne, operandTwo} = this.state;
+        if(!operandTwo && operandOne) {
+            this.setState({operandOne: Math.cos(operandOne), operandTwo: "", operation: null})
+        }
+    } // End of cos() function
+
+    tan = () => {
+        let {operandOne, operandTwo} = this.state;
+        if(!operandTwo && operandOne) {
+            this.setState({operandOne: Math.tan(operandOne), operandTwo: "", operation: null})
+        }
+    } // End of tan() function
+
     placeCommas = (str) => {
         let res = "";
         let toSlice = "";
@@ -131,14 +145,6 @@ class Calculator extends Component {
         else if(operation) this.setState({operation: null});
         else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
     } // End of deleteLast() function
-
-    cos = () => {
-        console.log("cos");
-    }
-
-    tan = () => {
-        console.log("tan");
-    }
     
     render = () => {
         let screenText = "0";
