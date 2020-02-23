@@ -31,6 +31,11 @@ class Calculator extends Component {
                     this.setState({operandTwo: operandTwo + number});
                 }
             } else {
+                if(operation === "sin" || operation === "cos" || operation ==="tan") {
+                    if(operation === "sin") this.sin(number);
+                    if(operation === "cos") this.cos(number);
+                    if(operation === "tan") this.tan(number);
+                }
                 this.setState({operandTwo: operandTwo + number});
             }
         }
@@ -90,9 +95,9 @@ class Calculator extends Component {
 
     sin = () => {
         let {operandOne, operandTwo} = this.state;
-        if(!operandTwo) {
+        if(!operandTwo && operandOne) {
             this.setState({operandOne: Math.sin(operandOne), operandTwo: "", operation: null})
-        } 
+        }
     } // End of sin() function
 
     placeCommas = (str) => {
