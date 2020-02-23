@@ -11,7 +11,7 @@ class KeyPad extends React.Component {
       <button>%</button>
       <button>➗</button>
     </div>
-
+    
     <div className="row">
       <button>7</button>
       <button>8</button>
