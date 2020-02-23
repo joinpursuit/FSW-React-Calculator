@@ -71,22 +71,22 @@ class Calculator extends React.Component{
         let {displayValue,operation,previousValue}=this.state;
         if(operation==="+"){
             this.setState({
-                displayValue:Number(previousValue)+Number(displayValue)
+                displayValue:Number(previousValue)+ Number(displayValue)
             })
         }
         else if(operation==="-"){
             this.setState({
-                displayValue:previousValue-displayValue
+                displayValue:Number(previousValue) - Number(displayValue)
             })
         }
         else if(operation==="x"){
             this.setState({
-                displayValue:previousValue*displayValue
+                displayValue:Number(previousValue) * Number(displayValue)
             })
         }
         else{
             this.setState({
-                displayValue:previousValue/displayValue
+                displayValue:Number(previousValue)/ Number(displayValue)
             })
         }
     }
