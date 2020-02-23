@@ -19,8 +19,7 @@ class Calculator extends React.Component{
         if(waitingForNewValue){
             this.setState({
                 waitingForNewValue:false,
-                displayValue:value,
-                
+                displayValue:value
             })
         }else{
             if(displayValue){
@@ -45,6 +44,7 @@ class Calculator extends React.Component{
         }else{
             this.setState({
                 displayValue: 0,
+                operation:null,
                 previousValue:0
             })
         }
@@ -73,7 +73,6 @@ class Calculator extends React.Component{
             operation:name,
             previousValue:displayValue,
         })
-        console.log(displayValue)
     }
 
     handleEqualOperationClick = (e)=>{
@@ -105,67 +104,67 @@ class Calculator extends React.Component{
         console.log(this.state);
         let {displayValue,clearBtn}=this.state;
         return( 
-                <div className="display">
-                <div className="calculator">
-                <div className="col-12 inputview">{displayValue}</div>
-                <button className="button col-3" name="AC" onClick={(e)=>{
+            <div className="display">
+            <div className="calculator">
+            <div className="col-12 inputview">{displayValue}</div>
+            <button className="button col-3" name="AC" onClick={(e)=>{
                 this.handleACClick(e)}}>{clearBtn}</button>
 
-                <button className="button col-3" name="%" onClick={(e)=>{
+            <button className="button col-3" name="%" onClick={(e)=>{
                 this.handlePercentageClick(e)}}>%</button> 
 
-                <button className="button col-3" name="±" onClick={(e)=>{
+            <button className="button col-3" name="±" onClick={(e)=>{
                 this.handleNegPotClick(e)}}>±</button> 
 
-                <button className="button col-3 orange" name="÷" onClick={(e)=>{
+            <button className="button col-3 orange" name="÷" onClick={(e)=>{
                 this.handleOperationClick(e)}}>÷</button>
 
-                <button className="button col-3"  name="displayValue" value="7" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="7" onClick={(e)=>{
                 this.handleNumberClick(e)}}>7</button> 
 
-                <button className="button col-3"  name="displayValue" value="8" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="8" onClick={(e)=>{
                 this.handleNumberClick(e)}}>8</button> 
 
-                <button className="button col-3"  name="displayValue" value="9" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="9" onClick={(e)=>{
                 this.handleNumberClick(e)}}>9</button> 
 
-                <button className="button col-3 orange" name="x" onClick={(e)=>{
+            <button className="button col-3 orange" name="x" onClick={(e)=>{
                 this.handleOperationClick(e)}}>x</button>
 
-                <button className="button col-3"  name="displayValue" value="4" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="4" onClick={(e)=>{
                 this.handleNumberClick(e)}}>4</button> 
 
-                <button className="button col-3"  name="displayValue" value="5" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="5" onClick={(e)=>{
                 this.handleNumberClick(e)}}>5</button> 
 
-                <button className="button col-3"  name="displayValue" value="6" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="6" onClick={(e)=>{
                 this.handleNumberClick(e)}}>6</button> 
 
-                <button className="button col-3 orange" name="-" onClick={(e)=>{
+            <button className="button col-3 orange" name="-" onClick={(e)=>{
                 this.handleOperationClick(e)}}>-</button>
 
-                <button className="button col-3"  name="displayValue" value="1" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="1" onClick={(e)=>{
                 this.handleNumberClick(e)}}>1</button> 
 
-                <button className="button col-3"  name="displayValue" value="2" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="2" onClick={(e)=>{
                 this.handleNumberClick(e)}}>2</button> 
 
-                <button className="button col-3"  name="displayValue" value="3" onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="3" onClick={(e)=>{
                 this.handleNumberClick(e)}}>3</button> 
 
-                <button className="button col-3 orange"  name="+" onClick={(e)=>{
+            <button className="button col-3 orange"  name="+" onClick={(e)=>{
                 this.handleOperationClick(e)}}>+</button>
 
-                <button className="button col-6"  name="displayValue" value="0" onClick={(e)=>{
+            <button className="button col-6"  name="displayValue" value="0" onClick={(e)=>{
                 this.handleNumberClick(e)}}>0</button> 
 
-                <button className="button col-3"  name="displayValue" value="." onClick={(e)=>{
+            <button className="button col-3"  name="displayValue" value="." onClick={(e)=>{
                 this.handleNumberClick(e)}}>.</button> 
 
-                <button className="button col-3 orange"  name="=" onClick={(e)=>{
+            <button className="button col-3 orange"  name="=" onClick={(e)=>{
                 this.handleEqualOperationClick(e)}}>=</button>
 
-                </div>
+            </div>
             </div>
        
        )
