@@ -14,7 +14,7 @@ class Calculator extends Component {
     addToScreen = (number) => {
         this.setState({res: ""});
         let {operandOne, operandTwo, operation} = this.state;
-        if(number === "+" || number === "-" || number === "*" || number === "/") {
+        if(number === "+" || number === "-" || number === "*" || number === "/" || number === "^") {
             if(!operandOne) this.setState({operation: number, operandOne: "0"});
             else this.setState({operation: number});
         } else if(!operation) {
@@ -59,6 +59,7 @@ class Calculator extends Component {
         else if(operation === "-") this.subtract(Number(operandOne), Number(operandTwo));
         else if(operation === "*") this.multiply(Number(operandOne), Number(operandTwo));
         else if(operation === "/") this.divide(Number(operandOne), Number(operandTwo));
+        else if(operation === "^") this.exponent(Number(operandOne), Number(operandTwo));
     } // End of calculate() function
 
     add = (num1, num2) => {
@@ -76,6 +77,10 @@ class Calculator extends Component {
     divide = (num1, num2) => {
         this.setState({operandOne: num1 / num2, operandTwo: "", operation: null, res: num1 / num2});
     } // End of add() function
+
+    exponent = (num1, num2) => {
+        this.setState({operandOne: Math.pow(num1, num2), operandTwo: "", operation: null, res: Math.pow(num1, num2)})
+    } // End of exponent() function
 
     placeCommas = (str) => {
         let res = "";
@@ -109,10 +114,6 @@ class Calculator extends Component {
         else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
     } // End of deleteLast() function
 
-    exponent = () => {
-        console.log("exp");
-    }
-
     sqrRoot = () => {
         console.log("root");
     }
@@ -145,7 +146,7 @@ class Calculator extends Component {
                 <button onClick={this.resetScreen}>C</button>
                 <button onClick={this.deleteLast}>Del</button>
                 <Button className="operand" onclick={this.addToScreen} text={"+"}/>
-                <button onClick={this.exponent} className="operandTwo">^</button>
+                <Button className="operandTwo" onclick={this.addToScreen} text={"^"} />
                 <Button onclick={this.addToScreen} text={"1"}/>
                 <Button onclick={this.addToScreen} text={"2"}/>
                 <Button onclick={this.addToScreen} text={"3"}/>
