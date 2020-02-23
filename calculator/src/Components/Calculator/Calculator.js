@@ -82,6 +82,13 @@ class Calculator extends Component {
         this.setState({operandOne: Math.pow(num1, num2), operandTwo: "", operation: null, res: Math.pow(num1, num2)})
     } // End of exponent() function
 
+    sqrRoot = () => {
+        let {operandOne, operandTwo, operation} = this.state;
+        if(!operandTwo) {
+            this.setState({operandOne: Math.sqrt(operandOne), operandTwo: "", operation: null, res: Math.sqrt(operandOne)})
+        } 
+    }
+
     placeCommas = (str) => {
         let res = "";
         let toSlice = "";
@@ -113,10 +120,6 @@ class Calculator extends Component {
         else if(operation) this.setState({operation: null});
         else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
     } // End of deleteLast() function
-
-    sqrRoot = () => {
-        console.log("root");
-    }
 
     sin = () => {
         console.log("sin");
