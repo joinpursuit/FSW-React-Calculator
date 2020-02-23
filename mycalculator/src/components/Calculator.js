@@ -15,15 +15,22 @@ class Calculator extends React.Component{
         e.persist();
         let {value} = e.target
         let{waitingForNewValue,displayValue}=this.state
-        if(displayValue){
-            this.setState((prevState)=>{
-                return {displayValue:prevState.displayValue + value}
-            })
-        }
-        else{
+        if(waitingForNewValue){
             this.setState({
-                displayValue: value
+                waitingForNewValue:false,
+                displayValue:value
             })
+        }else{
+            if(displayValue){
+                this.setState((prevState)=>{
+                    return {displayValue:prevState.displayValue + value}
+                })
+            }
+            else{
+                this.setState({
+                    displayValue: value
+                })
+            }
         }
     }
     handleACClick = (e) => {
@@ -58,6 +65,30 @@ class Calculator extends React.Component{
             previousValue:displayValue,
         })
         console.log(displayValue)
+    }
+
+    handleEqualOperationClick = (e)=>{
+        let {displayValue,operation,previousValue}=this.state;
+        if(operation==="+"){
+            this.setState({
+                displayValue:Number(previousValue)+Number(displayValue)
+            })
+        }
+        else if(operation==="-"){
+            this.setState({
+                displayValue:previousValue-displayValue
+            })
+        }
+        else if(operation==="x"){
+            this.setState({
+                displayValue:previousValue*displayValue
+            })
+        }
+        else{
+            this.setState({
+                displayValue:previousValue/displayValue
+            })
+        }
     }
 
 
@@ -123,7 +154,7 @@ class Calculator extends React.Component{
                 this.handleNumberClick(e)}}>.</button> 
 
                 <button className="button col-3 orange"  name="=" onClick={(e)=>{
-                this.handleOperationClick(e)}}>=</button>
+                this.handleEqualOperationClick(e)}}>=</button>
 
                 </div>
             </div>
