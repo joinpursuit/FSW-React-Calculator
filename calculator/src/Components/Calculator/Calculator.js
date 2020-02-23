@@ -108,6 +108,26 @@ class Calculator extends Component {
         else if(operation) this.setState({operation: null});
         else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
     } // End of deleteLast() function
+
+    exponent = () => {
+        console.log("exp");
+    }
+
+    sqrRoot = () => {
+        console.log("root");
+    }
+
+    sin = () => {
+        console.log("sin");
+    }
+
+    cos = () => {
+        console.log("cos");
+    }
+
+    tan = () => {
+        console.log("tan");
+    }
     
     render = () => {
         let screenText = "0";
@@ -125,21 +145,26 @@ class Calculator extends Component {
                 <button onClick={this.resetScreen}>C</button>
                 <button onClick={this.deleteLast}>Del</button>
                 <Button className="operand" onclick={this.addToScreen} text={"+"}/>
+                <button onClick={this.exponent} className="operandTwo">^</button>
                 <Button onclick={this.addToScreen} text={"1"}/>
                 <Button onclick={this.addToScreen} text={"2"}/>
                 <Button onclick={this.addToScreen} text={"3"}/>
                 <Button className="operand" onclick={this.addToScreen} text={"-"}/>
+                <button onClick={this.sqrRoot} className="operandTwo">sqrRoot</button>
                 <Button onclick={this.addToScreen} text={"4"}/>
                 <Button onclick={this.addToScreen} text={"5"}/>
                 <Button onclick={this.addToScreen} text={"6"}/>
                 <Button className="operand" onclick={this.addToScreen} text={"*"}/>
+                <button onClick={this.sin} className="operandTwo">SIN()</button>
                 <Button onclick={this.addToScreen} text={"7"}/>
                 <Button onclick={this.addToScreen} text={"8"}/>
                 <Button onclick={this.addToScreen} text={"9"}/>
                 <Button className="operand" onclick={this.addToScreen} text={"/"}/>
+                <button onClick={this.cos} className="operandTwo">COS()</button>
                 <Button className="zero" onclick={this.addToScreen} text={"0"}/>
                 <Button className="decimal" onclick={this.addToScreen} text={"."}/>
                 <Button className="operand" onclick={this.calculate} text={"="}/>
+                <button onClick={this.tan} className="operandTwo">TAN()</button>
             </div>
         )
     }

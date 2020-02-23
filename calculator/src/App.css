@@ -3,7 +3,7 @@
     margin-top: 45px;
     text-align: center;
     border: 1px solid black;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 10px;
     font-size: 20px;
@@ -16,7 +16,7 @@ button {
 }
 
 .screen {
-    grid-column: 1 / 5;
+    grid-column: 1 / 6;
     grid-row: 1 / 2;
     margin-bottom: 10px;
     color: white;
@@ -34,4 +34,8 @@ button {
 
 .operand {
     grid-column: 4 / 5;
+}
+
+.operandTwo {
+    grid-column: 5 / 6;
 }
