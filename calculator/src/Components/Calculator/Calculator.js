@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Screen from './../Screen/Screen';
 import Button from './../Button/Button';
+import './../../css/Calculator.css';
 
 class Calculator extends Component {
     state = {
@@ -100,6 +101,13 @@ class Calculator extends Component {
 
         return toSlice + res + decimal;
     } // End of placeCommas() function
+
+    deleteLast = () => {
+        let {operandOne, operandTwo, operation} = this.state
+        if(operandTwo) this.setState({operandTwo: operandTwo.slice(0, operandTwo.length - 1)});
+        else if(operation) this.setState({operation: null});
+        else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
+    } // End of deleteLast() function
     
     render = () => {
         let screenText = "0";
@@ -113,8 +121,9 @@ class Calculator extends Component {
         return (
             <div className={this.props.className}>
                 <Screen className="screen" text={screenText}/>
-                <Button className="changeValue" onclick={this.changeValue} text={"+/-"}/>
-                <Button onclick={this.resetScreen} text={"C"}/>
+                <button onClick={this.changeValue}>+/=</button>
+                <button onClick={this.resetScreen}>C</button>
+                <button onClick={this.deleteLast}>Del</button>
                 <Button className="operand" onclick={this.addToScreen} text={"+"}/>
                 <Button onclick={this.addToScreen} text={"1"}/>
                 <Button onclick={this.addToScreen} text={"2"}/>
