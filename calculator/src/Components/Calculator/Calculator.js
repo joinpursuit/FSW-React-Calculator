@@ -7,8 +7,7 @@ class Calculator extends Component {
     state = {
         operation: null,
         operandOne: "",
-        operandTwo: "",
-        res: ""
+        operandTwo: ""
     }
 
     addToScreen = (number) => {
@@ -49,7 +48,7 @@ class Calculator extends Component {
     } // End of changeValue() function
 
     resetScreen = () => {
-        this.setState({operandOne: "", operandTwo: "", operation: null, res: ""});
+        this.setState({operandOne: "", operandTwo: "", operation: null});
     } // End of resetScreen() function
 
     calculate = () => {
@@ -63,31 +62,38 @@ class Calculator extends Component {
     } // End of calculate() function
 
     add = (num1, num2) => {
-        this.setState({operandOne: num1 + num2, operandTwo: "", operation: null, res: num1 + num2});
+        this.setState({operandOne: num1 + num2, operandTwo: "", operation: null});
     } // End of add() function
 
     subtract = (num1, num2) => {
-        this.setState({operandOne: num1 - num2, operandTwo: "", operation: null, res: num1 - num2});
+        this.setState({operandOne: num1 - num2, operandTwo: "", operation: null});
     } // End of add() function
 
     multiply = (num1, num2) => {
-        this.setState({operandOne: num1 * num2, operandTwo: "", operation: null, res: num1 * num2});
+        this.setState({operandOne: num1 * num2, operandTwo: "", operation: null});
     } // End of add() function
 
     divide = (num1, num2) => {
-        this.setState({operandOne: num1 / num2, operandTwo: "", operation: null, res: num1 / num2});
+        this.setState({operandOne: num1 / num2, operandTwo: "", operation: null});
     } // End of add() function
 
     exponent = (num1, num2) => {
-        this.setState({operandOne: Math.pow(num1, num2), operandTwo: "", operation: null, res: Math.pow(num1, num2)})
+        this.setState({operandOne: Math.pow(num1, num2), operandTwo: "", operation: null})
     } // End of exponent() function
 
     sqrRoot = () => {
-        let {operandOne, operandTwo, operation} = this.state;
+        let {operandOne, operandTwo} = this.state;
         if(!operandTwo) {
-            this.setState({operandOne: Math.sqrt(operandOne), operandTwo: "", operation: null, res: Math.sqrt(operandOne)})
+            this.setState({operandOne: Math.sqrt(operandOne), operandTwo: "", operation: null})
         } 
-    }
+    } // End of sqrRoot() function
+
+    sin = () => {
+        let {operandOne, operandTwo} = this.state;
+        if(!operandTwo) {
+            this.setState({operandOne: Math.sin(operandOne), operandTwo: "", operation: null})
+        } 
+    } // End of sin() function
 
     placeCommas = (str) => {
         let res = "";
@@ -121,10 +127,6 @@ class Calculator extends Component {
         else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
     } // End of deleteLast() function
 
-    sin = () => {
-        console.log("sin");
-    }
-
     cos = () => {
         console.log("cos");
     }
@@ -135,11 +137,10 @@ class Calculator extends Component {
     
     render = () => {
         let screenText = "0";
-        let {operandOne, operation, operandTwo, res}  = this.state;
+        let {operandOne, operation, operandTwo}  = this.state;
         if(operandOne) screenText = this.placeCommas(operandOne);
         if(operation) screenText = this.placeCommas(operandOne) + operation;
         if(operandTwo) screenText = this.placeCommas(operandOne) + operation + this.placeCommas(operandTwo);
-        if(res) screenText = this.placeCommas(res.toString());
 
         console.log(this.state);
         return (
