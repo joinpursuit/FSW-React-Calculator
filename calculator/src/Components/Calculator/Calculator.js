@@ -262,14 +262,25 @@ class Calculator extends Component {
 
     deleteLast = () => {
         let {operations, operands} = this.state
-        let lastIdx = operands.length - 1;
-        let currentOperand = operands[lastIdx];
-        let newOperands = operands.slice(0, lastIdx);
-        if(operands.length === operations.length) {
+        let mutatedOperands = [...operands];
+        let lastIdx = mutatedOperands.length - 1;
+        let currentOperand = mutatedOperands[lastIdx];
+        let newOperands = mutatedOperands.slice(0, lastIdx);
+
+        if(mutatedOperands.length === operations.length) {
             this.setState({operations: operations.slice(0, operations.length -1)});
         } else {
             currentOperand = currentOperand.slice(0, currentOperand.length - 1);
-            this.setState({operands: [...newOperands, currentOperand]});
+            if(!currentOperand.length) {
+                if(operands.length > 1) {
+                    mutatedOperands.pop();
+                    this.setState({operands: mutatedOperands});
+                } else {
+                    this.setState({operands: [...newOperands, "0"]})
+                }
+            } else {
+                this.setState({operands: [...newOperands, currentOperand]});
+            }
         }
     } // End of deleteLast() function
     
