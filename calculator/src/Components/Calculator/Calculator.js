@@ -29,6 +29,7 @@ const numberCodes = {
 }
 
 const operationCodes = {
+    54: "^",
     56: "*",
     106: "*",
     187: "+",
