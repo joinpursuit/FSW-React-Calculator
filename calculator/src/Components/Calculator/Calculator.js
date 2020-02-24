@@ -128,50 +128,50 @@ class Calculator extends Component {
     } // End of calculate() function
 
     add = (num1, num2) => {
-        this.setState({operandOne: num1 + num2, operandTwo: "", operation: null});
+        this.setState({operandOne: (num1 + num2).toString(), operandTwo: "", operation: null});
     } // End of add() function
 
     subtract = (num1, num2) => {
-        this.setState({operandOne: num1 - num2, operandTwo: "", operation: null});
+        this.setState({operandOne: (num1 - num2).toString(), operandTwo: "", operation: null});
     } // End of add() function
 
     multiply = (num1, num2) => {
-        this.setState({operandOne: num1 * num2, operandTwo: "", operation: null});
+        this.setState({operandOne: (num1 * num2).toString(), operandTwo: "", operation: null});
     } // End of add() function
 
     divide = (num1, num2) => {
-        this.setState({operandOne: num1 / num2, operandTwo: "", operation: null});
+        this.setState({operandOne: (num1 / num2).toString(), operandTwo: "", operation: null});
     } // End of add() function
 
     exponent = (num1, num2) => {
-        this.setState({operandOne: Math.pow(num1, num2), operandTwo: "", operation: null})
+        this.setState({operandOne: Math.pow(num1, num2).toString(), operandTwo: "", operation: null})
     } // End of exponent() function
 
     sqrRoot = () => {
         let {operandOne, operandTwo} = this.state;
         if(!operandTwo) {
-            this.setState({operandOne: Math.sqrt(operandOne), operandTwo: "", operation: null})
+            this.setState({operandOne: Math.sqrt(operandOne).toString(), operandTwo: "", operation: null})
         } 
     } // End of sqrRoot() function
 
     sin = () => {
         let {operandOne, operandTwo} = this.state;
         if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.sin(operandOne), operandTwo: "", operation: null})
+            this.setState({operandOne: Math.sin(operandOne).toString(), operandTwo: "", operation: null})
         }
     } // End of sin() function
 
     cos = () => {
         let {operandOne, operandTwo} = this.state;
         if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.cos(operandOne), operandTwo: "", operation: null})
+            this.setState({operandOne: Math.cos(operandOne).toString(), operandTwo: "", operation: null})
         }
     } // End of cos() function
 
     tan = () => {
         let {operandOne, operandTwo} = this.state;
         if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.tan(operandOne), operandTwo: "", operation: null})
+            this.setState({operandOne: Math.tan(operandOne).toString(), operandTwo: "", operation: null})
         }
     } // End of tan() function
 
