@@ -2,10 +2,20 @@ import React from 'react';
 import './App.css';
 import Calculator from './Components/Calculator/Calculator';
 
-function App() {
-  return (
+class App extends React.Component {
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  handleKeyPress() {
+
+  } // End of handleKeyPress() function
+
+  render = () => {
+    return (
     <Calculator className="calculator" />
-  );
+    );
+  }
 }
 
 export default App;
