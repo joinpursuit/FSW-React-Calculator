@@ -15,6 +15,7 @@ button {
     cursor: pointer;
     height: 80%;
     margin: 1px;
+    font-size: 80%;
 }
 
 .screen {

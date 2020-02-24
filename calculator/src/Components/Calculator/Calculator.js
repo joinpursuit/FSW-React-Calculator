@@ -3,12 +3,67 @@ import Screen from './../Screen/Screen';
 import Button from './../Button/Button';
 import './../../css/Calculator.css';
 
+const numberCodes = {
+    48: "0",
+    96: "0",
+    49: "1",
+    97: "1",
+    50: "2",
+    98: "2",
+    51: "3",
+    99: "3",
+    52: "4",
+    100: "4",
+    53: "5",
+    101: "5",
+    54: "6",
+    102: "6",
+    55: "7",
+    103: "7",
+    56: "8",
+    104: "8",
+    57: "9",
+    105: "9"
+}
+
+const operationCodes = {
+    56: "*",
+    106: "*",
+    187: "+",
+    107: "+",
+    189: "-",
+    109: "-",
+    191: "/",
+    111: "/"
+}
+
 class Calculator extends Component {
+    constructor(props) {
+        super(props);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
+    }
+    
     state = {
         operation: null,
         operandOne: "",
         operandTwo: ""
     }
+
+    componentDidMount() {
+        document.addEventListener("keyup", this.handleKeyUp);
+      }
+    
+    handleKeyUp(e) {
+        if(e.shiftKey && operationCodes[e.keyCode]) {
+            this.addToScreen(operationCodes[e.keyCode]);
+        } else if(numberCodes[e.keyCode]) {
+            this.addToScreen(numberCodes[e.keyCode]);
+        } else if(e.keyCode === 187 || e.keyCode === 13) {
+            this.calculate();
+        } else if(operationCodes[e.keyCode]) {
+            this.addToScreen(operationCodes[e.keyCode]);
+        }
+    } // End of handleKeyUp() function
 
     addToScreen = (number) => {
         this.setState({res: ""});
