@@ -40,23 +40,39 @@ const operationCodes = {
     111: "/"
 }
 
+let operatorLast = false;
+
 class Calculator extends Component {
     constructor(props) {
         super(props);
         this.handleKeyUp = this.handleKeyUp.bind(this);
     }
+
+    setStateSynchronous = (stateUpdate) => {
+        return new Promise(resolve => {
+            this.setState(stateUpdate, () => resolve());
+        })
+    } // End of setStateSynchronous()
     
     state = {
-        operation: null,
-        operandOne: "",
-        operandTwo: ""
+        operations: [],
+        operands: ["0"],
+        res: 0
     }
 
-    componentDidMount() {
+    mathFunctions = {
+        "+": () => this.add,
+        "-": () => this.subtract,
+        "*": () => this.multiply,
+        "/": () => this.divide,
+        "^": () => this.exponent
+    }
+
+    componentDidMount = () => {
         document.addEventListener("keyup", this.handleKeyUp);
-      }
+    } // End of componentDidMount() function
     
-    handleKeyUp(e) {
+    handleKeyUp = (e) => {
         if(e.shiftKey && operationCodes[e.keyCode]) {
             this.addToScreen(operationCodes[e.keyCode]);
         } else if(numberCodes[e.keyCode]) {
@@ -74,81 +90,132 @@ class Calculator extends Component {
         return input === "+" || input === "-" || input === "*" || input === "/" || input === "^";
     } // End of isOperator() function
 
+    setOperator = (input) => {
+        let {operations, operands} = this.state;
+
+        if(!operands.length) {
+            this.setState({operations: [...operations, input], operands: [0]});
+        } else {
+            this.setState({operations: [...operations, input], operands: [...operands, "0"]});
+        }
+
+        operatorLast = true;
+    } // End of setOperator() function
+
+    isDecimal = (input) => input === ".";
+
+    addDecimal = () => {
+        let {operands} = this.state;
+        let currentOperand = operands[operands.length -1];
+        let lastIdx = operands.length - 1;
+        let newOperands = operands.slice(0, lastIdx);
+
+        if(!currentOperand.includes(".")) {
+            if(currentOperand === "0") {
+                this.setState({operands: [...newOperands, "0."]});
+            } else {
+                this.setState({operands: [...newOperands, currentOperand + "."]});
+            }
+        }
+    } // End of addDecimal() function
+
     addToScreen = (input) => {
         this.setState({res: ""});
-        let {operandOne, operandTwo, operation} = this.state;
+        let {operands} = this.state; // Grabbing all operations and operands from state
+        let lastIdx = operands.length - 1; // Grabbing the last index of the operands
+        let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
+        let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
+
         if(this.isOperator(input)) {
-            if(!operandOne) this.setState({operation: input, operandOne: "0"});
-            else this.setState({operation: input});
-        } else if(!operation) {
-            if(input === ".") {
-                if(!this.state.operandOne.includes(".")) {
-                    if(!this.state.operandOne) this.setState({operandOne: "0."});
-                    else this.setState({operandOne: operandOne + input});
-                }
-            } else {
-                this.setState({operandOne: operandOne + input});
-            }
+            // If the input is an operator, and the last input isn't an operator then the operator is set
+            if(!operatorLast) this.setOperator(input);
 
         } else {
-            if(input === ".") {
-                if(!this.state.operandTwo.includes(".")) {
-                    this.setState({operandTwo: operandTwo + input});
-                }
+            if(this.isDecimal(input)) {
+                this.addDecimal(input);
             } else {
-                if(operation === "sin" || operation === "cos" || operation ==="tan") {
-                    if(operation === "sin") this.sin(input);
-                    if(operation === "cos") this.cos(input);
-                    if(operation === "tan") this.tan(input);
+                if(currentOperand === "0") {
+                    this.setState({operands: [...newOperands, input]});
+                } else {
+                    this.setState({operands: [...newOperands, currentOperand + input]});
                 }
-                this.setState({operandTwo: operandTwo + input});
+                operatorLast = false;
             }
         }
     } // End of addToScreen() function
 
+    isNegative = (operand) => operand[0] === "-";
+
     changeValue = () => {
-        let {operandOne, operation, operandTwo}  = this.state;
-        if(!operation) {
-            if(operandOne[0] === "-") this.setState({operandOne: operandOne.slice(1)})
-            else this.setState({operandOne: "-" + operandOne});
+        let {operands}  = this.state;
+        let lastIdx = operands.length - 1; // Grabbing the last index of the operands
+        let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
+        let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
+        
+        if(this.isNegative(currentOperand)) {
+            this.setState({operands: [...newOperands, currentOperand.slice(1)]})
         } else {
-            if(operandTwo[0] === "-") this.setState({operandTwo: operandTwo.slice(1)})
-            else this.setState({operandTwo: "-" + operandTwo});
+            this.setState({operands: [...newOperands, "-" + currentOperand]})
         }
     } // End of changeValue() function
 
     resetScreen = () => {
-        this.setState({operandOne: "", operandTwo: "", operation: null});
+        this.setState({operations: [], operands: []});
     } // End of resetScreen() function
 
-    calculate = () => {
-        let {operation, operandOne, operandTwo} = this.state;
-        if(!operation || !operandOne || !operandTwo) console.log("Missing values");
-        else if(operation === "+") this.add(Number(operandOne), Number(operandTwo));
-        else if(operation === "-") this.subtract(Number(operandOne), Number(operandTwo));
-        else if(operation === "*") this.multiply(Number(operandOne), Number(operandTwo));
-        else if(operation === "/") this.divide(Number(operandOne), Number(operandTwo));
-        else if(operation === "^") this.exponent(Number(operandOne), Number(operandTwo));
+    findMathFunction = (operation) => {
+        return this.mathFunctions[operation]();
+    }
+
+    calculate = async () => {
+        let {operations, operands} = this.state;
+        this.setState({res: 0});
+        let operationCount = 0;
+
+        if(!operatorLast) {
+            while(operands.length) {
+                if(operationCount > 0) {
+                    let operand = operands[0];
+                    let currentOperation = operations[0];
+                    await this.findMathFunction(currentOperation)(Number(this.state.res), Number(operand));
+
+                    operands.shift();
+                    operations.shift();
+                } else {
+                    let operand = operands[0];
+                    let nextOperand = operands[1];
+                    let currentOperation = operations[0];
+        
+                    await this.findMathFunction(currentOperation)(Number(operand), Number(nextOperand));
+                    operands.shift();
+                    operands.shift();
+                    operations.shift();
+                }
+                operationCount++;
+            }
+
+            this.setState({operands: [this.state.res]})
+        }
     } // End of calculate() function
 
-    add = (num1, num2) => {
-        this.setState({operandOne: (num1 + num2).toString(), operandTwo: "", operation: null});
+    add = async (num1, num2) => {
+        await this.setStateSynchronous({res: num1 + num2});
     } // End of add() function
 
-    subtract = (num1, num2) => {
-        this.setState({operandOne: (num1 - num2).toString(), operandTwo: "", operation: null});
+    subtract = async (num1, num2) => {
+        await this.setStateSynchronous({res: (num1 - num2)});
     } // End of add() function
 
-    multiply = (num1, num2) => {
-        this.setState({operandOne: (num1 * num2).toString(), operandTwo: "", operation: null});
+    multiply = async (num1, num2) => {
+        await this.setStateSynchronous({res: (num1 * num2)});
     } // End of add() function
 
-    divide = (num1, num2) => {
-        this.setState({operandOne: (num1 / num2).toString(), operandTwo: "", operation: null});
+    divide = async (num1, num2) => {
+        await this.setStateSynchronous({res: (num1 / num2)});
     } // End of add() function
 
-    exponent = (num1, num2) => {
-        this.setState({operandOne: Math.pow(num1, num2).toString(), operandTwo: "", operation: null})
+    exponent = async (num1, num2) => {
+        await this.setStateSynchronous({res: Math.pow(num1, num2)})
     } // End of exponent() function
 
     sqrRoot = () => {
@@ -205,18 +272,26 @@ class Calculator extends Component {
     } // End of placeCommas() function
 
     deleteLast = () => {
-        let {operandOne, operandTwo, operation} = this.state
-        if(operandTwo) this.setState({operandTwo: operandTwo.slice(0, operandTwo.length - 1)});
-        else if(operation) this.setState({operation: null});
-        else if(operandOne) this.setState({operandOne: operandOne.slice(0, operandOne.length - 1)});
+        let {operations, operands} = this.state
+        let lastIdx = operands.length - 1;
+        let currentOperand = operands[lastIdx];
+        let newOperands = operands.slice(0, lastIdx);
+        if(operands.length === operations.length) {
+            this.setState({operations: operations.slice(0, operations.length -1)});
+        } else {
+            currentOperand = currentOperand.slice(0, currentOperand.length - 1);
+            this.setState({operands: [...newOperands, currentOperand]});
+        }
     } // End of deleteLast() function
     
     render = () => {
-        let screenText = "0";
-        let {operandOne, operation, operandTwo}  = this.state;
-        if(operandOne) screenText = this.placeCommas(operandOne);
-        if(operation) screenText = this.placeCommas(operandOne) + operation;
-        if(operandTwo) screenText = this.placeCommas(operandOne) + operation + this.placeCommas(operandTwo);
+        let screenText = "";
+        let {operations, operands}  = this.state;
+
+        operands.forEach((operand, i) => {
+            if(operations[i]) screenText += this.placeCommas(operand.toString()) + operations[i];
+            else screenText += this.placeCommas(operand.toString())
+        })
 
         console.log(this.state);
         return (
