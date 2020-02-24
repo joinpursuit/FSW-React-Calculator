@@ -70,34 +70,38 @@ class Calculator extends Component {
         }
     } // End of handleKeyUp() function
 
-    addToScreen = (number) => {
+    isOperator = (input) => {
+        return input === "+" || input === "-" || input === "*" || input === "/" || input === "^";
+    } // End of isOperator() function
+
+    addToScreen = (input) => {
         this.setState({res: ""});
         let {operandOne, operandTwo, operation} = this.state;
-        if(number === "+" || number === "-" || number === "*" || number === "/" || number === "^") {
-            if(!operandOne) this.setState({operation: number, operandOne: "0"});
-            else this.setState({operation: number});
+        if(this.isOperator(input)) {
+            if(!operandOne) this.setState({operation: input, operandOne: "0"});
+            else this.setState({operation: input});
         } else if(!operation) {
-            if(number === ".") {
+            if(input === ".") {
                 if(!this.state.operandOne.includes(".")) {
                     if(!this.state.operandOne) this.setState({operandOne: "0."});
-                    else this.setState({operandOne: operandOne + number});
+                    else this.setState({operandOne: operandOne + input});
                 }
             } else {
-                this.setState({operandOne: operandOne + number});
+                this.setState({operandOne: operandOne + input});
             }
 
         } else {
-            if(number === ".") {
+            if(input === ".") {
                 if(!this.state.operandTwo.includes(".")) {
-                    this.setState({operandTwo: operandTwo + number});
+                    this.setState({operandTwo: operandTwo + input});
                 }
             } else {
                 if(operation === "sin" || operation === "cos" || operation ==="tan") {
-                    if(operation === "sin") this.sin(number);
-                    if(operation === "cos") this.cos(number);
-                    if(operation === "tan") this.tan(number);
+                    if(operation === "sin") this.sin(input);
+                    if(operation === "cos") this.cos(input);
+                    if(operation === "tan") this.tan(input);
                 }
-                this.setState({operandTwo: operandTwo + number});
+                this.setState({operandTwo: operandTwo + input});
             }
         }
     } // End of addToScreen() function
