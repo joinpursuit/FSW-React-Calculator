@@ -1,6 +1,12 @@
 import React from 'react';
 import '../Style/Buttons.css'
-const Buttons = () => {
-<main className="Buttons"></main>;
+class Buttons extends React.Component{
+    render(){
+        return(
+            <div>
+                
+            </div>
+        )
+    }
 }
 export default Buttons;

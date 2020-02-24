@@ -1,6 +1,12 @@
 import React from 'react';
 import '../Style/Results'
-const Results = () => {
-<main className="Results"></main>;
+class Results extends React.Component{
+    render(){
+        return(
+            <div>
+                
+            </div>
+        )
+    }
 }
 export default Results;

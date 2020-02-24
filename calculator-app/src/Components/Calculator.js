@@ -1,8 +1,14 @@
 import React from 'react';
-import '../Style/Calculator.css'
-const Calculator = () =>{ 
-<main className="Calculator">
-    
-</main>;
+
+class Calculator extends React.Component{
+
+    render(){
+        return(
+            <div>
+                calculator 
+            </div>
+        )
+    }
 }
+
 export default Calculator;

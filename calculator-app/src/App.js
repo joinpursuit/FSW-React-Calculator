@@ -1,7 +1,13 @@
 import React from 'react';
 import './App.css';
-// import Calculator from './Components/Calculator'
-const App = () => <div className="App">
+import Calculator from './Components/Calculator'
+function App(){
+  return (
+
+<div className="App">
   calculator
-</div>;
+<Calculator/>
+</div>
+  )
+}
 export default App;

@@ -2,7 +2,14 @@
   height: 100vh;
   width: 100%;
   background-size: cover;
+  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.Calculator {
+  height: 80vh;
+  width: 25%;
+  box-shadow: 0 2rem 4rem var(--shadow);
+  background-color: var(--color-light-black);
 }
