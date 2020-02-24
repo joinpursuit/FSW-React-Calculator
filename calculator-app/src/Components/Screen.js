@@ -3,9 +3,9 @@ import React from 'react';
 class Screen extends React.Component{
     render(){
         return(
-            <div>
-                
-            </div>
+            <div className="Screen">
+            Screen div
+        </div>
         )
     }
 }

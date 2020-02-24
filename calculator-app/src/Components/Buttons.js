@@ -3,8 +3,8 @@ import '../Style/Buttons.css'
 class Buttons extends React.Component{
     render(){
         return(
-            <div>
-                
+            <div className="Buttons">
+                Button div
             </div>
         )
     }

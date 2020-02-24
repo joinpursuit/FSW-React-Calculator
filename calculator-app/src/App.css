@@ -11,5 +11,13 @@
   height: 80vh;
   width: 25%;
   box-shadow: 0 2rem 4rem var(--shadow);
-  background-color: var(--color-light-black);
+  background-color: grey;
+}
+.Results {
+  height: 19vh;
+  font-size: 8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

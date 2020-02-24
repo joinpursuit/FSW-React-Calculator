@@ -3,9 +3,9 @@ import '../Style/Results'
 class Results extends React.Component{
     render(){
         return(
-            <div>
-                
-            </div>
+            <div className="Results">
+            Results div
+        </div>
         )
     }
 }

@@ -4,8 +4,8 @@ class Calculator extends React.Component{
 
     render(){
         return(
-            <div>
-                calculator 
+            <div className="Calculator">
+                Calculator div
             </div>
         )
     }
