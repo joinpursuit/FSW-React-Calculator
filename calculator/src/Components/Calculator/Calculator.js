@@ -106,8 +106,8 @@ class Calculator extends Component {
 
     addDecimal = () => {
         let {operands} = this.state;
-        let currentOperand = operands[operands.length -1];
         let lastIdx = operands.length - 1;
+        let currentOperand = operands[lastIdx];
         let newOperands = operands.slice(0, lastIdx);
 
         if(!currentOperand.includes(".")) {
@@ -194,7 +194,7 @@ class Calculator extends Component {
                 operationCount++;
             }
 
-            this.setState({operands: [this.state.res]})
+            this.setState({operands: [this.state.res.toString()]})
         }
     } // End of calculate() function
 
