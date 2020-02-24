@@ -160,15 +160,16 @@ class Calculator extends Component {
     } // End of changeValue() function
 
     resetScreen = () => {
-        this.setState({operations: [], operands: []});
+        this.setState({operations: [], operands: ["0"]});
     } // End of resetScreen() function
 
     findMathFunction = (operation) => {
         return this.mathFunctions[operation]();
-    }
+    } // End of findMathFunction function
 
     calculate = async () => {
         let {operations, operands} = this.state;
+        if(!operations.length) return;
         this.setState({res: 0});
         let operationCount = 0;
 
