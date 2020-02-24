@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import Screen from './../Screen/Screen';
 import Button from './../Button/Button';
+import {create, all} from 'mathjs';
 import './../../css/Calculator.css';
+
+const config = {}
+const math = create(all, config);
 
 const numberCodes = {
     48: "0",
@@ -163,10 +167,6 @@ class Calculator extends Component {
         this.setState({operations: [], operands: ["0"]});
     } // End of resetScreen() function
 
-    orderOperations = () => {
-
-    } // End of orderOperations() function
-
     findMathFunction = (operation) => {
         return this.mathFunctions[operation]();
     } // End of findMathFunction function
@@ -176,6 +176,9 @@ class Calculator extends Component {
         if(!operations.length) return;
         this.setState({res: 0});
         let operationCount = 0;
+
+        console.log(math);
+        debugger;
 
         if(!operatorLast) {
             while(operands.length) {
