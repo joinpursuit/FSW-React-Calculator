@@ -1,48 +1,9 @@
 import React, {Component} from 'react';
 import Screen from './../Screen/Screen';
 import Button from './../Button/Button';
-import {create, all} from 'mathjs';
+import math from './../../assets/math';
+import {numberCodes, operationCodes} from './../../assets/keyCodes';
 import './../../css/Calculator.css';
-
-const config = {}
-const math = create(all, config);
-
-const numberCodes = {
-    48: "0",
-    96: "0",
-    49: "1",
-    97: "1",
-    50: "2",
-    98: "2",
-    51: "3",
-    99: "3",
-    52: "4",
-    100: "4",
-    53: "5",
-    101: "5",
-    54: "6",
-    102: "6",
-    55: "7",
-    103: "7",
-    56: "8",
-    104: "8",
-    57: "9",
-    105: "9",
-    110: ".",
-    190: "."
-}
-
-const operationCodes = {
-    54: "^",
-    56: "*",
-    106: "*",
-    187: "+",
-    107: "+",
-    189: "-",
-    109: "-",
-    191: "/",
-    111: "/"
-}
 
 let operatorLast = false;
 
@@ -176,9 +137,6 @@ class Calculator extends Component {
         if(!operations.length) return;
         this.setState({res: 0});
         let operationCount = 0;
-
-        console.log(math);
-        debugger;
 
         if(!operatorLast) {
             while(operands.length) {
