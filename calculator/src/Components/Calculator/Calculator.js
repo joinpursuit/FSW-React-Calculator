@@ -163,6 +163,10 @@ class Calculator extends Component {
         this.setState({operations: [], operands: ["0"]});
     } // End of resetScreen() function
 
+    orderOperations = () => {
+
+    } // End of orderOperations() function
+
     findMathFunction = (operation) => {
         return this.mathFunctions[operation]();
     } // End of findMathFunction function
