@@ -1,13 +1,17 @@
 .screen {
     border: 1px solid black;
-    padding: 5px;
     text-align: right;
     grid-column: 1 / 6;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: white;
     background: black;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+span {
+    margin-right: 10px;
+    font-size: 24px;
 }
