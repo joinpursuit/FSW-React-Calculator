@@ -23,7 +23,9 @@ const numberCodes = {
     56: "8",
     104: "8",
     57: "9",
-    105: "9"
+    105: "9",
+    110: ".",
+    190: "."
 }
 
 const operationCodes = {
@@ -62,6 +64,8 @@ class Calculator extends Component {
             this.calculate();
         } else if(operationCodes[e.keyCode]) {
             this.addToScreen(operationCodes[e.keyCode]);
+        } else if(e.keyCode === 8) {
+            this.deleteLast();
         }
     } // End of handleKeyUp() function
 
@@ -74,7 +78,8 @@ class Calculator extends Component {
         } else if(!operation) {
             if(number === ".") {
                 if(!this.state.operandOne.includes(".")) {
-                    this.setState({operandOne: operandOne + number});
+                    if(!this.state.operandOne) this.setState({operandOne: "0."});
+                    else this.setState({operandOne: operandOne + number});
                 }
             } else {
                 this.setState({operandOne: operandOne + number});
