@@ -219,31 +219,19 @@ class Calculator extends Component {
     } // End of exponent() function
 
     sqrRoot = () => {
-        let {operandOne, operandTwo} = this.state;
-        if(!operandTwo) {
-            this.setState({operandOne: Math.sqrt(operandOne).toString(), operandTwo: "", operation: null})
-        } 
+        console.log("square root");
     } // End of sqrRoot() function
 
     sin = () => {
-        let {operandOne, operandTwo} = this.state;
-        if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.sin(operandOne).toString(), operandTwo: "", operation: null})
-        }
+        console.log("sin");
     } // End of sin() function
 
     cos = () => {
-        let {operandOne, operandTwo} = this.state;
-        if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.cos(operandOne).toString(), operandTwo: "", operation: null})
-        }
+        console.log("cos");
     } // End of cos() function
 
     tan = () => {
-        let {operandOne, operandTwo} = this.state;
-        if(!operandTwo && operandOne) {
-            this.setState({operandOne: Math.tan(operandOne).toString(), operandTwo: "", operation: null})
-        }
+        console.log("tan");
     } // End of tan() function
 
     placeCommas = (str) => {
