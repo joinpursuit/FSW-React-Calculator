@@ -1,18 +1,12 @@
 import React from 'react';
+import KeyPad from './KeyPad'
 
 class Calculator extends React.Component {
 
   render() {
    return(
-    <div className="frame">
-
-    <div className="row">
-      <p className="result">0</p> 
-    </div>
-
-    <div className="row">
-
-    </div>
+    <div> 
+    {/* <KeyPad/> */}
     </div>
    )
   }
