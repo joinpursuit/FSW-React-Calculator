@@ -4,7 +4,7 @@ class Results extends React.Component{
     render(){
         return(
             <div className="Results">
-            Results div
+             3124
         </div>
         )
     }

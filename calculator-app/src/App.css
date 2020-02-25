@@ -18,18 +18,18 @@
 }
 .Results {
   height: 19vh;
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 600;
   background-color: white;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
-.Buttons{
+.Operators{
   height: 6vh;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  background-color: white;
   display: flex;
-  background-color: orange;
   justify-content: flex-end;
   align-items: flex-end;
 }
@@ -38,5 +38,16 @@
   width: 100%;
   padding: 0 2rem;
   overflow: hidden;
-  background-color: yellow;
+  white-space: no-wrap;
+
+}
+.Keypad {
+  height: 55vh;
+  width: 100%;
+}
+.Buttons {
+  height: 11vh; 
+  width: 100%;
+  display: flex; 
+  color: black;
 }

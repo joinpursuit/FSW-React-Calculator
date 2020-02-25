@@ -6,7 +6,7 @@ function App(){
   return (
 
 <div className="App">
-  calculator
+  calculator app
 <Calculator/>
 
 </div>
