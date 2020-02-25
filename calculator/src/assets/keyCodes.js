@@ -15,6 +15,8 @@ const numberCodes = {
 const operationCodes = {
     "^": "^",
     "*": "*",
+    "x": "*",
+    "X": "*",
     "+": "+",
     "-": "-",
     "/": "/"
