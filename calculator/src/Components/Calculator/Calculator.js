@@ -21,8 +21,7 @@ class Calculator extends Component {
     
     state = {
         operations: [],
-        operands: ["0"],
-        res: 0
+        operands: ["0"]
     }
 
     mathFunctions = {
@@ -120,7 +119,11 @@ class Calculator extends Component {
         if(this.isNegative(currentOperand)) {
             this.setState({operands: [...newOperands, currentOperand.slice(1)]})
         } else {
-            this.setState({operands: [...newOperands, "-" + currentOperand]})
+            if(currentOperand === "0") {
+                this.setState({operands: [...newOperands, "-"]})
+            } else {
+                this.setState({operands: [...newOperands, "-" + currentOperand]})
+            }
         }
     } // End of changeValue() function
 
@@ -130,38 +133,73 @@ class Calculator extends Component {
 
     findMathFunction = (operation) => {
         return this.mathFunctions[operation]();
-    } // End of findMathFunction function
+    } // End of findMathFunction() function
 
     calculate = async () => {
         let {operations, operands} = this.state;
         if(!operations.length) return;
-        this.setState({res: 0});
-        let operationCount = 0;
+
+        let operationsToMutate = [...operations];
+        let operandsToMutate = [...operands];
 
         if(!operatorLast) {
-            while(operands.length) {
-                if(operationCount > 0) {
-                    let operand = operands[0];
-                    let currentOperation = operations[0];
-                    await this.findMathFunction(currentOperation)(Number(this.state.res), Number(operand));
-
-                    operands.shift();
-                    operations.shift();
-                } else {
-                    let operand = operands[0];
-                    let nextOperand = operands[1];
-                    let currentOperation = operations[0];
+            let i = 0;
+            while(i < operationsToMutate.length) {
+                let operation = operationsToMutate[i];
+                let firstOperand = operandsToMutate[i];
+                let secondOperand = operandsToMutate[i + 1];
         
-                    await this.findMathFunction(currentOperation)(Number(operand), Number(nextOperand));
-                    operands.shift();
-                    operands.shift();
-                    operations.shift();
+                if(operation === "^") {
+                    let res = Math.pow(Number(firstOperand), Number(secondOperand));
+                    operandsToMutate.splice(i, 2, res);
+                    operationsToMutate.splice(i, 1);
+                } else {
+                    i++;
                 }
-                operationCount++;
             }
 
-            this.setState({operands: [this.state.res.toString()]})
+            i = 0;
+            while(i < operationsToMutate.length) {
+                let operation = operationsToMutate[i];
+                let firstOperand = operandsToMutate[i];
+                let secondOperand = operandsToMutate[i + 1];
+        
+                if(operation === "*") {
+                    let res = Number(firstOperand) * Number(secondOperand);
+                    operandsToMutate.splice(i, 2, res);
+                    operationsToMutate.splice(i, 1);
+                } else if(operation === "/") {
+                    let res = Number(firstOperand) / Number(secondOperand);
+                    operandsToMutate.splice(i, 2, res);
+                    operationsToMutate.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+
+            i = 0;
+            while(i < operationsToMutate.length) {
+                let operation = operationsToMutate[i];
+                let firstOperand = operandsToMutate[i];
+                let secondOperand = operandsToMutate[i + 1];
+        
+                if(operation === "+") {
+                    let res = Number(firstOperand) + Number(secondOperand);
+                    operandsToMutate.splice(i, 2, res);
+                    operationsToMutate.splice(i, 1);
+                } else if(operation === "-") {
+                    let res = Number(firstOperand) - Number(secondOperand);
+                    operandsToMutate.splice(i, 2, res);
+                    operationsToMutate.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+            this.setState({operations: [], operands: [operandsToMutate[0]]})
         }
+
+
+        
     } // End of calculate() function
 
     add = async (num1, num2) => {
