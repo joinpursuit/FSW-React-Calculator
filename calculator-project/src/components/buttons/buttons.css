@@ -1,0 +1,103 @@
+.press {
+    display: grid;
+    height: 64%;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "clear polar percentage divide" "seven eight nine multiply" "four five six subtract" "one two three add" "zero zero decimal equal";
+}
+
+.buttons {
+    cursor: pointer;
+    background-color: #D2D1D6;
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 200%;
+    border: solid 0.5px rgb(92, 92, 92);
+    outline: none;
+}
+
+#clear { 
+    grid-area: clear;
+    background-color: #A6A6A6;
+ }
+  
+#polar { 
+    grid-area: polar;
+    background-color: #A6A6A6;
+ }
+  
+#percentage { 
+    grid-area: percentage;
+    background-color: #A6A6A6;
+ }
+  
+#divide { 
+    grid-area: divide;
+    background-color: #FD9E0A;
+ }
+
+#multiply { 
+    grid-area: multiply;
+    background-color: #FD9E0A;
+ }
+
+#subtract { 
+    grid-area: subtract;
+    background-color: #FD9E0A;
+ }
+
+#add { 
+    grid-area: add;
+    background-color: #FD9E0A;
+ }
+
+#equal { 
+    grid-area: equal;
+    background-color: #FD9E0A;
+ }
+
+#zero { grid-area: zero; }
+
+#decimal { grid-area: decimal; }
+
+#one { grid-area: one; }
+
+#two { grid-area: two; }
+
+#three { grid-area: three; }
+
+#four { grid-area: four; }
+
+#five { grid-area: five; }
+
+#six { grid-area: six; }
+
+#seven { grid-area: seven; }
+
+#eight { grid-area: eight; }
+
+#nine { grid-area: nine; }
+
+/* .math{
+    cursor: pointer;
+}  */
+
+.display{
+    display: flex;
+    height: 35%;
+    width: 100%;
+    background-color: #1E1E1E;
+    color: white;
+    font-size: 700%;
+    font-weight: 100;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 2%;
+}
+
+
+
