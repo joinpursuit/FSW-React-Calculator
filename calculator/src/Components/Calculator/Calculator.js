@@ -47,6 +47,8 @@ class Calculator extends Component {
             this.addToScreen(operationCodes[e.keyCode]);
         } else if(e.keyCode === 8) {
             this.deleteLast();
+        } else if(e.keyCode === 27) {
+            this.resetScreen();
         }
     } // End of handleKeyUp() function
 
@@ -126,6 +128,15 @@ class Calculator extends Component {
             }
         }
     } // End of changeValue() function
+
+    changePercent = () => {
+        let {operands}  = this.state;
+        let lastIdx = operands.length - 1; // Grabbing the last index of the operands
+        let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
+        let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
+
+        this.setState({operands: [...newOperands, currentOperand / 100]});
+    } // End of changePercent() function
 
     resetScreen = () => {
         this.setState({operations: [], operands: ["0"]});
@@ -323,27 +334,26 @@ class Calculator extends Component {
                 <button onClick={this.changeValue}>+/=</button>
                 <button onClick={this.resetScreen}>C</button>
                 <button onClick={this.deleteLast}>Del</button>
-                <Button onclick={this.addToScreen} text={"+"}/>
-                <Button onclick={this.addToScreen} text={"^"} />
-                <Button onclick={this.addToScreen} text={"1"}/>
-                <Button onclick={this.addToScreen} text={"2"}/>
-                <Button onclick={this.addToScreen} text={"3"}/>
-                <Button onclick={this.addToScreen} text={"-"}/>
-                <button onClick={this.sqrRoot}>sqrRoot</button>
-                <Button onclick={this.addToScreen} text={"4"}/>
-                <Button onclick={this.addToScreen} text={"5"}/>
-                <Button onclick={this.addToScreen} text={"6"}/>
-                <Button onclick={this.addToScreen} text={"*"}/>
-                <button onClick={this.sin}>SIN()</button>
-                <Button onclick={this.addToScreen} text={"7"}/>
-                <Button onclick={this.addToScreen} text={"8"}/>
-                <Button onclick={this.addToScreen} text={"9"}/>
-                <Button onclick={this.addToScreen} text={"/"}/>
+                <button className="operator" onClick={() => this.addToScreen("+")}>+</button>
+                <button onClick={() => this.addToScreen("^")}>^</button>
+                <button onClick={() => this.addToScreen("1")}>1</button>
+                <button onClick={() => this.addToScreen("2")}>2</button>
+                <button onClick={() => this.addToScreen("3")}>3</button>
+                <button className="operator" onClick={() => this.addToScreen("-")}>-</button>
+                <button onClick={this.sqrRoot}>&radic;</button>
+                <button onClick={() => this.addToScreen("4")}>4</button>
+                <button onClick={() => this.addToScreen("5")}>5</button>
+                <button onClick={() => this.addToScreen("6")}>6</button>
+                <button className="operator" onClick={() => this.addToScreen("*")}>*</button>
+                <button onClick={this.changePercent}>%</button>
+                <button onClick={() => this.addToScreen("7")}>7</button>
+                <button onClick={() => this.addToScreen("8")}>8</button>
+                <button onClick={() => this.addToScreen("9")}>9</button>
+                <button className="operator" onClick={() => this.addToScreen("/")}>&divide;</button>
                 <button onClick={this.cos}>COS()</button>
-                <Button className="zero" onclick={this.addToScreen} text={"0"}/>
-                <Button className="decimal" onclick={this.addToScreen} text={"."}/>
-                <Button onclick={this.calculate} text={"="}/>
-                <button onClick={this.tan}>TAN()</button>
+                <button className="zero" onClick={() => this.addToScreen("0")}>0</button>
+                <button className="decimal" onClick={() => this.addToScreen(".")}>.</button>
+                <button className="operator" className="equal" onClick={this.calculate}>=</button>
             </div>
         )
     }
