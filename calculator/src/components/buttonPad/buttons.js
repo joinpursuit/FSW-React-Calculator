@@ -2,66 +2,114 @@ import React from "react";
 
 class ButtonPad extends React.Component {
   state = {
-    displayValue: "",
+    num: "",
     prevValue: "",
-    operation: {}
+    operation: ""
   };
 
   render() {
     return (
       <div className="buttons">
         <div>
-          <button type="submit" value="0">
-            0
-          </button>
+          <input
+            type="button"
+            value=""
+            onClick={this.props.handleChange}
+            name="AC"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="1">
-            1
-          </button>
+          <input
+            type="button"
+            value="9"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="2">
-            2
-          </button>
+          <input
+            type="button"
+            value="8"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="3">
-            3
-          </button>
+          <input
+            type="button"
+            value="7"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="4">
-            4
-          </button>
+          <input
+            type="button"
+            value="+"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="5">
-            5
-          </button>
+          <input
+            type="button"
+            value="6"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="6">
-            6
-          </button>
+          <input
+            type="button"
+            value="5"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="7">
-            7
-          </button>
+          <input
+            type="button"
+            value="4"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="8">
-            8
-          </button>
+          <input
+            type="button"
+            value="3"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
         <div>
-          <button type="submit" value="9">
-            9
-          </button>
+          <input
+            type="button"
+            value="2"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
+        </div>
+        <div>
+          <input
+            type="button"
+            value="1"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
+        </div>
+
+        <div>
+          <input
+            type="button"
+            value="0"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
         </div>
       </div>
     );
   }
 }
+
 export default ButtonPad;
