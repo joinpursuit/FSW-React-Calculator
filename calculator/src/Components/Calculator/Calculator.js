@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Screen from './../Screen/Screen';
-import Button from './../Button/Button';
-import math from './../../assets/math';
 import {numberCodes, operationCodes} from './../../assets/keyCodes';
 import './../../css/Calculator.css';
 
