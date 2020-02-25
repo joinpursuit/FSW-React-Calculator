@@ -35,18 +35,29 @@ class Calculator extends Component {
     } // End of componentDidMount() function
     
     handleKeyUp = (e) => {
-        if(e.shiftKey && operationCodes[e.keyCode]) {
-            this.addToScreen(operationCodes[e.keyCode]);
-        } else if(numberCodes[e.keyCode]) {
-            this.addToScreen(numberCodes[e.keyCode]);
-        } else if(e.keyCode === 187 || e.keyCode === 13) {
+        if(operationCodes[e.key]) {
+            // If the key pressed is an operation add it to the screen
+            this.addToScreen(operationCodes[e.key]);
+
+        } else if(e.key === "%") {
+            // If the key pressed is percent, change the operand to a percent
+            this.changePercent();
+
+        } else if(e.key === "=" || e.key === "Enter") {
+            // If the key pressed is the equal sign or enter/return then calculate
             this.calculate();
-        } else if(operationCodes[e.keyCode]) {
-            this.addToScreen(operationCodes[e.keyCode]);
-        } else if(e.keyCode === 8) {
+
+        }  else if(e.key === "Backspace") {
+            // If the key pressed is backspace, then delete last input
             this.deleteLast();
-        } else if(e.keyCode === 27) {
+
+        }  else if(e.key === "Escape") {
+            // If the key pressed is escape, then reset the calculator screen
             this.resetScreen();
+
+        } else if(numberCodes[e.key]) {
+            // if the key pressed is a number then add to the screen
+            this.addToScreen(numberCodes[e.key]);
         }
     } // End of handleKeyUp() function
 
@@ -133,7 +144,7 @@ class Calculator extends Component {
         let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
         let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
 
-        this.setState({operands: [...newOperands, currentOperand / 100]});
+        this.setState({operands: [...newOperands, (currentOperand / 100).toString()]});
     } // End of changePercent() function
 
     resetScreen = () => {
@@ -204,7 +215,7 @@ class Calculator extends Component {
                     i++;
                 }
             }
-            this.setState({operations: [], operands: [operandsToMutate[0]]})
+            this.setState({operations: [], operands: [operandsToMutate[0].toString()]})
         }
 
 
@@ -266,7 +277,7 @@ class Calculator extends Component {
     
             while(toSlice.length > 3) {
                 let sliced = toSlice.slice(-3);
-                res += "," + sliced;
+                res = "," + sliced + res;
                 toSlice = toSlice.slice(0, -3);
             }
         } else {
@@ -351,7 +362,7 @@ class Calculator extends Component {
                 <button onClick={this.cos}>COS()</button>
                 <button className="zero" onClick={() => this.addToScreen("0")}>0</button>
                 <button className="decimal" onClick={() => this.addToScreen(".")}>.</button>
-                <button className="operator" className="equal" onClick={this.calculate}>=</button>
+                <button className="operator equal" onClick={this.calculate}>=</button>
             </div>
         )
     }
