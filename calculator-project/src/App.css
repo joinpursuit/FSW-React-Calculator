@@ -1,8 +1,24 @@
 .App {
   display: flex;
-  background-color: white;
+  background-color: black;
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
+  background-image: url("./image/Iphone.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  margin-right: 65%;
+  margin-bottom: -5%;
+}
+
+.clock{
+  color: white;
+  margin-top: 1.1%;
 }

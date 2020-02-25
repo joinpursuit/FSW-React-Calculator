@@ -80,17 +80,13 @@
 
 #nine { grid-area: nine; }
 
-/* .math{
-    cursor: pointer;
-}  */
-
 .display{
     display: flex;
     height: 35%;
     width: 100%;
-    background-color: #1E1E1E;
+    background-color: black;
     color: white;
-    font-size: 700%;
+    font-size: 550%;
     font-weight: 100;
     flex-direction: row;
     flex-wrap: nowrap;
