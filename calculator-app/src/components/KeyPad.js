@@ -1,88 +1,47 @@
 import React from 'react';
+// import Formulas from './Formulas' 
 
 class KeyPad extends React.Component {
-
+  
   render() {
    return(
-    // <div className="frame">
-    // <div className="result"></div>
-    // <div className="values">
-
-    //   <div className="column1">
-    //     <button>AC</button>
-    //     <button>+/-</button>
-    //     <button>%</button>
-    //     <button>÷</button>
-    //   </div>
- 
-    //   <div className="column2"></div>
-    //     <button>7</button>
-    //     <button>8</button>
-    //     <button>9</button>
-    //     <button>X</button>
-    //     <div>
-
-    //   <div className="column3">
-    //     <button>4</button>
-    //     <button>5</button>
-    //     <button>6</button>
-    //     <button>-</button>
-    //   </div>
   
-    //   <div className="column4">
-    //     <button>1</button>
-    //     <button>2</button>
-    //     <button>3</button>
-    //     <button>+</button>
-    //   </div>
-  
-    //   <div className="column5">
-    //     <button>0</button>
-    //     <button>.</button>
-    //     <button>=</button>
-    //   </div>
 
-    // </div>
-    
-    // </div>
-    // </div>
+  <div className="calculator">
 
+  <input type="text" className="calculator-screen" value="0" disabled />
 
-    <div class="calculator">
+  <div className="calculator-keys" >
 
-  <input type="text" class="calculator-screen" value="0" disabled />
+    <button type="button" className="all-clear" value="all-clear">AC</button>
+    <button type="button" className="operator" value="+/-" onClick={this.handleOperator}>+/-</button>
+    <button type="button" className="operator" value="%" onClick={this.handleOperator}>%</button>
+    <button type="button" className="operator" value="/" onClick={this.handleOperator}>÷</button>
 
-  <div class="calculator-keys">
-
-    <button type="button" class="all-clear" value="all-clear">AC</button>
-    <button type="button" class="operator" value="+/-">+/-</button>
-    <button type="button" class="operator" value="%">%</button>
-    <button type="button" class="operator" value="/">÷</button>
-
-    <button type="button" value="7">7</button>
-    <button type="button" value="8">8</button>
-    <button type="button" value="9">9</button>
-    <button type="button" class="operator" value="X">X</button>
+    <button type="button" value="7" onClick={this.handleClick}>7</button>
+    <button type="button" value="8" onClick={this.handleClick}>8</button>
+    <button type="button" value="9" onClick={this.handleClick}>9</button>
+    <button type="button" className="operator" value="X" onClick={this.handleOperator}>X</button>
 
 
-    <button type="button" value="4">4</button>
-    <button type="button" value="5">5</button>
-    <button type="button" value="6">6</button>
-    <button type="button" class="operator" value="-">-</button>
+    <button type="button" value="4" onClick={this.handleClick}>4</button>
+    <button type="button" value="5" onClick={this.handleClick}>5</button>
+    <button type="button" value="6" onClick={this.handleClick}>6</button>
+    <button type="button" className="operator" value="-" onClick={this.handleOperator}>-</button>
 
 
-    <button type="button" value="1">1</button>
-    <button type="button" value="2">2</button>
-    <button type="button" value="3">3</button>
-    <button type="button" class="operator" value="+">+</button>
+    <button type="button" value="1" onClick={this.handleClick}>1</button>
+    <button type="button" value="2" onClick={this.handleClick}>2</button>
+    <button type="button" value="3" onClick={this.handleClick}>3</button>
+    <button type="button" className="operator" value="+" onClick={this.handleOperator}>+</button>
 
 
-    <button type="button" class="zero" value="0">0</button>
-    <button type="button" class="decimal" value=".">.</button>
-    <button type="button" class="equal-sign" value="=">=</button>
+    <button type="button" className="zero" value="0" onClick={this.handleClick}>0</button>
+    <button type="button" className="decimal" value="." onClick={this.handleOperator}>.</button>
+    <button type="button" className="equal-sign" value="=" onClick={this.handleResult}>=</button>
 
   </div>
-</div>
+  </div>
    )
   }
 }
