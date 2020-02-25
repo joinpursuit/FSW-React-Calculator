@@ -1,14 +1,15 @@
 import React from "react";
 import "../buttons/buttons.css";
-import { create, all } from 'mathjs';
+import { create, all } from "mathjs";
+import numeral from "numeral";
 
 const config = { };
 const math = create(all, config);
 
 class Buttons extends React.Component{
     state= {
-        NumberButtons: [{oName: "decimal", value: "."}, {oName: "zero", value: "0"}, {oName: "one", value: "1"}, {oName: "two", value: "2"}, {oName: "three", value: "3"}, {oName: "four", value: "4"}, {oName: "five", value: "5"}, {oName: "six", value: "6"}, {oName: "seven", value: "7"}, {oName: "eight", value: "8"}, {oName: "nine", value: "9"}],
-        OperatorButtons: [{ oName: 'add', value: "+"}, { oName: 'subtract', value: "-"}, { oName: 'multiply', value: "*"}, { oName: 'divide', value: "/"}, { oName: 'polar', value: "±"}, {oName: 'percentage', value: "%"}, { oName: 'clear', value: "C"}, { oName: 'equal', value: "="}],
+        NumberButtons: [{oName: "zero", value: "0"}, {oName: "one", value: "1"}, {oName: "two", value: "2"}, {oName: "three", value: "3"}, {oName: "four", value: "4"}, {oName: "five", value: "5"}, {oName: "six", value: "6"}, {oName: "seven", value: "7"}, {oName: "eight", value: "8"}, {oName: "nine", value: "9"}],
+        OperatorButtons: [{oName: "decimal", value: "."},{ oName: 'add', value: "+"}, { oName: 'subtract', value: "-"}, { oName: 'multiply', value: "*"}, { oName: 'divide', value: "/"}, { oName: 'polar', value: "±"}, {oName: 'percentage', value: "%"}, { oName: 'clear', value: "C"}, { oName: 'equal', value: "="}],
         displayScreen: ""
     }
     
@@ -42,14 +43,21 @@ class Buttons extends React.Component{
         } else {
             let updated = this.state.displayScreen;
             updated += value;
-            this.setState({displayScreen:updated})
+            this.setState({displayScreen:updated});
+            //trying to add commas and concat strings to evaluate
+            // if(value === this.state.NumberButtons[value]){
+            //     let updated = this.state.displayScreen;
+            //     updated += value;
+            //     debugger
+            //     let addedCommas = numeral(updated).format('0,0');
+            //     this.setState({displayScreen:addedCommas});
+            // }
         }
     }
     
     calculate = (button) => {
         let value = button.target.value
         let solved
-        debugger
         if(value === "%"){
             solved = math.evaluate(this.state.displayScreen + "/100");
         } else {
