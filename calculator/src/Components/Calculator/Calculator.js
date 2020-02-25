@@ -10,12 +10,6 @@ class Calculator extends Component {
         super(props);
         this.handleKeyUp = this.handleKeyUp.bind(this);
     }
-
-    setStateSynchronous = (stateUpdate) => {
-        return new Promise(resolve => {
-            this.setState(stateUpdate, () => resolve());
-        })
-    } // End of setStateSynchronous()
     
     state = {
         operations: [],
@@ -147,13 +141,9 @@ class Calculator extends Component {
         this.setState({operands: [...newOperands, (currentOperand / 100).toString()]});
     } // End of changePercent() function
 
-    resetScreen = () => {
-        this.setState({operations: [], operands: ["0"]});
-    } // End of resetScreen() function
+    resetScreen = () => this.setState({operations: [], operands: ["0"]});
 
-    findMathFunction = (operation) => {
-        return this.mathFunctions[operation]();
-    } // End of findMathFunction() function
+    findMathFunction = (operation) => this.mathFunctions[operation]();
 
     findOperation = async (targetOperations, operations, operands) => {
         debugger;
