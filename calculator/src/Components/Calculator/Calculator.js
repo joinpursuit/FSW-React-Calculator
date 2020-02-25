@@ -289,7 +289,7 @@ class Calculator extends Component {
                 <button onClick={() => this.addToScreen("4")}>4</button>
                 <button onClick={() => this.addToScreen("5")}>5</button>
                 <button onClick={() => this.addToScreen("6")}>6</button>
-                <button className="operator" onClick={() => this.addToScreen("*")}>*</button>
+                <button className="operator" onClick={() => this.addToScreen("*")}>X</button>
                 <button onClick={this.changePercent}>%</button>
                 <button onClick={() => this.addToScreen("7")}>7</button>
                 <button onClick={() => this.addToScreen("8")}>8</button>

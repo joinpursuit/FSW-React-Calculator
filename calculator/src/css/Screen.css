@@ -4,11 +4,12 @@
     grid-column: 1 / 6;
     margin-bottom: 20px;
     color: white;
-    background: black;
+    background: rgb(51, 51, 51);
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    box-shadow: inset 0 0 10px #000000;
 }
 
 span {
