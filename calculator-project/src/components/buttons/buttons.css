@@ -93,6 +93,10 @@
     justify-content: flex-end;
     align-items: flex-end;
     margin-bottom: 2%;
+    /* prevents numbers from overflowing */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
