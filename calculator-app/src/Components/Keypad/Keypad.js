@@ -5,6 +5,7 @@ class Keypad extends React.Component{
         return(
             <section className="Keypad">
          <Buttons/>
+         
           </section>
         )
     }
