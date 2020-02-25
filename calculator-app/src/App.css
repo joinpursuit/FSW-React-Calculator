@@ -17,7 +17,23 @@
   height: 19vh;
   font-size: 8rem;
   font-weight: 600;
+  background-color: white;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+.Buttons{
+  height: 6vh;
+  font-size: 2.5rem;
+  display: flex;
+  background-color: orange;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.Screen {
+  height: 25vh;
+  width: 100%;
+  padding: 0 2rem;
+  overflow: hidden;
+  background-color: yellow;
 }
