@@ -205,22 +205,42 @@ class Calculator extends Component {
         let toSlice = "";
         let decimal = "";
 
-        if(str.length > 3) {
-            for(let i = 0; i < str.length; i++) {
-                if(str[i] === ".") {
-                    toSlice = str.slice(0, i);
-                    decimal = str.slice(i);
-                }
-            } 
+        if(str[0] !== "-") {
+            if(str.length > 3) {
+                for(let i = 0; i < str.length; i++) {
+                    if(str[i] === ".") {
+                        toSlice = str.slice(0, i);
+                        decimal = str.slice(i);
+                    }
+                } 
+            }
+    
+            if(!toSlice) toSlice = str;
+    
+            while(toSlice.length > 3) {
+                let sliced = toSlice.slice(-3);
+                res += "," + sliced;
+                toSlice = toSlice.slice(0, -3);
+            }
+        } else {
+            if(str.length > 4) {
+                for(let i = 0; i < str.length; i++) {
+                    if(str[i] === ".") {
+                        toSlice = str.slice(0, i);
+                        decimal = str.slice(i);
+                    }
+                } 
+            }
+    
+            if(!toSlice) toSlice = str;
+    
+            while(toSlice.length > 4) {
+                let sliced = toSlice.slice(-3);
+                res += "," + sliced;
+                toSlice = toSlice.slice(0, -3);
+            }
         }
 
-        if(!toSlice) toSlice = str;
-
-        while(toSlice.length > 3) {
-            let sliced = toSlice.slice(-3);
-            res += "," + sliced;
-            toSlice = toSlice.slice(0, -3);
-        }
 
         return toSlice + res + decimal;
     } // End of placeCommas() function
