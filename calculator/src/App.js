@@ -2,6 +2,7 @@ import React from "react";
 import ButtonPad from "./components/buttonPad/buttons";
 import "./App.css";
 import { render } from "react-dom";
+import "./master.css";
 
 class App extends React.Component {
   state = {

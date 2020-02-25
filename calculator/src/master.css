@@ -1,0 +1,30 @@
+.buttons {
+  border: 3px solid black;
+  width: fit-content;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr;
+  margin: auto;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  height: fit-content;
+}
+
+.inputs {
+  box-shadow: inset 1px 1px 2px 1px rgba(125, 182, 228, 0.317);
+  width: 100px;
+  height: 200px;
+}
+
+@media only screen and (max-width: 900px) {
+  body > img {
+    margin: 2% 2.5%;
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body > img {
+    margin: 2% 2.5%;
+    width: 45%;
+  }
+}
