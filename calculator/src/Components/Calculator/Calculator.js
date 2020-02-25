@@ -222,41 +222,9 @@ class Calculator extends Component {
         
     } // End of calculate() function
 
-    add = async (num1, num2) => {
-        await this.setStateSynchronous({res: num1 + num2});
-    } // End of add() function
-
-    subtract = async (num1, num2) => {
-        await this.setStateSynchronous({res: (num1 - num2)});
-    } // End of add() function
-
-    multiply = async (num1, num2) => {
-        await this.setStateSynchronous({res: (num1 * num2)});
-    } // End of add() function
-
-    divide = async (num1, num2) => {
-        await this.setStateSynchronous({res: (num1 / num2)});
-    } // End of add() function
-
-    exponent = async (num1, num2) => {
-        await this.setStateSynchronous({res: Math.pow(num1, num2)})
-    } // End of exponent() function
-
     sqrRoot = () => {
         console.log("square root");
     } // End of sqrRoot() function
-
-    sin = () => {
-        console.log("sin");
-    } // End of sin() function
-
-    cos = () => {
-        console.log("cos");
-    } // End of cos() function
-
-    tan = () => {
-        console.log("tan");
-    } // End of tan() function
 
     placeCommas = (str) => {
         let res = "";
@@ -359,9 +327,8 @@ class Calculator extends Component {
                 <button onClick={() => this.addToScreen("8")}>8</button>
                 <button onClick={() => this.addToScreen("9")}>9</button>
                 <button className="operator" onClick={() => this.addToScreen("/")}>&divide;</button>
-                <button onClick={this.cos}>COS()</button>
-                <button className="zero" onClick={() => this.addToScreen("0")}>0</button>
                 <button className="decimal" onClick={() => this.addToScreen(".")}>.</button>
+                <button className="zero" onClick={() => this.addToScreen("0")}>0</button>
                 <button className="operator equal" onClick={this.calculate}>=</button>
             </div>
         )
