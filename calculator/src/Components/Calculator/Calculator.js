@@ -146,7 +146,6 @@ class Calculator extends Component {
     findMathFunction = (operation) => this.mathFunctions[operation]();
 
     findOperation = async (targetOperations, operations, operands) => {
-        debugger;
         let i = 0;
         while(i < operations.length) {
             let operation = operations[i];
