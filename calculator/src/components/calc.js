@@ -5,14 +5,25 @@ import './master.css'
 
 class Calculator extends Component {
     state = {
-        displayValue: 0,
+        displayValue: "0",
         prevValue: null,
         operation: null
     }
 
 
     handleNumberClick = (e) => {
-        this.setState({displayValue: e.target.value})
+        //e.persist()
+        const newNum = e.target.value
+        if(this.state.displayValue === "0"){
+            this.setState({displayValue: e.target.value})
+        }else{
+            
+            this.setState(prevState=>({
+                displayValue: prevState.displayValue + newNum
+            
+        }))
+    
+    }
     }
 
     render(){
