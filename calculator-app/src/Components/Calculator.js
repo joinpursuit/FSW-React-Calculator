@@ -7,9 +7,8 @@ class Calculator extends React.Component{
     render(){
         return(
             <div className="Calculator">
-                {/* <Screen/>
-                <Keypad/> */}
-               Device Layout
+               
+               1 + 1 = 2
             </div>
         )
     }

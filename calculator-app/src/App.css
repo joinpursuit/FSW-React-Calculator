@@ -1,44 +1,31 @@
 
+  .App {
+    display: grid;
+    margin-top: 45px;
+    text-align: center;
+    background-color: black;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+   
+  }
 .Calculator {
-  height: 80vh;
+  height: 80%;
   width: 40%;
-  box-shadow: 0 2rem 4rem var(--shadow);
   background-color:black;
+  color: whitesmoke;
   display: grid;
   align-items: center;
 }
-.Results {
-  height: 19vh;
-  font-size: 5rem;
-  font-weight: 600;
-  background-color: white;
-  display: grid;
 
-  align-items: center;
-}
-
-.Screen {
-  height: 25vh;
-  width: 100%;
-  padding: 0 2rem;
-  overflow: hidden;
-  white-space: no-wrap;
-  color: black;
-
-}
 
 button {
   cursor: pointer;
   font-weight: 600;
   height: 50%;
   width: 10%;
-  display: flex;
+  display: grid;
   color: white;
   justify-content: center;
-  margin-right: 1px;
-  margin-left: 1px;
-  border-radius: 5px;
-  box-shadow: 2px 2px;
   background-color: rgb(80, 78, 78);
 
   
@@ -48,13 +35,8 @@ button {
   font-weight: 600;
   height: 50%;
   width: 10%;
-  display: flex;
+  display: grid;
   color: white;
-  justify-content: center;
-  margin-right: 1px;
-  margin-left: 1px;
-  border-radius: 5px;
-  box-shadow: 2px 2px;
   background-color: rgb(247, 141, 3);
 }
 .others{
@@ -62,12 +44,9 @@ button {
   font-weight: 600;
   height: 50%;
   width: 10%;
-  display: flex;
+  display: grid;
   color: white;
   justify-content: center;
-  margin-right: 1px;
-  margin-left: 1px;
-  border-radius: 5px;
-  box-shadow: 2px 2px;
+  
   background-color: rgb(170, 166, 166);
 }
