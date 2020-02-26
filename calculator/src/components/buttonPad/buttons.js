@@ -4,50 +4,26 @@ class ButtonPad extends React.Component {
   state = {
     num: "",
     prevValue: "",
-    operation: ""
+    operation: "",
+    answer: ""
   };
 
   render() {
     return (
       <div className="buttons">
-        <div>
+        <div className="answer">
+          <p className="answerP" value={this.props.answer}></p>
+        </div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
-            value=""
+            value="AC"
             onClick={this.props.handleChange}
             name="AC"
-            id="AC"
           ></input>
         </div>
-        <div>
-          <input
-            className="inputs"
-            type="button"
-            value="9"
-            onClick={this.props.handleChange}
-            name="num"
-          ></input>
-        </div>
-        <div>
-          <input
-            className="inputs"
-            type="button"
-            value="8"
-            onClick={this.props.handleChange}
-            name="num"
-          ></input>
-        </div>
-        <div>
-          <input
-            className="inputs"
-            type="button"
-            value="7"
-            onClick={this.props.handleChange}
-            name="num"
-          ></input>
-        </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -56,7 +32,70 @@ class ButtonPad extends React.Component {
             name="operation"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="-"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="x"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="/"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="+|-"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="9"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="8"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
+        </div>
+        <div className="buttonPad">
+          <input
+            className="inputs"
+            type="button"
+            value="7"
+            onClick={this.props.handleChange}
+            name="num"
+          ></input>
+        </div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -65,7 +104,7 @@ class ButtonPad extends React.Component {
             name="num"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -74,7 +113,7 @@ class ButtonPad extends React.Component {
             name="num"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -83,7 +122,7 @@ class ButtonPad extends React.Component {
             name="num"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -92,7 +131,7 @@ class ButtonPad extends React.Component {
             name="num"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -101,7 +140,7 @@ class ButtonPad extends React.Component {
             name="num"
           ></input>
         </div>
-        <div>
+        <div className="buttonPad">
           <input
             className="inputs"
             type="button"
@@ -111,7 +150,7 @@ class ButtonPad extends React.Component {
           ></input>
         </div>
 
-        <div>
+        <div id="buttonPad">
           <input
             className="inputs"
             type="button"
