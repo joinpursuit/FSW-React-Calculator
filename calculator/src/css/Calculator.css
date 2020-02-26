@@ -7,7 +7,7 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 10px;
     font-size: 20px;
-    background-color: #FFDFBD;
+    background-color: #aaaaaa;
     height: 150%;
     border-radius: 5px;
     box-shadow: 6px 6px 11px;
@@ -39,4 +39,16 @@ button:focus {
 
 .operator {
     margin-left: 5px;
+}
+
+.orange {
+    background-color: #F0B380;
+}
+
+.red {
+    background-color: #f08080;
+}
+
+.delete {
+    grid-column: 2 / 4;
 }

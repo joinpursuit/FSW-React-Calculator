@@ -89,7 +89,6 @@ class Calculator extends Component {
     } // End of addDecimal() function
 
     addToScreen = (input) => {
-        this.setState({res: ""});
         let {operands} = this.state; // Grabbing all operations and operands from state
         let lastIdx = operands.length - 1; // Grabbing the last index of the operands
         let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
@@ -141,7 +140,9 @@ class Calculator extends Component {
         this.setState({operands: [...newOperands, (currentOperand / 100).toString()]});
     } // End of changePercent() function
 
-    resetScreen = () => this.setState({operations: [], operands: ["0"]});
+    resetScreen = () => { 
+        this.setState({operations: [], operands: ["0"]});
+    } // End of resetScreen() function
 
     findMathFunction = (operation) => this.mathFunctions[operation]();
 
@@ -189,10 +190,6 @@ class Calculator extends Component {
     divide = (num1, num2) => num1 / num2;
 
     exponent = (num1, num2) => Math.pow(num1, num2)
-
-    sqrRoot = () => {
-        console.log("square root");
-    } // End of sqrRoot() function
 
     placeCommas = (str) => {
         let res = "";
@@ -268,36 +265,38 @@ class Calculator extends Component {
         let {operations, operands}  = this.state;
 
         operands.forEach((operand, i) => {
-            if(operations[i]) screenText += this.placeCommas(operand.toString()) + operations[i];
-            else screenText += this.placeCommas(operand.toString())
+            if(operations[i]) {
+                screenText += this.placeCommas(operand.toString()) + operations[i];
+            } else {
+                screenText += this.placeCommas(operand.toString())
+            }
         })
 
         console.log(this.state);
         return (
             <div className={this.props.className}>
                 <Screen className="screen" text={screenText}/>
-                <button onClick={this.changeValue}>+/=</button>
-                <button onClick={this.resetScreen}>C</button>
-                <button onClick={this.deleteLast}>&#9003;</button>
-                <button className="operator" onClick={() => this.addToScreen("+")}>+</button>
-                <button onClick={() => this.addToScreen("^")}>^</button>
+                <button onClick={this.resetScreen} className="red">C</button>
+                <button onClick={this.deleteLast} className="red delete">&#9003;</button>
+                <button className="operator orange" onClick={this.changeValue}>+/=</button>
+                <button className="orange" onClick={this.changePercent}>%</button>
                 <button onClick={() => this.addToScreen("1")}>1</button>
                 <button onClick={() => this.addToScreen("2")}>2</button>
                 <button onClick={() => this.addToScreen("3")}>3</button>
-                <button className="operator" onClick={() => this.addToScreen("-")}>-</button>
-                <button onClick={this.sqrRoot}>&radic;</button>
+                <button className="operator orange" onClick={() => this.addToScreen("+")}>+</button>
+                <button className="operator orange" onClick={() => this.addToScreen("-")}>-</button>
                 <button onClick={() => this.addToScreen("4")}>4</button>
                 <button onClick={() => this.addToScreen("5")}>5</button>
                 <button onClick={() => this.addToScreen("6")}>6</button>
-                <button className="operator" onClick={() => this.addToScreen("*")}>X</button>
-                <button onClick={this.changePercent}>%</button>
+                <button className="operator orange" onClick={() => this.addToScreen("*")}>X</button>
+                <button className="operator orange" onClick={() => this.addToScreen("/")}>&divide;</button>
                 <button onClick={() => this.addToScreen("7")}>7</button>
                 <button onClick={() => this.addToScreen("8")}>8</button>
                 <button onClick={() => this.addToScreen("9")}>9</button>
-                <button className="operator" onClick={() => this.addToScreen("/")}>&divide;</button>
-                <button className="decimal" onClick={() => this.addToScreen(".")}>.</button>
+                <button className="operator orange" onClick={() => this.addToScreen(".")}>.</button>
+                <button className="orange" onClick={() => this.addToScreen("^")}>^</button>
                 <button className="zero" onClick={() => this.addToScreen("0")}>0</button>
-                <button className="operator equal" onClick={this.calculate}>=</button>
+                <button className="operator equal orange" onClick={this.calculate}>=</button>
             </div>
         )
     }
