@@ -4,8 +4,10 @@
     margin-top: 45px;
     text-align: center;
     background-color: black;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
    
   }
 .Calculator {
@@ -24,6 +26,9 @@ button {
   height: 100%;
   width: 30%;
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
   color: white;
   justify-content: center;
   background-color: rgb(80, 78, 78);
@@ -36,6 +41,8 @@ button {
   height: 100%;
   width: 30%;
   display: grid;
+  grid-gap: 20px;
+  padding: 20px;
   color: white;
   background-color: rgb(247, 141, 3);
 }
@@ -45,8 +52,20 @@ button {
   height: 100%;
   width: 30%;
   display: grid;
+  grid-gap: 20px;
+  padding: 20px;
   color: white;
   justify-content: center;
-  
   background-color: rgb(170, 166, 166);
+}
+.equal{
+  cursor: pointer;
+  font-weight: 600;
+  height: 100%;
+  width: 30%;
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px;
+  color: white;
+  background-color: rgb(247, 141, 3);
 }
