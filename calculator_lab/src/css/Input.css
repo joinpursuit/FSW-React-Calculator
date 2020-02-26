@@ -1,11 +1,12 @@
 .input {
   height: 4em;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  font-size: large;
+  font-size: 35px;
   background-color: black;
   color: white;
-  padding: 0.5em;
   outline: 1px solid grey;
 }

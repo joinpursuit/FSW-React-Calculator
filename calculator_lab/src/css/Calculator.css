@@ -1,10 +1,11 @@
 .calculatorContainer {
   display: grid;
-  width: 200px;
-  height: 300px;
+  width: 400px;
+  height: 600px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: "display display display display" ". . . ." ". . . ." ". . . ." ". . . ." ". . . .";
+  background: rgb(26, 26, 26);
 }
 
 .calculatorDisplay {
@@ -20,16 +21,25 @@
   background: black;
   grid-column-start: 1;
   grid-column-end: 3;
+  background: gray;
 }
 
 .number {
-  border-radius: 50px;
+  border-radius: 50%;
   color: white;
-  background: black;
+  border: 1px solid gray;
+  background: gray;
+  font-size: 35px;
 }
 
 .character {
-  border-radius: 50px;
+  border-radius: 50%;
   color: white;
+  border: 1px solid orange;
   background: orange;
+  font-size: 35px;
+}
+
+button {
+  margin: 5px;
 }

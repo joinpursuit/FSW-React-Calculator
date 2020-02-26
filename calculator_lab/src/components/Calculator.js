@@ -18,7 +18,7 @@ class Calculator extends Component {
         this.setState({ input: "" });
         alert("invalid format");
       }
-    } else if (buttonName === "C") {
+    } else if (buttonName === "AC") {
       this.setState({ input: "" });
     } else if (buttonName === "%") {
       this.setState({ input: eval(input / 100) });

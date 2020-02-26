@@ -3,23 +3,23 @@ import React, { Component } from "react";
 class Keypad extends Component {
   state = {
     names: [
-      "C",
+      "AC",
       "+/-",
       "%",
       "/",
-      "7",
-      "8",
-      "9",
-      "x",
-      "4",
-      "5",
-      "6",
+      7,
+      8,
+      9,
+      "*",
+      4,
+      5,
+      6,
       "-",
       1,
-      "2",
-      "3",
+      2,
+      3,
       "+",
-      "0",
+      0,
       ".",
       "="
     ]
@@ -32,7 +32,13 @@ class Keypad extends Component {
   render() {
     let { names } = this.state;
     let nameList = names.map((name, i) => {
-      if (typeof name === "number")
+      if (
+        typeof name === "number" ||
+        name === "AC" ||
+        name === "+/-" ||
+        name === "%" ||
+        name === "."
+      )
         return (
           <button
             className={"number"}
