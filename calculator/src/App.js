@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonPad from "./components/buttonPad/buttons";
+import ButtonPad from "./components/buttons";
 import "./App.css";
 import { render } from "react-dom";
 import "./master.css";
