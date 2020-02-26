@@ -25,9 +25,24 @@ class App extends React.Component {
 
   handleResult =(e) => {
     if(this.state.operation === "+" ){
-      let result = Number(this.state.displayValue) + Number(this.state.previousValue)
+      let result = Number(this.state.previousValue) +  Number(this.state.displayValue)
       this.setState({displayValue: result })
     }
+    if(this.state.operation === "-" ){
+      let result = Number(this.state.previousValue) - Number(this.state.displayValue)
+      this.setState({displayValue: result })
+    }
+    if(this.state.operation === "X" ){
+      let result = Number(this.state.previousValue) * Number(this.state.displayValue)
+      this.setState({displayValue: result })
+    }
+
+    if(this.state.operation === "÷" ){
+      let result = Number(this.state.previousValue) / Number(this.state.displayValue)
+      this.setState({displayValue: result })
+    }
+
+    
     
   }
 
