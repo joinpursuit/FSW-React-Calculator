@@ -4,7 +4,7 @@ class Operators extends React.Component{
     render(){
         return(
             <div className="Operators">
-                 3000 + 100 + 20 + 4
+                - x + =
             </div>
         )
     }

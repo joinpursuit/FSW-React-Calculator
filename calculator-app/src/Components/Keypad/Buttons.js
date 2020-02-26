@@ -3,7 +3,7 @@ class Buttons extends React.Component{
     render(){
         return(
             <section className="Buttons">
-         
+         -------------------------------------------------------------
           </section>
         )
     }

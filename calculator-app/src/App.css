@@ -1,53 +1,73 @@
-.App {
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-color:white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .Calculator {
   height: 80vh;
   width: 40%;
   box-shadow: 0 2rem 4rem var(--shadow);
-  background-color: grey;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  background-color:black;
+  display: grid;
+  align-items: center;
 }
 .Results {
   height: 19vh;
   font-size: 5rem;
   font-weight: 600;
   background-color: white;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  display: grid;
+
+  align-items: center;
 }
-.Operators{
-  height: 6vh;
-  font-size: 2rem;
-  background-color: white;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
+
 .Screen {
   height: 25vh;
   width: 100%;
   padding: 0 2rem;
   overflow: hidden;
   white-space: no-wrap;
+  color: black;
 
 }
-.Keypad {
-  height: 55vh;
-  width: 100%;
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  height: 50%;
+  width: 10%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin-right: 1px;
+  margin-left: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px;
+  background-color: rgb(80, 78, 78);
+
+  
 }
-.Buttons {
-  height: 11vh; 
-  width: 100%;
-  display: flex; 
-  color: black;
+.operators{
+  cursor: pointer;
+  font-weight: 600;
+  height: 50%;
+  width: 10%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin-right: 1px;
+  margin-left: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px;
+  background-color: rgb(247, 141, 3);
+}
+.others{
+  cursor: pointer;
+  font-weight: 600;
+  height: 50%;
+  width: 10%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin-right: 1px;
+  margin-left: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px;
+  background-color: rgb(170, 166, 166);
 }
