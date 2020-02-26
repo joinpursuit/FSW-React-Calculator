@@ -2,14 +2,14 @@
     display: grid;
     margin-top: 45px;
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid black;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 10px;
     font-size: 20px;
     background-color: #aaaaaa;
     height: 150%;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 6px 6px 11px;
 }
 
