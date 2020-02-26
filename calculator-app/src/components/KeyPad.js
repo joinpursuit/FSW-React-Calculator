@@ -1,49 +1,46 @@
 import React from 'react';
-// import Formulas from './Formulas' 
 
-class KeyPad extends React.Component {
-  
-  render() {
-   return(
-  
+const KeyPad = ({handleNumberClick, handleOperation, handleResult, state}) => {
+ 
+       return(
+      <div className="calculator">
+        <div>
+          <h3 type="text" className="calculator-screen" value="0" disabled>{state.displayValue}</h3>
+        </div> 
 
-  <div className="calculator">
+        <div className="calculator-keys" >
 
-  <input type="text" className="calculator-screen" value="0" disabled />
+          <button type="button" className="all-clear" value="all-clear">AC</button>
+          <button type="button" className="operation" value="+/-" onClick={(e) => handleOperation(e)}>+/-</button>
+          <button type="button" className="operation" value="%" onClick={(e) => handleOperation(e)}>%</button>
+          <button type="button" className="operation" value="/" onClick={(e) => handleOperation(e)}>÷</button>
 
-  <div className="calculator-keys" >
+          <button type="button" value="7" onClick={handleNumberClick}>7</button> 
 
-    <button type="button" className="all-clear" value="all-clear">AC</button>
-    <button type="button" className="operator" value="+/-" onClick={this.handleOperator}>+/-</button>
-    <button type="button" className="operator" value="%" onClick={this.handleOperator}>%</button>
-    <button type="button" className="operator" value="/" onClick={this.handleOperator}>÷</button>
-
-    <button type="button" value="7" onClick={this.handleClick}>7</button>
-    <button type="button" value="8" onClick={this.handleClick}>8</button>
-    <button type="button" value="9" onClick={this.handleClick}>9</button>
-    <button type="button" className="operator" value="X" onClick={this.handleOperator}>X</button>
+          <button type="button" value="8" onClick={handleNumberClick}>8</button>
+          <button type="button" value="9" onClick={handleNumberClick}>9</button>
+          <button type="button" className="operation" value="X" onClick={(e) => handleOperation(e)}>X</button>
 
 
-    <button type="button" value="4" onClick={this.handleClick}>4</button>
-    <button type="button" value="5" onClick={this.handleClick}>5</button>
-    <button type="button" value="6" onClick={this.handleClick}>6</button>
-    <button type="button" className="operator" value="-" onClick={this.handleOperator}>-</button>
+          <button type="button" value="4" onClick={handleNumberClick}>4</button>
+          <button type="button" value="5" onClick={handleNumberClick}>5</button>
+          <button type="button" value="6" onClick={handleNumberClick}>6</button>
+          <button type="button" className="operation" value="-" onClick={(e) => handleOperation(e)}>-</button>
 
 
-    <button type="button" value="1" onClick={this.handleClick}>1</button>
-    <button type="button" value="2" onClick={this.handleClick}>2</button>
-    <button type="button" value="3" onClick={this.handleClick}>3</button>
-    <button type="button" className="operator" value="+" onClick={this.handleOperator}>+</button>
+          <button type="button" value="1" onClick={handleNumberClick}>1</button>
+          <button type="button" value="2" onClick={handleNumberClick}>2</button>
+          <button type="button" value="3" onClick={handleNumberClick}>3</button>
+          <button type="button" className="operation" value="+" onClick={(e) => handleOperation(e)}>+</button>
 
 
-    <button type="button" className="zero" value="0" onClick={this.handleClick}>0</button>
-    <button type="button" className="decimal" value="." onClick={this.handleOperator}>.</button>
-    <button type="button" className="equal-sign" value="=" onClick={this.handleResult}>=</button>
+          <button type="button" className="zero" value="0" onClick={handleNumberClick}>0</button>
+          <button type="button" className="decimal" value="." onClick={(e) => handleOperation(e)}>.</button>
+          <button type="button" className="equal-sign" value="=" onClick={handleResult}>=</button>
 
-  </div>
-  </div>
+        </div>
+    </div>
    )
   }
-}
 
 export default KeyPad
