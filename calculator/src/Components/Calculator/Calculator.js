@@ -278,7 +278,7 @@ class Calculator extends Component {
                 <Screen className="screen" text={screenText}/>
                 <button onClick={this.changeValue}>+/=</button>
                 <button onClick={this.resetScreen}>C</button>
-                <button onClick={this.deleteLast}>Del</button>
+                <button onClick={this.deleteLast}>&#9003;</button>
                 <button className="operator" onClick={() => this.addToScreen("+")}>+</button>
                 <button onClick={() => this.addToScreen("^")}>^</button>
                 <button onClick={() => this.addToScreen("1")}>1</button>

@@ -7,18 +7,21 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 10px;
     font-size: 20px;
-    background-color: lightgrey;
+    background-color: #FFDFBD;
     height: 150%;
+    border-radius: 5px;
+    box-shadow: 6px 6px 11px;
 }
 
 button {
     cursor: pointer;
     height: 80%;
-    font-size: 80%;
+    font-size: 100%;
     margin-right: 2px;
     margin-left: 2px;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 1px 2px 0px 0px;
+    background-color: #FFF4F2;
 }
 
 button:focus {
