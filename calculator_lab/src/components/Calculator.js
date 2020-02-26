@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "./Input";
 import Keypad from "./Keypad";
+import { evaluate } from "mathjs";
 
 import "../css/Calculator.css";
 
@@ -21,9 +22,9 @@ class Calculator extends Component {
     } else if (buttonName === "AC") {
       this.setState({ input: "" });
     } else if (buttonName === "%") {
-      this.setState({ input: eval(input / 100) });
+      this.setState({ input: evaluate(input / 100) });
     } else if (buttonName === "+/-") {
-      this.setState({ input: eval(input * -1) });
+      this.setState({ input: evaluate(input * -1) });
     } else {
       this.setState({ input: input + buttonName });
     }
@@ -32,7 +33,7 @@ class Calculator extends Component {
   calculate = () => {
     const { input } = this.state;
     this.setState({
-      input: eval(input)
+      input: Number(evaluate(input))
     });
   };
 

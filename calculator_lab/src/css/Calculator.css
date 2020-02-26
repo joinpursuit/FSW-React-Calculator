@@ -42,4 +42,6 @@
 
 button {
   margin: 5px;
+  outline: none;
+  cursor: pointer;
 }
