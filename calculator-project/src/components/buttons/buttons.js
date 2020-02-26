@@ -28,8 +28,9 @@ class Buttons extends React.Component{
         })
     }
 
-    display = (button) => {
-        let value = button.target.value
+    display = (e) => {
+        e.preventDefault();
+        let value = e.target.value
         if(value === "C") {
             this.setState({displayScreen:""})
         } else if(value === "±") {
@@ -55,8 +56,9 @@ class Buttons extends React.Component{
         }
     }
     
-    calculate = (button) => {
-        let value = button.target.value
+    calculate = (e) => {
+        e.preventDefault();
+        let value = e.target.value
         let solved
         if(value === "%"){
             solved = math.evaluate(this.state.displayScreen + "/100");
@@ -69,7 +71,7 @@ class Buttons extends React.Component{
     render(){
         const { NumberButtons, OperatorButtons, displayScreen } = this.state;
         return(
-            <>
+            <form className="form">
                 <div className="display">
                     {displayScreen}
                 </div>
@@ -77,7 +79,7 @@ class Buttons extends React.Component{
                     {this.populateButtons(NumberButtons)}
                     {this.populateButtons(OperatorButtons)}
                 </div>
-            </>
+            </form>
         )
     }
 }
