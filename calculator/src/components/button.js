@@ -3,30 +3,30 @@ import {numbers, operators, modify} from './buttonValues'
 import './master.css'
 
 class Button extends Component{
-    state = {
-        input: "",
-        numbers: [0,1,2,3,4,5,6,7,8,9],
-        displayValue: "",
-        perviousValue: ""
-    }
+    // state = {
+    //     input: "",
+    //     numbers: [0,1,2,3,4,5,6,7,8,9],
+    //     displayValue: "",
+    //     perviousValue: ""
+    // }
 
     handleChange = (e) => {
     
 
     }
- populateButtons = (arr) => {
-    return  arr.map((button,index) => {
-        return(
-            <button key={index} className= "allNums"></button>    
-            )
-     })
- }
+//  populateButtons = (arr) => {
+//     return  arr.map((button,index) => {
+//         return(
+//             <button key={index} className= "allNums"></button>    
+//             )
+//      })
+//  }
     render(){
-        const {numbers, input, displayValue, perviousValue } = this.set
+        const {numbers, input, displayValue, perviousValue } = this.state
     return (
              
     <div className="allButtons">
-    populateButtons(numbers)
+    {/* populateButtons(numbers) */}
         <div className="AllNumbers" onClick=" ">
             <button className="0">0</button>
             <button className="1">1</button>
@@ -56,3 +56,8 @@ class Button extends Component{
 
 
 export default Button;
+
+
+
+
+// setState is used to update states
