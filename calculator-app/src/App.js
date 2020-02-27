@@ -10,9 +10,12 @@ class App extends React.Component {
   }
 
   handleNumberClick = (e) => {
+    
     if(this.state.displayValue){
       this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
-    }else{
+    } else {
+
+      // this.setState({ displayValue :  e.target.value})
       this.setState({ displayValue : e.target.value})
     }
   }
@@ -24,27 +27,24 @@ class App extends React.Component {
   }
 
   handleResult =(e) => {
+    debugger
     if(this.state.operation === "+" ){
       let result = Number(this.state.previousValue) +  Number(this.state.displayValue)
       this.setState({displayValue: result })
-    }
-    if(this.state.operation === "-" ){
+    }else if(this.state.operation === "-" ){
       let result = Number(this.state.previousValue) - Number(this.state.displayValue)
       this.setState({displayValue: result })
-    }
-    if(this.state.operation === "X" ){
+    }else if(this.state.operation === "X" ){
       let result = Number(this.state.previousValue) * Number(this.state.displayValue)
       this.setState({displayValue: result })
-    }
-
-    if(this.state.operation === "÷" ){
+    } else if(this.state.operation === "/" ){
       let result = Number(this.state.previousValue) / Number(this.state.displayValue)
       this.setState({displayValue: result })
-    }
-
-    
-    
+    } else if(this.state.operation === "%" ){
+      let result = Number(this.state.previousValue) / 100
+      this.setState({displayValue: result })
   }
+}
 
   render(){
     return(

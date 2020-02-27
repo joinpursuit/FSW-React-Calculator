@@ -13,7 +13,7 @@ const KeyPad = ({handleNumberClick, handleOperation, handleResult, state}) => {
           <button type="button" className="all-clear" value="all-clear">AC</button>
           <button type="button" className="operation" value="+/-" onClick={(e) => handleOperation(e)}>+/-</button>
           <button type="button" className="operation" value="%" onClick={(e) => handleOperation(e)}>%</button>
-          <button type="button" className="operation" value="/" onClick={(e) => handleOperation(e)}>÷</button>
+          <button type="button" className="operation" value="/" onClick={(e) => handleOperation(e)}>/</button>
 
           <button type="button" value="7" onClick={handleNumberClick}>7</button> 
 
