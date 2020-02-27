@@ -7,42 +7,66 @@ import "../css/Calculator.css";
 
 class Calculator extends Component {
   state = {
-    input: ""
+    displayValue: "",
+    previousValue: "",
+    operation: ""
   };
 
   buttonClicked = buttonName => {
-    const { input } = this.state;
     if (buttonName === "=") {
-      try {
-        this.calculate();
-      } catch (error) {
-        this.setState({ input: "" });
-        alert("invalid format");
-      }
+      this.setState(prevState => {
+        return {
+          displayValue: evaluate(
+            `${prevState.displayValue}${prevState.operation}${prevState.previousValue}`
+          ),
+          previousValue: "",
+          operation: ""
+        };
+      });
+    } else if (
+      buttonName === "+" ||
+      buttonName === "-" ||
+      buttonName === "*" ||
+      buttonName === "/"
+    ) {
+      this.setState(prevState => {
+        return {
+          displayValue: "",
+          previousValue: prevState.displayValue,
+          operation: buttonName
+        };
+      });
+      debugger;
+    } else if (buttonName === "C") {
+      this.setState({ displayValue: "" });
+      buttonName = "AC";
     } else if (buttonName === "AC") {
-      this.setState({ input: "" });
+      this.setState({ displayValue: "", previousValue: "", operation: "" });
     } else if (buttonName === "%") {
-      this.setState({ input: evaluate(input / 100) });
+      this.setState(prevState => {
+        return { displayValue: prevState.displayValue / 100 };
+      });
     } else if (buttonName === "+/-") {
-      this.setState({ input: evaluate(input * -1) });
+      this.setState(prevState => {
+        return { displayValue: prevState.displayValue * -1 };
+      });
     } else {
-      this.setState({ input: input + buttonName });
+      this.setState(prevState => {
+        return { displayValue: prevState.displayValue + buttonName };
+      });
     }
   };
 
-  calculate = () => {
-    const { input } = this.state;
-    this.setState({
-      input: Number(evaluate(input))
-    });
-  };
-
   render() {
-    let { input } = this.state;
+    let { displayValue, previousValue, operation } = this.state;
     return (
       <div className={"calculatorContainer"}>
         <div className={"calculatorDisplay"}>
-          <Input input={input} />
+          <Input
+            displayValue={displayValue}
+            previousValue={previousValue}
+            operation={operation}
+          />
         </div>
         <Keypad buttonClicked={this.buttonClicked} />
       </div>
