@@ -1,47 +1,53 @@
-
-  .App {
-    display: grid;
-    margin-top: 45px;
-    text-align: center;
-    background-color: black;
-    grid-template-columns:repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
-   
-  }
-.Calculator {
-  height: 80%;
-  width: 40%;
-  background-color:black;
-  color: whitesmoke;
-  display: grid;
+.App{
+  height: 100vh;
+  width: 100%;
+  background-color: tomato;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
+.Calculator {
+  height: 80vh;
+  width: 400px;
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
 
+}
+.Results{
+  width: 93%;
+  font-size: 5rem;
+  height: 25vh;
+  border: none;
+  background-color: white;
+  color:black;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+}
 
 button {
   cursor: pointer;
   font-weight: 600;
-  height: 100%;
-  width: 30%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+
+  width: 80%;
   padding: 20px;
   color: white;
-  justify-content: center;
   background-color: rgb(80, 78, 78);
-
   
 }
 .operators{
   cursor: pointer;
   font-weight: 600;
-  height: 100%;
-  width: 30%;
-  display: grid;
-  grid-gap: 20px;
+  width: 80%;
+
   padding: 20px;
   color: white;
   background-color: rgb(247, 141, 3);
@@ -49,22 +55,17 @@ button {
 .others{
   cursor: pointer;
   font-weight: 600;
-  height: 100%;
-  width: 30%;
-  display: grid;
-  grid-gap: 20px;
+  width: 80%;
+
   padding: 20px;
   color: white;
-  justify-content: center;
   background-color: rgb(170, 166, 166);
 }
 .equal{
   cursor: pointer;
   font-weight: 600;
-  height: 100%;
-  width: 30%;
-  display: grid;
-  grid-gap: 20px;
+  width: 80%;
+
   padding: 20px;
   color: white;
   background-color: rgb(247, 141, 3);
