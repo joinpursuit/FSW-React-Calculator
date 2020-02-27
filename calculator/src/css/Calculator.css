@@ -28,6 +28,10 @@ button:focus {
     outline: none;
 }
 
+button:active {
+    box-shadow: inset 3px 3px;
+}
+
 .zero {
     grid-column: 1 / 4;
     grid-row: 6 / 7;

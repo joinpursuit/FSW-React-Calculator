@@ -238,22 +238,22 @@ class Calculator extends Component {
 
     deleteLast = () => {
         let {operations, operands} = this.state
-        let mutatedOperands = [...operands];
-        let lastIdx = mutatedOperands.length - 1;
-        let currentOperand = mutatedOperands[lastIdx];
-        let newOperands = mutatedOperands.slice(0, lastIdx);
+        let operandsToMutate = [...operands];
+        let lastIdx = operandsToMutate.length - 1;
+        let currentOperand = operandsToMutate[lastIdx];
+        let newOperands = operandsToMutate.slice(0, lastIdx);
 
-        if(mutatedOperands.length === operations.length) {
-            this.setState({operations: operations.slice(0, operations.length -1)});
+        if(operandsToMutate.length === operations.length || !currentOperand.length) {
+            if(!currentOperand.length) {
+                operandsToMutate.pop()
+                this.setState({operations: operations.slice(0, operations.length -1), operands: operandsToMutate});
+            } else {
+                this.setState({operations: operations.slice(0, operations.length -1)});
+            }
         } else {
             currentOperand = currentOperand.slice(0, currentOperand.length - 1);
-            if(!currentOperand.length) {
-                if(operands.length > 1) {
-                    mutatedOperands.pop();
-                    this.setState({operands: mutatedOperands});
-                } else {
-                    this.setState({operands: [...newOperands, "0"]})
-                }
+            if(operands.length === 1) {
+                this.setState({operands: [...newOperands, "0"]})
             } else {
                 this.setState({operands: [...newOperands, currentOperand]});
             }
