@@ -41,7 +41,22 @@ class Calculator extends Component {
       buttonName === "*" ||
       buttonName === "/"
     ) {
-      if (displayValue) {
+      if (
+        displayValue !== null &&
+        previousValue !== null &&
+        operation !== null &&
+        isPrevious === true
+      ) {
+        this.setState(prevState => {
+          return {
+            displayValue: "",
+            previousValue: evaluate(
+              `${prevState.previousValue}${prevState.operation}${prevState.displayValue}`
+            ),
+            operation: buttonName
+          };
+        });
+      } else if (displayValue) {
         this.setState(prevState => {
           return {
             displayValue: "",
