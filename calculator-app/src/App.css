@@ -11,13 +11,7 @@
   height: 80vh;
   width: 400px;
   background-color: black;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-radius: 5px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
  
 
 }
@@ -26,8 +20,8 @@
   font-size: 5rem;
   height: 25vh;
   border: none;
-  background-color: white;
-  color:black;
+  background-color: black;
+  color:white;
   text-align: right;
   padding-right: 20px;
   padding-left: 10px;
@@ -36,37 +30,49 @@
 button {
   cursor: pointer;
   font-weight: 600;
-
-  width: 80%;
+  width: 100%;
   padding: 20px;
   color: white;
   background-color: rgb(80, 78, 78);
+
   
 }
-.operators{
+.Operators{
   cursor: pointer;
   font-weight: 600;
-  width: 80%;
-
+  width: 100%;
   padding: 20px;
   color: white;
   background-color: rgb(247, 141, 3);
 }
-.others{
+.Others{
   cursor: pointer;
   font-weight: 600;
-  width: 80%;
-
+  width: 100%;
   padding: 20px;
   color: white;
   background-color: rgb(170, 166, 166);
 }
-.equal{
+.Equal{
   cursor: pointer;
   font-weight: 600;
-  width: 80%;
-
+  width: 100%;
   padding: 20px;
   color: white;
   background-color: rgb(247, 141, 3);
+}
+.Buttons{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  padding: 20px;
+
+}
+.Zero{
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background-color: rgb(80, 78, 78);
 }

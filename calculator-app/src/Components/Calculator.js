@@ -7,32 +7,45 @@ class Calculator extends React.Component{
         return(
             <div className="Calculator">
                 <Results/>
-                
-    <br></br>
+            <div className="Buttons">
+<div>
 
-<button className="others">AC</button> 
-<button className="others">+/-</button>
-<button className="others">%</button>
+<button className="Others">AC</button> 
 <button>7</button>
-<button>8</button>
-<button>9</button>
-<button className="operators">÷</button>
 <button>4</button>
-<button>5</button>
-<button>6</button>
-<button className="operators">x</button>
-
 <button>1</button>
-<button>2</button>
+</div>
+<div>
+
+<button className="Others">+/-</button>
+<button>8</button>
+<button>5</button>
 <button>3</button>
-<button className="operators">-</button>
-<button >0</button>
+</div>
+<div>
+<button className="Others">%</button>
+<button>9</button>
+<button>6</button>
+<button>2</button>
+</div>
+<div>
+
+<button className="Operators">÷</button>
+<button className="Operators">x</button>
+<button className="Operators">-</button>
+<button className="Operators">+</button> 
+</div>
+<button className="Zero" >0</button>
 <button >.</button>
-<button className="equal">=</button>
-<button className="operators">+</button> 
+<button className="Equal">=</button>
+<div>
+
+</div>
                
              
             </div>
+            </div>
+           
         )
     }
 }
