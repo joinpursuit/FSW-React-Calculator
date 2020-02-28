@@ -13,7 +13,8 @@ class Calculator extends Component {
     
     state = {
         operations: [],
-        operands: ["0"]
+        operands: ["0"],
+        res: 0
     }
 
     mathFunctions = {
@@ -89,7 +90,7 @@ class Calculator extends Component {
     } // End of addDecimal() function
 
     addToScreen = (input) => {
-        let {operands} = this.state; // Grabbing all operations and operands from state
+        let {operands, res} = this.state; // Grabbing all operations and operands from state
         let lastIdx = operands.length - 1; // Grabbing the last index of the operands
         let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
         let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
@@ -101,7 +102,9 @@ class Calculator extends Component {
         } else {
             if(this.isDecimal(input)) {
                 this.addDecimal(input);
-            } else {
+            } else if(operands[0] === res.toString()) {
+                this.setState(({operands: [input], res: 0}));
+            }else {
                 if(currentOperand === "0") {
                     this.setState({operands: [...newOperands, input]});
                 } else {
@@ -177,7 +180,7 @@ class Calculator extends Component {
 
             await this.findOperation(["+", "-"], operationsToMutate, operandsToMutate);
 
-            this.setState({operations: [], operands: [operandsToMutate[0].toString()]})
+            this.setState({operations: [], operands: [operandsToMutate[0].toString()], res: [operandsToMutate[0]]})
         }
     } // End of calculate() function
 
