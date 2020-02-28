@@ -24,6 +24,10 @@ class App extends React.Component {
     })
   }
 
+  handleEqual = () => {
+    this.setState({})
+  }
+
   // handleClick = (val) => {
   //   this.updateInput(val)
   // }
@@ -54,7 +58,7 @@ class App extends React.Component {
           <div className="row">
             <Button handleClick={this.updateInput}>.</Button>
             <Button handleClick={this.updateInput}>0</Button>
-            <Button handleClick={this.updateInput}>=</Button>
+            <Button handleEqual={this.handleEqual}>=</Button>
             <Button handleClick={this.updateInput}>-</Button>
           </div>
           <div className="row">
