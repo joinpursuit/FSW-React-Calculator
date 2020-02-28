@@ -31,6 +31,12 @@ class App extends React.Component {
     let num2 = Number(this.state.displayValue);
     if (this.state.operation === "-") {
       this.setState({displayValue: num1 - num2, prevValue: this.state.displayValue});
+    } else if (this.state.operation === "+") {
+      this.setState({displayValue: num1 + num2, prevValue: this.state.displayValue});
+    } else if (this.state.operation === "x") {
+      this.setState({displayValue: num1 * num2});
+    } else if (this.state.operation === "/") {
+      this.setState({displayValue: num1 / num2, prevValue: this.state.displayValue});
     }
   }
 
@@ -43,7 +49,7 @@ class App extends React.Component {
   }
 
   handleClear = () => {
-    if ()
+    
   }
 
   render() {
