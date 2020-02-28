@@ -1,6 +1,6 @@
 import React, {Component} from "react"
-
-class Function extends Component{
+import "../CSS/Display.css"
+class Display extends Component{
     render(){
         let {display} = this.props
         return(
@@ -9,8 +9,8 @@ class Function extends Component{
             <p>{display}</p>
 
             </div>
-        )s
+        )
     }
 }
 
-export default Function
+export default Display

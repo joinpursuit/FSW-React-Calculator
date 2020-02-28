@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
  import Button from "./Component/buttons"
-import Function from "./Component/Input"
+import Display from "./Component/Display"
 
 class App extends Component{
   constructor(){
@@ -11,13 +11,11 @@ class App extends Component{
       }
   }
 
-  handleFunction = input =>{
+  onClick = input =>{
     if (input === "="){
       this.compute()
-    }else if(input === "c"){
+    }else if(input === "clear"){
       this.clear()
-    }else if(input === "ce"){
-      this.backspace()
     } else{
       this.setState({
         display: this.state.display + input
@@ -26,9 +24,14 @@ class App extends Component{
   }
 
 
-  // compute = ()=>{
-  //   let results = 
-  // }
+  compute = (input)=>{
+    if(input === "+"){
+      this.setState({
+        display: input.value+input.value
+      })
+    }
+    
+  }
   
   clear = ()=>{
     this.setState({
@@ -39,8 +42,8 @@ class App extends Component{
     return(
       <div>
           <div className="wireFrame">
-            <Function display = {this.state.display}/>
-            <Button onClick={this.handleFunction}/>
+            <Display display = {this.state.display}/>
+            <Button onClick={this.onClick}/>
           </div>
       </div>
     )
