@@ -4,16 +4,27 @@ import Buttons from "./buttons";
 class Calculator extends React.Component {
   state = {
     displayedVal: "",
-    currentVal: "",
+    currentVal: "0",
     prevVal: "",
     opperater: ""
   };
   numButtonsHandler = e => {
     let res = e.target.value;
 
-    this.setState(prevState => ({
-      currentVal: prevState.currentVal + res
-    }));
+    if (this.state.opperater !== "") {
+      this.setState(prevState => ({
+        prevVal: prevState.currentVal,
+        currentVal: res
+      }));
+    } else if (this.state.currentVal === "0") {
+      this.setState({
+        currentVal: res
+      });
+    } else {
+      this.setState(prevState => ({
+        currentVal: prevState.currentVal + res
+      }));
+    }
   };
 
   clearButtonHandler = () => {
@@ -23,9 +34,16 @@ class Calculator extends React.Component {
       });
     } else {
       this.setState({
-        prevVal: ""
+        prevVal: "",
+        opperater: "",
+        currentVal: "0"
       });
     }
+  };
+  oppHandler = e => {
+    this.setState({
+      opperater: e.target.value
+    });
   };
 
   render() {
@@ -35,6 +53,7 @@ class Calculator extends React.Component {
         currentVal={currentVal}
         numButtonsHandler={this.numButtonsHandler}
         clearButtonHandler={this.clearButtonHandler}
+        oppHandler={this.oppHandler}
       />
     );
   }

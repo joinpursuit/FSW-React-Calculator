@@ -1,6 +1,11 @@
 import React from "react";
 
-const Buttons = ({ currentVal, numButtonsHandler, clearButtonHandler }) => {
+const Buttons = ({
+  currentVal,
+  numButtonsHandler,
+  clearButtonHandler,
+  oppHandler
+}) => {
   return (
     <div className="grid-container">
       <div className="display">
@@ -17,7 +22,7 @@ const Buttons = ({ currentVal, numButtonsHandler, clearButtonHandler }) => {
         </button>
       </div>
       <div id="opperator" className="equal">
-        <button id="opperator" name="=" value="=">
+        <button onClick={oppHandler} id="opperator" name="=" value="=">
           =
         </button>
       </div>
@@ -38,22 +43,22 @@ const Buttons = ({ currentVal, numButtonsHandler, clearButtonHandler }) => {
       </div>
 
       <div className="divide">
-        <button id="opperator" name="/" value="/">
+        <button onClick={oppHandler} id="opperator" name="/" value="/">
           /
         </button>
       </div>
       <div className="multiply">
-        <button id="opperator" name="*" value="*">
+        <button onClick={oppHandler} id="opperator" name="*" value="*">
           *
         </button>
       </div>
       <div className="subtract">
-        <button id="opperator" name="-" value="-">
+        <button onClick={oppHandler} id="opperator" name="-" value="-">
           -
         </button>
       </div>
       <div className="add">
-        <button id="opperator" name="+" value="+">
+        <button onClick={oppHandler} id="opperator" name="+" value="+">
           +
         </button>
       </div>
