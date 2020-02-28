@@ -1,0 +1,7 @@
+.input{
+    display: flex;  
+    height: 4em;
+    flex: 10;
+    background-color: #000;
+
+}
