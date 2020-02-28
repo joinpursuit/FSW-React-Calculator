@@ -14,24 +14,34 @@ class Calculator extends Component {
   };
 
   buttonClicked = buttonName => {
+    const { displayValue, previousValue, operation, isPrevious } = this.state;
     if (buttonName === "=") {
-      this.setState(prevState => {
-        return {
-          displayValue: evaluate(
-            `${prevState.displayValue}${prevState.operation}${prevState.previousValue}`
-          ),
-          previousValue: "",
-          operation: "",
-          isPrevious: false
-        };
-      });
+      if (
+        isPrevious === true &&
+        previousValue !== null &&
+        operation !== null &&
+        displayValue === ""
+      ) {
+        return;
+      } else {
+        this.setState(prevState => {
+          return {
+            displayValue: evaluate(
+              `${prevState.displayValue}${prevState.operation}${prevState.previousValue}`
+            ),
+            previousValue: "",
+            operation: "",
+            isPrevious: false
+          };
+        });
+      }
     } else if (
       buttonName === "+" ||
       buttonName === "-" ||
       buttonName === "*" ||
       buttonName === "/"
     ) {
-      if (this.state.displayValue) {
+      if (displayValue) {
         this.setState(prevState => {
           return {
             displayValue: "",
@@ -60,7 +70,7 @@ class Calculator extends Component {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue * -1 };
       });
-    } else if (this.state.displayValue.length <= 9) {
+    } else if (displayValue.length <= 9) {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue + buttonName };
       });
