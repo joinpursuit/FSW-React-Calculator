@@ -27,7 +27,7 @@ class Calculator extends Component {
         this.setState(prevState => {
           return {
             displayValue: evaluate(
-              `${prevState.displayValue}${prevState.operation}${prevState.previousValue}`
+              `${prevState.previousValue}${prevState.operation}${prevState.displayValue}`
             ),
             previousValue: "",
             operation: "",
@@ -50,11 +50,32 @@ class Calculator extends Component {
             isPrevious: true
           };
         });
+      } else if (
+        displayValue === "" &&
+        previousValue !== null &&
+        operation !== null &&
+        isPrevious === true
+      ) {
+        this.setState({ operation: buttonName });
       } else {
         return;
       }
     } else if (buttonName === "C") {
-      this.setState({ displayValue: "" });
+      if (
+        displayValue !== "" &&
+        previousValue !== null &&
+        operation !== null &&
+        isPrevious === true
+      ) {
+        this.setState({ displayValue: "" });
+      } else {
+        this.setState({
+          displayValue: "",
+          previousValue: "",
+          operation: "",
+          isPrevious: false
+        });
+      }
     } else if (buttonName === "AC") {
       this.setState({
         displayValue: "",

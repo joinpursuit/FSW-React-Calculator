@@ -34,8 +34,10 @@ class Keypad extends Component {
     } = this.props;
     buttonClicked(e.target.name);
     const { names } = this.state;
-    if (displayValue !== "" && isPrevious === false) {
-      // debugger;
+    if (
+      (displayValue !== "" && isPrevious === false) ||
+      (displayValue !== "" && previousValue !== "" && isPrevious === false)
+    ) {
       let newNames = names.map(name => (name === "C" ? (name = "AC") : name));
       this.setState({ names: newNames });
     } else if (
