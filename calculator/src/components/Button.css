@@ -4,14 +4,19 @@
   justify-content: center;
   align-items: center;
   font-size: 1.4em;
-  background-color: #e0e1e6;
-  color: #888888;
+  background-color: #7851A9;
+  color: #CFB53B;
   flex: 1;
   outline: 1px solid #888888;
 }
 
 .operator {
-  background-color: #fe9241;
-  color: white;
+  background-color: #CFB53B;
+  color: #7851A9;
 
+}
+
+.alternate {
+  background-color: #CC0000 ;
+  color: #CFB53B;
 }
