@@ -1,10 +1,10 @@
 import React from "react";
 
-const Display = ({numValue, prevValue}) => {
+const Display = ({display}) => {
     
     return (
-        <div>
-            <p>{numValue}</p>
+        <div class="calculator-screen">
+            <p>{display}</p>
         </div>
     )
 }
