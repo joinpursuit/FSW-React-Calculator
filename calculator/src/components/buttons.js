@@ -75,6 +75,26 @@ class ButtonPad extends React.Component {
             onClick={this.props.handleChange}
             name="operation"
           ></input>
+
+          <input
+            className="inputs"
+            id="percent"
+            type="button"
+            value="%"
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+
+          <input
+            className="inputs"
+            id="decimal"
+            type="button"
+            value="."
+            onClick={this.props.handleChange}
+            name="operation"
+          ></input>
+
+          <br />
           <input
             className="inputs"
             type="button"
@@ -96,6 +116,7 @@ class ButtonPad extends React.Component {
             onClick={this.props.handleChange}
             name="num"
           ></input>
+          <br />
           <input
             className="inputs"
             type="button"

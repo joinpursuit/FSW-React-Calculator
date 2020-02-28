@@ -4,33 +4,44 @@
 } */
 
 #equals {
-  background-color: rgba(214, 247, 197, 0.981);
-  box-shadow: inset 4px 3px 3px 3px rgba(107, 187, 25, 0.536);
+  background-color: rgba(146, 202, 118, 0.981);
+  box-shadow: inset 4px 3px 3px 3px rgba(106, 165, 46, 0.536);
+  color: whitesmoke;
+  font-weight: bolder;
 }
 
 #plus {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
+  color: whitesmoke;
+  font-weight: bolder;
 }
 
 #minus {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
+  color: whitesmoke;
+  font-weight: bolder;
 }
 
 #times {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
+  color: whitesmoke;
+  font-weight: bolder;
+  
 }
 
 #divs {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
+  color: whitesmoke;
+  font-weight: bolder;
 }
 
 .buttons {
   border: 3px 3px 3px 1px solid silver;
-  width: 60%;
+  width: 40%;
   justify-content: center;
   padding-top: 25px;
   display: grid;
@@ -39,7 +50,7 @@
   margin: auto;
   border-radius: 5px;
   box-shadow: 12px 12px 2px 1px rgba(68, 50, 255, 0.411);
-  height: 300px;
+  height: 500px;
   margin-top: 10%;
   background: linear-gradient(0.25turn, #3580a08e, #94c8f370, #011231);
 }
@@ -64,8 +75,11 @@
 }
 
 .buttonPad {
-justify-content: center;
-width: 35%;
+  padding: 25px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 25%;
+  width: 41%;
 }
 
 .inputs {
@@ -77,11 +91,33 @@ width: 35%;
   box-shadow: inset 3px 2px 2px 1px rgba(178, 216, 247, 0.326);
   width: 50px;
   height: 50px;
+  font-weight: bolder;
 }
 
 #clear {
   background-color: rgba(243, 110, 70, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(246, 78, 36, 0.719);
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+#percent {
+  background-color: rgba(84, 56, 241, 0.824);
+  box-shadow: inset 5px 3px 3px 3px rgba(25, 2, 77, 0.57);
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+#decimal {
+  background-color: rgba(84, 56, 241, 0.824);
+  box-shadow: inset 5px 3px 3px 3px rgba(25, 2, 77, 0.57);
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+#pn {
+  background-color: rgba(84, 56, 241, 0.824);
+  box-shadow: inset 5px 3px 3px 3px rgba(25, 2, 77, 0.57);
   color: whitesmoke;
   font-weight: bolder;
 }
