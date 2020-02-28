@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: lighter;
   font-size: 1.4em;
   background-color: #e0e1e6;
   color: #888888;
@@ -14,5 +13,5 @@
 .operator {
   background-color: #fe9241;
   color: white;
-  
+
 }

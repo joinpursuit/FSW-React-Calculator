@@ -1,0 +1,9 @@
+.wrapper {
+  width: 400px;
+  height: 600px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
