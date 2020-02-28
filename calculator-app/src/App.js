@@ -6,43 +6,59 @@ class App extends React.Component {
   state = {
     displayValue: 0,
     previousValue: null,
-    operation:""
+    operation:"",
+    waitingNewValue:true
+  }
+
+  handleNumberClear = (e) => {
+    this.setState({displayValue: 0, previousValue: 0, operation:"", waitingNewValue:true})
   }
 
   handleNumberClick = (e) => {
-    
+    if(this.state.waitingNewValue){
+      this.setState({ displayValue : e.target.value, waitingNewValue:false})
+    }else {
     if(this.state.displayValue){
-      this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
+      //this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
+      this.setState({previousValue: this.state.displayValue, displayValue: this.state.displayValue + e.target.value})
     } else {
 
       // this.setState({ displayValue :  e.target.value})
       this.setState({ displayValue : e.target.value})
     }
   }
+  }
 
 
   handleOperation = (e) =>{
     // debugger
-    this.setState({operation: e.target.value})
+    this.setState({
+      previousValue: this.state.displayValue, 
+      operation: e.target.value, 
+      // displayValue: 0, 
+      //previousValue: 0, 
+      waitingNewValue:true})
+
+    //this.setState({operation: e.target.value, displayValue: 0, previousValue: 0, waitingNewValue:false})
   }
 
   handleResult =(e) => {
-    debugger
+    // debugger
     if(this.state.operation === "+" ){
-      let result = Number(this.state.previousValue) +  Number(this.state.displayValue)
-      this.setState({displayValue: result })
+      let result = Number(this.state.previousValue) + Number(this.state.displayValue)
+      this.setState({displayValue: result, waitingNewValue:true })
     }else if(this.state.operation === "-" ){
       let result = Number(this.state.previousValue) - Number(this.state.displayValue)
-      this.setState({displayValue: result })
-    }else if(this.state.operation === "X" ){
+      this.setState({displayValue: result, waitingNewValue:true })
+    }else if(this.state.operation === "*" ){
       let result = Number(this.state.previousValue) * Number(this.state.displayValue)
-      this.setState({displayValue: result })
+      this.setState({displayValue: result, waitingNewValue:true })
     } else if(this.state.operation === "/" ){
       let result = Number(this.state.previousValue) / Number(this.state.displayValue)
-      this.setState({displayValue: result })
+      this.setState({displayValue: result, waitingNewValue:true })
     } else if(this.state.operation === "%" ){
       let result = Number(this.state.previousValue) / 100
-      this.setState({displayValue: result })
+      this.setState({displayValue: result, waitingNewValue:true })
   }
 }
 
@@ -53,6 +69,7 @@ class App extends React.Component {
       handleNumberClick={this.handleNumberClick} 
       handleOperation={this.handleOperation} 
       handleResult={this.handleResult} 
+      handleNumberClear={this.handleNumberClear}
       state={this.state}
       />
       </>
