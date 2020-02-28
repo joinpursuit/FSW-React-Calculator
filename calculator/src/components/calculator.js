@@ -10,9 +10,22 @@ class Calculator extends React.Component {
   };
   numButtonsHandler = e => {
     let res = e.target.value;
+
     this.setState(prevState => ({
       currentVal: prevState.currentVal + res
     }));
+  };
+
+  clearButtonHandler = () => {
+    if (this.state.prevVal !== undefined) {
+      this.setState({
+        currentVal: ""
+      });
+    } else {
+      this.setState({
+        prevVal: ""
+      });
+    }
   };
 
   render() {
@@ -21,6 +34,7 @@ class Calculator extends React.Component {
       <Buttons
         currentVal={currentVal}
         numButtonsHandler={this.numButtonsHandler}
+        clearButtonHandler={this.clearButtonHandler}
       />
     );
   }
