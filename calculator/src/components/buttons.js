@@ -1,11 +1,13 @@
 import React from "react";
 
-const Buttons = () => {
+const Buttons = ({ currentVal, numButtonsHandler }) => {
   return (
     <div className="grid-container">
-      <div className="display"></div>
+      <div className="display">
+        <h1>{currentVal}</h1>
+      </div>
       <div className="zero">
-        <button name="0" value="0">
+        <button onClick={numButtonsHandler} name="0" value="0">
           0
         </button>
       </div>
@@ -30,8 +32,8 @@ const Buttons = () => {
         </button>
       </div>
       <div className="negPos">
-        <button name="-+" value="-+">
-          -+
+        <button id="neggPos" name="-+" value="-+">
+          +
         </button>
       </div>
 

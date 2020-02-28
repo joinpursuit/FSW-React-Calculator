@@ -42,12 +42,19 @@
   grid-template-columns: 20% 20% 20% 20%;
   grid-template-rows: 30% 15% 15% 15% 15% 15%;
   grid-template-areas: "display display display display" "ac percent negPos divide" "seven eight nine multiply" "four five six subtract" "one two three add" "zero zero dot equal";
+  height: 550px;
+  width: 800px;
 }
 div {
   display: block;
 }
 .display {
   background-color: #333333;
+  display: flex;
+  justify-content: flex-end;
+
+  font-size: 40px;
+  color: white;
   grid-area: display;
 }
 
@@ -132,6 +139,7 @@ button {
   height: 93px;
   width: -webkit-fill-available;
   font-size: 40px;
+  font-weight: 500;
   text-align: center;
   color: #666666;
   border-left: 1px solid #666666;
@@ -149,4 +157,8 @@ button:active {
 #opperator {
   background-color: #ee9b3e;
   color: #fff;
+}
+
+#neggPos {
+  text-decoration: underline;
 }

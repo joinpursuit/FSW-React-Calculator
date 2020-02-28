@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Buttons from "./components/buttons";
+import Calculator from "./components/calculator";
 
 function App() {
   return (
     <div className="App">
-      <Buttons />
+      <Calculator />
     </div>
   );
 }
