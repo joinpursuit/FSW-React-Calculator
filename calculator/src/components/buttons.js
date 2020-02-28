@@ -14,8 +14,8 @@ const Buttons = () => {
           .
         </button>
       </div>
-      <div className="equal">
-        <button name="=" value="=">
+      <div id="opperator" className="equal">
+        <button id="opperator" name="=" value="=">
           =
         </button>
       </div>
@@ -36,22 +36,22 @@ const Buttons = () => {
       </div>
 
       <div className="divide">
-        <button name="/" value="/">
+        <button id="opperator" name="/" value="/">
           /
         </button>
       </div>
       <div className="multiply">
-        <button name="*" value="*">
+        <button id="opperator" name="*" value="*">
           *
         </button>
       </div>
       <div className="subtract">
-        <button name="-" value="-">
+        <button id="opperator" name="-" value="-">
           -
         </button>
       </div>
       <div className="add">
-        <button name="+" value="+">
+        <button id="opperator" name="+" value="+">
           +
         </button>
       </div>
