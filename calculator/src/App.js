@@ -7,7 +7,8 @@ class App extends React.Component {
   state = { 
     displayValue: 0, 
     prevValue: "", 
-    operation: ""
+    operation: "",
+    clearEntry: false
   };
 
   handleNumberClick = (e) => {
@@ -49,7 +50,10 @@ class App extends React.Component {
   }
 
   handleClear = () => {
-    
+    this.setState({displayValue: 0, clearEntry: true});
+    if (this.state.clearEntry === true) {
+      this.setState({displayValue:0, prevValue: "", operation: "", clearEntry: false});
+    }
   }
 
   render() {
