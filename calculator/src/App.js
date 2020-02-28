@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import Calculator from "./components/Calculator.js"
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      Hello World!
+      <Calculator/>
     </div>
   );
 }
