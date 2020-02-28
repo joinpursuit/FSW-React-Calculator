@@ -1,0 +1,67 @@
+/* .button {
+    background-color: #e0e0e6;
+    font-size: 40px;
+    color: #666;
+    border: 1px solid #666;
+    cursor: pointer;
+}*/
+
+
+/*.App {
+    min-height: 100%;
+    min-width: 100%;
+    
+    justify-content: space-evenly;
+    line-height: 1.5;
+    width: 50%;
+    color: #fff;
+    text-align: right;
+}
+
+.inputview {
+    font-size: 5em;
+    color: #fff;
+    text-align: right;
+    background-color: #333;
+} */
+
+.result {
+    height: 60px;
+    background-color: #bbb;
+    width: 100%;
+}
+
+.result p {
+    font-size: 40px;
+    margin: 5px;
+}
+
+.body {
+    max-width: 400px;
+    margin: auto;
+}
+
+.button {
+    background-color: #bbb;
+    cursor: pointer;
+}
+
+button {
+    width: 25%;
+    height: 60px;
+    font-size: 30px;
+}
+
+button:active {
+    box-shadow: none;
+    /* top: 3px; */
+}
+
+.zero {
+    width: 50%;
+}
+
+.orange {
+    background-color: #ee9b3e;
+    color: #fff;
+}
