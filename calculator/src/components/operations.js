@@ -10,7 +10,9 @@ class Operations extends React.Component {
     posNegNum: []
   };
   render() {
-    return <></>;
+    return <>
+        
+    </>;
   }
 }
 
