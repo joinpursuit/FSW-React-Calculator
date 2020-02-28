@@ -26,7 +26,25 @@ class Keypad extends Component {
   };
 
   buttonClicked = e => {
-    this.props.buttonClicked(e.target.name);
+    const {
+      buttonClicked,
+      displayValue,
+      previousValue,
+      isPrevious
+    } = this.props;
+    buttonClicked(e.target.name);
+    const { names } = this.state;
+    if (displayValue !== "" && isPrevious === false) {
+      // debugger;
+      let newNames = names.map(name => (name === "C" ? (name = "AC") : name));
+      this.setState({ names: newNames });
+    } else if (
+      isPrevious === true ||
+      (previousValue === "" && isPrevious === false)
+    ) {
+      let newNames = names.map(name => (name === "AC" ? (name = "C") : name));
+      this.setState({ names: newNames });
+    }
   };
 
   render() {
@@ -35,6 +53,7 @@ class Keypad extends Component {
       if (
         typeof name === "number" ||
         name === "AC" ||
+        name === "C" ||
         name === "+/-" ||
         name === "%" ||
         name === "."

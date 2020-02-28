@@ -9,7 +9,8 @@ class Calculator extends Component {
   state = {
     displayValue: "",
     previousValue: "",
-    operation: ""
+    operation: "",
+    isPrevious: false
   };
 
   buttonClicked = buttonName => {
@@ -20,7 +21,8 @@ class Calculator extends Component {
             `${prevState.displayValue}${prevState.operation}${prevState.previousValue}`
           ),
           previousValue: "",
-          operation: ""
+          operation: "",
+          isPrevious: false
         };
       });
     } else if (
@@ -29,19 +31,27 @@ class Calculator extends Component {
       buttonName === "*" ||
       buttonName === "/"
     ) {
-      this.setState(prevState => {
-        return {
-          displayValue: "",
-          previousValue: prevState.displayValue,
-          operation: buttonName
-        };
-      });
-      debugger;
+      if (this.state.displayValue) {
+        this.setState(prevState => {
+          return {
+            displayValue: "",
+            previousValue: prevState.displayValue,
+            operation: buttonName,
+            isPrevious: true
+          };
+        });
+      } else {
+        return;
+      }
     } else if (buttonName === "C") {
       this.setState({ displayValue: "" });
-      buttonName = "AC";
     } else if (buttonName === "AC") {
-      this.setState({ displayValue: "", previousValue: "", operation: "" });
+      this.setState({
+        displayValue: "",
+        previousValue: "",
+        operation: "",
+        isPrevious: false
+      });
     } else if (buttonName === "%") {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue / 100 };
@@ -50,25 +60,29 @@ class Calculator extends Component {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue * -1 };
       });
-    } else {
+    } else if (this.state.displayValue.length <= 9) {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue + buttonName };
       });
+    } else {
+      return;
     }
   };
 
   render() {
-    let { displayValue, previousValue, operation } = this.state;
+    console.log(this.state);
+    let { displayValue, previousValue, operation, isPrevious } = this.state;
     return (
       <div className={"calculatorContainer"}>
         <div className={"calculatorDisplay"}>
-          <Input
-            displayValue={displayValue}
-            previousValue={previousValue}
-            operation={operation}
-          />
+          <Input displayValue={displayValue} />
         </div>
-        <Keypad buttonClicked={this.buttonClicked} />
+        <Keypad
+          buttonClicked={this.buttonClicked}
+          previousValue={previousValue}
+          operation={operation}
+          isPrevious={isPrevious}
+        />
       </div>
     );
   }
