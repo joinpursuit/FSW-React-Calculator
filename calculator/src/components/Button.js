@@ -1,12 +1,14 @@
 import React from "react"
-import "./button.css"
+import "./Button.css"
 
-const chkOperator = (input) => {
-  return !isNaN(input) || input === "." || input === "="
+const isOperator = (value) => {
+  return !isNaN(value) || value === "." || value === "="
 }
 
-const Button = (props) => {
+const Button = (props) => (
   <div>
     {props.children}
   </div>
-}
+)
+
+export default Button
