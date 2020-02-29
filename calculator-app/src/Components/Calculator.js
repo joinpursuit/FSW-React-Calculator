@@ -13,13 +13,13 @@ class Calculator extends React.Component{
     addition(event){
         this.setState({result: (num1, num2) => num1 + num2})
     }
-    subtraction(){
+    subtraction(event){
         this.setState({result: (num1, num2) => num1 - num2})
     }
-    multiplication(){
+    multiplication(event){
         this.setState({result: (num1, num2) => num1 * num2})
     }
-    division(){
+    division(event){
         this.setState({result: (num1, num2) => num1 / num2})
     }
 
