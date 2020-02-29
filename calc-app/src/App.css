@@ -62,12 +62,21 @@
   background-color: #7b808a;
   border-radius: 50px;
   color: white;
+  margin: 2.5px;
   font-weight: bolder;
 }
 .sign {
   background-color: #fbc765;
   border-radius: 50px;
   color: white;
+  margin: 2.5px;
+  font-weight: bolder;
+}
 
+.C {
+  background-color: rgb(173, 173, 173);
+  border-radius: 50px;
+  color: white;
+  margin: 2.5px;
   font-weight: bolder;
 }

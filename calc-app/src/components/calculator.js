@@ -4,7 +4,7 @@ import Button from "./Buttons";
 class Calculator extends React.Component {
   state = {
     numSigns: [
-      "AC",
+      "C",
       `+/-`,
       `%`,
       `÷`,
@@ -39,15 +39,15 @@ class Calculator extends React.Component {
             handleFun={this.props.handleNum}
           />
         );
-      } else if (numSign === "x") {
+      } else if (numSign === "C") {
         return (
           <Button
-            Name={"sign"}
+            Name={"C"}
             numSign={numSign}
             key={numSign}
             id={numSign}
-            value="*"
-            handleFun={this.props.handleSign}
+            value={numSign}
+            handleFun={this.props.handleClear}
           />
         );
       } else {

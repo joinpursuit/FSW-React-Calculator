@@ -33,7 +33,15 @@ class App extends React.Component {
       this.setState(prevState => ({ displayNum: prevState.num2 }));
     }
   };
-  handleClear = e => {};
+  handleClear = e => {
+    this.setState({
+      num1: "",
+      num2: "",
+      sign: "",
+      solution: "",
+      displayNum: "0"
+    });
+  };
   handleDenotion = e => {};
   handleSign = e => {
     if (this.state.sign && this.state.num1 && e.target.value === "=") {
