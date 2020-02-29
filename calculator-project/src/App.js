@@ -8,7 +8,7 @@ class App extends Component{
   constructor(){
       super()
       this.state ={
-          display: ""
+          display: 0
       }
   }
 
@@ -17,6 +17,10 @@ class App extends Component{
       this.compute()
     }else if(input === "clear"){
       this.clear()
+    } else if(input==="+-"){
+      this.setState({
+        display: (this.state.display * -1)
+      })
     }else{
       this.setState({
         display: this.state.display + input
@@ -31,7 +35,7 @@ class App extends Component{
   
   clear = ()=>{
     this.setState({
-      display: ""
+      display: "0"
     })
   }
   render(){

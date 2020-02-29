@@ -9,19 +9,36 @@
 }
 #plus{
     background-color: #FD9E09;
+   
 }
 #equal{
     background-color: #FD9E09;
     width: 75px;
+    min-width: 30%;
 }
 #divide{
     background-color: #FD9E09;
+    min-width: 30%;
 }
 button{
-    background-color: #e0e0e6;
-    font-size: 40px;
+    /* display: grid; */
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
     text-align: center;
-    color: #666;
-    border-left: 1px solid #666;
-    border-bottom: 5px solid #666;
+    grid-column-gap: 50px;
+    min-height: 15%;
+    min-width: 15%;
+    /* display: flex; */
+    /* justify-content: center; */
 }
+/* background-color: #e0e0e6;
+font-size: 40px;
+text-align: center;
+color: #666;
+border-left: 1px solid #666;
+border-bottom: 5px solid #666; */

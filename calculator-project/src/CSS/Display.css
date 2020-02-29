@@ -1,7 +1,18 @@
-p{
+.display{
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    background-color:black ;
+    color: white;
+    /* padding: 20px; */
+    font-size: 50px;
+    text-align: center;
+    margin-right: 385px;
     font-size: 5em;
     color: #fff;
     text-align: right;
     background-color: #333;
+
+
+    
     
 }
