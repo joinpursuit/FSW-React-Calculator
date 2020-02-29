@@ -1,14 +1,18 @@
 import React from "react";
 
-const ButtonPad = ({ currentValue, handleChange, handleOperation, handleClear }) => {
+const ButtonPad = ({
+  currentValue,
+  handleChange,
+  handleOperation,
+  handleClear,
+  limitAnswer
+}) => {
   return (
     <div className="buttons">
-      <div className="answer">
+      <div className="answer" onChange={limitAnswer}>
         <p className="answerP">{currentValue}</p>
       </div>
       <div className="buttonPad">
-      
-      
         <input
           className="inputs"
           id="clear"

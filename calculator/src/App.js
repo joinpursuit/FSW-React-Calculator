@@ -14,10 +14,18 @@ class App extends React.Component {
 
   handleChange = e => {
     let input = e.target.value;
+    this.setState(prevState => ({
+      currentValue: prevState.currentValue + input
+    }));
     if (this.state.operation !== "") {
       this.setState(prevState => ({
-        currentValue: prevState.currentValue + input
+        prevValue: prevState.currentValue,
+        currentValue: input
       }));
+    } else if (this.state.currentValue === "0") {
+      this.setState({
+        currentValue: input
+      });
     }
   };
 
@@ -36,6 +44,15 @@ class App extends React.Component {
     });
   };
 
+  limitAnswer = () => {
+    if (this.currentValue.length > 10) {
+    } else {
+      this.setState({
+        currentValue: "ERR"
+      });
+    }
+  };
+
   render() {
     console.log(this.state);
     // console.log(this.state.test);
@@ -47,6 +64,7 @@ class App extends React.Component {
           currentValue={this.state.currentValue}
           handleOperation={this.handleOperation}
           handleClear={this.handleClear}
+          limitAnswer={this.limitAnswer}
         />
       </div>
     );
