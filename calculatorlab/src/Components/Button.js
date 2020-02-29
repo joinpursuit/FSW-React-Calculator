@@ -1,32 +1,37 @@
 import React from 'react'
-import DisplayValueForm from './DisplayValueForm'
+// import DisplayValueForm from './DisplayValueForm'
 
 class Button extends React.Component {
     state = {
-        buttons: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "+", "-", "/", "*", "=", ".", "clear"],
-        displayValue: "",
-        prevValue: ""
+        displayValue: 0,
+        prevValue: "",
+        buttons: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "+", "-", "/", "*", "=", ".", "clear"]
     }
     loadValue = (value) => {
-        this.setState({display:this.state.display + value})
-        console.log(this.state.display); 
+        if(this.state.displayValue === 0){
+            this.setState({displayValue: value})
+        }else {
+            this.setState({displayValue: this.state.displayValue + value})
+
+        } 
     }
     handleClick = (e) => {
         e.preventDefault(); 
         const { displayValue, prevValue } = this.state
         const operators = ["+", "-", "/", "*"]
-        if(isNaN(e.target.value) ){
+        if(isNaN(e.target.value) ){  //condition for operators
             if(operators.includes(e.target.value)) {
+                console.log(e.target.value);
+                
 
             }
         }
-        if(displayValue === "") {
+        if(displayValue === 0) {
             this.setState({displayValue: e.target.value})
         } else {
             this.setState({displayValue: displayValue + e.target.value})  
         }
-
-             
+     
         return(
             this.loadValue(e.target.value) 
         ) 
@@ -45,6 +50,7 @@ class Button extends React.Component {
         )
     }
     render() {
+        console.log(this.state)
       const { buttons, displayValue } = this.state
       let calcButtons = buttons.map(button => {
         //   debugger
