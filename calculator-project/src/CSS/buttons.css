@@ -12,7 +12,16 @@
 }
 #equal{
     background-color: #FD9E09;
+    width: 75px;
 }
 #divide{
     background-color: #FD9E09;
+}
+button{
+    background-color: #e0e0e6;
+    font-size: 40px;
+    text-align: center;
+    color: #666;
+    border-left: 1px solid #666;
+    border-bottom: 5px solid #666;
 }

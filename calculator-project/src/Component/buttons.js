@@ -20,7 +20,7 @@ class Buttons extends Component{
          <button name="7" className="7" onClick={e => this.props.onClick(e.target.name)}>7</button>
          <button name="8" className="8" onClick={e => this.props.onClick(e.target.name)}>8</button>
          <button name="9" className="9" onClick={e => this.props.onClick(e.target.name)}>9</button>
-         <button name="x" id="times" className="x"onClick={e => this.props.onClick(e.target.name)}>x</button>
+         <button name="*" id="times" className="x"onClick={e => this.props.onClick(e.target.name)}>*</button>
          </div>
          
          <div className = "set3">

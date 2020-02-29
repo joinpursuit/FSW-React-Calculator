@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
  import Button from "./Component/buttons"
 import Display from "./Component/Display"
+import { evaluate }  from "mathjs"
 
 class App extends Component{
   constructor(){
@@ -16,7 +17,7 @@ class App extends Component{
       this.compute()
     }else if(input === "clear"){
       this.clear()
-    } else{
+    }else{
       this.setState({
         display: this.state.display + input
       })
@@ -24,13 +25,8 @@ class App extends Component{
   }
 
 
-  compute = (input)=>{
-    if(input === "+"){
-      this.setState({
-        display: input.value+input.value
-      })
-    }
-    
+  compute = ()=>{
+    this.setState({display: evaluate(this.state.display)})
   }
   
   clear = ()=>{
@@ -39,6 +35,7 @@ class App extends Component{
     })
   }
   render(){
+    console.log(this.state)
     return(
       <div>
           <div className="wireFrame">
