@@ -4,7 +4,8 @@ const Buttons = ({
   currentVal,
   numButtonsHandler,
   clearButtonHandler,
-  oppHandler
+  oppHandler,
+  equalHandler
 }) => {
   return (
     <div className="grid-container">
@@ -22,7 +23,7 @@ const Buttons = ({
         </button>
       </div>
       <div id="opperator" className="equal">
-        <button onClick={oppHandler} id="opperator" name="=" value="=">
+        <button onClick={equalHandler} id="opperator" name="=" value="=">
           =
         </button>
       </div>
