@@ -38,18 +38,14 @@ class Calculator extends React.Component{
 
 
     handleACClick = () => {
-        if(this.state.clearBtn==="C"){
-            this.setState({
-                displayValue: 0,
-                clearBtn:"AC"
-            })
-        }else{
-            this.setState({
-                displayValue: 0,
-                operation:null,
-                previousValue:0
-            })
-        }
+        this.state.clearBtn==="C" ? this.setState({
+            displayValue: 0,
+            clearBtn:"AC"
+        }): this.setState({
+            displayValue: 0,
+            operation:null,
+            previousValue:0
+        })
     }
 
     handlePercentageClick = () =>{
