@@ -63,14 +63,16 @@
   border-radius: 50px;
   color: white;
   margin: 2.5px;
-  font-weight: bolder;
+  font-size: medium;
+  font-weight: bold;
 }
 .sign {
   background-color: #fbc765;
   border-radius: 50px;
   color: white;
   margin: 2.5px;
-  font-weight: bolder;
+  font-size: medium;
+  font-weight: bold;
 }
 
 .C {
@@ -78,5 +80,6 @@
   border-radius: 50px;
   color: white;
   margin: 2.5px;
-  font-weight: bolder;
+  font-size: medium;
+  font-weight: bold;
 }
