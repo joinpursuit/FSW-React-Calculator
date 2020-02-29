@@ -9,47 +9,82 @@ class App extends React.Component {
     num2: "",
     sign: "",
     solution: "",
-    displayNum: "",
-    expression: ""
+    displayNum: "0"
+    // expression: ""
   };
   handleNum = e => {
     e.preventDefault();
     let num = e.target.value;
     console.log(!this.state.num1 && !this.state.num2);
+
     if (!this.state.num1 && !this.state.num2) {
-      // this.setState({ num1: num });
-      console.log("testing " + this.state.num1);
-      debugger;
-      this.setState(prevState => {
-        return { num1: num };
-      });
-      this.setState({ displayNum: this.state.num1 });
+      this.setState(prevState => ({ num1: num }));
+      this.setState(prevState => ({ displayNum: "" + num }));
+    } else if (this.state.solution) {
+      this.setState(prevState => ({ num1: num }));
+      this.setState(prevState => ({ displayNum: "" + num }));
     } else if (!this.state.sign) {
-      this.setState(prevState => {
-        return { num1: prevState.num1 + num };
-      });
-    } else if (this.state.sign && this.state.num1) {
+      this.setState(prevState => ({ num1: prevState.num1 + num }));
+      this.setState(prevState => ({ displayNum: prevState.displayNum + num }));
+    } else if (this.state.sign) {
       this.setState(prevState => {
         return { num2: prevState.num2 + num };
       });
+      this.setState(prevState => ({ displayNum: prevState.num2 }));
+    }
+  };
+  handleClear = e => {};
+  handleDenotion = e => {};
+  handleSign = e => {
+    if (this.state.sign && this.state.num1 && e.target.value === "=") {
+      if (this.state.num2) {
+        let num = eval(
+          `${this.state.num1}${this.state.sign}${this.state.num2}`
+        );
+        this.setState(prevState => ({ solution: num }));
+        // this.setState(prevState => ({ num1: num }));
+        this.setState(prevState => ({ displayNum: num }));
+        this.setState(prevState => ({ num2: "" }));
+      } else {
+        let num = eval(
+          `${this.state.solution}${this.state.sign}${this.state.num1}`
+        );
+        this.setState(prevState => ({ solution: num }));
+        this.setState(prevState => ({ displayNum: "" + num }));
+      }
+    } else {
+      if (e.target.value === "x") {
+        this.setState({ sign: "*" });
+      } else if (e.target.value === "÷") {
+        this.setState({ sign: "/" });
+      } else {
+        this.setState({ sign: e.target.value });
+      }
     }
   };
 
-  handleSign = e => {
-    this.setState({ sign: e.target.value });
-  };
   render() {
     console.log("new ");
-    console.log(this.state.num1);
-    console.log(this.state.sign);
-    console.log(this.state.num2);
+    console.log("NUM1: " + this.state.num1);
+    console.log("SIGN: " + this.state.sign);
+    console.log("NUM2: " + this.state.num2);
+    console.log("solution: " + this.state.solution);
+
     return (
       <div className="App">
-        <div className="calculator-container">
-          <div className="calculator-display">
-            <p id="displayNum">{this.state.expression}</p>
+        <div className="iphone">
+          <div className="calculator-container">
+            <div className="calculator-display">
+              <p id="displayNum">{this.state.displayNum}</p>
+            </div>
+
+            <Calculator
+              handleNum={this.handleNum}
+              handleSign={this.handleSign}
+              handleClear={this.handleClear}
+              handleDenotion={this.handleDenotion}
+            />
           </div>
-          <Calculator handleNum={this.handleNum} handleSign={this.handleSign} />
         </div>
       </div>
     );

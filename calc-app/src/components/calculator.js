@@ -35,8 +35,19 @@ class Calculator extends React.Component {
             numSign={numSign}
             key={numSign}
             id={numSign}
-            value
+            value={numSign}
             handleFun={this.props.handleNum}
+          />
+        );
+      } else if (numSign === "x") {
+        return (
+          <Button
+            Name={"sign"}
+            numSign={numSign}
+            key={numSign}
+            id={numSign}
+            value="*"
+            handleFun={this.props.handleSign}
           />
         );
       } else {
@@ -46,6 +57,7 @@ class Calculator extends React.Component {
             numSign={numSign}
             key={numSign}
             id={numSign}
+            value={numSign}
             handleFun={this.props.handleSign}
           />
         );

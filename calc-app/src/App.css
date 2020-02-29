@@ -4,11 +4,6 @@
   justify-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -40,6 +35,10 @@
 }
 
 .calculator-container {
+  background-color: black;
+  /* background-image: url(./kisspng-apple-iphone-7-plus-apple-iphone-xs-max-apple-ipho-5cbb79ba5cc119.0216732315557902663799.png); */
+
+  color: white;
   display: grid;
   width: 200px;
   height: 300px;
@@ -47,13 +46,28 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: "display display display display" ". . . ." ". . . ." ". . . ." ". . . ." ". . . .";
 }
-
+.iphone {
+  background-image: url(./kisspng-apple-iphone-7-plus-apple-iphone-xs-max-apple-ipho-5cbb79ba5cc119.0216732315557902663799.png);
+}
 .calculator-display {
   grid-area: display;
   display: grid;
   justify-items: right;
 }
-/* #0 {
+#id0 {
   grid-column-start: 1;
   grid-column-end: 3;
-} */
+}
+.number {
+  background-color: #7b808a;
+  border-radius: 50px;
+  color: white;
+  font-weight: bolder;
+}
+.sign {
+  background-color: #fbc765;
+  border-radius: 50px;
+  color: white;
+
+  font-weight: bolder;
+}
