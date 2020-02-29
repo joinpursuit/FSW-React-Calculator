@@ -7,57 +7,76 @@ class App extends React.Component {
     displayValue: 0,
     previousValue: null,
     operation:"",
-    waitingNewValue:true
+    waitingNewValue:false
   }
 
   handleNumberClear = (e) => {
-    this.setState({displayValue: 0, previousValue: 0, operation:"", waitingNewValue:true})
+    this.setState({displayValue: 0, previousValue: null, operation:"", waitingNewValue:false})
   }
 
   handleNumberClick = (e) => {
-    if(this.state.waitingNewValue){
-      this.setState({ displayValue : e.target.value, waitingNewValue:false})
-    }else {
-    if(this.state.displayValue){
-      //this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
-      this.setState({previousValue: this.state.displayValue, displayValue: this.state.displayValue + e.target.value})
-    } else {
+    // if(this.state.waitingNewValue){
+    //   this.setState({ displayValue : e.target.value, waitingNewValue:true})
+    // }else {
+      if (this.state.displayValue && this.state.waitingNewValue){
+        // debugger
+        // this.setState({ 
+        //   previousValue: this.state.displayValue, displayValue:0, waitingNewValue:true})
 
-      // this.setState({ displayValue :  e.target.value})
+
+        // this.setState((prevState)=>{
+        //   return{
+        //     displayValue: e.target.value,
+        //     previousValue: prevState.displayValue,
+        //     waitingNewValue: true
+        //   }
+        // })
+
+        this.handleResult(e,false)
+
+
+
+
+      } else if(this.state.displayValue){
+      //this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
+      this.setState({ displayValue: this.state.displayValue + e.target.value, waitingNewValue:false})
+    
+    
+      } else {
       this.setState({ displayValue : e.target.value})
     }
-  }
+  // }
   }
 
 
   handleOperation = (e) =>{
-    // debugger
     this.setState({
+      displayValue: '',
       previousValue: this.state.displayValue, 
-      operation: e.target.value, 
-      // displayValue: 0, 
-      //previousValue: 0, 
+      operation: e.target.value,  
       waitingNewValue:true})
-
-    //this.setState({operation: e.target.value, displayValue: 0, previousValue: 0, waitingNewValue:false})
   }
 
   handleResult =(e) => {
+     let num1=  Number(this.state.previousValue)
+     let num2 = Number(this.state.displayValue)
+
     // debugger
     if(this.state.operation === "+" ){
-      let result = Number(this.state.previousValue) + Number(this.state.displayValue)
-      this.setState({displayValue: result, waitingNewValue:true })
+      let result = num1 + num2
+      console.log(result)
+      this.setState({previousValue: result, displayValue: result, waitingNewValue:true })
     }else if(this.state.operation === "-" ){
-      let result = Number(this.state.previousValue) - Number(this.state.displayValue)
+      let result = num1 - num2
       this.setState({displayValue: result, waitingNewValue:true })
     }else if(this.state.operation === "*" ){
-      let result = Number(this.state.previousValue) * Number(this.state.displayValue)
+      let result = num1 * num2
       this.setState({displayValue: result, waitingNewValue:true })
     } else if(this.state.operation === "/" ){
-      let result = Number(this.state.previousValue) / Number(this.state.displayValue)
+      let result = num1 / num2
       this.setState({displayValue: result, waitingNewValue:true })
     } else if(this.state.operation === "%" ){
-      let result = Number(this.state.previousValue) / 100
+      let result = num1 / 100
       this.setState({displayValue: result, waitingNewValue:true })
   }
 }
