@@ -22,7 +22,8 @@ class Calculator extends Component {
 
   handleEqual = () => {
     let {display} = this.state
-    this.setState({display: math.evaluate(display)})
+    let newValue = String(math.evaluate(display))
+    this.setState({display: newValue})
   }
 
   handleDecimel = () => {
