@@ -15,6 +15,9 @@ class Calculator extends Component {
   }
   updateDisplay = (value) => {
     const {display} = this.state
+    if(value === "X"){
+      value = "*"
+    }
     this.setState({display: display === "0" ? value : display + value})
   }
 
@@ -23,11 +26,18 @@ class Calculator extends Component {
     this.setState({display: math.evaluate(display)})
   }
 
+  handleDecimel = () => {
+    const {display} = this.state
+    if (display.indexOf(".") === -1) {
+      this.setState({display: display + "."})
+    }
+  }
+
   render () {
     let {display} = this.state
     return (
       <div className="wrapper">
-        <div classname="row">
+        <div>
           <Display display={display}/>
         </div>
         <div className="row">
@@ -57,7 +67,7 @@ class Calculator extends Component {
         <div className="row">
           <Button handleClick={this.updateDisplay}>0</Button>
           <Button handleClick={this.updateDisplay}> </Button>
-          <Button handleClick={this.updateDisplay}>.</Button>
+          <Button handleClick={this.handleDecimel}>.</Button>
           <Button handleClick={this.handleEqual}>=</Button>
         </div>
       </div>
