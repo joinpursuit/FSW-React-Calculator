@@ -1,14 +1,23 @@
 import React from 'react';
-import Buttons from './Components/Buttons'
+// import DisplayValueForm from './Components/DisplayValueForm'
+import Button from './Components/Button'
 // import logo from './logo.svg';
 // import './App.css';
 
-function App() {
+class App extends React.Component {
+  state = {
+    value: ""
+  }
+  
+render() {
+  // const { buttons } = this.state
+  
   return (
     <div className="App">
-      <Buttons/>
+      <Button/>
     </div>
   );
+}
 }
 
 export default App;
