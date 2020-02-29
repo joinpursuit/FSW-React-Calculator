@@ -3,25 +3,34 @@ import DisplayValueForm from './DisplayValueForm'
 
 class Button extends React.Component {
     state = {
-        buttons: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "+", "-", "/", "*", "="]
+        buttons: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "+", "-", "/", "*", "="],
+        display: ""
+    }
+    loadValue = (value) => {
+        this.setState({display:this.state.display + value})
+        console.log(this.state.display);
+        
     }
     handleClick = (e) => {
-        e.preventDefault();
+        e.preventDefault();  
+             
         return(
-            this.setState({value: e.target.value})
-        )
+            this.loadValue(e.target.value) 
+        ) 
       }
+
     render() {
-      const { buttons } = this.state
+      const { buttons, display } = this.state
       let calcButtons = buttons.map(button => {
-          debugger
+        //   debugger
         return( <button value={button} key={button} onClick={this.handleClick}>{button}</button> )
     })
       return (
-        <div className="App">
-          <form className= "buttonContainer"></form>
+        <div className= "buttonContainer">
           {calcButtons}
+          {/* <DisplayValueForm value={display}/>  */}
         </div>
+        
       );
     }
     

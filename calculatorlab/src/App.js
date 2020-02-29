@@ -6,7 +6,7 @@ import Button from './Components/Button'
 
 class App extends React.Component {
   state = {
-    value: ""
+    value: "hi"
   }
   
 render() {
