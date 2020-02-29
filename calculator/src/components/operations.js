@@ -9,9 +9,14 @@ class Operations extends React.Component {
     divide: "/",
     posNegNum: []
   };
+
+
+  
+
+
   render() {
     return <>
-        
+
     </>;
   }
 }

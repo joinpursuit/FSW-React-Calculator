@@ -6,22 +6,51 @@ import "./master.css";
 
 class App extends React.Component {
   state = {
-    num: ""
+    currentValue: "",
+    prevValue: "",
+    operation: "",
+    answer: ""
   };
 
   handleChange = e => {
-    const { num } = this.state;
+    let input = e.target.value;
+    // const { currentValue, prevValue } = this.state;
+    // debugger
+    this.setState(prevState => ({
+      currentValue: prevState.currentValue + input
+    }));
+  };
+
+  handleOperation = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      operation: e.target.value
     });
   };
 
+  handleClear = () => {
+    this.setState({
+      currentValue: "",
+      prevValue: "",
+      operation: "",
+      answer: ""
+    })
+  }
+  
   render() {
+    console.log(this.state)
+    // console.log(this.state.test);
+
     return (
       <div className="App">
-        <ButtonPad handleChange={this.handleChange} />
+        <ButtonPad
+          handleChange={this.handleChange}
+          currentValue={this.state.currentValue}
+          handleOperation={this.handleOperation}
+          handleClear={this.handleClear}
+        />
       </div>
     );
   }
 }
+
 export default App;

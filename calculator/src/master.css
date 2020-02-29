@@ -40,7 +40,7 @@
 }
 
 .buttons {
-  border: 3px 3px 3px 1px solid silver;
+  border: 7px 3px 3px 1px solid silver;
   width: 40%;
   justify-content: center;
   padding-top: 25px;
@@ -50,6 +50,7 @@
   margin: auto;
   border-radius: 5px;
   box-shadow: 12px 12px 2px 1px rgba(68, 50, 255, 0.411);
+  /* box-shadow: inset 7px 1px 1px 1px  rgba(237, 243, 248, 0.488); */
   height: 500px;
   margin-top: 10%;
   background: linear-gradient(0.25turn, #3580a08e, #94c8f370, #011231);
@@ -65,7 +66,7 @@
   color: chartreuse;
   font-family: monospace;
   font-size: 16px;
-  background-color: black;
+  background-color:black;
   border-radius: 10px;
   box-shadow: inset 4px 4px 4px 2px rgba(201, 227, 248, 0.486);
   border-bottom: 3px solid darkgray;
@@ -86,9 +87,9 @@
   /* display: grid;
   grid-template-columns: repeat(3, 1fr); */
   justify-content: space-around;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
-  box-shadow: inset 3px 2px 2px 1px rgba(178, 216, 247, 0.326);
+  box-shadow: inset 5px 2px 2px 1px rgba(128, 195, 250, 0.326);
   width: 50px;
   height: 50px;
   font-weight: bolder;
@@ -124,16 +125,16 @@
 
 /* media queries for responsiveness */
 
-@media only screen and (max-width: 900px) {
-  body > img {
+@media only screen and (max-width: 950px) {
+  body > div {
     margin: 2% 2.5%;
-    width: 45%;
+    width: 50%;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  body > img {
+  body > div {
     margin: 2% 2.5%;
-    width: 45%;
+    width: 50%;
   }
 }
