@@ -19,7 +19,7 @@ class Calculator extends React.Component{
         if(waitingForNewValue){
             this.setState({
                 waitingForNewValue:false,
-                displayValue:value
+                displayValue:Number(value)
             })
         }else{
             if(displayValue){
@@ -30,7 +30,7 @@ class Calculator extends React.Component{
             else{
                 this.setState({
                     clearBtn:"C",
-                    displayValue: value
+                    displayValue: Number(value)
                 })
             }
         }
@@ -81,22 +81,22 @@ class Calculator extends React.Component{
         let {displayValue,operation,previousValue}=this.state;
         if(operation==="+"){
             this.setState({
-                displayValue:Number(previousValue)+Number(displayValue)
+                displayValue:(Number(displayValue)+Number(previousValue)).toPrecision(4)
             })
         }
         else if(operation==="-"){
             this.setState({
-                displayValue:Number(previousValue) - Number(displayValue)
+                displayValue:(Number(previousValue) - Number(displayValue)).toPrecision(4)
             })
         }
         else if(operation==="x"){
             this.setState({
-                displayValue:Number(previousValue) * Number(displayValue)
+                displayValue:(Number(previousValue) * Number(displayValue)).toPrecision(4)
             })
         }
         else{
             this.setState({
-                displayValue:Number(previousValue) / Number(displayValue)
+                displayValue:(Number(previousValue) / Number(displayValue)).toPrecision(4)
             })
         }
     }
