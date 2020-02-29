@@ -35,7 +35,9 @@ class Calculator extends React.Component{
             }
         }
     }
-    handleACClick = (e) => {
+
+
+    handleACClick = () => {
         if(this.state.clearBtn==="C"){
             this.setState({
                 displayValue: 0,
@@ -50,14 +52,14 @@ class Calculator extends React.Component{
         }
     }
 
-    handlePercentageClick = (e) =>{
+    handlePercentageClick = () =>{
         let {displayValue}=this.state
         this.setState({
             displayValue:displayValue/100
         })
     }
 
-    handleNegPotClick = (e)=>{
+    handleNegPotClick = ()=>{
         let {displayValue}=this.state
         this.setState({
             displayValue:-displayValue
@@ -75,7 +77,7 @@ class Calculator extends React.Component{
         })
     }
 
-    handleEqualOperationClick = (e)=>{
+    handleEqualOperationClick = ()=>{
         let {displayValue,operation,previousValue}=this.state;
         if(operation==="+"){
             this.setState({
@@ -108,13 +110,13 @@ class Calculator extends React.Component{
             <div className="calculator">
             <div className="col-12 inputview">{displayValue}</div>
             <button className="button col-3" name="AC" onClick={(e)=>{
-                this.handleACClick(e)}}>{clearBtn}</button>
+                this.handleACClick()}}>{clearBtn}</button>
 
             <button className="button col-3" name="%" onClick={(e)=>{
-                this.handlePercentageClick(e)}}>%</button> 
+                this.handlePercentageClick()}}>%</button> 
 
             <button className="button col-3" name="±" onClick={(e)=>{
-                this.handleNegPotClick(e)}}>±</button> 
+                this.handleNegPotClick()}}>±</button> 
 
             <button className="button col-3 orange" name="÷" onClick={(e)=>{
                 this.handleOperationClick(e)}}>÷</button>
@@ -162,7 +164,7 @@ class Calculator extends React.Component{
                 this.handleNumberClick(e)}}>.</button> 
 
             <button className="button col-3 orange"  name="=" onClick={(e)=>{
-                this.handleEqualOperationClick(e)}}>=</button>
+                this.handleEqualOperationClick()}}>=</button>
 
             </div>
             </div>
