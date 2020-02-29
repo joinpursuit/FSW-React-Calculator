@@ -14,11 +14,11 @@ class App extends React.Component {
 
   handleChange = e => {
     let input = e.target.value;
-    // const { currentValue, prevValue } = this.state;
-    // debugger
-    this.setState(prevState => ({
-      currentValue: prevState.currentValue + input
-    }));
+    if (this.state.operation !== "") {
+      this.setState(prevState => ({
+        currentValue: prevState.currentValue + input
+      }));
+    }
   };
 
   handleOperation = e => {
@@ -33,11 +33,11 @@ class App extends React.Component {
       prevValue: "",
       operation: "",
       answer: ""
-    })
-  }
-  
+    });
+  };
+
   render() {
-    console.log(this.state)
+    console.log(this.state);
     // console.log(this.state.test);
 
     return (
