@@ -62,13 +62,15 @@
   color: chartreuse;
   font-family: Arial;
   font-size: 55px;
-  background-color: black;
+  background: linear-gradient(0.25turn, black, #2f2f308e, black);
+  /* background-color: black; */
   border-radius: 10px;
   box-shadow: inset 4px 4px 4px 2px rgba(201, 227, 248, 0.486);
   border-bottom: 3px solid darkgray;
   border-right: 3px solid darkgray;
   margin-left: 5px;
   padding: 3px;
+  border: 2px groove darkgrey;
 }
 
 .buttonPad {

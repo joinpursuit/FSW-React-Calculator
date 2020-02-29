@@ -5,11 +5,14 @@ const ButtonPad = ({
   handleChange,
   handleOperation,
   handleClear,
-  limitAnswer
+  
 }) => {
   return (
+    <>
+     
+
     <div className="buttons">
-      <div className="answer" onChange={limitAnswer}>
+      <div className="answer">
         <p className="answerP">{currentValue}</p>
       </div>
       <div className="buttonPad">
@@ -178,6 +181,7 @@ const ButtonPad = ({
         ></input>
       </div>
     </div>
+    </>
   );
 };
 

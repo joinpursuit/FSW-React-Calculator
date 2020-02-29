@@ -22,10 +22,6 @@ class App extends React.Component {
         prevValue: prevState.currentValue,
         currentValue: input
       }));
-    } else if (this.state.currentValue === "0") {
-      this.setState({
-        currentValue: input
-      });
     }
   };
 
@@ -54,7 +50,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     // console.log(this.state.test);
 
     return (
