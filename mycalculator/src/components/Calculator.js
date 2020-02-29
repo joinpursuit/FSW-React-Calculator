@@ -81,7 +81,7 @@ class Calculator extends React.Component{
         let {displayValue,operation,previousValue}=this.state;
       console.log(displayValue.length)
         if(operation==="+"){
-            if(displayValue.length<=12){
+            if(displayValue.length<=9){
                 this.setState({
                     displayValue:(Number(displayValue)+Number(previousValue))
                 })
@@ -92,7 +92,7 @@ class Calculator extends React.Component{
             }
         }
         else if(operation==="-"){
-            if(displayValue.length<=12){
+            if(displayValue.length<=9){
                 this.setState({
                     displayValue:(Number(previousValue) - Number(displayValue))
                 })
@@ -103,7 +103,7 @@ class Calculator extends React.Component{
             }
         }
         else if(operation==="x"){
-            if(displayValue.length<=12){
+            if(displayValue.length<=9){
                 this.setState({
                     displayValue:(Number(previousValue) * Number(displayValue))
                 })
@@ -115,7 +115,7 @@ class Calculator extends React.Component{
             }
         }
         else{
-            if(displayValue.length<=12){
+            if(displayValue.length<=9){
                 this.setState({
                     displayValue:(Number(previousValue) / Number(displayValue))
                 })
