@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "./Calculator.css"
 import Button from "./Button.js"
-import ClearButton from "./ClearButton.js"
 import Display from "./Display.js"
 import * as math from "mathjs"
 
@@ -14,7 +13,7 @@ class Calculator extends Component {
     }
   }
   updateDisplay = (value) => {
-    const {display} = this.state
+    let {display} = this.state
     if(value === "X"){
       value = "*"
     }
@@ -22,15 +21,24 @@ class Calculator extends Component {
   }
 
   handleEqual = () => {
-    const {display} = this.state
+    let {display} = this.state
     this.setState({display: math.evaluate(display)})
   }
 
   handleDecimel = () => {
-    const {display} = this.state
+    let {display} = this.state
     if (display.indexOf(".") === -1) {
       this.setState({display: display + "."})
     }
+  }
+
+  handleInverter = () => {
+    let {display} = this.state
+    this.setState({display: display.charAt(0) === "-" ? display.substring(1) : "-" + display})
+  }
+
+  handleClear = () => {
+    this.setState({display: "0"})
   }
 
   render () {
@@ -41,8 +49,8 @@ class Calculator extends Component {
           <Display display={display}/>
         </div>
         <div className="row">
-          <ClearButton handleClear={() => this.setState({display:"0"})}>AC</ClearButton>
-          <Button handleClick={this.updateDisplay}>+/-</Button>
+          <Button handleClick={this.handleClear}>AC</Button>
+          <Button handleClick={this.handleInverter}>+/-</Button>
           <Button handleClick={this.updateDisplay}>%</Button>
           <Button handleClick={this.updateDisplay}>/</Button>
         </div>

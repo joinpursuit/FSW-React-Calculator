@@ -2,7 +2,7 @@ import React from "react"
 import "./Button.css"
 
 const buttonClass = (value) => {
-  if (value === "+/-" || value === "%" || value === ".") {
+  if (value === "AC" || value === "+/-" || value === "%" || value === ".") {
     return "alternate"
   } else if (isNaN(value)){
     return "operator"
