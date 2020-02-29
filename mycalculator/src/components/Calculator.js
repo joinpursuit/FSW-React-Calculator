@@ -19,7 +19,7 @@ class Calculator extends React.Component{
         if(waitingForNewValue){
             this.setState({
                 waitingForNewValue:false,
-                displayValue:Number(value)
+                displayValue:value
             })
         }else{
             if(displayValue){
@@ -30,7 +30,7 @@ class Calculator extends React.Component{
             else{
                 this.setState({
                     clearBtn:"C",
-                    displayValue: Number(value)
+                    displayValue: value
                 })
             }
         }
@@ -73,31 +73,57 @@ class Calculator extends React.Component{
         this.setState({
             waitingForNewValue:true,
             operation:name,
-            previousValue:displayValue,
+            previousValue:Number(displayValue),
         })
     }
 
     handleEqualOperationClick = ()=>{
         let {displayValue,operation,previousValue}=this.state;
+      console.log(displayValue.length)
         if(operation==="+"){
-            this.setState({
-                displayValue:(Number(displayValue)+Number(previousValue)).toPrecision(4)
-            })
+            if(displayValue.length<=12){
+                this.setState({
+                    displayValue:(Number(displayValue)+Number(previousValue))
+                })
+            }else{
+                this.setState({
+                    displayValue:(Number(displayValue)+Number(previousValue)).toPrecision(4)
+                })
+            }
         }
         else if(operation==="-"){
-            this.setState({
-                displayValue:(Number(previousValue) - Number(displayValue)).toPrecision(4)
-            })
+            if(displayValue.length<=12){
+                this.setState({
+                    displayValue:(Number(previousValue) - Number(displayValue))
+                })
+            }else{
+                this.setState({
+                    displayValue:(Number(previousValue) - Number(displayValue)).toPrecision(4)
+                })
+            }
         }
         else if(operation==="x"){
-            this.setState({
-                displayValue:(Number(previousValue) * Number(displayValue)).toPrecision(4)
-            })
+            if(displayValue.length<=12){
+                this.setState({
+                    displayValue:(Number(previousValue) * Number(displayValue))
+                })
+
+            }else{
+                this.setState({
+                    displayValue:(Number(previousValue) * Number(displayValue)).toPrecision(4)
+                })
+            }
         }
         else{
-            this.setState({
-                displayValue:(Number(previousValue) / Number(displayValue)).toPrecision(4)
-            })
+            if(displayValue.length<=12){
+                this.setState({
+                    displayValue:(Number(previousValue) / Number(displayValue))
+                })
+            }else{
+                this.setState({
+                    displayValue:(Number(previousValue) / Number(displayValue)).toPrecision(4)
+                })
+            }
         }
     }
 
