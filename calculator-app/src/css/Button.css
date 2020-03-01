@@ -2,17 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5em;
+    height: 100px;
     background-color: lightgrey;
     color: black;
     flex: 1;
-    font-size: 1.5em;
+    font-size: 20px;
     outline: 1px black;
     border: solid black;
     border-width: .5px;
 }
 
 .operator {
-    background-color: darkorange;
-    color: white;
+    background-color: darkolivegreen;
+    color: black;
 }

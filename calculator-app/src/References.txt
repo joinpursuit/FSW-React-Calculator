@@ -1,0 +1,5 @@
+References:
+
+Brice Ayres
+"Build A Calculator with React and Flexbox"
+https://www.youtube.com/watch?v=KzYUuTiHdiY&t=794s

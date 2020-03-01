@@ -1,17 +1,17 @@
 .input {
     display: flex;
-    height: 5em;
+    height: 100px;
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5em;
-    background-color: black;
-    color: white;
-    padding: .5em;
+    font-size: 25px;
+    background-color: white;
+    color: black;
+    padding: 5px;
     outline: 1px solid grey;
 }
 
 .operator {
-    background-color: darkorange;
-    color: white;
-}
+    background-color: darkolivegreen;
+    color: black;
+} 

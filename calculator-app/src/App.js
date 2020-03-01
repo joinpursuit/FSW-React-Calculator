@@ -29,9 +29,9 @@ class App extends React.Component {
     this.setState({ input: math.evaluate(this.state.input)})
   }
 
-  // handleClick = (val) => {
-  //   this.updateInput(val)
-  // }
+  handleClick = (val) => {
+    this.updateInput(val)
+  }
 
   render() {
     return (
