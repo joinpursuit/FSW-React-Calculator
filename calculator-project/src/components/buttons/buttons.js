@@ -30,13 +30,13 @@ class Buttons extends React.Component{
         let value = e.target.value
         let updated = this.state.displayScreen;
         updated += value;
-        let commas = this.numberWithCommas(updated)
-        this.setState({displayScreen:commas});
+        // let commas = this.numberWithCommas(updated)
+        this.setState({displayScreen:updated});
     }
 
-   numberWithCommas =(x)=> {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+//    numberWithCommas =(x)=> {
+//         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//     }
 
 calculate = (e) => {
     e.preventDefault();
