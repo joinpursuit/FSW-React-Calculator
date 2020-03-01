@@ -14,34 +14,41 @@ export default class Calculator extends Component {
         this.setState({input: this.state.input + e.target.value});
         debugger
       };
-
+    clearChange = (e) => {
+        this.setState({input: e.target.value});
+        debugger
+      };
+      equalChange = (e) => {
+        this.setState({input: e.target.value});
+        debugger
+      };
     render() {
         return (
             <div className = "buttonDiv">
                 <input type="text" value={this.state.input}></input>
                 <br/>
-                <button>ac</button>
-                <button>+/-</button>
-                <button>.</button>
+                <button onClick={this.clearChange} value= {""}>ac</button>
+                {/* <button onClick={this.inputChange} value= {`${*-1}`}>+/-</button> */}
+                <button onClick={this.inputChange} value= {"."}>.</button>
                 <br/>
-                <button onClick={this.inputChange} value= {"1"}>1</button>
-                <button>2</button>
-                <button>3</button>
+                <button onClick={this.inputChange} value= {1}>1</button>
+                <button onClick={this.inputChange} value= {2}>2</button>
+                <button onClick={this.inputChange} value= {3}>3</button>
                 <br/>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
+                <button onClick={this.inputChange} value= {4}>4</button>
+                <button onClick={this.inputChange} value= {5}>5</button>
+                <button onClick={this.inputChange} value= {6}>6</button>
                 <br/>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
+                <button onClick={this.inputChange} value= {7}>7</button>
+                <button onClick={this.inputChange} value= {8}>8</button>
+                <button onClick={this.inputChange} value= {9}>9</button>
                 <br/>
-                <button>0</button>
-                <button>+</button>
-                <button>-</button>
-                <button>x</button>
-                <button>÷</button>
-                <button>=</button>
+                <button onClick={this.inputChange} value= {0}>0</button>
+                <button onClick={this.inputChange} value= {"+"}>+</button>
+                <button onClick={this.inputChange} value= {"-"}>-</button>
+                <button onClick={this.inputChange} value= {"*"}>x</button>
+                <button onClick={this.inputChange} value= {"/"}>÷</button>
+                <button onClick={this.equalChange} value= {"="}>=</button>
             </div>
         )
     }
