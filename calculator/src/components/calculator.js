@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
-
+import * as math from "mathjs";
 export default class Calculator extends Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          input: ""
+        };
+      }
+
     render() {
         return (
-            <div>
+            <div className = "buttonDiv">
                 <button>ac</button>
                 <button>+/-</button>
                 <button>1</button>
@@ -16,6 +25,7 @@ export default class Calculator extends Component {
                 <button>8</button>
                 <button>9</button>
                 <button>0</button>
+                <button>.</button>
                 <button>+</button>
                 <button>-</button>
                 <button>x</button>
