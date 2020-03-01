@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import * as math from "mathjs";
+import {evaluate} from "mathjs";
+
 export default class Calculator extends Component {
 
     constructor(props) {
@@ -19,7 +20,7 @@ export default class Calculator extends Component {
         debugger
       };
       equalChange = (e) => {
-        this.setState({input: e.target.value});
+        this.setState({input: evaluate(this.state.input)});
         debugger
       };
     render() {
@@ -28,7 +29,7 @@ export default class Calculator extends Component {
                 <input type="text" value={this.state.input}></input>
                 <br/>
                 <button onClick={this.clearChange} value= {""}>ac</button>
-                {/* <button onClick={this.inputChange} value= {`${*-1}`}>+/-</button> */}
+                <button onClick={this.inputChange} value= {`${*-1}`}>+/-</button>
                 <button onClick={this.inputChange} value= {"."}>.</button>
                 <br/>
                 <button onClick={this.inputChange} value= {1}>1</button>
