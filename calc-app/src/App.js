@@ -41,14 +41,24 @@ class App extends React.Component {
   };
 
   handleDecimal = e => {
-    debugger;
-    if (!this.state.num2 && this.state.num1.includes(".")) {
-      this.setState(prevState => ({ num1: "." }));
-      this.setState(prevState => ({ displayNum: "" + "." }));
-    } else if (!this.state.sign) {
+    if (
+      !this.state.num1 &&
+      !this.state.num1.includes(".") &&
+      !this.state.num1
+    ) {
+      this.setState(prevState => ({ num1: "0." }));
+      this.setState(prevState => ({ displayNum: "0." }));
+    } else if (
+      !this.state.sign &&
+      this.state.num1 &&
+      !this.state.num1.includes(".")
+    ) {
       this.setState(prevState => ({ num1: prevState.num1 + "." }));
       this.setState(prevState => ({ displayNum: prevState.displayNum + "." }));
-    } else if (this.state.sign) {
+    } else if (this.state.sign && !this.state.num2) {
+      this.setState(prevState => ({ num2: "0." }));
+      this.setState(prevState => ({ displayNum: "0." }));
+    } else if (this.state.sign && !this.state.num2.includes(".")) {
       this.setState(prevState => {
         return { num2: prevState.num2 + "." };
       });
@@ -57,7 +67,7 @@ class App extends React.Component {
   };
   handleSign = e => {
     if (e.target.value === "+/-") {
-      this.handleDecimal();
+      this.handlePosNeg();
     } else if (e.target.value === ".") {
       this.handleDecimal();
     } else if (this.state.sign && this.state.num1 && e.target.value === "=") {
@@ -66,7 +76,7 @@ class App extends React.Component {
           `${this.state.num1}${this.state.sign}${this.state.num2}`
         );
         this.setState(prevState => ({ solution: num }));
-        // this.setState(prevState => ({ num1: num }));
+        this.setState(prevState => ({ num1: prevState.num2 }));
         this.setState(prevState => ({ displayNum: num }));
         this.setState(prevState => ({ num2: "" }));
       } else {
