@@ -5,13 +5,14 @@ import Display from "./Display.js"
 import * as math from "mathjs"
 
 
+
 class Calculator extends Component {
   constructor(props) {
     super(props)
     this.state = {
       displayValue: "0",
-      previousValue: "",
-      operator: "",
+      previousValue: null,
+      operator: null,
       waitingForOperand: false
       
     }
@@ -24,6 +25,15 @@ class Calculator extends Component {
       value = "/"
     }
     this.setState({displayValue: displayValue === "0" ? value : displayValue + value})
+  }
+
+  handleNumber = (num) => {
+    let {displayValue, waitingForOperand} = this.state
+    if (waitingForOperand) {
+      this.setState({displayValue: String(num), waitingForOperand: false })
+    } else {
+      this.setState({displayValue: displayValue === "0" ? num : displayValue + num})
+    }
   }
 
   handleEqual = () => {
