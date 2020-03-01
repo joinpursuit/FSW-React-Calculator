@@ -42,69 +42,34 @@ export default class Calculator extends Component {
 
 <div class="grid-container">
   <div class="input">
-  <NumberFormat type="text" thousandSeparator={true} value={this.state.input}></NumberFormat>
+  <NumberFormat type="text" class="font" thousandSeparator={true} value={this.state.input}></NumberFormat>
   </div>
   <div class="buttons">
-                <button id="red" onClick={this.clearChange} value= {""}>ac</button>
-                <button onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
-                <button onClick={this.inputChange} value= {"."}>.</button>
-                <button onClick={this.percentChange} value= {"%"}>%</button>
-                {/* <br/> */}
-                <button onClick={this.inputChange} value= {1}>1</button>
-                <button onClick={this.inputChange} value= {2}>2</button>
-                <button onClick={this.inputChange} value= {3}>3</button>
-                {/* <br/> */}
-                <button onClick={this.inputChange} value= {4}>4</button>
-                <button onClick={this.inputChange} value= {5}>5</button>
-                <button onClick={this.inputChange} value= {6}>6</button>
-                {/* <br/> */}
-                <button onClick={this.inputChange} value= {7}>7</button>
-                <button onClick={this.inputChange} value= {8}>8</button>
-                <button onClick={this.inputChange} value= {9}>9</button>
-                {/* <br/> */}
-                <button onClick={this.inputChange} value= {0}>0</button>
-                <button onClick={this.inputChange} value= {3.14}>π</button>
-                <button onClick={this.inverseChange} value= {"Inv"}>Inv</button>
-                <button onClick={this.inputChange} value= {"+"}>+</button>
-                <button onClick={this.inputChange} value= {"-"}>-</button>
-                <button onClick={this.inputChange} value= {"*"}>x</button>
-                <button onClick={this.inputChange} value= {"/"}>÷</button>
+                <button id="red" class="font" onClick={this.clearChange} value= {""}>ac</button>
+                <button id="blue" class="font" onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
+                <button id="blue" class="font" onClick={this.inputChange} value= {"."}>.</button>
+                <button id="blue" class="font" onClick={this.percentChange} value= {"%"}>%</button>
+                <button class="font" onClick={this.inputChange} value= {1}>1</button>
+                <button class="font" onClick={this.inputChange} value= {2}>2</button>
+                <button class="font" onClick={this.inputChange} value= {3}>3</button>
+                <button class="font" onClick={this.inputChange} value= {4}>4</button>
+                <button class="font" onClick={this.inputChange} value= {5}>5</button>
+                <button class="font" onClick={this.inputChange} value= {6}>6</button>
+                <button class="font" onClick={this.inputChange} value= {7}>7</button>
+                <button class="font" onClick={this.inputChange} value= {8}>8</button>
+                <button class="font" onClick={this.inputChange} value= {9}>9</button>
+                <button class="font" onClick={this.inputChange} value= {0}>0</button>
+                <button id="blue" class="font" onClick={this.inputChange} value= {3.14}>π</button>
+                <button id="blue" class="font" onClick={this.inverseChange} value= {"Inv"}>Inv</button>
+                <button id="green" class="font" onClick={this.inputChange} value= {"+"}>+</button>
+                <button id="green"  class="font" onClick={this.inputChange} value= {"-"}>-</button>
+                <button id="green"  class="font" onClick={this.inputChange} value= {"*"}>x</button>
+                <button id="green"  class="font" onClick={this.inputChange} value= {"/"}>÷</button>
   </div>
   <div class="enter">
-  <button onClick={this.equalChange} value= {"="}>=</button>
+  <button id="red" class="font" onClick={this.equalChange} value= {"="}>=</button>
   </div>
-</div>
-
-            /* <div className = "buttonDiv">
-                <NumberFormat type="text" thousandSeparator={true} value={this.state.input}></NumberFormat>
-                <br/>
-                <button onClick={this.clearChange} value= {""}>ac</button>
-                <button onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
-                <button onClick={this.inputChange} value= {"."}>.</button>
-                <button onClick={this.percentChange} value= {"%"}>%</button>
-                <br/>
-                <button onClick={this.inputChange} value= {1}>1</button>
-                <button onClick={this.inputChange} value= {2}>2</button>
-                <button onClick={this.inputChange} value= {3}>3</button>
-                <br/>
-                <button onClick={this.inputChange} value= {4}>4</button>
-                <button onClick={this.inputChange} value= {5}>5</button>
-                <button onClick={this.inputChange} value= {6}>6</button>
-                <br/>
-                <button onClick={this.inputChange} value= {7}>7</button>
-                <button onClick={this.inputChange} value= {8}>8</button>
-                <button onClick={this.inputChange} value= {9}>9</button>
-                <br/>
-                <button onClick={this.inputChange} value= {0}>0</button>
-                <button onClick={this.inputChange} value= {3.14}>π</button>
-                <button onClick={this.inverseChange} value= {"Inv"}>Inv</button>
-                <button onClick={this.inputChange} value= {"+"}>+</button>
-                <button onClick={this.inputChange} value= {"-"}>-</button>
-                <button onClick={this.inputChange} value= {"*"}>x</button>
-                <button onClick={this.inputChange} value= {"/"}>÷</button>
-                <button onClick={this.equalChange} value= {"="}>=</button>
-            </div> */
-            
+</div>          
         )
     }
 }
