@@ -4,9 +4,10 @@ const Results =({display})=>{
 
     return (
         <div className="Results">
-            ({display})
+            {display}
+          
         
-            0123
+        
     </div>
     )
 }

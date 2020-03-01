@@ -56,9 +56,10 @@ class Calculator extends React.Component {
 
     render() {
         let {display} = this.state
+        let {nextDisplay} = this.state
         return (
             <div className="Calculator">
-                <Results className ="Results"display={display} nextDisplay={display}/>
+                <Results className ="Results"display={display} nextDisplay={nextDisplay}/>
                 <div className="Buttons">
                     <div>
 
