@@ -8,7 +8,8 @@ class App extends React.Component {
     displayValue: 0, 
     prevValue: "", 
     operation: "",
-    clearEntry: false
+    clearEntry: false,
+    calculatedSolution: false
   };
 
   handleNumberClick = (e) => {
@@ -31,13 +32,13 @@ class App extends React.Component {
     let num1 = Number(this.state.prevValue);
     let num2 = Number(this.state.displayValue);
     if (this.state.operation === "-") {
-      this.setState({displayValue: num1 - num2, prevValue: this.state.displayValue});
+      this.setState({displayValue: num1 - num2, prevValue: this.state.displayValue, calculatedSolution: true});
     } else if (this.state.operation === "+") {
-      this.setState({displayValue: num1 + num2, prevValue: this.state.displayValue});
+      this.setState({displayValue: num1 + num2, prevValue: this.state.displayValue, calculatedSolution: true});
     } else if (this.state.operation === "x") {
-      this.setState({displayValue: num1 * num2});
+      this.setState({displayValue: num1 * num2, prevValue: this.state.displayValue, calculatedSolution: true});
     } else if (this.state.operation === "/") {
-      this.setState({displayValue: num1 / num2, prevValue: this.state.displayValue});
+      this.setState({displayValue: num1 / num2, prevValue: this.state.displayValue, calculatedSolution: true});
     }
   }
 
