@@ -11,6 +11,16 @@ class Form extends React.Component {
 
   };
 
+  convertNum = (num) => {
+    // debugger
+    let newNum = -Math.abs(num);
+  this.setState({
+    numValue: [newNum],
+    display: newNum
+  }) 
+   
+  }
+
   clearDisplay =() =>{
     this.setState({
       display: '0'
@@ -21,7 +31,7 @@ class Form extends React.Component {
     e.preventDefault();
     let btnval = this.state.numValue;
     btnval += e.target.value
-    this.setState({numValue:btnval, display:btnval})
+    this.setState({numValue:[btnval], display:btnval})
     console.log(this.state.numValue)
    
   }
@@ -30,7 +40,7 @@ class Form extends React.Component {
     e.preventDefault();
     let val = this.state.numValue;
     let operation = e.target.value
-    this.setState({numValue:"",prevValue:val, operation:operation})
+    this.setState({numValue:[""],prevValue:val, operation:operation})
     // debugger
   }
 
@@ -59,8 +69,8 @@ class Form extends React.Component {
             
             <button value = {8}>8</button>
             <button value = {9}>9</button>
-            <button>+/-</button>
-            <button>%</button>
+            <button onClick ={() => this.convertNum(numValue)}>+/-</button>
+            <button onClick ={() => this.convertNum(numValue)}>%</button>
             </form>
           
             <br/>

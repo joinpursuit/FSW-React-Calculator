@@ -4,7 +4,7 @@ const Display = ({display}) => {
     
     return (
         <div className="calculator-screen">
-            <p>{display}</p>
+            <p>{Number(display).toLocaleString()}</p>
         </div>
     )
 }
