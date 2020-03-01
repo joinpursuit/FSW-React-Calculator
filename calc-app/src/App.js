@@ -39,6 +39,19 @@ class App extends React.Component {
       displayNum: "0"
     });
   };
+  handlePosNeg = e => {
+    if (this.state.num2) {
+      this.setState(prevState => ({ num2: Number(prevState.num2) * -1 + "" }));
+      this.setState(prevState => ({
+        displayNum: Number(this.state.num2) * -1 + ""
+      }));
+    } else if (!this.state.num2 && this.state.num1) {
+      this.setState(prevState => ({ num1: Number(prevState.num1) * -1 + "" }));
+      this.setState(prevState => ({
+        displayNum: Number(this.state.num1) * -1 + ""
+      }));
+    }
+  };
 
   handleDecimal = e => {
     if (
