@@ -6,7 +6,8 @@ const ButtonPad = ({
   handleOperation,
   handleClear,
   handleEqual,
-  limitAnswer
+  limitAnswer,
+  handleNegs
 }) => {
   return (
     <>
@@ -38,7 +39,7 @@ const ButtonPad = ({
             id="pn"
             type="button"
             value="+|-"
-            onClick={handleChange}
+            onClick={handleNegs}
             name="operation"
           ></input>
 

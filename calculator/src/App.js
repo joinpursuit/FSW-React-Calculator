@@ -64,13 +64,21 @@ class App extends React.Component {
     }
   };
 
-  // watchForCommas = (str) => {
+handleNegs = () => {
+ let neg =  -Math.abs(`${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`);
+  this.setState({
+    currentValue: -Math.abs(neg)
+  })
+  // console.log(neg)
+}
 
-  // }
+  watchForCommas = (str) => {
+
+  }
 
   render() {
     console.log(this.state.currentValue.length);
-    // console.log(this.state.test);
+    console.log(this.state.currentValue);
 
     return (
       <>
@@ -82,6 +90,7 @@ class App extends React.Component {
             handleClear={this.handleClear}
             limitAnswer={this.limitAnswer}
             handleEqual={this.handleEqual}
+            handleNegs={this.handleNegs}
           />
         </div>
       </>
