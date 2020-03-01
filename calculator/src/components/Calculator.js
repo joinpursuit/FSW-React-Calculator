@@ -9,13 +9,20 @@ class Calculator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      display: "0"
+      display: "0",
+      value: 0,
+      previousValue: 0,
+      operator: "",
+      waitingForOperand: false
+      
     }
   }
   updateDisplay = (value) => {
     let {display} = this.state
-    if(value === "X"){
+    if(value === "x"){
       value = "*"
+    } else if (value === "÷"){
+      value = "/"
     }
     this.setState({display: display === "0" ? value : display + value})
   }
@@ -53,13 +60,13 @@ class Calculator extends Component {
           <Button handleClick={this.handleClear}>AC</Button>
           <Button handleClick={this.handleInverter}>+/-</Button>
           <Button handleClick={this.updateDisplay}>%</Button>
-          <Button handleClick={this.updateDisplay}>/</Button>
+          <Button handleClick={this.updateDisplay}>÷</Button>
         </div>
         <div className="row">
           <Button handleClick={this.updateDisplay}>7</Button>
           <Button handleClick={this.updateDisplay}>8</Button>
           <Button handleClick={this.updateDisplay}>9</Button>
-          <Button handleClick={this.updateDisplay}>X</Button>
+          <Button handleClick={this.updateDisplay}>x</Button>
         </div>
         <div className="row">
           <Button handleClick={this.updateDisplay}>4</Button>
