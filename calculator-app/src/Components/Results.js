@@ -1,25 +1,35 @@
 import React from 'react';
 
-class Results extends React.Component{
-    state={
-        previousValue: 0,
-        current: 0,
-        equation: [],
-        result: 0
+class Results extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            display: '',
+            nextDisplay: '',
+            result: '',
+            AC: 0
+        }
     }
 
-    
-    
-    
-     
-    render(){
-        const {equation}=this.state.equation 
-        const {result}=this.state.result 
-        return(
+
+
+
+
+
+    render() {
+        const { result } = this.state.result
+        const {display} = this.state.display
+        const {nextDisplay} = this.state.display
+        const {AC} = this.state.display
+        return (
             <div className="Results">
-      {equation}
-      {result}
-0123
+                
+                    {AC}
+                    {display}
+                    {nextDisplay}
+                    {result}
+            
+                0123
         </div>
         )
     }

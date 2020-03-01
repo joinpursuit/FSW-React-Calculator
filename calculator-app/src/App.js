@@ -4,13 +4,13 @@ import Calculator from './Components/Calculator';
 
 
 
-function App(){
+function App() {
   return (
 
     <div className="App">
-   <Calculator/>
-   
-</div>
+      <Calculator />
+
+    </div>
   )
 }
 export default App;
