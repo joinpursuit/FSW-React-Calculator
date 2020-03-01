@@ -9,52 +9,51 @@ class Calculator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      display: "0",
-      value: 0,
-      previousValue: 0,
+      displayValue: "0",
+      previousValue: "",
       operator: "",
       waitingForOperand: false
       
     }
   }
   updateDisplay = (value) => {
-    let {display} = this.state
+    let {displayValue} = this.state
     if(value === "x"){
       value = "*"
     } else if (value === "÷"){
       value = "/"
     }
-    this.setState({display: display === "0" ? value : display + value})
+    this.setState({displayValue: displayValue === "0" ? value : displayValue + value})
   }
 
   handleEqual = () => {
-    let {display} = this.state
-    let newValue = String(math.evaluate(display))
-    this.setState({display: newValue})
+    let {displayValue} = this.state
+    let newValue = String(math.evaluate(displayValue))
+    this.setState({displayValue: newValue})
   }
 
   handleDecimel = () => {
-    let {display} = this.state
-    if (display.indexOf(".") === -1) {
-      this.setState({display: display + "."})
+    let {displayValue} = this.state
+    if (displayValue.indexOf(".") === -1) {
+      this.setState({displayValue: displayValue + "."})
     }
   }
 
   handleInverter = () => {
-    let {display} = this.state
-    this.setState({display: display.charAt(0) === "-" ? display.substring(1) : "-" + display})
+    let {displayValue} = this.state
+    this.setState({displayValue: displayValue.charAt(0) === "-" ? displayValue.substring(1) : "-" + displayValue})
   }
 
   handleClear = () => {
-    this.setState({display: "0"})
+    this.setState({displayValue: "0"})
   }
 
   render () {
-    let {display} = this.state
+    let {displayValue} = this.state
     return (
       <div className="wrapper">
         <div>
-          <Display display={display}/>
+          <Display displayValue={displayValue}/>
         </div>
         <div className="row">
           <Button handleClick={this.handleClear}>AC</Button>
