@@ -8,11 +8,15 @@
     flex: 1;
     font-size: 20px;
     outline: 1px black;
-    border: solid black;
-    border-width: .5px;
+    border: solid white;
+    border-width: 1px;
 }
 
 .operator {
     background-color: darkolivegreen;
     color: black;
+}
+
+* {
+    cursor: crosshair;
 }

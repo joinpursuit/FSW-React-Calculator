@@ -48,7 +48,7 @@ class App extends React.Component {
             <Button handleClick={this.updateInput}>4</Button>
             <Button handleClick={this.updateInput}>5</Button>
             <Button handleClick={this.updateInput}>6</Button>
-            <Button handleClick={this.updateInput}>x</Button>
+            <Button handleClick={this.updateInput}>*</Button>
           </div>
           <div className="row">
             <Button handleClick={this.updateInput}>1</Button>
