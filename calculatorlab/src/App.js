@@ -14,6 +14,12 @@ render() {
   
   return (
     <div className="App">
+      <p id="title">Calculator App</p>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <Button/>
     </div>
   );

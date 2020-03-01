@@ -37,7 +37,7 @@
   }
 } */
 body {
-  background-color: orange;
+  background-color: lavender;
 }
 .result {
   height: 60px;
@@ -49,11 +49,19 @@ body {
   margin: 5px;
 
 }
+#title {
+  position: absolute;
+  justify-content: space-around;
+  font-family: cursive;
+  left: 30%;
+  font-size: 30px;
+}
 .App {
+  position: absolute;
+  top: 20%;
+  left: 30%;
   max-width: 400px;
   margin: auto;
-  position: absolute;
-  top: 50%;
   
 }
 .buttonContainer {
