@@ -9,6 +9,7 @@
     "mathjs": "^6.6.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-number-format": "^4.4.1",
     "react-scripts": "3.4.0"
   },
   "scripts": {

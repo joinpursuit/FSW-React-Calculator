@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {evaluate} from "mathjs";
+import NumberFormat from 'react-number-format'
 
 export default class Calculator extends Component {
 
@@ -38,7 +39,7 @@ export default class Calculator extends Component {
     render() {
         return (
             <div className = "buttonDiv">
-                <input type="text" value={this.state.input}></input>
+                <NumberFormat type="text" thousandSeparator={true} value={this.state.input}></NumberFormat>
                 <br/>
                 <button onClick={this.clearChange} value= {""}>ac</button>
                 <button onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
