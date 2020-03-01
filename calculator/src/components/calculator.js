@@ -23,13 +23,17 @@ export default class Calculator extends Component {
         this.setState({input: evaluate(this.state.input)});
         debugger
       };
+      sunMoonChange = (e) => {
+        this.setState({input: evaluate(this.state.input * -1)});
+        debugger
+      };
     render() {
         return (
             <div className = "buttonDiv">
                 <input type="text" value={this.state.input}></input>
                 <br/>
                 <button onClick={this.clearChange} value= {""}>ac</button>
-                <button onClick={this.inputChange} value= {`${*-1}`}>+/-</button>
+                <button onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
                 <button onClick={this.inputChange} value= {"."}>.</button>
                 <br/>
                 <button onClick={this.inputChange} value= {1}>1</button>
