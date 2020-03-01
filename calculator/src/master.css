@@ -5,11 +5,19 @@
   font-weight: bolder;
 }
 
+#equals:hover {
+  background-color: darkgreen;
+}
+
 #plus {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
   color: whitesmoke;
   font-weight: bolder;
+}
+
+#plus:hover {
+  background-color: gold;
 }
 
 #minus {
@@ -19,6 +27,10 @@
   font-weight: bolder;
 }
 
+#minus:hover {
+  background-color: gold;
+}
+
 #times {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
@@ -26,11 +38,19 @@
   font-weight: bolder;
 }
 
+#times:hover {
+  background-color: gold;
+}
+
 #divs {
   background-color: rgba(243, 188, 48, 0.911);
   box-shadow: inset 5px 3px 3px 3px rgba(187, 141, 27, 0.815);
   color: whitesmoke;
   font-weight: bolder;
+}
+
+#divs:hover {
+  background-color: gold;
 }
 
 .buttons {
@@ -62,7 +82,7 @@
   color: chartreuse;
   font-family: Arial;
   font-size: 55px;
-  background: linear-gradient(0.25turn, black, #2f2f308e, black);
+  background: linear-gradient(0.25turn, black, #14141493, black);
   /* background-color: black; */
   border-radius: 10px;
   box-shadow: inset 4px 4px 4px 2px rgba(201, 227, 248, 0.486);
@@ -98,11 +118,19 @@
   font-weight: bolder;
 }
 
+#clear:hover {
+  background-color: darkred;
+}
+
 #percent {
   background-color: rgba(84, 56, 241, 0.824);
   box-shadow: inset 5px 3px 3px 3px rgba(25, 2, 77, 0.57);
   color: whitesmoke;
   font-weight: bolder;
+}
+
+#percent:hover {
+  background-color: indigo;
 }
 
 #decimal {
@@ -112,11 +140,19 @@
   font-weight: bolder;
 }
 
+#decimal:hover {
+  background-color: indigo;
+}
+
 #pn {
   background-color: rgba(84, 56, 241, 0.824);
   box-shadow: inset 5px 3px 3px 3px rgba(25, 2, 77, 0.57);
   color: whitesmoke;
   font-weight: bolder;
+}
+
+#pn:hover {
+  background-color: indigo;
 }
 
 /* media queries for responsiveness */

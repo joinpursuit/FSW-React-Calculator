@@ -3,6 +3,7 @@ import ButtonPad from "./components/buttons";
 import "./App.css";
 import { render } from "react-dom";
 import "./master.css";
+import { evaluate } from "mathjs";
 
 class App extends React.Component {
   state = {
@@ -14,15 +15,25 @@ class App extends React.Component {
 
   handleChange = e => {
     let input = e.target.value;
-    this.setState(prevState => ({
-      currentValue: prevState.currentValue + input
-    }));
     if (this.state.operation !== "") {
       this.setState(prevState => ({
         prevValue: prevState.currentValue,
         currentValue: input
       }));
+    } else {
+      this.setState(prevState => ({
+        currentValue: prevState.currentValue + input
+      }));
     }
+  };
+
+  handleEqual = e => {
+    let evaluation = eval(
+      `${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`
+    );
+    this.setState({
+      currentValue: eval(evaluation)
+    });
   };
 
   handleOperation = e => {
@@ -41,28 +52,39 @@ class App extends React.Component {
   };
 
   limitAnswer = () => {
-    if (this.currentValue.length > 10) {
+    let stateValue = this.state.currentValue;
+    if (stateValue.length > 10) {
+      this.setState({
+        currentValue: ""
+      });
     } else {
       this.setState({
-        currentValue: "ERR"
+        currentValue: stateValue
       });
     }
   };
 
+  // watchForCommas = (str) => {
+
+  // }
+
   render() {
-    // console.log(this.state);
+    console.log(this.state.currentValue.length);
     // console.log(this.state.test);
 
     return (
-      <div className="App">
-        <ButtonPad
-          handleChange={this.handleChange}
-          currentValue={this.state.currentValue}
-          handleOperation={this.handleOperation}
-          handleClear={this.handleClear}
-          limitAnswer={this.limitAnswer}
-        />
-      </div>
+      <>
+        <div className="App">
+          <ButtonPad
+            handleChange={this.handleChange}
+            currentValue={this.state.currentValue}
+            handleOperation={this.handleOperation}
+            handleClear={this.handleClear}
+            limitAnswer={this.limitAnswer}
+            handleEqual={this.handleEqual}
+          />
+        </div>
+      </>
     );
   }
 }
