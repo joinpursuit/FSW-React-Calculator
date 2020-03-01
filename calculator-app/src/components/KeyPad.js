@@ -6,6 +6,7 @@ const KeyPad = ({
   handleNumberClear,
   handleDecimal,
   handleResult,
+  handleChangeSignOperation,
   state
 }) => {
   return (
@@ -24,7 +25,7 @@ const KeyPad = ({
           type="button"
           className="operation"
           value="+/-"
-          onClick={e => handleOperation(e)}
+          onClick={e => handleChangeSignOperation(e)}
         >
           +/-
         </button>

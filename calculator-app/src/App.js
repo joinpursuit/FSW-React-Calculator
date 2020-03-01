@@ -15,40 +15,12 @@ class App extends React.Component {
   }
 
   handleNumberClick = (e) => {
-    // if(this.state.waitingNewValue){
-    //   this.setState({ displayValue : e.target.value, waitingNewValue:true})
-    // }else {
-      // if (this.state.displayValue && this.state.waitingNewValue){
-      //   // debugger
-      //   this.setState({ 
-      //    previousValue: this.state.displayValue, displayValue:0, waitingNewValue:true})
-
-
-        // // this.setState((prevState)=>{
-        // //   return{
-        // //     displayValue: e.target.value,
-        // //     previousValue: prevState.displayValue,
-        // //     waitingNewValue: true
-        // //   }
-        // // })
-
-        // this.handleResult(e,false)
-
-
-
-
-      //} else 
       if(this.state.displayValue){
-      //this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
       this.setState({ displayValue: this.state.displayValue + e.target.value, waitingNewValue:false})
-    
-    
       } else {
       this.setState({ displayValue : e.target.value})
     }
-  // }
   }
-
 
   handleOperation = (e) =>{
     this.setState({
@@ -57,26 +29,30 @@ class App extends React.Component {
       operation: e.target.value,  
       waitingNewValue:true})
   }
+
   handleDecimal=(e) =>{
-    //let displayValue
     if (!this.state.displayValue.includes(".")) {
       if(this.state.displayValue === "0"){
         let target = e.target.value;
         this.setState({displayValue: this.state.displayValue + target  , waitingNewValue:false})
     } else {
       let target = e.target.value;
-      debugger
       this.setState({
        displayValue: this.state.displayValue + target, waitingNewValue:false})
     }
   }
 }
 
+handleChangeSignOperation=(e) => {
+ 
+    let int = -1 * Number(this.state.displayValue)
+    int = int.toString();
+   this.setState({displayValue: int, waitingNewValue:false})
+}
+
   handleResult =(e) => {
      let num1=  Number(this.state.previousValue)
      let num2 = Number(this.state.displayValue)
-
-    // debugger
     if(this.state.operation === "+" ){
       let result = num1 + num2
       console.log(result)
@@ -91,7 +67,7 @@ class App extends React.Component {
       let result = num1 / num2
       this.setState({displayValue: result, waitingNewValue:true })
     } else if(this.state.operation === "%" ){
-      let result = num1 / 100
+      let result = num1 / 100 
       this.setState({displayValue: result, waitingNewValue:true })
   }
 }
@@ -105,11 +81,11 @@ class App extends React.Component {
       handleResult={this.handleResult} 
       handleNumberClear={this.handleNumberClear}
       handleDecimal={this.handleDecimal}
+      handleChangeSignOperation={this.handleChangeSignOperation}
       state={this.state}
       />
       </>
     )
-   
   }
 }
 
