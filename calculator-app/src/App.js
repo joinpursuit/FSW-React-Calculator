@@ -18,26 +18,27 @@ class App extends React.Component {
     // if(this.state.waitingNewValue){
     //   this.setState({ displayValue : e.target.value, waitingNewValue:true})
     // }else {
-      if (this.state.displayValue && this.state.waitingNewValue){
-        // debugger
-        // this.setState({ 
-        //   previousValue: this.state.displayValue, displayValue:0, waitingNewValue:true})
+      // if (this.state.displayValue && this.state.waitingNewValue){
+      //   // debugger
+      //   this.setState({ 
+      //    previousValue: this.state.displayValue, displayValue:0, waitingNewValue:true})
 
 
-        // this.setState((prevState)=>{
-        //   return{
-        //     displayValue: e.target.value,
-        //     previousValue: prevState.displayValue,
-        //     waitingNewValue: true
-        //   }
-        // })
+        // // this.setState((prevState)=>{
+        // //   return{
+        // //     displayValue: e.target.value,
+        // //     previousValue: prevState.displayValue,
+        // //     waitingNewValue: true
+        // //   }
+        // // })
 
-        this.handleResult(e,false)
-
-
+        // this.handleResult(e,false)
 
 
-      } else if(this.state.displayValue){
+
+
+      //} else 
+      if(this.state.displayValue){
       //this.setState({previousValue: this.state.displayValue, displayValue: e.target.value})
       this.setState({ displayValue: this.state.displayValue + e.target.value, waitingNewValue:false})
     
