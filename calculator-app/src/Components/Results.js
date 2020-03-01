@@ -2,8 +2,8 @@ import React from 'react';
 
 class Results extends React.Component{
     state={
-        num1: 0,
-        num2: 0,
+        previousValue: 0,
+        current: 0,
         equation: [],
         result: 0
     }

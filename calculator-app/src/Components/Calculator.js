@@ -1,26 +1,50 @@
 import React from 'react';
 import Results from './Results'
-
+import * as math from "mathjs"
 class Calculator extends React.Component{
-    state = {
-        display: 0
+    constructor(props){
+        super(props)
+        
+        this.state = {
+            display: 0,
+            allClear: "AC",
+            Operators: null,
+            nextDisplay: null,
+    
+        }
     }
     buttonValue(event){
-    
-      this.setState({display:event.target.value})
+
+            this.setState({display:event.target.value})
+            console.log(this.state.display)
 
     }
+
     addition(event){
-        this.setState({result: (num1, num2) => num1 + num2})
+        this.setState({display: (display, nextDisplay) => display + nextDisplay})
     }
     subtraction(event){
-        this.setState({result: (num1, num2) => num1 - num2})
+        this.setState({display: (display, nextDisplay) => display - nextDisplay})
     }
     multiplication(event){
-        this.setState({result: (num1, num2) => num1 * num2})
+        this.setState({display: (display, nextDisplay) => display * nextDisplay})
     }
     division(event){
-        this.setState({result: (num1, num2) => num1 / num2})
+        this.setState({display: (display, nextDisplay) => display / nextDisplay})
+    }
+    equal =(event)=>{
+        this.setState({display:math.evaluate(display)})
+    }
+    equalsZero  =()=>{
+        this.setState({display:0})
+    }
+    decimal =()=>{
+        this.setState(display=>({
+            nextDisplay: `${display}.${nextDisplay} + .`
+        }))
+    }
+    percentage = ()=>{
+        this.setState({display: display / 100})
     }
 
     render(){
@@ -30,34 +54,34 @@ class Calculator extends React.Component{
             <div className="Buttons">
 <div>
 
-<button className="Others">AC</button> 
-<button value = "7" onClick = {this.buttonValue}>7</button>
-<button value = "4 "onClick = {this.buttonValue} >4</button>
-<button value = "1 "onClick = {this.buttonValue}>1</button>
-<button className="Zero" value = "0 "onClick = {this.buttonValue}>0</button>
+<button className="Others" onClick ={this.equalsZero}>AC</button> 
+<button value = "7" onClick={(e)=>{this.buttonValue(e)}}>7</button>
+<button value = "4 "onClick = {(e)=>{this.buttonValue(e)}} >4</button>
+<button value = "1 "onClick = {(e)=>{this.buttonValue(e)}}>1</button>
+<button className="Zero" value = "0 "onClick = {(e)=>{this.buttonValue(e)}}>0</button>
 </div>
 <div>
 
 <button className="Others">+/-</button>
-<button value = "8 "onClick = {this.buttonValue}>8</button>
-<button value = "5 "onClick = {this.buttonValue}>5</button>
-<button value = "3 "onClick = {this.buttonValue}>3</button>
+<button value = "8 "onClick ={(e)=>{this.buttonValue(e)}}>8</button>
+<button value = "5 "onClick ={(e)=>{this.buttonValue(e)}}>5</button>
+<button value = "3 "onClick ={(e)=>{this.buttonValue(e)}}>3</button>
 </div>
 <div>
-<button className="Others"value = "% "onClick = {this.buttonValue}>%</button>
-<button value = "9 "onClick = {this.buttonValue}>9</button>
-<button value = "6"onClick = {this.buttonValue}>6</button>
-<button value = "2 "onClick = {this.buttonValue}>2</button>
-<button value = ". "onClick = {this.buttonValue}>.</button>
+<button className="Others"value = "% " onClick = {(e)=>{this.percentage(e)}}>%</button>
+<button value = "9 "onClick ={(e)=>{this.buttonValue(e)}}>9</button>
+<button value = "6"onClick ={(e)=>{this.buttonValue(e)}}>6</button>
+<button value = "2 "onClick ={(e)=>{this.buttonValue(e)}}>2</button>
+<button value = ". "onClick ={(e)=>{this.decimal(e)}}>.</button>
 </div>
 <div>
 
-<button className="Operators"onClick = {this.division}value = "/">÷</button>
-<button className="Operators"onClick = {this.multiplication} value = "* ">x</button>
-<button className="Operators"onClick = {this.subtraction}value = " - ">-</button>
-<button className="Operators"onClick = {this.addition} value = " + ">+</button> 
+<button className="Operators"onClick = {(e)=>{this.division(e)}}>÷</button>
+<button className="Operators"onClick = {(e)=>{this.multiplication(e)}} = "* ">x</button>
+<button className="Operators"onClick = {(e)=>{this.subtraction(e)}}>-</button>
+<button className="Operators"onClick = {(e)=>{this.addition(e)}}>+</button> 
     <div>
-<button className="Equal">=</button>
+<button className="Equal"onClick ={(e)=>{this.equal(e)}}>=</button>
 
     </div>
 </div>
