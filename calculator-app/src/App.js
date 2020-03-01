@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    displayValue: 0,
+    displayValue: "0",
     previousValue: null,
     operation:"",
     waitingNewValue:false
@@ -57,6 +57,20 @@ class App extends React.Component {
       operation: e.target.value,  
       waitingNewValue:true})
   }
+  handleDecimal=(e) =>{
+    //let displayValue
+    if (!this.state.displayValue.includes(".")) {
+      if(this.state.displayValue === "0"){
+        let target = e.target.value;
+        this.setState({displayValue: this.state.displayValue + target  , waitingNewValue:false})
+    } else {
+      let target = e.target.value;
+      debugger
+      this.setState({
+       displayValue: this.state.displayValue + target, waitingNewValue:false})
+    }
+  }
+}
 
   handleResult =(e) => {
      let num1=  Number(this.state.previousValue)
@@ -90,6 +104,7 @@ class App extends React.Component {
       handleOperation={this.handleOperation} 
       handleResult={this.handleResult} 
       handleNumberClear={this.handleNumberClear}
+      handleDecimal={this.handleDecimal}
       state={this.state}
       />
       </>

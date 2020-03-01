@@ -4,6 +4,7 @@ const KeyPad = ({
   handleNumberClick,
   handleOperation,
   handleNumberClear,
+  handleDecimal,
   handleResult,
   state
 }) => {
@@ -111,7 +112,7 @@ const KeyPad = ({
           type="button"
           className="decimal"
           value="."
-          onClick={e => handleOperation(e)}
+          onClick={e => handleDecimal(e)}
         >
           .
         </button>
