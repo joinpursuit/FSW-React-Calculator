@@ -72,25 +72,25 @@ class Calculator extends Component {
           <Button handleClick={this.updateDisplay}>÷</Button>
         </div>
         <div className="row">
-          <Button handleClick={this.updateDisplay}>7</Button>
-          <Button handleClick={this.updateDisplay}>8</Button>
-          <Button handleClick={this.updateDisplay}>9</Button>
+          <Button handleClick={this.handleNumber}>7</Button>
+          <Button handleClick={this.handleNumber}>8</Button>
+          <Button handleClick={this.handleNumber}>9</Button>
           <Button handleClick={this.updateDisplay}>x</Button>
         </div>
         <div className="row">
-          <Button handleClick={this.updateDisplay}>4</Button>
-          <Button handleClick={this.updateDisplay}>5</Button>
-          <Button handleClick={this.updateDisplay}>6</Button>
+          <Button handleClick={this.handleNumber}>4</Button>
+          <Button handleClick={this.handleNumber}>5</Button>
+          <Button handleClick={this.handleNumber}>6</Button>
           <Button handleClick={this.updateDisplay}>-</Button>
         </div>
         <div className="row">
-          <Button handleClick={this.updateDisplay}>1</Button>
-          <Button handleClick={this.updateDisplay}>2</Button>
-          <Button handleClick={this.updateDisplay}>3</Button>
+          <Button handleClick={this.handleNumber}>1</Button>
+          <Button handleClick={this.handleNumber}>2</Button>
+          <Button handleClick={this.handleNumber}>3</Button>
           <Button handleClick={this.updateDisplay}>+</Button>
         </div>
         <div className="row">
-          <Button handleClick={this.updateDisplay}>0</Button>
+          <Button handleClick={this.handleNumber}>0</Button>
           <Button handleClick={this.updateDisplay}> </Button>
           <Button handleClick={this.handleDecimel}>.</Button>
           <Button handleClick={this.handleEqual}>=</Button>
