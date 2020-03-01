@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,33 @@
   to {
     transform: rotate(360deg);
   }
+} */
+body {
+  background-color: orange;
+}
+.result {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
+.result p {
+  font-size: 40px;
+  margin: 5px;
+
+}
+.App {
+  max-width: 400px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  
+}
+.buttonContainer {
+  display: block;
+  background-color: #bbb;
+}
+button {
+  width: 25%;
+  height: 60px;
+  font-size: 30px;
 }

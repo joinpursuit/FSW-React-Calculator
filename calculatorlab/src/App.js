@@ -2,7 +2,7 @@ import React from 'react';
 // import DisplayValueForm from './Components/DisplayValueForm'
 import Button from './Components/Button'
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 
 class App extends React.Component {
   state = {
