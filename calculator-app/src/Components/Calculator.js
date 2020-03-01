@@ -33,19 +33,19 @@ class Calculator extends React.Component{
         this.setState({display: (display, nextDisplay) => display / nextDisplay})
     }
     equal =(event)=>{
-        this.setState({display:math.evaluate(display)})
+        this.setState({display:math.evaluate()})
     }
     equalsZero  =()=>{
         this.setState({display:0})
     }
-    decimal =()=>{
-        this.setState(display=>({
-            nextDisplay: `${display}.${nextDisplay} + .`
-        }))
-    }
-    percentage = ()=>{
-        this.setState({display: display / 100})
-    }
+    // decimal =()=>{
+    //     this.setState(display=>({
+    //         nextDisplay: `${display}.${nextDisplay} + .`
+    //     }))
+    // }
+    // percentage = ()=>{
+    //     this.setState({display: display / 100})
+    // }
 
     render(){
         return(
@@ -77,7 +77,7 @@ class Calculator extends React.Component{
 <div>
 
 <button className="Operators"onClick = {(e)=>{this.division(e)}}>÷</button>
-<button className="Operators"onClick = {(e)=>{this.multiplication(e)}} = "* ">x</button>
+<button className="Operators"onClick = {(e)=>{this.multiplication(e)}} >x</button>
 <button className="Operators"onClick = {(e)=>{this.subtraction(e)}}>-</button>
 <button className="Operators"onClick = {(e)=>{this.addition(e)}}>+</button> 
     <div>
