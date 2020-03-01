@@ -1,7 +1,7 @@
 import React from "react";
 import "../buttons/buttons.css";
 import { create, all } from "mathjs";
-import numeral from "numeral";
+// import numeral from "numeral";
 
 const config = { };
 const math = create(all, config);
@@ -17,12 +17,9 @@ class Buttons extends React.Component{
     populateButtons = (arr) => {
         return arr.map((button, index) =>{
             const { oName, value } = button
-            if(value === "=") {
+            if(value === "=" || value === "%" || value === "C" || value === "±") {
                 return <button key={index} className="buttons" id={oName} value={value} onClick={this.calculate}>{value}</button>
-            } else if ( value === "%") {
-                return <button key={index} className="buttons" id={oName} value={value} onClick={this.calculate}>{value}</button>
-            }
-            else {
+            } else {
                 return <button key={index} className="buttons" id={oName} value={value} onClick={this.display}>{value}</button>
             }
         })
@@ -31,39 +28,29 @@ class Buttons extends React.Component{
     display = (e) => {
         e.preventDefault();
         let value = e.target.value
-        if(value === "C") {
-            this.setState({displayScreen:""})
-        } else if(value === "±") {
-            if(this.state.displayScreen[0] === "-"){
-                let newNum = this.state.displayScreen.slice(1)
-                this.setState({displayScreen: newNum})
+        let updated = this.state.displayScreen;
+        updated += value;
+        this.setState({displayScreen:updated});
+    }
+
+calculate = (e) => {
+    e.preventDefault();
+    let value = e.target.value
+    let solved
+    if(value === "C") {
+        solved = ""
+    } else if(value === "±") {
+        if(this.state.displayScreen[0] === "-"){
+            let newNum = this.state.displayScreen.slice(1)
+            solved = newNum
             } else {
                 let polar = "-" + this.state.displayScreen 
-                this.setState({displayScreen: polar})
+                solved =polar
             }
-        } else {
-            let updated = this.state.displayScreen;
-            updated += value;
-            this.setState({displayScreen:updated});
-            //trying to add commas and concat strings to evaluate
-            // if(value === this.state.NumberButtons[value]){
-            //     let updated = this.state.displayScreen;
-            //     updated += value;
-            //     debugger
-            //     let addedCommas = numeral(updated).format('0,0');
-            //     this.setState({displayScreen:addedCommas});
-            // }
-        }
-    }
-    
-    calculate = (e) => {
-        e.preventDefault();
-        let value = e.target.value
-        let solved
-        if(value === "%"){
+        } else if(value === "%"){
             solved = math.evaluate(this.state.displayScreen + "/100");
         } else {
-            solved = math.evaluate(this.state.displayScreen);
+                solved = math.evaluate(this.state.displayScreen);
         }
         this.setState({displayScreen:solved})
     }
