@@ -20,9 +20,6 @@ class App extends React.Component {
     if (!this.state.num1 && !this.state.num2) {
       this.setState(prevState => ({ num1: num }));
       this.setState(prevState => ({ displayNum: "" + num }));
-    } else if (this.state.solution) {
-      this.setState(prevState => ({ num1: num }));
-      this.setState(prevState => ({ displayNum: "" + num }));
     } else if (!this.state.sign) {
       this.setState(prevState => ({ num1: prevState.num1 + num }));
       this.setState(prevState => ({ displayNum: prevState.displayNum + num }));
@@ -42,9 +39,28 @@ class App extends React.Component {
       displayNum: "0"
     });
   };
-  handleDenotion = e => {};
+
+  handleDecimal = e => {
+    debugger;
+    if (!this.state.num2 && this.state.num1.includes(".")) {
+      this.setState(prevState => ({ num1: "." }));
+      this.setState(prevState => ({ displayNum: "" + "." }));
+    } else if (!this.state.sign) {
+      this.setState(prevState => ({ num1: prevState.num1 + "." }));
+      this.setState(prevState => ({ displayNum: prevState.displayNum + "." }));
+    } else if (this.state.sign) {
+      this.setState(prevState => {
+        return { num2: prevState.num2 + "." };
+      });
+      this.setState(prevState => ({ displayNum: prevState.num2 }));
+    }
+  };
   handleSign = e => {
-    if (this.state.sign && this.state.num1 && e.target.value === "=") {
+    if (e.target.value === "+/-") {
+      this.handleDecimal();
+    } else if (e.target.value === ".") {
+      this.handleDecimal();
+    } else if (this.state.sign && this.state.num1 && e.target.value === "=") {
       if (this.state.num2) {
         let num = eval(
           `${this.state.num1}${this.state.sign}${this.state.num2}`
