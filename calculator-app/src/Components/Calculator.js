@@ -14,8 +14,8 @@ class Calculator extends React.Component {
         }
     }
     buttonValue(event){
-
-        this.setState({display:event.target.value})
+        let {display, nextDisplay} = this.state
+        this.setState({display:event.target.value, nextDisplay: event.target.value})
         console.log(this.state.display)
 
 }
@@ -47,16 +47,20 @@ class Calculator extends React.Component {
         let { display } = this.state
         this.setState({ display: display / 100 })
     }
+    aCButton = (event)=>{
+        let { display } = this.state
+        this.setState({display: display === "-" ? display: "+" + display})
+    }
 
     render() {
+        let {display} = this.state
         return (
             <div className="Calculator">
-                <Results 
-                />
+                <Results display={display}/>
                 <div className="Buttons">
                     <div>
 
-                        <button className="Others" value="0" onClick={this.equalsZero}>AC</button>
+                        <button className="Others" value="0" onClick={(e) => { this.aCButton(e) }}>AC</button>
                         <button value="7" onClick={(e) => { this.buttonValue(e) }}>7</button>
                         <button value="4 " onClick={(e) => { this.buttonValue(e) }} >4</button>
                         <button value="1 " onClick={(e) => { this.buttonValue(e) }}>1</button>
