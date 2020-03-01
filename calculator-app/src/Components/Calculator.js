@@ -10,6 +10,7 @@ class Calculator extends React.Component {
             allClear: "AC",
             Operators: "",
             nextDisplay: null,
+            
 
         }
     }
@@ -51,12 +52,13 @@ class Calculator extends React.Component {
         let { display } = this.state
         this.setState({display: display === "-" ? display: "+" + display})
     }
+  
 
     render() {
         let {display} = this.state
         return (
             <div className="Calculator">
-                <Results display={display}/>
+                <Results className ="Results"display={display} nextDisplay={display}/>
                 <div className="Buttons">
                     <div>
 
