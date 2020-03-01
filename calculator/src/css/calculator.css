@@ -1,0 +1,27 @@
+.grid-container {
+    display: grid;
+    /* grid-template-columns: 3fr 3fr; */
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 500px;
+    width: 1250px;
+    grid-template-areas: ". . . . . . . . . . . ." ". . . . . . . . . . . ." ". . . . input input input input . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . enter enter enter enter . . . .";
+  }
+  
+  .input { 
+        display: grid;
+      grid-area: input; 
+    }
+  
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-area: buttons;
+  }
+  .enter { 
+      display: grid;
+      grid-area: enter; }
+
+      #red{
+          color: red;
+      }
