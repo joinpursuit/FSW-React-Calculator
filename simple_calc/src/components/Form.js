@@ -4,14 +4,14 @@ import operation from "./operations"
 
 class Form extends React.Component {
   state = {
-   numValue: "",
+   numValue: [],
    operation: "",
    prevValue: "",
    display: 0
 
   };
 
-  clearDisplay() {
+  clearDisplay =() =>{
     this.setState({
       display: '0'
     })
@@ -31,7 +31,7 @@ class Form extends React.Component {
     let val = this.state.numValue;
     let operation = e.target.value
     this.setState({numValue:"",prevValue:val, operation:operation})
-    debugger
+    // debugger
   }
 
   passingOperationg = (num1,num2,op) => {  
@@ -43,10 +43,10 @@ class Form extends React.Component {
   render(){
     let {numValue, operation, prevValue, display} = this.state
     return (
-        <div class="calculator">
+        <div className="calculator">
        
         <Display display = {display} />
-        <form onClick ={this.handleNumber} class="calculator-keys">
+        <form onClick ={this.handleNumber} className="calculator-keys">
             <button value = {0}>0</button>
             <button value = {1}>1</button>
             <button value = {2}>2</button>
@@ -59,22 +59,23 @@ class Form extends React.Component {
             
             <button value = {8}>8</button>
             <button value = {9}>9</button>
+            <button>+/-</button>
+            <button>%</button>
+            </form>
           
+            <br/>
+          <form onClick={this.handleOperation} className="calculator-keys">
+            <button className="operator" value = "+">+</button>
+            <button className="operator"  value = "-">-</button>
+            <button className="operator"  value = "*">*</button>
+            <button className="operator"  value = "/">/</button>
           
 
-          <form onClick={this.handleOperation} class="calculator-keys">
-            <button class="operator" value = "+">+</button>
-            <button class="operator"  value = "-">-</button>
-            <button class="operator"  value = "*">*</button>
-            <button class="operator"  value = "/">/</button>
+          <button className="equal-sign" value = "=" onClick={() => this.passingOperationg(prevValue,numValue,operation)} >=</button>
+          
+          <button className="all-clear" onClick = {this.clearDisplay}>AC</button>
           </form>
-
-          <button class="equal-sign" value = "=" onClick={() => this.passingOperationg(prevValue,numValue,operation)} >=</button>
-          <br/>
-          <button class="all-clear">AC</button>
-          <button>+/-</button>
-          <button>%</button>
-          </form>
+        
         </div>
       );
       
