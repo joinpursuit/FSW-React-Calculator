@@ -12,7 +12,7 @@ class Calculator extends Component {
     this.state = {
       displayValue: "0",
       previousValue: null,
-      operator: null,
+      operation: null,
       waitingForOperand: false
       
     }
@@ -34,6 +34,17 @@ class Calculator extends Component {
     } else {
       this.setState({displayValue: displayValue === "0" ? num : displayValue + num})
     }
+  }
+
+  handleOperator = (operator) => {
+    let {displayValue, previousValue, operation} = this.state
+    if(isNaN(previousValue)){
+      this.setState({previousValue: displayValue})
+    } else if (operation){
+      let currentValue = previousValue || 0
+      let newValue = math.evaluate(``)
+    }
+    this.setState({waitingForOperand: true, operation:operator})
   }
 
   handleEqual = () => {
