@@ -3,13 +3,18 @@ import React, { Component } from "react";
 
 class Calculator extends Component {
   state = {
-    displayValue: 0,
+    displayValue: "0",
     operator: null
   };
 
   handleNumClicks = e => {
+    if(this.state.displayValue === "0") {
+      this.setState({
+        displayValue: e.target.value 
+      });
+    } else 
     this.setState({
-      displayValue:  e.target.value + this.state.displayValue 
+      displayValue: this.state.displayValue+e.target.value  
     });
   };
 
