@@ -11,8 +11,9 @@ const ButtonPad = ({
 }) => {
   return (
     <>
+    {limitAnswer}
       <div className="buttons">
-        <div className="answer" onChange={limitAnswer}>
+        <div className="answer">
           <p className="answerP">{currentValue}</p>
         </div>
         <div className="buttonPad">

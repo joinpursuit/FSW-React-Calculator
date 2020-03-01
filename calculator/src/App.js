@@ -27,7 +27,7 @@ class App extends React.Component {
     }
   };
 
-  handleEqual = e => {
+  handleEqual = () => {
     let evaluation = eval(
       `${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`
     );
@@ -37,9 +37,15 @@ class App extends React.Component {
   };
 
   handleOperation = e => {
-    this.setState({
-      operation: e.target.value
-    });
+    if (e.target.value === "x") {
+      this.setState({
+        operation: "*"
+      });
+    } else {
+      this.setState({
+        operation: e.target.value
+      });
+    }
   };
 
   handleClear = () => {
@@ -51,6 +57,7 @@ class App extends React.Component {
     });
   };
 
+  //this function aims to limit characters shown on "screen" to 10 digits
   limitAnswer = () => {
     let stateValue = this.state.currentValue;
     if (stateValue.length > 10) {
@@ -64,21 +71,28 @@ class App extends React.Component {
     }
   };
 
-handleNegs = () => {
- let neg =  -Math.abs(`${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`);
-  this.setState({
-    currentValue: -Math.abs(neg)
-  })
-  // console.log(neg)
-}
+  handleNegs = () => {
+    let neg = -Math.abs(
+      `${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`
+    );
+    this.setState({
+      currentValue: -Math.abs(neg)
+    });
+  };
 
-  watchForCommas = (str) => {
-
-  }
+  watchForCommas = str => {
+    str = this.state.currentValue;
+    if (str.length >= 4) {
+      return str.splice(2, ",");
+    }
+    this.setState({
+      currentValue: this.watchForCommas(str)
+    });
+  };
 
   render() {
-    console.log(this.state.currentValue.length);
-    console.log(this.state.currentValue);
+    // console.log(this.state.currentValue.length);
+    // console.log(this.state.currentValue);
 
     return (
       <>
