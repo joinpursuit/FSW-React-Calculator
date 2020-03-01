@@ -27,6 +27,14 @@ export default class Calculator extends Component {
         this.setState({input: evaluate(this.state.input * -1)});
         debugger
       };
+      percentChange = (e) => {
+        this.setState({input: evaluate(this.state.input * 0.01)});
+        debugger
+      };
+      inverseChange = (e) => {
+        this.setState({input: evaluate(1 / this.state.input)});
+        debugger
+      };
     render() {
         return (
             <div className = "buttonDiv">
@@ -35,6 +43,7 @@ export default class Calculator extends Component {
                 <button onClick={this.clearChange} value= {""}>ac</button>
                 <button onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
                 <button onClick={this.inputChange} value= {"."}>.</button>
+                <button onClick={this.percentChange} value= {"%"}>%</button>
                 <br/>
                 <button onClick={this.inputChange} value= {1}>1</button>
                 <button onClick={this.inputChange} value= {2}>2</button>
@@ -49,6 +58,8 @@ export default class Calculator extends Component {
                 <button onClick={this.inputChange} value= {9}>9</button>
                 <br/>
                 <button onClick={this.inputChange} value= {0}>0</button>
+                <button onClick={this.inputChange} value= {3.14}>π</button>
+                <button onClick={this.inverseChange} value= {"Inv"}>Inv</button>
                 <button onClick={this.inputChange} value= {"+"}>+</button>
                 <button onClick={this.inputChange} value= {"-"}>-</button>
                 <button onClick={this.inputChange} value= {"*"}>x</button>
