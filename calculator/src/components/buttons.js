@@ -5,7 +5,8 @@ const Buttons = ({
   numButtonsHandler,
   clearButtonHandler,
   oppHandler,
-  equalHandler
+  equalHandler,
+  toggleHandler
 }) => {
   return (
     <div className="grid-container">
@@ -38,7 +39,7 @@ const Buttons = ({
         </button>
       </div>
       <div className="negPos">
-        <button id="neggPos" name="-+" value="-+">
+        <button onClick={toggleHandler} id="neggPos" name="-+" value="-+">
           +
         </button>
       </div>

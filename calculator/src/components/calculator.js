@@ -5,12 +5,28 @@ import { evaluate } from "mathjs";
 class Calculator extends React.Component {
   state = {
     finalVal: "",
-    displayedVal: "",
+    holder: "",
     currentVal: "0",
     prevVal: "",
     opperater: "",
-    holdVal: ""
+    holdVal: "",
+    toggle: false
   };
+
+  addComma = () => {
+    let output = "";
+    if (this.state.currentVal.length > 3) {
+      for (let i = 0; i < this.state.currentVal.length; i++) {
+        if (i === 1 || i === 4 || i === 7) {
+          output += `,${this.state.currentVal[i]}`;
+        } else {
+          output += this.state.currentVal[i];
+        }
+      }
+    }
+    return output;
+  };
+
   numButtonsHandler = e => {
     let res = e.target.value;
 
@@ -23,7 +39,7 @@ class Calculator extends React.Component {
       }));
     } else if (this.state.currentVal === "0") {
       this.setState({
-        currentVal: res
+        currentVal: this.addComma()
       });
     } else {
       this.setState(prevState => ({
@@ -34,15 +50,20 @@ class Calculator extends React.Component {
 
   clearButtonHandler = () => {
     if (this.state.prevVal !== undefined) {
-      this.setState({
-        currentVal: ""
-      });
+      this.setState(prevState => ({
+        currentVal: "",
+        finalVal: "",
+        prevVal: prevState.finalVal,
+        opperater: "",
+        holder: ""
+      }));
     } else {
       this.setState({
         prevVal: "",
         opperater: "",
         currentVal: "0",
-        holdVal: ""
+        holdVal: "",
+        finalVal: ""
       });
     }
   };
@@ -56,13 +77,29 @@ class Calculator extends React.Component {
 
   equalHandler = () => {
     const { currentVal, opperater, finalVal } = this.state;
-    this.setState({
+    this.setState(prevState => ({
       currentVal: evaluate(`${finalVal}${opperater}${currentVal}`),
       prevVal: "",
-      opperater: "",
+      opperater: prevState.opperater,
       holdVal: "",
-      finalVal: ""
-    });
+      finalVal: prevState.prevVal,
+      prevVal: prevState.finalVal
+    }));
+  };
+  toggleHandler = async () => {
+    await this.setState(prevState => ({
+      toggle: !prevState.toggle
+    }));
+    if (this.state.toggle !== true) {
+      this.setState(prevState => ({
+        currentVal: prevState.holder
+      }));
+    } else {
+      this.setState(prevState => ({
+        holder: prevState.currentVal,
+        currentVal: `-${prevState.currentVal}`
+      }));
+    }
   };
 
   render() {
@@ -76,6 +113,7 @@ class Calculator extends React.Component {
         clearButtonHandler={this.clearButtonHandler}
         oppHandler={this.oppHandler}
         equalHandler={this.equalHandler}
+        toggleHandler={this.toggleHandler}
       />
     );
   }
