@@ -28,10 +28,13 @@ class Calculator extends Component {
   }
 
   handleNumber = (num) => {
+    console.log(typeof num)
     let {displayValue, waitingForOperand} = this.state
     if (waitingForOperand) {
       this.setState({displayValue: String(num), waitingForOperand: false })
-    } else {
+    } else if (num === "00" && displayValue === "0") {
+      this.setState({displayValue: "0"})
+    }  else {
       this.setState({displayValue: displayValue === "0" ? num : displayValue + num})
     }
   }
@@ -118,7 +121,7 @@ class Calculator extends Component {
         </div>
         <div className="row">
           <Button handleClick={this.handleNumber}>0</Button>
-          <Button handleClick={this.updateDisplay}> </Button>
+          <Button handleClick={this.handleNumber}>00</Button>
           <Button handleClick={this.handleDecimel}>.</Button>
           <Button handleClick={this.handleEqual}>=</Button>
         </div>

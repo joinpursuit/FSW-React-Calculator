@@ -6,6 +6,8 @@ const buttonClass = (value) => {
     return "alternate"
   } else if (isNaN(value)){
     return "operator"
+  } else if (value === "0") {
+    return "zero"
   } else {
     return null
   }
