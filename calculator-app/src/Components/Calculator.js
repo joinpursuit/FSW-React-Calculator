@@ -26,19 +26,15 @@ class Calculator extends React.Component {
       
         let { display, Operators, nextDisplay } = this.state
         if (Operators === '+') {
-            let total = (Number(display) + Number(nextDisplay))
-            this.setState({ display: total,nextDisplay:total })
+          this.setState({ display:(Number(display)+Number(nextDisplay))})
 
         } else if (Operators === '-') {
-            let total = (Number(display) - Number(nextDisplay))
-            this.setState({ display: total,nextDisplay:total })
+            this.setState({display:(Number(display)-Number(nextDisplay)) })
         } else if (Operators === '*') {
-            let total = (Number(display) *  Number(nextDisplay))
-            this.setState({ display: total,nextDisplay:total })
+    
+            this.setState({ display:(Number(display)* Number(nextDisplay))})
         } else if (Operators === '/') {
-
-            let total = (Number(display) / Number(nextDisplay))
-            this.setState({ display: total,nextDisplay:total })
+            this.setState({ display:(Number(display) / Number(nextDisplay))})
         }
     }
 
