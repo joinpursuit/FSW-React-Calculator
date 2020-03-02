@@ -41,7 +41,15 @@ class Calculator extends Component {
     });
   };
 
-  handleMath = e => {
+  handleNumConvert = () => {
+    const { displayValue } = this.state;
+    this.setState({
+        displayValue: -displayValue
+    })
+}
+  
+
+  handleMath = () => {
     const { operator, previousValue, displayValue } = this.state;
     if (operator === "+") {
       let result = Number(previousValue) + Number(displayValue);
