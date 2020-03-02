@@ -28,7 +28,6 @@ class Calculator extends Component {
   }
 
   handleNumber = (num) => {
-    console.log(typeof num)
     let {displayValue, waitingForOperand} = this.state
     if (waitingForOperand) {
       this.setState({displayValue: String(num), waitingForOperand: false })
@@ -80,6 +79,12 @@ class Calculator extends Component {
     this.setState({displayValue: displayValue.charAt(0) === "-" ? displayValue.substring(1) : "-" + displayValue})
   }
 
+  handlePercentage = () => {
+    let {displayValue} = this.state
+    let percentage = parseFloat(displayValue) / 100
+    this.setState({displayValue: String(percentage)})
+  }
+
   handleClear = () => {
     this.setState({ displayValue: "0",
     previousValue: null,
@@ -98,7 +103,7 @@ class Calculator extends Component {
         <div className="row">
           <Button handleClick={this.handleClear}>AC</Button>
           <Button handleClick={this.handleInverter}>+/-</Button>
-          <Button handleClick={this.updateDisplay}>%</Button>
+          <Button handleClick={this.handlePercentage}>%</Button>
           <Button handleClick={this.handleOperator}>÷</Button>
         </div>
         <div className="row">
