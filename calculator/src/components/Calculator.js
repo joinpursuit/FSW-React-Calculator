@@ -17,15 +17,6 @@ class Calculator extends Component {
       
     }
   }
-  updateDisplay = (value) => {
-    let {displayValue} = this.state
-    if(value === "x"){
-      value = "*"
-    } else if (value === "÷"){
-      value = "/"
-    }
-    this.setState({displayValue: displayValue === "0" ? value : displayValue + value})
-  }
 
   handleNumber = (num) => {
     let {displayValue, waitingForOperand} = this.state
@@ -98,7 +89,7 @@ class Calculator extends Component {
 
   render () {
     console.log(this.state)
-    let {displayValue, previousValue} = this.state
+    let {displayValue} = this.state
     let clearDisplay = displayValue !== '0' && displayValue !== ""
     let clearButton = clearDisplay ? 'C' : 'AC'
     return (
