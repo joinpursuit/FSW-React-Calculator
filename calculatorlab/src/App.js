@@ -5,13 +5,7 @@ import Button from './Components/Button'
 import './App.css';
 
 class App extends React.Component {
-  state = {
-    value: "hi"
-  }
-  
 render() {
-  // const { buttons } = this.state
-  
   return (
     <div className="App">
       <p id="title">Calculator App</p>
