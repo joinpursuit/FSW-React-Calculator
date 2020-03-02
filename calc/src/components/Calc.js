@@ -167,7 +167,8 @@ class Calc extends React.Component{
             if(displayValue[1]=== ""){
                 decimal="."
             }else{
-                decimal=`.${[...displayValue[1]].toString()}`
+                decimal=`.${displayValue[1].toString()}`
+                debugger
             }
             newString = displayValue[0]
         } else {
