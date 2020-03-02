@@ -1,0 +1,10 @@
+.calculator{
+    display: flexbox ;
+    width: 50%;
+    margin-left: 25%
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

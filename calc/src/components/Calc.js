@@ -2,6 +2,11 @@ import React from "react"
 import Display from "./Display"
 import Buttons from "./Buttons"
 import {numValues,dispMods,opValues} from "./db/ButtonValues"
+import { create, all } from 'mathjs'
+import "../css/Calc.css"
+
+const config = { }
+const math = create(all, config)
 
 class Calc extends React.Component{
     state={
@@ -12,12 +17,27 @@ class Calc extends React.Component{
         waitingForNewValue: false,
         justCleared:true
     }
+    handleCalc=()=>{
+        this.setState(prevState=>{
+            let evalValue = math.evaluate(` ${this.state.previousValue} ${this.state.opertion}${prevState.displayValue} `)
+            debugger
+            return {
+                displayValue: evalValue.toString(),
+                previousValue:"",
+                opertion:"",
+                waitingForNewValue:true
+                }
+            })   
+    }
     handleOpClick=(e)=>{
-        if(e.target.value !== "="){
+        if(e.target.value === "="){
+            return this.handleCalc()
+
+        } else if(e.target.value !== "="){
             
             let newOp =e.target.value
 
-            if(newOp === "x"){
+            if(newOp === "X"){
                 newOp = "*"
             } else if(newOp === "÷"){
                 newOp = "/"
@@ -99,7 +119,13 @@ class Calc extends React.Component{
     }
     handleNumClick=(e)=>{
         e.preventDefault()
-        let newNum = e.target.value
+        let newNum =''
+        if(e.key){
+             newNum=e.key
+        }else{
+
+             newNum = e.target.value
+        }
         if(this.state.displayValue==="0"||this.state.displayValue.includes("e")|| this.state.waitingForNewValue===true){
             this.setState({
                 displayValue:newNum,
@@ -116,6 +142,69 @@ class Calc extends React.Component{
         }
     }
 
+    handleKeyPress=e=>{
+
+         const keyPressed = e.key
+         debugger
+        if(numValues.includes(keyPressed)){
+            this.handleNumClick(e)
+        } 
+        // else if(opValues.includes(keyPressed))
+    }
+
+    handleComma=(displayValue)=>{
+        let displayArry = []
+        let decimal = ""
+        let newString=""
+        
+        
+        if(displayValue[0]==="0"||displayValue.slice(0,2)==="-0"){
+            return displayValue
+        } else 
+        
+        if (displayValue.includes(".")){
+            displayValue = displayValue.split(".")
+            debugger
+            if(displayValue[1]=== ""){
+                decimal="."
+            }else{
+                decimal=`.${[...displayValue[1]].toString()}`
+            }
+            newString = displayValue[0]
+        } else {
+            newString = displayValue
+        }
+        
+        while(newString.length){
+
+            if(newString.length>3){
+              displayArry.unshift(newString.slice(newString.length-3,newString.length))
+              newString=newString.substring(0,newString.length-3)
+            } else {
+                displayArry.unshift(newString)
+                newString=''
+            } 
+        }
+
+       console.log({displayArry,newString,decimal})
+    
+        debugger
+
+        if(decimal){
+
+            return `${displayArry.join().toString()} ${decimal}`
+        } else{
+            return displayArry.join().toString()
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyPress);
+      }
+      componentWillUnmount(){
+        document.removeEventListener('keydown', this.handleKeyPress);
+      }
+
     render(){
         let {displayValue} = this.state
         let numButtons = numValues.map((numValue,i)=>{
@@ -130,7 +219,7 @@ class Calc extends React.Component{
         console.log(this.state)
         return(
             <div className="calculator">
-                <Display input={displayValue}/>
+                <Display input={displayValue.length>3?this.handleComma(displayValue):displayValue}/>
                 <div className="buttons">
                     {displyButtons}
                     {numButtons}
