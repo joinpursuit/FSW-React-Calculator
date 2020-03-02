@@ -39,6 +39,19 @@ class App extends React.Component {
       displayNum: "0"
     });
   };
+  handlePercent = e => {
+    if (this.state.num2) {
+      this.setState(prevState => ({ num2: Number(prevState.num2) / 10 + "" }));
+      this.setState(prevState => ({
+        displayNum: Number(this.state.num2) / 10 + ""
+      }));
+    } else if (!this.state.num2 && this.state.num1) {
+      this.setState(prevState => ({ num1: Number(prevState.num1) / 10 + "" }));
+      this.setState(prevState => ({
+        displayNum: Number(this.state.num1) / 10 + ""
+      }));
+    }
+  };
   handlePosNeg = e => {
     if (this.state.num2) {
       this.setState(prevState => ({ num2: Number(prevState.num2) * -1 + "" }));
@@ -79,7 +92,9 @@ class App extends React.Component {
     }
   };
   handleSign = e => {
-    if (e.target.value === "+/-") {
+    if (e.target.value === "%") {
+      this.handlePercent();
+    } else if (e.target.value === "+/-") {
       this.handlePosNeg();
     } else if (e.target.value === ".") {
       this.handleDecimal();
