@@ -20,6 +20,11 @@ class App extends React.Component {
         prevValue: prevState.currentValue,
         currentValue: input
       }));
+    } else if (this.state.currentValue.length >= 4) {
+      let comma = this.state.currentValue;
+      this.setState({
+        currentValue: comma.toLocaleString()
+      });
     } else {
       this.setState(prevState => ({
         currentValue: prevState.currentValue + input
@@ -80,15 +85,15 @@ class App extends React.Component {
     });
   };
 
-  watchForCommas = str => {
-    str = this.state.currentValue;
-    if (str.length >= 4) {
-      return str.splice(2, ",");
-    }
-    this.setState({
-      currentValue: this.watchForCommas(str)
-    });
-  };
+  // watchForCommas = () => {
+  //   let str = this.state.currentValue;
+  //   if (str.length >= 4) {
+  //     return str.toLocaleStr();
+  //   }
+  //   this.setState({
+  //     currentValue: this.watchForCommas(str)
+  //   });
+  // };
 
   render() {
     // console.log(this.state.currentValue.length);
