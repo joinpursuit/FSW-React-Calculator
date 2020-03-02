@@ -85,23 +85,29 @@ class Calculator extends Component {
     this.setState({displayValue: String(percentage)})
   }
 
-  handleClear = () => {
+  handleClearAll = () => {
     this.setState({ displayValue: "0",
     previousValue: null,
     operation: null,
     waitingForOperand: false})
   }
 
+  handleClearDisplay = () => {
+    this.setState({displayValue: ""})
+  }
+
   render () {
     console.log(this.state)
-    let {displayValue} = this.state
+    let {displayValue, previousValue} = this.state
+    let clearDisplay = displayValue !== '0' && displayValue !== ""
+    let clearButton = clearDisplay ? 'C' : 'AC'
     return (
       <div className="wrapper">
         <div>
           <Display displayValue={displayValue}/>
         </div>
         <div className="row">
-          <Button handleClick={this.handleClear}>AC</Button>
+          <Button handleClick={clearDisplay ? this.handleClearDisplay: this.handleClearAll}>{clearButton}</Button>
           <Button handleClick={this.handleInverter}>+/-</Button>
           <Button handleClick={this.handlePercentage}>%</Button>
           <Button handleClick={this.handleOperator}>÷</Button>
