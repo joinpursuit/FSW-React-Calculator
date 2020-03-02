@@ -164,7 +164,6 @@ class Calc extends React.Component{
         
         if (displayValue.includes(".")){
             displayValue = displayValue.split(".")
-            debugger
             if(displayValue[1]=== ""){
                 decimal="."
             }else{
@@ -185,10 +184,7 @@ class Calc extends React.Component{
                 newString=''
             } 
         }
-
-       console.log({displayArry,newString,decimal})
     
-        debugger
 
         if(decimal){
 
