@@ -88,7 +88,7 @@ class Calculator extends Component {
   }
 
   render () {
-    console.log(this.state)
+    
     let {displayValue} = this.state
     let clearDisplay = displayValue !== '0' && displayValue !== ""
     let clearButton = clearDisplay ? 'C' : 'AC'
