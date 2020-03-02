@@ -9,15 +9,15 @@ class Calculator extends Component {
     waitingNewVal: false
   };
 
-  handleNumClicks = e => {
+  handleNumClicks = (e) => {
     const { displayValue, waitingNewVal } = this.state;
     if (displayValue === "0" || waitingNewVal === true) {
       this.setState({
-        displayValue: e.target.value
+        displayValue:  e.target.value 
       });
     } else
       this.setState({
-        displayValue: this.state.displayValue + e.target.value
+        displayValue: displayValue + e.target.value
       });
   };
 
