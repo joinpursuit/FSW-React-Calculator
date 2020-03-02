@@ -38,11 +38,18 @@ class Calculator extends Component {
 
   handleOperator = (operator) => {
     let {displayValue, previousValue, operation} = this.state
-    if(isNaN(previousValue)){
+    if(operator === "x"){
+      operator = "*"
+    } else if (operator === "÷"){
+      operator = "/"
+    }
+
+    if(isNaN(parseFloat(previousValue))){
       this.setState({previousValue: displayValue})
     } else if (operation){
       let currentValue = previousValue || 0
-      let newValue = math.evaluate(``)
+      let newValue = String(math.evaluate(`${currentValue} ${operation} ${displayValue}`))
+      this.setState({displayValue: newValue, previousValue: newValue})
     }
     this.setState({waitingForOperand: true, operation:operator})
   }
@@ -66,10 +73,14 @@ class Calculator extends Component {
   }
 
   handleClear = () => {
-    this.setState({displayValue: "0"})
+    this.setState({ displayValue: "0",
+    previousValue: null,
+    operation: null,
+    waitingForOperand: false})
   }
 
   render () {
+    console.log(this.state)
     let {displayValue} = this.state
     return (
       <div className="wrapper">
@@ -80,25 +91,25 @@ class Calculator extends Component {
           <Button handleClick={this.handleClear}>AC</Button>
           <Button handleClick={this.handleInverter}>+/-</Button>
           <Button handleClick={this.updateDisplay}>%</Button>
-          <Button handleClick={this.updateDisplay}>÷</Button>
+          <Button handleClick={this.handleOperator}>÷</Button>
         </div>
         <div className="row">
           <Button handleClick={this.handleNumber}>7</Button>
           <Button handleClick={this.handleNumber}>8</Button>
           <Button handleClick={this.handleNumber}>9</Button>
-          <Button handleClick={this.updateDisplay}>x</Button>
+          <Button handleClick={this.handleOperator}>x</Button>
         </div>
         <div className="row">
           <Button handleClick={this.handleNumber}>4</Button>
           <Button handleClick={this.handleNumber}>5</Button>
           <Button handleClick={this.handleNumber}>6</Button>
-          <Button handleClick={this.updateDisplay}>-</Button>
+          <Button handleClick={this.handleOperator}>-</Button>
         </div>
         <div className="row">
           <Button handleClick={this.handleNumber}>1</Button>
           <Button handleClick={this.handleNumber}>2</Button>
           <Button handleClick={this.handleNumber}>3</Button>
-          <Button handleClick={this.updateDisplay}>+</Button>
+          <Button handleClick={this.handleOperator}>+</Button>
         </div>
         <div className="row">
           <Button handleClick={this.handleNumber}>0</Button>
