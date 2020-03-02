@@ -53,14 +53,12 @@ class Calculator extends React.Component {
         let { display } = this.state
         this.setState({display: display === "-" ? display: "-" + display})
     }
-    equalButton = (event) => {
-        // let {display, nextDisplay,Operators} = this.state
-        let total = event.target.value
-        return this.handleEquation
-      }
-    //   handleOpClick=(e)=>{
-    //     if(e.target.value === "="){
-    //         return this.handleCalc()
+    operatorButtons =(event)=>{
+        let {total} = event.target
+        let {display}=this.state
+        this.setState({Operators: total, nextDisplay: Number(display)})
+    }
+  
       acButton =()=>{
         this.setState({display:0})
       }
@@ -96,12 +94,12 @@ class Calculator extends React.Component {
                     </div>
                     <div>
 
-                        <button className="Operators" value="/" onClick={(e) => { this.handleEquation(e) }}>÷</button>
-                        <button className="Operators" value="x" onClick={(e) => { this.handleEquation(e) }} >x</button>
-                        <button className="Operators" value="-" onClick={(e) => { this.handleEquation(e) }}>-</button>
-                        <button className="Operators" value =" +"onClick={(e) => { this.handleEquation(e) }}>+</button>
+                        <button className="Operators" value="/" onClick={(e) => { this.operatorButtons(e) }}>÷</button>
+                        <button className="Operators" value="x" onClick={(e) => { this.operatorButtons(e) }} >x</button>
+                        <button className="Operators" value="-" onClick={(e) => { this.operatorButtons(e) }}>-</button>
+                        <button className="Operators" value =" +"onClick={(e) => { this.operatorButtons(e) }}>+</button>
                         <div>
-                            <button className="Equal" value ="=" onClick={(e) => { this.equalButton(e) }}>=</button>
+                            <button className="Equal" value ="=" onClick={(e) => { this.handleEquation(e) }}>=</button>
 
                         </div>
                     </div>
