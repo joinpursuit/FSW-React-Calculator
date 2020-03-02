@@ -9,13 +9,23 @@ class Calculator extends Component{
         operation: null,
         waitingForNewValue: false
     }
-    
+    handleOnClick(button) {
+        if(button === "="){
+            this.setState({})
+        }
+        else if(button === "AC"){
+            this.setState({displayValue: 0, previousValue:null})
+        }
+        else if(button === "C"){
+            this.setState({displayValue: 0})
+        }
+    }
     render () {
         let {displayValue} = this.state
         return (
             <div>
                 <Display displayValue={displayValue}/>
-                <KeyPad />
+                <KeyPad onClick={this.handleOnClick}/>
             </div>
         )
     }
