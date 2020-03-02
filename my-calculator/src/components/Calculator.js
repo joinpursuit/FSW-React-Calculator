@@ -9,6 +9,7 @@ class Calculator extends Component{
         operation: null,
         waitingForNewValue: false
     }
+
     handleOnClick(button) {
         if(button === "="){
             this.setState({})
@@ -19,7 +20,11 @@ class Calculator extends Component{
         else if(button === "C"){
             this.setState({displayValue: 0})
         }
+        else {
+            this.setState({displayValue: this.displayValue + e.target.name})
+        }
     }
+
     render () {
         let {displayValue} = this.state
         return (
