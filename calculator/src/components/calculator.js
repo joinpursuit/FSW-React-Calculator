@@ -14,22 +14,6 @@ class Calculator extends React.Component {
     clearSymbol: false
   };
 
-  // addComma = res => {
-  //   let output = "";
-  //   if (res.length > 3) {
-  //     for (let i = 0; i < res.length; i++) {
-  //       if (i === 1 || i === 4 || i === 7) {
-  //         output += `,${res[i]}`;
-  //       } else {
-  //         output += res[i];
-  //       }
-  //     }
-  //   } else {
-  //     output += res;
-  //   }
-  //   return output;
-  // };
-
   numButtonsHandler = e => {
     let res = e.target.value;
 
@@ -37,11 +21,9 @@ class Calculator extends React.Component {
       console.log("here1");
       this.setState(prevState => ({
         prevVal: prevState.currentVal,
-        // currentVal: "",
+
         currentVal: prevState.holdVal + res,
         holdVal: prevState.holdVal + res
-
-        // currentVal: prevState.currentVal + res
       }));
     } else if (this.state.currentVal === "0") {
       console.log("here2");
@@ -133,14 +115,3 @@ class Calculator extends React.Component {
 }
 
 export default Calculator;
-
-// const ran = arr => {
-//   let output = [];
-
-//   for (let i = arr.length - 1; i > 0; i--) {
-//     output.push(arr[Math.floor(Math.random() * i + 1)]);
-//   }
-//   return output;
-// };
-
-// console.log(ran([1, 2, 3, 4, 5, 6, 7, 8, 9]));
