@@ -1,6 +1,6 @@
 import React from 'react';
 import Calc from "./components/Calc"
-import './App.css';
+// import './App.css';
 
 function App() {
   return (

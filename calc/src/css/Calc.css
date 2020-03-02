@@ -1,10 +1,25 @@
 .calculator{
-    display: flexbox ;
+    display: inline-block;
     width: 50%;
     margin-left: 25%
 }
 
 .buttons{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display:grid;
+    /* grid-template-areas:
+    "ac mod± mod% op÷"
+    "num7 num8 num9 opX"
+    "num4 num5 num6 op-"
+    "num1 num2 num3 op+"
+    "zr zr mod. op= "; */
+    /* grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr); */
+}
+
+#num0{
+grid-area:zr;
+}
+
+#AC{
+grid-area:ac;
 }

@@ -20,7 +20,6 @@ class Calc extends React.Component{
     handleCalc=()=>{
         this.setState(prevState=>{
             let evalValue = math.evaluate(` ${this.state.previousValue} ${this.state.opertion}${prevState.displayValue} `)
-            debugger
             return {
                 displayValue: evalValue.toString(),
                 previousValue:"",
@@ -42,22 +41,24 @@ class Calc extends React.Component{
             } else if(newOp === "÷"){
                 newOp = "/"
             }
-
-            if(this.state.waitingForNewValue){
-                let newVal = (parseFloat(`${this.state.previousValue} ${this.state.opertion} ${this.state.displayValue} `).toString())
-                this.setState(prevState=>({
-                    opertion:newOp,
-                    previousValue: newVal,
-                    waitingForNewValue:true
-                    }))
-            } else {
+            
+            if(!this.state.waitingForNewValue&&!this.state.previousValue){
                 this.setState(prevState=>({
                     opertion:newOp,
                     previousValue:prevState.displayValue,
                     waitingForNewValue:true
                     
-                    })
+                })
                 )
+            } else {
+                let newVal = math.evaluate(`${this.state.previousValue} ${this.state.opertion} ${this.state.displayValue} `)
+                debugger
+                this.setState({
+                    opertion:newOp,
+                    displayValue:newVal.toString(),
+                    previousValue: newVal.toString(),
+                    waitingForNewValue:true
+                    })
             }
         }
     }
@@ -168,7 +169,6 @@ class Calc extends React.Component{
                 decimal="."
             }else{
                 decimal=`.${displayValue[1].toString()}`
-                debugger
             }
             newString = displayValue[0]
         } else {
@@ -205,13 +205,13 @@ class Calc extends React.Component{
     render(){
         let {displayValue} = this.state
         let numButtons = numValues.map((numValue,i)=>{
-            return <Buttons key={i} className={"numbers"} onClick={this.handleNumClick} value={numValue}/>
+            return <Buttons key={i} id={`num${numValue}`} className={"numbers"} onClick={this.handleNumClick} value={numValue}/>
         })
         let opButtons = opValues.map((opValue,i)=>{
-            return <Buttons key={i} className={"operators"} onClick={this.handleOpClick} value={opValue}/>
+            return <Buttons key={i} id={`op${opValue}`} className={"operators"} onClick={this.handleOpClick} value={opValue}/>
         })
         let displyButtons = dispMods.map((dispMod,i)=>{
-            return <Buttons key={i} className={"dispMod"} onClick={this.handleModClick} value={!this.state.justCleared && dispMod==="AC" ? "C":dispMod}/>
+            return <Buttons key={i} id={`mod${dispMod}`} className={"dispMod"} onClick={this.handleModClick} value={!this.state.justCleared && dispMod==="AC" ? "C":dispMod}/>
         })
         console.log(this.state)
         return(
