@@ -7,7 +7,7 @@ class Calculator extends React.Component {
 
         this.state = {
             display: 0,
-            allClear: "AC",
+            allClear: 0,
             Operators: "",
             nextDisplay: null,
             
@@ -15,25 +15,29 @@ class Calculator extends React.Component {
         }
     }
     buttonValue(event){
+          let newValue = event.target
         let {display, nextDisplay} = this.state
         this.setState({display:event.target.value, nextDisplay: event.target.value})
         console.log(this.state.display)
 
 }
     handleEquation = (event) => {
+      
         let { display, Operators, nextDisplay } = this.state
         if (Operators === '+') {
-            this.setState({ display: (Number(display) + Number(nextDisplay)) })
+            let total = (Number(display) + Number(nextDisplay))
+            this.setState({ display: total })
 
         } else if (Operators === '-') {
-
-            this.setState({ display: (Number(display) - Number(nextDisplay)) })
+            let total = (Number(display) - Number(nextDisplay))
+            this.setState({ display: total })
         } else if (Operators === '*') {
-
-            this.setState({ display: (display, nextDisplay) => display * nextDisplay })
+            let total = (Number(display) *  Number(nextDisplay))
+            this.setState({ display: total })
         } else if (Operators === '/') {
 
-            this.setState({ display: (display, nextDisplay) => display / nextDisplay })
+            let total = (Number(display) / Number(nextDisplay))
+            this.setState({ display: total })
         }
     }
 
@@ -52,14 +56,20 @@ class Calculator extends React.Component {
         let { display } = this.state
         this.setState({display: display === "-" ? display: "+" + display})
     }
+    equalButton = () => {
+        let {display, nextDisplay} = this.state
+        debugger
+        let newValue = String(math.evaluate(display))
+        this.setState({display: newValue})
+      }
   
 
     render() {
         let {display} = this.state
-        let {nextDisplay} = this.state
+       
         return (
             <div className="Calculator">
-                <Results className ="Results"display={display} nextDisplay={nextDisplay}/>
+                <Results className ="Results"display={display} />
                 <div className="Buttons">
                     <div>
 
@@ -90,7 +100,7 @@ class Calculator extends React.Component {
                         <button className="Operators" value="-" onClick={(e) => { this.handleEquation(e) }}>-</button>
                         <button className="Operators" value =" +"onClick={(e) => { this.handleEquation(e) }}>+</button>
                         <div>
-                            <button className="Equal" value ="=" onClick={(e) => { this.equal(e) }}>=</button>
+                            <button className="Equal" value ="=" onClick={(e) => { this.equalButton(e) }}>=</button>
 
                         </div>
                     </div>
