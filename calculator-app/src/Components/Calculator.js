@@ -15,10 +15,10 @@ class Calculator extends React.Component {
         }
     }
     buttonValue(event){
-          let newValue = event.target
+          let newValue = event.target.value
         let {display, nextDisplay} = this.state
       
-        this.setState({display:event.target.value, nextDisplay: event.target.value})
+        this.setState({display:newValue, nextDisplay: newValue})
         console.log(this.state.display)
 
 }
@@ -27,11 +27,9 @@ class Calculator extends React.Component {
         let { display, Operators, nextDisplay } = this.state
         if (Operators === '+') {
           this.setState({ display:(Number(display)+Number(nextDisplay))})
-
         } else if (Operators === '-') {
             this.setState({display:(Number(display)-Number(nextDisplay)) })
         } else if (Operators === '*') {
-    
             this.setState({ display:(Number(display)* Number(nextDisplay))})
         } else if (Operators === '/') {
             this.setState({ display:(Number(display) / Number(nextDisplay))})
@@ -51,7 +49,7 @@ class Calculator extends React.Component {
     }
     invertButton = (event)=>{
         let { display } = this.state
-        this.setState({display: display === "-" ? display: "-" + display})
+        this.setState({display: - display})
     }
     operatorButtons =(event)=>{
         let {total} = event.target
@@ -60,6 +58,7 @@ class Calculator extends React.Component {
     }
   
       acButton =()=>{
+          let {display}=this.state
         this.setState({display:0})
       }
 
