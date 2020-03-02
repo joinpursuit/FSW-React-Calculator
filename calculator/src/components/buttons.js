@@ -1,4 +1,5 @@
 import React from "react";
+import NumberFormat from "react-number-format";
 
 const Buttons = ({
   currentVal,
@@ -6,12 +7,18 @@ const Buttons = ({
   clearButtonHandler,
   oppHandler,
   equalHandler,
-  toggleHandler
+  toggleHandler,
+  clearSymbol
 }) => {
   return (
     <div className="grid-container">
       <div className="display">
-        <h1>{currentVal}</h1>
+        <NumberFormat
+          value={currentVal}
+          displayType={"text"}
+          thousandSeparator={true}
+          renderText={value => <h1>{value}</h1>}
+        />
       </div>
       <div className="zero">
         <button onClick={numButtonsHandler} name="0" value="0">
@@ -30,7 +37,7 @@ const Buttons = ({
       </div>
       <div className="ac">
         <button onClick={clearButtonHandler} name="ac" value="ac">
-          AC
+          {clearSymbol === true ? "C" : "AC"}
         </button>
       </div>
       <div className="percent">

@@ -10,38 +10,46 @@ class Calculator extends React.Component {
     prevVal: "",
     opperater: "",
     holdVal: "",
-    toggle: false
+    toggle: false,
+    clearSymbol: false
   };
 
-  addComma = () => {
-    let output = "";
-    if (this.state.currentVal.length > 3) {
-      for (let i = 0; i < this.state.currentVal.length; i++) {
-        if (i === 1 || i === 4 || i === 7) {
-          output += `,${this.state.currentVal[i]}`;
-        } else {
-          output += this.state.currentVal[i];
-        }
-      }
-    }
-    return output;
-  };
+  // addComma = res => {
+  //   let output = "";
+  //   if (res.length > 3) {
+  //     for (let i = 0; i < res.length; i++) {
+  //       if (i === 1 || i === 4 || i === 7) {
+  //         output += `,${res[i]}`;
+  //       } else {
+  //         output += res[i];
+  //       }
+  //     }
+  //   } else {
+  //     output += res;
+  //   }
+  //   return output;
+  // };
 
   numButtonsHandler = e => {
     let res = e.target.value;
 
     if (this.state.opperater !== "") {
+      console.log("here1");
       this.setState(prevState => ({
         prevVal: prevState.currentVal,
+        // currentVal: "",
+        currentVal: prevState.holdVal + res,
+        holdVal: prevState.holdVal + res
 
-        holdVal: res,
-        currentVal: this.state.holdVal + res
+        // currentVal: prevState.currentVal + res
       }));
     } else if (this.state.currentVal === "0") {
+      console.log("here2");
       this.setState({
-        currentVal: this.addComma()
+        currentVal: res
       });
     } else {
+      console.log("here3");
       this.setState(prevState => ({
         currentVal: prevState.currentVal + res
       }));
@@ -49,22 +57,26 @@ class Calculator extends React.Component {
   };
 
   clearButtonHandler = () => {
-    if (this.state.prevVal !== undefined) {
-      this.setState(prevState => ({
-        currentVal: "",
-        finalVal: "",
-        prevVal: prevState.finalVal,
-        opperater: "",
-        holder: ""
-      }));
-    } else {
+    if (this.state.prevVal === "") {
       this.setState({
         prevVal: "",
         opperater: "",
         currentVal: "0",
         holdVal: "",
-        finalVal: ""
+        finalVal: "",
+        clearSymbol: false
       });
+    } else if (this.state.prevVal !== "") {
+      console.log("here");
+      this.setState(prevState => ({
+        currentVal: "",
+        finalVal: "",
+        prevVal: prevState.finalVal,
+        opperater: "",
+        holder: "",
+        holdVal: "",
+        clearSymbol: true
+      }));
     }
   };
   oppHandler = e => {
@@ -105,7 +117,7 @@ class Calculator extends React.Component {
   render() {
     console.log(this.state);
 
-    const { currentVal } = this.state;
+    const { currentVal, clearSymbol } = this.state;
     return (
       <Buttons
         currentVal={currentVal}
@@ -114,6 +126,7 @@ class Calculator extends React.Component {
         oppHandler={this.oppHandler}
         equalHandler={this.equalHandler}
         toggleHandler={this.toggleHandler}
+        clearSymbol={clearSymbol}
       />
     );
   }
