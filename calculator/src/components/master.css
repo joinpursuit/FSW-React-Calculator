@@ -7,9 +7,9 @@
     grid-row-end: span 2;
 } */
 
-.allButtons{
+.AllNumbers{
     display: block;
-  background: none;
+  background-color: darkorange;
   border: none;
   padding: 0;
   font-family: inherit;

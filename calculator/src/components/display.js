@@ -1,9 +1,10 @@
 import React from 'react'
+import './css/button.css'
 
 const Display = ({state, handleNumberClick}) => {
     
         return(
-         <div classNam he="display">
+         <div className="display">
          <h2>{state.displayValue}</h2>
          <div className="AllNumbers">
             <button className="0" value="0" onClick={(e) =>handleNumberClick(e)}>0</button>
@@ -16,14 +17,14 @@ const Display = ({state, handleNumberClick}) => {
             <button className="7" value="7" onClick={(e) => handleNumberClick(e)}>7</button>
             <button className="8" value="8" onClick={(e) => handleNumberClick(e)}>8</button>
             <button className="9" value="9" onClick={(e) => handleNumberClick(e)}>9</button>
+            <button className="+" value="+" onClick={(e) => handleNumberClick(e)}>+</button>
+            <button className="-" value="-" onClick={(e) => handleNumberClick(e)}>-</button>
+            <button className="*" value="*" onClick={(e) => handleNumberClick(e)}>*</button>
+            <button className="/" value="/" onClick={(e) => handleNumberClick(e)}>÷</button>
+            <button className="=" value="=" onClick={(e) => handleNumberClick(e)}>=</button>
+            <button className="clear" value="clear" >C</button>
         </div>
          <div className="operators">
-            <button className="+" value="+" onClick={()}>+</button>
-            <button className="-" value="-" onClick=>-</button>
-            <button className="*" value="*">*</button>
-            <button className="/" value="/">÷</button>
-            <button className="=" value="=">=</button>
-            <button className="clear" value="clear">C</button>
 
         </div>
          

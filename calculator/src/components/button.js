@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {numbers, operators, modify} from './buttonValues'
-import './master.css'
+import '..master.css'
 
 class Button extends Component{
     // state = {
