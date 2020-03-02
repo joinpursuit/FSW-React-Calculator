@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./css/Calculator.css";
+import "./css/Calculator.css";
 
 class Calculator extends Component {
   state = {
@@ -48,7 +48,6 @@ class Calculator extends Component {
     })
 }
   
-
   handleMath = () => {
     const { operator, previousValue, displayValue } = this.state;
     if (operator === "+") {
