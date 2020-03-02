@@ -10,6 +10,7 @@ class Calculator extends React.Component {
             allClear: 0,
             Operators: null,
             nextDisplay: null,
+            nextValue:false
             
 
         }
@@ -22,11 +23,11 @@ class Calculator extends React.Component {
         console.log(this.state.display)
 
 }
-    handleEquation = (event) => {
+    handleEquation = () => {
       
         let { display, Operators, nextDisplay } = this.state
         if (Operators === '+') {
-          this.setState({ display:(Number(display)+Number(nextDisplay))})
+          this.setState({ display:(Number(display)+ Number(nextDisplay))})
         } else if (Operators === '-') {
             this.setState({display:(Number(display)-Number(nextDisplay)) })
         } else if (Operators === '*') {
@@ -52,9 +53,11 @@ class Calculator extends React.Component {
         this.setState({display: - display})
     }
     operatorButtons =(event)=>{
-        let {total} = event.target
+        let {type} = event.target
         let {display}=this.state
-        this.setState({Operators: total, nextDisplay: Number(display)})
+        this.setState({   nextValue:true,
+            Operators:type,
+            nextDisplay:Number(display)})
     }
   
       acButton =()=>{
@@ -72,33 +75,33 @@ class Calculator extends React.Component {
                     <div>
 
                         <button className="Others" value="0" onClick={(e) => { this.acButton(e) }} >AC</button>
-                        <button value="7" onClick={(e) => { this.buttonValue(e) }}>7</button>
-                        <button value="4 " onClick={(e) => { this.buttonValue(e) }} >4</button>
-                        <button value="1 " onClick={(e) => { this.buttonValue(e) }}>1</button>
-                        <button className="Zero" value="0 " onClick={(e) => { this.buttonValue(e) }}>0</button>
+                        <button value="7" onClick={(e) => { this.buttonValue(e)}}>7</button>
+                        <button value="4 " onClick={(e) => { this.buttonValue(e)}} >4</button>
+                        <button value="1 " onClick={(e) => { this.buttonValue(e)}}>1</button>
+                        <button className="Zero" value="0 " onClick={(e) => {this.buttonValue(e)}}>0</button>
                     </div>
                     <div>
 
-                        <button className="Others" value="- "onClick={(e) => { this.invertButton(e) }}>+/-</button>
-                        <button value="8 " onClick={(e) => { this.buttonValue(e) }}>8</button>
-                        <button value="5 " onClick={(e) => { this.buttonValue(e) }}>5</button>
-                        <button value="3 " onClick={(e) => { this.buttonValue(e) }}>3</button>
+                        <button className="Others" value="- "onClick={(e) => {this.invertButton(e)}}>+/-</button>
+                        <button value="8 " onClick={(e) => { this.buttonValue(e)}}>8</button>
+                        <button value="5 " onClick={(e) => { this.buttonValue(e)}}>5</button>
+                        <button value="3 " onClick={(e) => { this.buttonValue(e)}}>3</button>
                     </div>
                     <div>
                         <button className="Others" value="% " onClick={(e) => { this.percentage(e) }}>%</button>
-                        <button value="9 " onClick={(e) => { this.buttonValue(e) }}>9</button>
-                        <button value="6" onClick={(e) => { this.buttonValue(e) }}>6</button>
-                        <button value="2 " onClick={(e) => { this.buttonValue(e) }}>2</button>
-                        <button value=". " onClick={(e) => { this.decimal(e) }}>.</button>
+                        <button value="9 " onClick={(e) => { this.buttonValue(e)}}>9</button>
+                        <button value="6" onClick={(e) => { this.buttonValue(e)}}>6</button>
+                        <button value="2 " onClick={(e) => { this.buttonValue(e)}}>2</button>
+                        <button value=". " onClick={(e) => { this.decimal(e)}}>.</button>
                     </div>
                     <div>
 
-                        <button className="Operators" value="/" onClick={(e) => { this.operatorButtons(e) }}>÷</button>
-                        <button className="Operators" value="x" onClick={(e) => { this.operatorButtons(e) }} >x</button>
-                        <button className="Operators" value="-" onClick={(e) => { this.operatorButtons(e) }}>-</button>
-                        <button className="Operators" value =" +"onClick={(e) => { this.operatorButtons(e) }}>+</button>
+                        <button className="Operators" value="/" onClick={(e) => { this.operatorButtons(e)}}>÷</button>
+                        <button className="Operators" value="x" onClick={(e) => { this.operatorButtons(e)}} >x</button>
+                        <button className="Operators" value="-" onClick={(e) => { this.operatorButtons(e)}}>-</button>
+                        <button className="Operators" value =" +"onClick={(e) => { this.operatorButtons(e)}}>+</button>
                         <div>
-                            <button className="Equal" value ="=" onClick={(e) => { this.handleEquation(e) }}>=</button>
+                            <button className="Equal" value ="=" onClick={(e) => { this.handleEquation()}}>=</button>
 
                         </div>
                     </div>
