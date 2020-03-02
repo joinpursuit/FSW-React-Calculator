@@ -25,6 +25,9 @@ class Calculator extends Component {
     
     }
     }
+    handleOperatorClick = (e) => {
+        
+    }
 
     render(){
        

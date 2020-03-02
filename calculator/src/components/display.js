@@ -3,7 +3,7 @@ import React from 'react'
 const Display = ({state, handleNumberClick}) => {
     
         return(
-         <div className="display">
+         <div classNam he="display">
          <h2>{state.displayValue}</h2>
          <div className="AllNumbers">
             <button className="0" value="0" onClick={(e) =>handleNumberClick(e)}>0</button>
@@ -18,12 +18,12 @@ const Display = ({state, handleNumberClick}) => {
             <button className="9" value="9" onClick={(e) => handleNumberClick(e)}>9</button>
         </div>
          <div className="operators">
-            <button className="+">+</button>
-            <button className="-">-</button>
-            <button className="*">*</button>
-            <button className="/">÷</button>
-            <button className="=">=</button>
-            <button className="clear">C</button>
+            <button className="+" value="+" onClick={()}>+</button>
+            <button className="-" value="-" onClick=>-</button>
+            <button className="*" value="*">*</button>
+            <button className="/" value="/">÷</button>
+            <button className="=" value="=">=</button>
+            <button className="clear" value="clear">C</button>
 
         </div>
          
