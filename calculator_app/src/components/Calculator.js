@@ -4,26 +4,62 @@ import React, { Component } from "react";
 class Calculator extends Component {
   state = {
     displayValue: "0",
-    operator: null
+    previousValue: null,
+    operator: null,
+    waitingNewVal: false
   };
 
   handleNumClicks = e => {
-    if(this.state.displayValue === "0") {
+    const { displayValue, waitingNewVal } = this.state;
+    if (displayValue === "0" || waitingNewVal === true) {
       this.setState({
-        displayValue: e.target.value 
+        displayValue: e.target.value
       });
-    } else 
+    } else
+      this.setState({
+        displayValue: this.state.displayValue + e.target.value
+      });
+  };
+
+  handleClearBtn = () =>
+    this.setState({ displayValue: "", previousValue: "", operator: "" });
+
+  handleActiveOperator = e => {
+    const { displayValue } = this.state;
     this.setState({
-      displayValue: this.state.displayValue+e.target.value  
+      displayValue: "",
+      previousValue: displayValue,
+      operator: e.target.value,
+      waitingNewVal: true
     });
   };
 
-  handleClearBtn = () => this.setState({ displayValue: ""});
-  
-  handleActiveOperator = e => this.setState({operator: e.target.value})
+  handlePercentage = () => {
+    const { displayValue } = this.state;
+    this.setState({
+      displayValue: displayValue / 100
+    });
+  };
+
+  handleMath = e => {
+    const { operator, previousValue, displayValue } = this.state;
+    if (operator === "+") {
+      let result = Number(previousValue) + Number(displayValue);
+      this.setState({ displayValue: result });
+    } else if (operator === "-") {
+      let result = Number(previousValue) - Number(displayValue);
+      this.setState({ displayValue: result });
+    } else if (operator === "x") {
+      let result = Number(previousValue) * Number(displayValue);
+      this.setState({ displayValue: result });
+    } else if (operator === "÷") {
+      let result = Number(previousValue) / Number(displayValue);
+      this.setState({ displayValue: result });
+    }
+  };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     const { displayValue } = this.state;
     return (
       <div className="calculator">
@@ -188,7 +224,7 @@ class Calculator extends Component {
               className="operator"
               name="currVal"
               value="="
-              onClick={this.handleResult}
+              onClick={this.handleMath}
             >
               =
             </button>
