@@ -8,7 +8,7 @@ class Button extends React.Component {
         return(
             <div>
                 <button className="button" name="AC" onClick={e => this.props.onClick(e.target.name)}>AC</button>
-                <button className="button" name="-" onClick={e => this.props.onClick(e.target.name)}>+/-</button>
+                <button className="button" name="sign" onClick={e => this.props.onClick(e.target.name)}>+/-</button>
                 <button className="button" name="%" onClick={e => this.props.onClick(e.target.name)}>%</button>
                 <button className="button orange" name="/" onClick={e => this.props.onClick(e.target.name)}>/</button>  <br/>
                 

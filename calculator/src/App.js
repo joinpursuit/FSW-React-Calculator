@@ -14,8 +14,10 @@ class App extends React.Component {
       this.calculate()
     } else if(symbol === "AC"){
       this.reset()
+    } else if(symbol === "sign"){
+      this.signChange()
     } else {
-      this.setState({ result: this.state.result + symbol })
+      this.setState({ result: (this.state.result + symbol).toLocaleString("en") })
     }
   }
 
@@ -44,6 +46,12 @@ reset = () => {
         result: ""
     })
 };
+
+signChange = () => {
+  this.setState({
+    result: this.state.result * -1
+  })
+}
 
   render() {
     return (
