@@ -32,6 +32,8 @@ class Calculator extends Component {
       this.percent();
     } else if (buttonName === "+/-") {
       this.positiveNegative();
+    } else if (buttonName === ".") {
+      this.decimal();
     } else if (displayValue.length <= 9) {
       this.setState(prevState => {
         return { displayValue: prevState.displayValue + buttonName };
@@ -153,6 +155,20 @@ class Calculator extends Component {
     this.setState(prevState => {
       return { displayValue: prevState.displayValue * -1 };
     });
+  };
+
+  decimal = () => {
+    const { displayValue, isPrevious } = this.state;
+    if (isPrevious) {
+      this.setState(prevState => {
+        return {
+          displayValue: prevState.displayValue + ".",
+          isPrevious: false
+        };
+      });
+    } else if (displayValue.indexOf(".") === -1) {
+      this.setState({ displayValue: displayValue + "." });
+    }
   };
 
   render() {
