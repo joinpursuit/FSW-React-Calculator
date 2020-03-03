@@ -68,8 +68,10 @@ class Calculator extends Component {
   }
 
   handleDecimel = () => {
-    let {displayValue} = this.state
-    if (displayValue.indexOf(".") === -1) {
+    let {displayValue, waitingForOperand} = this.state
+    if (waitingForOperand) {
+      this.setState({displayValue: "0.", waitingForOperand: false})
+    } else if (displayValue.indexOf(".") === -1) {
       this.setState({displayValue: displayValue + "."})
     }
   }
@@ -101,6 +103,7 @@ class Calculator extends Component {
     let {displayValue} = this.state
     let clearDisplay = displayValue !== '0' && displayValue !== ""
     let clearButton = clearDisplay ? 'C' : 'AC'
+    console.log(this.state)
     return (
       <div className="wrapper">
         <div>
