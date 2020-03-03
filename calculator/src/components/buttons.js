@@ -7,14 +7,15 @@ const ButtonPad = ({
   handleClear,
   handleEqual,
   limitAnswer,
-  handleNegs
+  handleNegs,
+  handlePercent
 }) => {
   return (
     <>
-    {limitAnswer}
+    {/* {limitAnswer} */}
       <div className="buttons">
         <div className="answer">
-          <p className="answerP">{currentValue}</p>
+          <p className="answerP">{currentValue.toLocaleString()}</p>
         </div>
         <div className="buttonPad">
           <input
@@ -49,7 +50,7 @@ const ButtonPad = ({
             id="percent"
             type="button"
             value="%"
-            onClick={handleChange}
+            onClick={handlePercent}
             name="operation"
           ></input>
 

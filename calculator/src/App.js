@@ -20,11 +20,11 @@ class App extends React.Component {
         prevValue: prevState.currentValue,
         currentValue: input
       }));
-    } else if (this.state.currentValue.length >= 4) {
-      let comma = this.state.currentValue;
-      this.setState({
-        currentValue: comma.toLocaleString()
-      });
+      // } else if (this.state.currentValue.length >= 4) {
+      //   let comma = this.state.currentValue;
+      //   this.setState({
+      //     currentValue: comma.toLocaleString()
+      //   });
     } else {
       this.setState(prevState => ({
         currentValue: prevState.currentValue + input
@@ -80,9 +80,22 @@ class App extends React.Component {
     let neg = -Math.abs(
       `${this.state.prevValue} ${this.state.operation} ${this.state.currentValue}`
     );
+    //how to fix positive when pressed again?
     this.setState({
       currentValue: -Math.abs(neg)
     });
+  };
+
+  handlePercent = e => {
+    let percent = e.target.value;
+    let percentage = this.state.currentValue.toLocaleString({
+      style: "percentage"
+    });
+    this.setState({
+      currentValue: percentage,
+      operation: percent
+    });
+    console.log(percent);
   };
 
   // watchForCommas = () => {
@@ -96,8 +109,8 @@ class App extends React.Component {
   // };
 
   render() {
-    // console.log(this.state.currentValue.length);
-    // console.log(this.state.currentValue);
+    console.log(this.state);
+    console.log(this.state.currentValue);
 
     return (
       <>
@@ -110,6 +123,7 @@ class App extends React.Component {
             limitAnswer={this.limitAnswer}
             handleEqual={this.handleEqual}
             handleNegs={this.handleNegs}
+            handlePercent={this.handlePercent}
           />
         </div>
       </>
