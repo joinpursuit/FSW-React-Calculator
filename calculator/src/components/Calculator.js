@@ -13,13 +13,19 @@ class Calculator extends Component {
       displayValue: "0",
       previousValue: null,
       operation: null,
+      prevOperand: null,
+      prevOperation: null,
       waitingForOperand: false
       
     }
   }
 
   handleNumber = (num) => {
-    let {displayValue, waitingForOperand} = this.state
+    let {displayValue, waitingForOperand, prevOperand, prevOperation} = this.state
+    if (prevOperand || prevOperation){
+      this.setState({prevOperand: null, prevOperation: null})
+    }
+
     if (waitingForOperand) {
       this.setState({displayValue: String(num), waitingForOperand: false })
     } else if (num === "00" && displayValue === "0") {
@@ -48,13 +54,16 @@ class Calculator extends Component {
   }
 
   handleEqual = () => {
-    let {displayValue, previousValue, operation} = this.state
+    let {displayValue, previousValue, operation, prevOperand, prevOperation} = this.state
     if(previousValue && operation){
       let newValue = String(math.evaluate(`${previousValue} ${operation} ${displayValue}`))
-      this.setState({displayValue: newValue, previousValue: null, operation: null})
+      this.setState({displayValue: newValue, previousValue: null, operation: null, prevOperation: operation, prevOperand: displayValue})
     } else if (operation){
       let newValue = String(math.evaluate(`${displayValue} ${operation} ${displayValue}`))
       this.setState({displayValue: newValue, operation: null})
+    } else if (prevOperation && prevOperand) {
+      let newValue = String(math.evaluate(`${displayValue} ${prevOperation} ${prevOperand}`))
+      this.setState({displayValue: newValue })
     }
   }
 
