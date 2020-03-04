@@ -7,20 +7,25 @@ class Calculator extends React.Component {
 
         this.state = {
             display: 0,
-            allClear: 0,
+            previousDisplay: '', 
             Operators: null,
             nextDisplay: null,
-            nextValue:false
+            hasOperator:false
             
 
         }
     }
+ 
     buttonValue(event){
-          let newValue = event.target.value
-        let {display, nextDisplay} = this.state
-      
-        this.setState({display:newValue, nextDisplay: newValue})
-        console.log(this.state.display)
+        const newValue = event.target.value
+        const {display, hasOperator} = this.state
+        if(hasOperator){
+            this.setState({display: String(newValue), hasOperator: false})
+        } else if(newValue === "" && display ===""){
+            this.setState({display: ""})
+        }else{
+            this.setState({display:display ==="" ?newValue:display+newValue})
+        }
 
 }
     handleEquation = () => {
