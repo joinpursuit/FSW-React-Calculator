@@ -13,7 +13,7 @@ class Calculator extends Component {
     const { displayValue, waitingNewVal } = this.state;
     if (displayValue === "0" || waitingNewVal === true) {
       this.setState({
-        displayValue:  e.target.value 
+        displayValue:  e.target.value
       });
     } else
       this.setState({
@@ -79,8 +79,7 @@ class Calculator extends Component {
               className="nan"
               name="currVal"
               value="AC"
-              onClick={this.handleClearBtn}
-            >
+              onClick={this.handleClearBtn}>
               AC
             </button>
             <button
@@ -223,7 +222,7 @@ class Calculator extends Component {
               className="nan"
               name="currVal"
               value="."
-              onClick={this.handleNumClicks}
+              onClick={this.handleDecimal}
             >
               .
             </button>
