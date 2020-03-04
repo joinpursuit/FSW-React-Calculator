@@ -6,10 +6,10 @@ class Calculator extends React.Component {
         super(props)
 
         this.state = {
-            display: 0,
+            display: "",
             previousDisplay: '', 
             Operators: null,
-            nextDisplay: null,
+            previousDisplay: null,
             hasOperator:false
             
 
@@ -22,32 +22,32 @@ class Calculator extends React.Component {
         if(hasOperator){
             this.setState({display: String(newValue), hasOperator: false})
         } else if(newValue === "" && display ===""){
-            this.setState({display: ""})
+            this.setState({display: newValue})
         }else{
-            this.setState({display:display ==="" ?newValue:display+newValue})
+            this.setState({display:display===""?newValue:display+newValue})
         }
 
 }
     handleEquation = () => {
       
-        let { display, Operators, nextDisplay } = this.state
+        let { display, Operators, previousDisplay } = this.state
         if (Operators === '+') {
-          this.setState({ display:(Number(display)+ Number(nextDisplay))})
+          this.setState({ display:(Number(display)+ Number(previousDisplay))})
         } else if (Operators === '-') {
-            this.setState({display:(Number(display)-Number(nextDisplay)) })
+            this.setState({display:(Number(display)-Number(previousDisplay)) })
         } else if (Operators === '*') {
-            this.setState({ display:(Number(display)* Number(nextDisplay))})
+            this.setState({ display:(Number(display)* Number(previousDisplay))})
         } else if (Operators === '/') {
-            this.setState({ display:(Number(display) / Number(nextDisplay))})
+            this.setState({ display:(Number(display) / Number(previousDisplay))})
         }
     }
 
 
     decimal = (event) => {
-        let { display, nextDisplay } = this.state
-        this.setState(display => ({
-            nextDisplay: `${display}.${nextDisplay} + .`
-        }))
+        let {display} = this.state
+        let decimal = event.target.value
+        this.setState({
+            display:display + decimal })
     }
     percentage = (event) => {
         let { display } = this.state
@@ -57,12 +57,14 @@ class Calculator extends React.Component {
         let { display } = this.state
         this.setState({display: - display})
     }
+
     operatorButtons =(event)=>{
-        let {type} = event.target
-        let {display}=this.state
-        this.setState({   nextValue:true,
-            Operators:type,
-            nextDisplay:Number(display)})
+        let {display, previousDisplay, Operators} = this.state
+        let newValue = math.evaluate(`${previousDisplay} ${Operators} ${display}`)
+        let {type} = event.target.value
+        this.setState({display: newValue.toString(),
+            previousDisplay:newValue.toString(),
+            hasOperator: true})
     }
   
       acButton =()=>{
