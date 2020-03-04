@@ -95,6 +95,12 @@ class Calculator extends React.Component {
       }));
     }
   };
+  handlePercent = () => {
+    let res = this.state.currentVal / 100;
+    this.setState({
+      currentVal: `${res}`
+    });
+  };
 
   render() {
     console.log(this.state);
@@ -109,6 +115,7 @@ class Calculator extends React.Component {
         equalHandler={this.equalHandler}
         toggleHandler={this.toggleHandler}
         clearSymbol={clearSymbol}
+        handlePercent={this.handlePercent}
       />
     );
   }

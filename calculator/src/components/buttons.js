@@ -8,7 +8,8 @@ const Buttons = ({
   oppHandler,
   equalHandler,
   toggleHandler,
-  clearSymbol
+  clearSymbol,
+  handlePercent
 }) => {
   return (
     <div className="grid-container">
@@ -41,7 +42,7 @@ const Buttons = ({
         </button>
       </div>
       <div className="percent">
-        <button name="%" value="%">
+        <button onClick={handlePercent} name="%" value="%">
           %
         </button>
       </div>
