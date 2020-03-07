@@ -1,47 +1,80 @@
 import React, {Component} from "react";
 
 
+import "../CSS/styleCalc.css";
 
 class Calculator extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showValue: "0",
-      previousValue: "",
-      
+  // constructor(props) {
+    // super(props)
+    state = {
+      displayValue: 0,
+      previousValue: null,
+      operator: null,
+      newValue: false
+    // }
+  }
+
+
+  handleNumber = (e) => {
+    const { displayValue, newValue } = this.state;
+    if(displayValue === "0" || newValue === true) {
+      this.setState({
+        displayValue: e.target.value
+      })
+    } else {
+      this.setState({
+        displayValue: displayValue + e.target.value
+      })
     }
   }
-  
 
   render () {
-    let {showValue} = this.state
+    let {displayValue} = this.state
+    
+    
+    console.log(this.state)
     return (
       <div className="clacBox">
-      <div> Display showValue={showValue}</div>
+      
+      <div Display displayValue> {displayValue} </div>
         
-        <button handleClick={}> ÷ </button>
-        <button handleClick={}> % </button>
-        <button handleClick={}> ± </button>
-        <button handleClick={}> C </button>
-        <button handleClick={}> * </button>
-        <button handleClick={}> 9 </button>
-        <button handleClick={}> 8 </button>
-        <button handleClick={}> 7 </button>
-        <button handleClick={}> - </button>
-        <button handleClick={}> 6 </button>
-        <button handleClick={}> 5 </button>
-        <button handleClick={}> 4 </button>
-        <button handleClick={}> + </button>
-        <button handleClick={}> 3 </button>
-        <button handleClick={}> 2 </button>
-        <button handleClick={}> 1 </button>
-        <button handleClick={}> = </button>
-        <button handleClick={}> . </button>
-        <button handleClick={}> 0 </button>
+        <div className="row"> 
+        <button > ÷ </button>
+        <button > % </button>
+        <button > ± </button>
+        <button > C </button>
+        </div>
+
+        <div className="row">
+        <button > * </button>
+        <button > 9 </button>
+        <button > 8 </button>
+        <button > 7 </button>
+        </div> 
+
+        <div className="row"> 
+        <button > - </button>
+        <button > 6 </button>
+        <button > 5 </button>
+        <button > 4 </button>
+        </div>
+
+        <div className="row">
+        <button > + </button>
+        <button > 3 </button>
+        <button > 2 </button>
+        <button > 1 </button>
+        </div>
+
+        <div className="row"> 
+        <button > = </button>
+        <button > . </button>
+        <button > 0 </button>
+        </div>
       </div>
     )
   }
-}
+};
 
 export default Calculator;
 
