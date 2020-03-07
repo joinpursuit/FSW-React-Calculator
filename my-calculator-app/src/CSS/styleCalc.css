@@ -12,3 +12,14 @@ button {
     display: flex;
     width: 100%;
 }
+
+.DisplayCalc {
+    display: flex;
+    background-color: black;
+    /* text-emphasis-color: white; */
+    color: white;
+    height: 50px;
+    font-size: medium;
+    justify-content: flex-end ;
+   
+}

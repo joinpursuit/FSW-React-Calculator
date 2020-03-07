@@ -1,8 +1,4 @@
 import React, {Component} from "react";
-// import ClearButton from "../Componenets/ClearButton"
-// import * as math from 'mathjs'
-// import DisplayCalc from "../Componenets/DisplayCalc"
-
 import "../CSS/styleCalc.css";
 
 

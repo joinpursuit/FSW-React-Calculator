@@ -2,9 +2,9 @@
 
 ## Overview
 
-- You will create a React app that mimics a simple calculator
-- Please use `create-react-app` to generate your project
-- Break your application down to necessary components
+<!-- - You will create a React app that mimics a simple calculator -->
+<!-- - Please use `create-react-app` to generate your project -->
+<!-- - Break your application down to necessary components -->
 
 ## UI
 
@@ -22,14 +22,14 @@ You must implement all features in the MVP list.  After those are completed, loo
 
 Ensure that your app has each of the following:
 
-- Buttons 0-9 that can be used to input numbers
-- Addition button
-- Subtraction button
-- Multiplication button
-- Division button that support integer division
-- Equals button that executes the current operation
-- Clear button that resets everything
-- ± button that toggles between negative and positive numbers
+<!-- - Buttons 0-9 that can be used to input numbers -->
+<!-- - Addition button -->
+<!-- - Subtraction button -->
+<!-- - Multiplication button -->
+<!-- - Division button that support integer division -->
+<!-- - Equals button that executes the current operation -->
+<!-- - Clear button that resets everything -->
+<!-- - ± button that toggles between negative and positive numbers -->
 - Add commas appropriately in numbers (e.g turn "1000" into "1,000")
 
 ### Stretch Features
