@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 
-
 import "../CSS/styleCalc.css";
 
 class Calculator extends Component {
