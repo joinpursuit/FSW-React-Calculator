@@ -25,6 +25,10 @@ class Calculator extends Component {
     }
   }
 
+  handleAC = () => {
+    this.setState({displayValue: "0"})
+  }
+
   render () {
     // let {displayValue} = this.state
     
@@ -33,13 +37,13 @@ class Calculator extends Component {
   return(
     <div className="calcBox">
       <div className="DisplayCalc"> 
-      <p> {this.state.displayValue}  </p>
+      <p> {this.state.displayValue} </p>
       </div>
         <div className="row"> 
         <button value="÷" onClick={this.handleNumber}> ÷ </button>
         <button value="%" onClick={this.handleNumber}> % </button>
         <button value="±" onClick={this.handleNumber}> ± </button>
-        <button value="AC" onClick={this.handleNumber}> AC </button> 
+        <button value="AC" onClick={this.handleAC}> AC </button> 
         </div>
 
         <div className="row">
