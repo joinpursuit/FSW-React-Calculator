@@ -25,7 +25,7 @@ class Calculator extends Component {
     }
   }
 
-  handleAC = () => {
+  handleC = () => {
     this.setState({displayValue: "0"})
   }
 
@@ -46,9 +46,7 @@ class Calculator extends Component {
       return this.setState({displayValue: result4})
   }
  }
-
-
-
+//giving fizzbuzz
   // handleLogic = () => {
   //   const  { displayValue, previousValue, operator } = this.state;
 
@@ -79,7 +77,16 @@ class Calculator extends Component {
       newValue: true
     });
   };
-  
+
+
+  //you can check the first index of your string since that's how you're handling the numbers 
+  // and then just add the negative sign if there isn't one
+  handleToggle = () => {
+      const {displayValue} = this.state
+      this.setState({displayValue: displayValue.charAt(0) === "-" ? displayValue.substring(1) : "-" + displayValue})
+  }
+
+
 
   render () {
   
@@ -91,8 +98,8 @@ class Calculator extends Component {
         <div className="row"> 
         <button value="÷" onClick={this.handleOperator}> ÷ </button>
         <button value="%" onClick={this.handleOperator}> % </button>
-        <button value="±" onClick={this.handleNumber}> ± </button>
-        <button value="AC" onClick={this.handleAC}> AC </button> 
+        <button value="±" onClick={this.handleToggle}> ± </button>
+        <button value="AC" onClick={this.handleC}> C </button> 
         </div>
 
         <div className="row">
