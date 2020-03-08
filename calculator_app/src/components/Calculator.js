@@ -9,27 +9,27 @@ class Calculator extends Component {
     waitingNewVal: false
   };
 
-  handleNumClicks = (e) => {
+  handleNumClicks =e => {
     const { displayValue, waitingNewVal } = this.state;
     if (displayValue === "0" || waitingNewVal === true) {
       this.setState({
         displayValue:  e.target.value
       });
-    } else
+    } else {
       this.setState({
         displayValue: displayValue + e.target.value
       });
-  };
+  }
+};
 
   handleClearBtn = () =>
-    this.setState({ displayValue: "", previousValue: "", operator: "" });
+    this.setState({ displayValue: "0", previousValue: "", operator: "", waitingNewVal:false });
 
   handleActiveOperator = e => {
     const { displayValue } = this.state;
     this.setState({
-      displayValue: "",
-      previousValue: displayValue,
       operator: e.target.value,
+      previousValue: displayValue,
       waitingNewVal: true
     });
   };
@@ -79,7 +79,7 @@ class Calculator extends Component {
               className="nan"
               name="currVal"
               value="AC"
-              onClick={this.handleClearBtn}>
+              onClick={this.handleClearBtn} >
               AC
             </button>
             <button
@@ -211,7 +211,7 @@ class Calculator extends Component {
           </div>
           <div className="row">
             <button
-              className="number"
+              className="number zero"
               name="currVal"
               value="0"
               onClick={this.handleNumClicks}

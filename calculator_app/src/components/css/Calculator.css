@@ -35,6 +35,14 @@ p {
    grid-template-columns: repeat(4, 1fr);
  }
 
+ /* .last_row { 
+   display: grid;
+   grid-template-columns: ()
+} */
+.zero {
+   grid-column: 1/3;
+}
+
  button {
    flex: 1;
    align-items: center;
