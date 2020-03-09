@@ -23,3 +23,29 @@ button {
     justify-content: flex-end ;
    
 }
+
+.opp {
+    color: white;
+    background-color: orange;
+    /* font-size: 16; */
+}
+
+.oppZero {
+    width: 50%;
+}
+
+.oppPeriod {
+    width: 25%;
+}
+
+.oppEqual {
+    color: white;
+    background-color: orange;
+    width: 25%;
+    
+}
+
+.opp2Equal {
+    color: white;
+    background-color: orange;
+}

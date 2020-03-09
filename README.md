@@ -30,7 +30,7 @@ Ensure that your app has each of the following:
 <!-- - Equals button that executes the current operation -->
 <!-- - Clear button that resets everything -->
 <!-- - ± button that toggles between negative and positive numbers -->
-- Add commas appropriately in numbers (e.g turn "1000" into "1,000")
+<!-- - Add commas appropriately in numbers (e.g turn "1000" into "1,000") -->
 
 ### Stretch Features
 
