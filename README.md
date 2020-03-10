@@ -1,26 +1,32 @@
-## Functionality
+# Calculator
+Simple calculator that allows the user to perform 5 basic mathematical functions.
 
-You must implement all features in the MVP list.  After those are completed, look at and implement as many of the stretch features as you want to.
+## Details
+With the calculator, the user can perform 5 basic math operations: Addition, Subtraction, Multiplication, Division, and Exponents. With that they can also chain those operations and create a complex equation.
 
-### MVP
+## Features
+* Order of Operations: The order of operations logic was built out, as opposed to using an already built out library.
+* Simplified the development process by using React to break the app into components.
+* Added functionality to run the app using just a keyboard.
 
-Ensure that your app has each of the following:
+## Logic
+### Order of Operations 
+```findOperation = async (targetOperations, operations, operands) => {
+        let i = 0;
+        while(i < operations.length) {
+            let operation = operations[i];
+            let firstOperand = operands[i];
+            let secondOperand = operands[i + 1];
 
-- Buttons 0-9 that can be used to input numbers
-- Addition button
-- Subtraction button
-- Multiplication button
-- Division button that support integer division
-- Equals button that executes the current operation
-- Clear button that resets everything
-- ± button that toggles between negative and positive numbers
-- Add commas appropriately in numbers (e.g turn "1000" into "1,000")
+            if(operation === targetOperations[0] || operation === targetOperations[1]) {
+                let res = await this.findMathFunction(operation)(Number(firstOperand), Number(secondOperand));
+                operands.splice(i, 2, res);
+                operations.splice(i, 1);
+            } else {
+                i++;
+            }
+        }
+    } // End of findOperation() function ```
 
-### Stretch Features
-
-- `.` button that adds a decimal point to the current number
-- `%` button that converts the current value into a percentage
-- Support large and small numbers with [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#E_notation)
-- Chain together multiple operands
-    - ex:  5 + 5 + 5
-- Support exponentiation
+## [How to Start](https://github.com/IsaiahCollazo99/Calculator/blob/master/calculator/README.md)
+* Use these commands with the frontend folder open in the terminal
