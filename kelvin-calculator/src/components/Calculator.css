@@ -1,3 +1,4 @@
+
 .grid-container {
     display: grid;
     height: 500px;
@@ -20,14 +21,14 @@
       display: grid;
       grid-area: enter; }
 
-      .red{
+.pink{
           color: rgb(203, 144, 154);
       }
 
       .grey{
         color: rgb(107, 137, 143);
     }
-    .blue{
+    .purple{
         color: rgb(139, 84, 177);
     }
 .font {

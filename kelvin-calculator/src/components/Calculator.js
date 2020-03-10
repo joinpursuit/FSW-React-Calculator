@@ -10,7 +10,7 @@ export default class Calculator extends Component {
         state = {
           input: ""
         };
-      }
+      
 
     inputChange = (e) => {
         this.setState({input: this.state.input + e.target.value});
@@ -35,9 +35,9 @@ export default class Calculator extends Component {
 
 <div class="grid-container">
   <div class="input">
-  <NumberFormat type="text" class="font" thousandSeparator={true} value={this.state.input}></NumberFormat>
+  <NumberFormat type="text" className="font" thousandSeparator={true} value={this.state.input}></NumberFormat>
   </div>
-  <div class="buttons">
+  <div className="buttons">
                 <button className="pink" className="font" onClick={this.clearChange} value= {""}>ac</button>
                 <button className="grey" className="font" onClick={this.sunMoonChange} value= {"*"-1}>+/-</button>
                 <button className="grey" className="font" onClick={this.inputChange} value= {"."}>.</button>
@@ -64,4 +64,6 @@ export default class Calculator extends Component {
   </div>
 </div>          
         )
+    
+        }
     }
