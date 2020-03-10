@@ -11,7 +11,8 @@ With the calculator, the user can perform 5 basic math operations: Addition, Sub
 
 ## Logic
 ### Order of Operations 
-```findOperation = async (targetOperations, operations, operands) => {
+```
+findOperation = async (targetOperations, operations, operands) => {
         let i = 0;
         while(i < operations.length) {
             let operation = operations[i];
