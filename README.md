@@ -26,7 +26,8 @@ With the calculator, the user can perform 5 basic math operations: Addition, Sub
                 i++;
             }
         }
-    } // End of findOperation() function ```
+    } // End of findOperation() function 
+```
 
 ## [How to Start](https://github.com/IsaiahCollazo99/Calculator/blob/master/calculator/README.md)
 * Use these commands with the frontend folder open in the terminal
