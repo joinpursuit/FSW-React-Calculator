@@ -97,6 +97,7 @@ class Calculator extends Component {
   this.setState({displayValue: displayValue.charAt(0) === "-" ? displayValue.substring(1) : "-" + displayValue})
             }
             
+  // handle comma function not done
   handleAddCommas = () => {
     const { displayValue, previousValue} = this.state;
   // const arr = str.split('')
