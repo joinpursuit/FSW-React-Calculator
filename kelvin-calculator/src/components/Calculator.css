@@ -1,0 +1,35 @@
+.grid-container {
+    display: grid;
+    height: 500px;
+    width: 1250px;
+    grid-template-areas: ". . . . . . . . . . . ." ". . . . . . . . . . . ." ". . . . input input input input . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . enter enter enter enter . . . .";
+  }
+  
+  .input { 
+        display: grid;
+      grid-area: input; 
+    }
+  
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-area: buttons;
+  }
+  .enter { 
+      display: grid;
+      grid-area: enter; }
+
+      .red{
+          color: rgb(203, 144, 154);
+      }
+
+      .grey{
+        color: rgb(107, 137, 143);
+    }
+    .blue{
+        color: rgb(139, 84, 177);
+    }
+.font {
+    font-size: larger;
+}
