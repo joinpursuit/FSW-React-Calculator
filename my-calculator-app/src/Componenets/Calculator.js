@@ -5,29 +5,40 @@ import "../CSS/styleCalc.css";
 class Calculator extends Component {
     state = {
       displayValue: "0",
-      previousValue: null,
-      operator: null,
+      previousValue: '',
+      operator: '',
       newValue: false
     }
  
   handleNumber = (e) => {
-    const { displayValue, newValue } = this.state;
-    if(displayValue === "0" || newValue === true) {
+    e.preventDefault()
+    const { displayValue } = this.state;
+    let num = e.target.value 
+    if(displayValue === "0") {
       this.setState({
-        displayValue: e.target.value
-      });
+        displayValue: e.target.value + ""
+      }) 
     } else {
-      this.setState({
-        displayValue: displayValue + e.target.value
-      })
+      this.setState(prevState => ({displayValue: prevState.displayValue + num + "" }))
+
     }
+    // if(displayValue === "0" || newValue === true) {
+    //   this.setState({
+    //     displayValue: e.target.value
+    //   });
+    // } else {
+    //   this.setState({
+    //     displayValue: previousValue + e.target.value
+    //   })
+    // }
   }
 
   handleC = () => {
     this.setState({displayValue: "0"})
   }
 
-  handleSwitchLogic = () => {
+  handleSwitchLogic = () => { 
+    // debugger
     const  { displayValue, previousValue, operator } = this.state;
       switch(operator) {
     case '÷':
@@ -105,7 +116,7 @@ class Calculator extends Component {
             
 
   render () {
-  
+  console.log(this.state.displayValue, this.state.newValue)
   return(
     <div className="calcBox">
       <div className="DisplayCalc"> 
