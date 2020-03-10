@@ -31,4 +31,4 @@ findOperation = async (targetOperations, operations, operands) => {
 ```
 
 ## [How to Start](https://github.com/IsaiahCollazo99/Calculator/blob/master/calculator/README.md)
-* Use these commands with the frontend folder open in the terminal
+* Use these commands (linked on the above heading) with the frontend folder open in the terminal
