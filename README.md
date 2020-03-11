@@ -30,5 +30,54 @@ findOperation = async (targetOperations, operations, operands) => {
     } // End of findOperation() function 
 ```
 
+### Comma Placement
+```
+    placeCommas = (str) => {
+        let res = "";
+        let toSlice = "";
+        let decimal = "";
+
+        if(str[0] !== "-") {
+            if(str.length > 3) {
+                for(let i = 0; i < str.length; i++) {
+                    if(str[i] === ".") {
+                        toSlice = str.slice(0, i);
+                        decimal = str.slice(i);
+                        break;
+                    }
+                } 
+            }
+    
+            if(!toSlice) toSlice = str;
+    
+            while(toSlice.length > 3) {
+                let sliced = toSlice.slice(-3);
+                res = "," + sliced + res;
+                toSlice = toSlice.slice(0, -3);
+            }
+        } else {
+            if(str.length > 4) {
+                for(let i = 0; i < str.length; i++) {
+                    if(str[i] === ".") {
+                        toSlice = str.slice(0, i);
+                        decimal = str.slice(i);
+                    }
+                } 
+            }
+    
+            if(!toSlice) toSlice = str;
+    
+            while(toSlice.length > 4) {
+                let sliced = toSlice.slice(-3);
+                res += "," + sliced;
+                toSlice = toSlice.slice(0, -3);
+            }
+        }
+
+
+        return toSlice + res + decimal;
+    } // End of placeCommas() function
+```
+
 ## [How to Start](https://github.com/IsaiahCollazo99/Calculator/blob/master/calculator/README.md)
 * Use these commands (linked on the above heading) with the frontend folder open in the terminal
