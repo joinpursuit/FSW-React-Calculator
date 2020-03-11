@@ -4,10 +4,10 @@ Simple calculator that allows the user to perform 5 basic mathematical functions
 ## Details
 With the calculator, the user can perform 5 basic math operations: Addition, Subtraction, Multiplication, Division, and Exponents. With that they can also chain those operations and create a complex equation.
 
-## Features
+## Features / Technologies
 * Order of Operations: The order of operations logic was built out, as opposed to using an already built out library.
 * Simplified the development process by using React to break the app into components.
-* Added functionality to run the app using just a keyboard.
+* Ability to run the app using just a keyboard.
 
 ## Logic
 ### Order of Operations 
