@@ -2,13 +2,15 @@
 .grid-container {
     display: grid;
     height: 500px;
-    width: 1250px;
+    width: 250px;
     grid-template-areas: ". . . . . . . . . . . ." ". . . . . . . . . . . ." ". . . . input input input input . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . buttons buttons buttons buttons . . . ." ". . . . enter enter enter enter . . . .";
   }
   
   .input { 
         display: grid;
-      grid-area: input; 
+      grid-area: input;
+      width:250px
+      
     }
   
   .buttons {
@@ -22,15 +24,19 @@
       grid-area: enter; }
 
 .pink{
-          color: rgb(203, 144, 154);
+          color: black;
+          background-color: pink;
       }
 
-      .grey{
-        color: rgb(107, 137, 143);
+.grey{
+        color: black;
+        background-color: gray;
     }
-    .purple{
-        color: rgb(139, 84, 177);
+.purple{
+        color: black;
+        background-color: plum;
     }
-.font {
+.numbers {
     font-size: larger;
+    background-color: rgb(154, 154, 219);
 }
