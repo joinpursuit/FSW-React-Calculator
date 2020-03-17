@@ -1,6 +1,98 @@
+.calculatorContainer
+
 .calculator{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "clear polar percentage divide" "seven eight nine multiply" "four five six subtract" "one two three add" "zero zero decimal equal";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "result result result result"
+    "computation computation computation computation"
+    "obliterate obliterate sign divide" 
+    "seven eight nine multiply"
+    "four five six subtract"
+    "one two three plus"
+    "zero zero decimal equal";
+}
+
+.result {
+    grid-area: result;
+    background-color: yellow;
+}
+
+.computation {
+    grid-area: computation;
+    background-color: grey;
+}
+
+.obliterate {
+    grid-area: obliterate
+}
+
+.sign {
+    grid-area: sign;
+}
+
+.plus {
+    grid-area: plus
+}
+
+.subtract {
+    grid-area: subtract
+}
+
+.multiply { 
+    grid-area: multiply
+}
+
+.divide {
+    grid-area: divide
+}
+
+.nine {
+    grid-area: nine;
+}
+
+.eight {
+    grid-area: eight
+}
+
+.seven {
+    grid-area: seven
+}
+
+.six {
+    grid-area: six
+}
+
+.five {
+    grid-area: five
+}
+
+.four {
+    grid-area: four
+}
+
+.three {
+    grid-area: three
+}
+
+.two {
+    grid-area: two
+}
+
+.one {
+    grid-area: one
+}
+
+
+.zero {
+    grid-area: zero
+}
+
+.decimal {
+    grid-area: decimal
+}
+
+.equal {
+    grid-area: equal
 }

@@ -14,8 +14,8 @@ const Calculator = () => {
     let buttonGenerator = [
         {name: "obliterate", value: "C"},
         {name: "equal", value:"="},
-        {name: "sign", value:"-"},
-        {name: "add", value: "+"},
+        {name: "sign", value:"+-"},
+        {name: "plus", value: "+"},
         {name: "subtract", value: "-"},
         {name: "multiply", value: "*"},
         {name: "divide", value: "/"},
@@ -44,8 +44,11 @@ const Calculator = () => {
     
 
     return (
-        <div className="calculator">
-            {buttons}
+        
+        <div className="calculatorContainer">
+            <div className="calculator">
+                {buttons}
+            </div>
         </div>
     )
 

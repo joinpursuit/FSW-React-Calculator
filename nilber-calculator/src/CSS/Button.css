@@ -16,7 +16,7 @@
 }
 
 .button:active {
-    background-color: turquoise;
+    background-color: #03BAD6;
     box-shadow: 0 2px 2px #666;
     transform: translateY(4px);
 }

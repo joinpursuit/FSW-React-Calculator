@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames'
 import '../CSS/Button.css'
+import '../CSS/Calculator.css'
 
 const Button = ({key, name, value, onButtonClick}) => {
 
