@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffects} from 'react';
 import Button from './Button';
 import { create, all } from "mathjs";
 
