@@ -1,14 +1,15 @@
-import React, {useState, useEffects} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from './Button';
+import '../CSS/Calculator.css'
 import { create, all } from "mathjs";
 
 const math = create(all);
 
-const Calculator = () =>
+const Calculator = () => {
 
-    [display, setDisplay] = useState("")
-    [result, setResult] = useState("")
-    [error, setError] = useState("")
+    // [display, setDisplay] = useState("")
+    // [result, setResult] = useState("")
+    // [error, setError] = useState("")
 
     let buttonGenerator = [
         {name: "obliterate", value: "C"},
@@ -43,7 +44,7 @@ const Calculator = () =>
     
 
     return (
-        <div>
+        <div className="calculator">
             {buttons}
         </div>
     )

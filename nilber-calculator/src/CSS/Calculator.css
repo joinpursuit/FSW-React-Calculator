@@ -1,0 +1,6 @@
+.calculator{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "clear polar percentage divide" "seven eight nine multiply" "four five six subtract" "one two three add" "zero zero decimal equal";
+}

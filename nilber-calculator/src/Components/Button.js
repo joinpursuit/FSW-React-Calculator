@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames'
+import '../CSS/Button.css'
 
 const Button = ({key, name, value, onButtonClick}) => {
 
