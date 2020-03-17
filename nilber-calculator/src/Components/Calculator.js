@@ -10,7 +10,6 @@ const Calculator = () => {
         {name: "obliterate", value: "C"},
         {name: "equal", value:"="},
         {name: "sign", value:"-"},
-        {name: "percentage", value:"%"},
         {name: "add", value: "+"},
         {name: "subtract", value: "-"},
         {name: "multiply", value: "*"},
