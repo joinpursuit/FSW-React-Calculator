@@ -6,9 +6,9 @@
     outline: none;
     color: white;
     background-color: red;
-    border: none;
+    border: solid 1px white;
     border-radius: 5px;
-    box-shadow: 0 4px 4px #999;
+    box-shadow: 0 2px 2px #999;
 }
 
 .button:hover {
@@ -17,6 +17,6 @@
 
 .button:active {
     background-color: #03BAD6;
-    box-shadow: 0 2px 2px #666;
-    transform: translateY(4px);
+    box-shadow: 0 1px 1px #666;
+    transform: translateY(1px);
 }

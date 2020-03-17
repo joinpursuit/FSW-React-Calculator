@@ -1,7 +1,18 @@
-.calculatorContainer
+.calculatorContainer {
+    height: 100vh;
+    width: 100wh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url('./Mad\ Max\ Coma-Doof\ Warrior\ III.jpg');
+    background-repeat: repeat;
+    background-clip: padding-box
+}
 
 .calculator{
     display: grid;
+    margin-right: 10%;
+    margin-bottom: 15%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
