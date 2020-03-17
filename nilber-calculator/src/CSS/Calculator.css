@@ -37,6 +37,11 @@
     justify-content: flex-end;
     align-items: center;
     padding: 5%;
+    transition: background-color 0.5s ease-in;
+}
+
+.display:hover{
+    color:red;
 }
 
 .result {
@@ -118,7 +123,8 @@
 
 
 .zero {
-    grid-area: zero
+    grid-area: zero;
+    background-color: rgba(228,82,27,1);
 }
 
 .decimal {
