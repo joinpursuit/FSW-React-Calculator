@@ -4,7 +4,11 @@ import { create, all } from "mathjs";
 
 const math = create(all);
 
-const Calculator = () => {
+const Calculator = () =>
+
+    [display, setDisplay] = useState("")
+    [result, setResult] = useState("")
+    [error, setError] = useState("")
 
     let buttonGenerator = [
         {name: "obliterate", value: "C"},
