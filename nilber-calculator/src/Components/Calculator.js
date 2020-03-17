@@ -47,6 +47,8 @@ const Calculator = () => {
         
         <div className="calculatorContainer">
             <div className="calculator">
+                <div className="result"></div>
+                <div className="computation"></div>                
                 {buttons}
             </div>
         </div>
