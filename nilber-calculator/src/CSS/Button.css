@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap');
+
 .button {
-    padding: 15px 25px;
+    padding: 10px 20px;
     font-size: 24px;
-    text-align: center;
     cursor: pointer;
     outline: none;
     color: white;
@@ -9,6 +10,8 @@
     border: solid 1px white;
     border-radius: 5px;
     box-shadow: 0 2px 2px #999;
+    font-family: 'Baloo Da 2', cursive;
+    transition: background 0.5s ease-out;
 }
 
 .button:hover {

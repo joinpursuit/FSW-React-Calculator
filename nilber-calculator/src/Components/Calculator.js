@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Button from './Button';
 import '../CSS/Calculator.css'
 import { create, all } from "mathjs";
+import classNames from 'classnames'
 
 const math = create(all);
 
@@ -41,14 +42,15 @@ const Calculator = () => {
         return <Button key={button.name} name={button.name} value={button.value} onButtonClick={handleClick}/>
     })
 
-    
+    let result = classNames("display", "result")
+    let computation = classNames("display", "computation")
 
     return (
         
         <div className="calculatorContainer">
             <div className="calculator">
-                <div className="result"></div>
-                <div className="computation"></div>                
+                <div className={result}>HELLO</div>
+                <div className={computation}>HELLO</div>                
                 {buttons}
             </div>
         </div>
