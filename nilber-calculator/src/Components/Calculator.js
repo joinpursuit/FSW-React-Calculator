@@ -28,25 +28,24 @@ const Calculator = () => {
         setComputation("-" + computation)
     }
     
+    const handlePercentage = () => {
+        setComputation(computation / 100)
+    }
+
     const handleExpression = (event) => {
         setComputation(computation + event.target.value)
-    }
-    
-    const handlePercentage = () => {
-        setResult(result / 100 + "%")
-        setComputation("")
     }
     
     let buttonArray = [
         {name: "obliterate", value: "Clear", handleClick: handleClear},
         {name: "equal", value:"=", handleClick: handleCalculate},
         {name: "sign", value:"-+", handleClick: handleSign},
+        {name: "percentage", value: "%", handleClick: handlePercentage},
         {name: "plus", value: "+", handleClick: handleExpression},
         {name: "subtract", value: "-", handleClick: handleExpression},
         {name: "multiply", value: "*", handleClick: handleExpression},
         {name: "divide", value: "/", handleClick: handleExpression},
         {name: "decimal", value: ".", handleClick: handleExpression},
-        {name: "percentage", value: "%", handleClick: handlePercentage},
         {name: "open", value: "(", handleClick: handleExpression},
         {name: "closed", value: ")", handleClick: handleExpression},
         {name: "zero", value: "0", handleClick: handleExpression},
