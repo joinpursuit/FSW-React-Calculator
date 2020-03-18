@@ -12,7 +12,6 @@ const Calculator = () => {
     const [result, setResult] = useState("0")
     const [error, setError] = useState("")
 
-        
     const handleClear = () => {
         setComputation("")
         setResult("0")
@@ -25,7 +24,11 @@ const Calculator = () => {
     }
     
     const handleSign = () => {
-        setComputation("-" + computation)
+        if (computation.charAt(0) === "-"){
+            setComputation(computation.replace("-",""))
+        } else {
+            setComputation("-" + computation)
+        }
     }
     
     const handlePercentage = () => {
@@ -36,7 +39,7 @@ const Calculator = () => {
         setComputation(computation + event.target.value)
     }
     
-    let buttonArray = [
+    let calculatorKeys = [
         {name: "obliterate", value: "Clear", handleClick: handleClear},
         {name: "equal", value:"=", handleClick: handleCalculate},
         {name: "sign", value:"-+", handleClick: handleSign},
@@ -60,7 +63,7 @@ const Calculator = () => {
         {name: "nine", value: "9", handleClick: handleExpression},
     ]
 
-    let buttons = buttonArray.map( button => {
+    let buttons = calculatorKeys.map( button => {
         return <Button key={button.name} name={button.name} value={button.value} onButtonClick={button.handleClick}/>
     })
 
@@ -77,10 +80,7 @@ const Calculator = () => {
             </div>
         </div>
     )
-
-
-
+    
 }
-
 
 export default Calculator
