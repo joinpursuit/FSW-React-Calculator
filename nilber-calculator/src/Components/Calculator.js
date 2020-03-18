@@ -8,49 +8,55 @@ const math = create(all);
 
 const Calculator = () => {
 
-    // [display, setDisplay] = useState("")
-    // [result, setResult] = useState("")
-    // [error, setError] = useState("")
+        const [computation, setComputation] = useState("")
+        const [result, setResult] = useState("0")
+        const [error, setError] = useState("")
 
     let buttonGenerator = [
-        {name: "obliterate", value: "C"},
-        {name: "equal", value:"="},
-        {name: "sign", value:"+-"},
-        {name: "plus", value: "+"},
-        {name: "subtract", value: "-"},
-        {name: "multiply", value: "*"},
-        {name: "divide", value: "/"},
-        {name: "decimal", value:"."},
-        {name: "zero", value: "0"},
-        {name: "one", value: "1"},
-        {name: "two", value: "2"},
-        {name: "three", value: "3"},
-        {name: "four", value: "4"},
-        {name: "five", value: "5"},
-        {name: "six", value: "6"},
-        {name: "seven", value: "7"},
-        {name: "eight", value: "8"},
-        {name: "nine", value: "9"},
+        {name: "obliterate", value: "Clear", handleClick: handleClear},
+        {name: "equal", value:"=", handleClick: handleCalculate},
+        {name: "sign", value:"-+", handleClick: handleSign},
+        {name: "plus", value: "+", handleClick: handleExpression},
+        {name: "subtract", value: "-", handleClick: handleExpression},
+        {name: "multiply", value: "*", handleClick: handleExpression},
+        {name: "divide", value: "/", handleClick: handleExpression},
+        {name: "decimal", value: ".", handleClick: handleExpression},
+        {name: "percentage", value: "%", handleClick: handlePercentage},
+        {name: "open", value: "(", handleClick: handleExpression},
+        {name: "closed", value: ")", handleClick: handleExpression},
+        {name: "zero", value: "0", handleClick: handleExpression},
+        {name: "one", value: "1", handleClick: handleExpression},
+        {name: "two", value: "2", handleClick: handleExpression},
+        {name: "three", value: "3", handleClick: handleExpression},
+        {name: "four", value: "4", handleClick: handleExpression},
+        {name: "five", value: "5", handleClick: handleExpression},
+        {name: "six", value: "6", handleClick: handleExpression},
+        {name: "seven", value: "7", handleClick: handleExpression},
+        {name: "eight", value: "8", handleClick: handleExpression},
+        {name: "nine", value: "9", handleClick: handleExpression},
     ]
 
 
-    const handleClick = () => {
-        console.log(buttonGenerator)
+    const handleClick = (event) => {
+        setComputation("")
+        console.log(computation)
+        setComputation(computation + event.target.value)
     }
 
+
     let buttons = buttonGenerator.map( button => {
-        return <Button key={button.name} name={button.name} value={button.value} onButtonClick={handleClick}/>
+        return <Button name={button.name} value={button.value} onButtonClick={button.handleClick}/>
     })
 
-    let result = classNames("display", "result")
-    let computation = classNames("display", "computation")
+    let classResult = classNames("display", "result")
+    let classComputation = classNames("display", "computation")
 
     return (
         
         <div className="calculatorContainer">
             <div className="calculator">
-                <div className={result}>HELLO</div>
-                <div className={computation}>HELLO</div>                
+                <div className={classResult}>{result}</div>
+                <div className={classComputation}>{computation}</div>                
                 {buttons}
             </div>
         </div>

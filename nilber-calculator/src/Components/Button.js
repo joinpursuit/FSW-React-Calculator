@@ -3,12 +3,12 @@ import classNames from 'classnames'
 import '../CSS/Button.css'
 import '../CSS/Calculator.css'
 
-const Button = ({key, name, value, onButtonClick}) => {
+const Button = ({name, value, onButtonClick}) => {
 
     let buttonClass = classNames(name, "button")
 
     return (
-        <button className={buttonClass} key={key} name={name} value={value} onClick={onButtonClick}>{value}</button>
+        <button className={buttonClass} key={name} name={name} value={value} onClick={onButtonClick}>{value}</button>
     )
 }
 

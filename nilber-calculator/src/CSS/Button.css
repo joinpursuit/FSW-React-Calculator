@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap');
 
 .button {
-    padding: 10px 20px;
+    padding: 10px 30px;
     font-size: 24px;
+    line-height: 1 em;
     cursor: pointer;
     outline: none;
     color: white;
@@ -11,19 +12,17 @@
     border-radius: 5px;
     box-shadow: 0 2px 2px #999;
     font-family: 'Baloo Da 2', cursive;
-    transition: background 0.5s ease-in;
+    transition: background-color 0.5s ease-in;
 }
 
 .button:hover {
-    color: black;
-    background: rgb(228,200,27);
-    background: linear-gradient(0deg, rgba(228,200,27,1) 2%, rgba(227,176,27,1) 14%, rgba(224,151,27,1) 30%, rgba(226,129,27,1) 52%, rgba(228,82,27,1) 74%, rgba(228,32,27,1) 95%);
+    color: white;
+    background-color: rgb(17, 57, 159);
 }
 
 .button:active {
-    color: black;
-    background: rgb(228,200,27);
-    background: linear-gradient(180deg, rgba(228,200,27,1) 2%, rgba(227,176,27,1) 14%, rgba(224,151,27,1) 30%, rgba(226,129,27,1) 52%, rgba(228,82,27,1) 74%, rgba(228,32,27,1) 95%);
+    color: white;
+    background-color: rgb(17, 57, 159);
     box-shadow: 0 1px 1px #666;
-    transform: translateY(1px);
+    transform: translateY(2px);
 }
