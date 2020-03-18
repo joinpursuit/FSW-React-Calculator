@@ -19,6 +19,10 @@ const Calculator = () => {
         setError(false)
     }
 
+    const handleBackspace = () => {
+        setComputation(computation.slice(0,computation.length-1))
+    }
+
     const handleCalculate = () => {
         let solution = math.evaluate(computation)
         setResult(solution)
@@ -45,6 +49,7 @@ const Calculator = () => {
 
     let calculatorKeys = [
         {name: "obliterate", value: "Clear", handleClick: handleClear},
+        {name: "backspace", value:"<-", handleClick: handleBackspace},
         {name: "equal", value:"=", handleClick: handleCalculate},
         {name: "sign", value:"-+", handleClick: handleSign},
         {name: "percentage", value: "%", handleClick: handlePercentage},

@@ -22,12 +22,12 @@
     grid-template-areas: 
     "result result result result"
     "computation computation computation computation"
-    "obliterate obliterate sign divide" 
-    "seven eight nine multiply"
-    "four five six subtract"
-    "one two three plus"
-    "zero open close percentage"
-    "zero decimal equal equal";
+    "obliterate obliterate backspace sign" 
+    "seven eight nine divide"
+    "four five six multiply"
+    "one two three subtract"
+    "zero open close plus"
+    "zero decimal percentage equal";
     background-color: white;
     border: solid 5px white;
     border-radius: 5px;
@@ -36,7 +36,11 @@
 }
 
 .obliterate {
-    grid-area: obliterate
+    grid-area: obliterate;
+}
+
+.backspace {
+    grid-area: backspace;
 }
 
 .sign {
@@ -44,15 +48,15 @@
 }
 
 .plus {
-    grid-area: plus
+    grid-area: plus;
 }
 
 .subtract {
-    grid-area: subtract
+    grid-area: subtract;
 }
 
 .multiply { 
-    grid-area: multiply
+    grid-area: multiply;
 }
 
 .divide {
