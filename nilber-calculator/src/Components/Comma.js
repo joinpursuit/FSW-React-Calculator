@@ -1,10 +1,8 @@
 // This function assumes what is being submitted to it is a string, with a decimal point and two places after the decimal. 
-// To get your number into that format first, use this.
-// Then this function will properly comma separate the number. For example, 2345643.00 will return 2,345,643.00
 
-function CommaFormatted(amount) {
+const CommaFormatted = (number) => {
 	var delimiter = ","; // replace comma if desired
-	var a = amount.split('.',2)
+	var a = number.split('.',2)
 	var d = a[1];
 	var i = parseInt(a[0]);
 	if(isNaN(i)) { return ''; }
