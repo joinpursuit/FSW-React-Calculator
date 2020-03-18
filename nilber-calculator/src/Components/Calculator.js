@@ -24,11 +24,7 @@ const Calculator = () => {
     }
     
     const handleSign = () => {
-        if (computation.charAt(0) === "-"){
-            setComputation(computation.replace("-",""))
-        } else {
-            setComputation("-" + computation)
-        }
+        computation.charAt(0) === "-" ? setComputation(computation.replace("-","")) : setComputation("-" + computation)
     }
     
     const handlePercentage = () => {
