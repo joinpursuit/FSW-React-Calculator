@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap');
+@import './Error.css';
 @import './Display.css';
 
 .calculatorContainer {
@@ -33,8 +34,6 @@
     box-shadow: 0 2px 2px #999;
     font-family: 'Baloo Da 2', cursive;
 }
-
-
 
 .obliterate {
     grid-area: obliterate

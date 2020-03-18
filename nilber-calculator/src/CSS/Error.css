@@ -1,0 +1,8 @@
+.error {
+    grid-area: result;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color:red;
+    font-weight: bold;
+}

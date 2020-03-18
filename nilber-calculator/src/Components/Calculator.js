@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from './Button';
+import Error from './Error';
 import '../CSS/Calculator.css'
 import { create, all } from "mathjs";
 import classNames from 'classnames'
@@ -10,11 +11,12 @@ const Calculator = () => {
 
     const [computation, setComputation] = useState("")
     const [result, setResult] = useState("0")
-    const [error, setError] = useState("")
+    const [error, setError] = useState(false)
 
     const handleClear = () => {
         setComputation("")
         setResult("0")
+        setError(false)
     }
 
     const handleCalculate = () => {
@@ -24,17 +26,23 @@ const Calculator = () => {
     }
     
     const handleSign = () => {
-        computation.charAt(0) === "-" ? setComputation(computation.replace("-","")) : setComputation("-" + computation)
+        computation.charAt(0) === "-" ? setComputation(computation.slice(1)) : setComputation("-" + computation)
     }
     
     const handlePercentage = () => {
         setComputation(computation / 100)
     }
 
+    const handleValidation = (calculation) => {
+        !eval(calculation) && !"0" ? setError(true) && setResult("") : setError(false)
+        console.log(eval(calculation))
+    }
+
     const handleExpression = (event) => {
         setComputation(computation + event.target.value)
+        handleValidation(computation)
     }
-    
+
     let calculatorKeys = [
         {name: "obliterate", value: "Clear", handleClick: handleClear},
         {name: "equal", value:"=", handleClick: handleCalculate},
@@ -73,6 +81,7 @@ const Calculator = () => {
                 <div key="result" className={classResult}>{result}</div>
                 <div key="computation" className={classComputation}>{computation}</div>                
                 {buttons}
+                {error ? <Error className="error" message="Invalid Input. Please Clear" /> : null}
             </div>
         </div>
     )
