@@ -8,7 +8,7 @@ const Button = ({name, value, onButtonClick}) => {
     let buttonClass = classNames(name, "button")
 
     return (
-        <button className={buttonClass} key={name} name={name} value={value} onClick={onButtonClick}>{value}</button>
+        <button className={buttonClass} name={name} value={value} onClick={onButtonClick}>{value}</button>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Button from './Button';
 import '../CSS/Calculator.css'
 import { create, all } from "mathjs";
@@ -8,11 +8,36 @@ const math = create(all);
 
 const Calculator = () => {
 
-        const [computation, setComputation] = useState("")
-        const [result, setResult] = useState("0")
-        const [error, setError] = useState("")
+    const [computation, setComputation] = useState("")
+    const [result, setResult] = useState("0")
+    const [error, setError] = useState("")
 
-    let buttonGenerator = [
+        
+    const handleClear = () => {
+        setComputation("")
+        setResult("0")
+    }
+
+    const handleCalculate = () => {
+        let solution = math.evaluate(computation)
+        setResult(solution)
+        setComputation("")
+    }
+    
+    const handleSign = () => {
+        setComputation("-" + computation)
+    }
+    
+    const handleExpression = (event) => {
+        setComputation(computation + event.target.value)
+    }
+    
+    const handlePercentage = () => {
+        setResult(result / 100 + "%")
+        setComputation("")
+    }
+    
+    let buttonArray = [
         {name: "obliterate", value: "Clear", handleClick: handleClear},
         {name: "equal", value:"=", handleClick: handleCalculate},
         {name: "sign", value:"-+", handleClick: handleSign},
@@ -36,16 +61,8 @@ const Calculator = () => {
         {name: "nine", value: "9", handleClick: handleExpression},
     ]
 
-
-    const handleClick = (event) => {
-        setComputation("")
-        console.log(computation)
-        setComputation(computation + event.target.value)
-    }
-
-
-    let buttons = buttonGenerator.map( button => {
-        return <Button name={button.name} value={button.value} onButtonClick={button.handleClick}/>
+    let buttons = buttonArray.map( button => {
+        return <Button key={button.name} name={button.name} value={button.value} onButtonClick={button.handleClick}/>
     })
 
     let classResult = classNames("display", "result")
@@ -55,8 +72,8 @@ const Calculator = () => {
         
         <div className="calculatorContainer">
             <div className="calculator">
-                <div className={classResult}>{result}</div>
-                <div className={classComputation}>{computation}</div>                
+                <div key="result" className={classResult}>{result}</div>
+                <div key="computation" className={classComputation}>{computation}</div>                
                 {buttons}
             </div>
         </div>
