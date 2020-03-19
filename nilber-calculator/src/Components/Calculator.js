@@ -20,7 +20,7 @@ const Calculator = () => {
     }
 
     const handleBackspace = () => {
-        setComputation(computation.slice(0,computation.length-1))
+        setComputation(computation.pop())
     }
 
     const handleCalculate = () => {
