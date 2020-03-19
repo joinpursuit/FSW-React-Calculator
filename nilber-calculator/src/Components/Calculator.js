@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Button from './Button';
 import Error from './Error';
 import '../CSS/Calculator.css'
@@ -20,13 +20,19 @@ const Calculator = () => {
     }
 
     const handleBackspace = () => {
-        setComputation(computation.pop())
+        setComputation(computation.slice(0,computation.length-1))
     }
 
     const handleCalculate = () => {
-        let solution = math.evaluate(computation)
-        setResult(solution)
-        setComputation("")
+        try {
+            let solution = math.evaluate(computation)
+            setResult(solution)
+            setComputation("")
+        } catch (error) {
+            setResult("")
+            setComputation()
+            setError(true)
+        }
     }
     
     const handleSign = () => {
@@ -37,14 +43,8 @@ const Calculator = () => {
         setComputation(computation / 100)
     }
 
-    const handleValidation = (calculation) => {
-        !eval(calculation) && !"0" ? setError(true) && setResult("") : setError(false)
-        console.log(eval(calculation))
-    }
-
     const handleExpression = (event) => {
         setComputation(computation + event.target.value)
-        handleValidation(computation)
     }
 
     let calculatorKeys = [
