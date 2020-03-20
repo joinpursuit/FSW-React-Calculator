@@ -2,7 +2,9 @@
     grid-area: result;
     display: flex;
     justify-content: flex-end;
+    margin-right: 10px;
     align-items: center;
     color:red;
+    font-size: 20px;
     font-weight: bold;
 }
