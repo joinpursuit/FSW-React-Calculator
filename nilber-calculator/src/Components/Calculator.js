@@ -30,7 +30,7 @@ const Calculator = () => {
             setComputation("")
         } catch (error) {
             setResult("")
-            setComputation()
+            setComputation("")
             setError(true)
         }
     }
