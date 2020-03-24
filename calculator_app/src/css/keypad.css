@@ -1,0 +1,64 @@
+.row1 button{
+    background-color: skyblue;
+    color: whitesmoke;
+    height: 50px;  
+    width: 50px; 
+}
+
+.row1 button:hover {
+    background-color: lightblue;
+    color: pink;
+}
+.row2 button:hover {
+    background-color: lightblue;
+    color: pink;
+}
+.row3 button:hover {
+    background-color: lightblue;
+    color: pink;
+}
+.row4 button:hover {
+    background-color: lightblue;
+    color: pink;
+}
+
+.equals:hover {
+    background-color: goldenrod;
+    color: white;
+}
+
+.row2 button{
+    background-color: skyblue;
+    color: whitesmoke;
+    height: 50px;  
+    width: 50px; 
+}
+
+.row3 button{
+    background-color: skyblue;
+    color: whitesmoke;
+    height: 50px;  
+    width: 50px; 
+}
+
+.row4 button{
+    background-color: skyblue;
+    color: whitesmoke;
+    height: 50px;  
+    width: 50px; 
+}
+
+.equals {
+    background-color: white;
+    color: skyblue;
+    height: 50px;
+    width: 200px;
+}
+
+.keyboard {
+    margin: auto;
+    background-color: white;
+    background-color: skyblue;
+    width: 200px;
+    height: 200px
+}

@@ -1,0 +1,11 @@
+.displayContainer {
+    margin: auto;
+    background-color: white;
+    width: 200px;
+    height: 100px
+}
+
+p {
+    color: skyblue;
+    font-size: xx-large;
+}
