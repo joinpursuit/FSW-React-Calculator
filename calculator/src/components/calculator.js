@@ -3,6 +3,7 @@ import {evaluate} from "mathjs";
 import NumberFormat from 'react-number-format'
 import '../css/calculator.css'
 
+
 export default class Calculator extends Component {
 
     constructor(props) {
