@@ -1,18 +1,13 @@
-# Pursuit-Core-Web-React-Calculator-Lab
+# React Calculator
 
 ## Overview
-
-- You will create a React app that mimics a simple calculator
-- Please use `create-react-app` to generate your project
-- Break your application down to necessary components
+A simple calculator built with React to emulate the functionality of a typical smartphone calculator.
 
 ## UI
 
-Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
+My UI was inspired by the iOS portrait calculator with some color choices chosen by my little cousin 😊.
 
-<img src="./images/exampleScreenshotOne.png" alt="Example One" width="400">
-<img src="./images/exampleScreenshotTwo.png" alt="Example Two" width="400">
-<img src="./images/exampleScreenshotThree.png" alt="Example Three" width="400">
+<img src="./images/UI.png" alt="My UI" width="400">
 
 ## Functionality
 
@@ -32,3 +27,6 @@ Feel free to make the design your own.  Here are some real calculator UIs that y
     - ex:  5 + 5 + 5
 - Chain together multiple equals sign button pushes
     - ex: `5` `+` `5` `=` `=` `=` should display `20`
+    
+## Demo
+![](./images/React-Calculator-Demo.gif)
