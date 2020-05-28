@@ -1,8 +1,9 @@
-# Pursuit-Core-Web-React-Calculator-Lab
+# React Calculator
+
+Create a React app that mimics a simple calculator
 
 ## Overview
 
-- You will create a React app that mimics a simple calculator
 - Please use `create-react-app` to generate your project
 - Break your application down to necessary components
 
@@ -16,7 +17,7 @@ Feel free to make the design your own.  Here are some real calculator UIs that y
 
 ## Functionality
 
-You must implement all features in the MVP list.  After those are completed, look at and implement as many of the stretch features as you want to.
+You must implement all features in the MVP list. After those are completed, look at and implement as many of the stretch features as you want to.
 
 ### MVP
 
