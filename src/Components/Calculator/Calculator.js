@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Screen from './../Screen/Screen';
-import {numberCodes, operationCodes} from './../../assets/keyCodes';
-import './../../css/Calculator.css';
+import Screen from '../Screen/Screen';
+import {numberCodes, operationCodes} from '../../assets/keyCodes';
+import '../../css/Calculator.css';
 
 let operatorLast = false;
 
@@ -205,7 +205,6 @@ class Calculator extends Component {
                     if(str[i] === ".") {
                         toSlice = str.slice(0, i);
                         decimal = str.slice(i);
-                        break;
                     }
                 } 
             }

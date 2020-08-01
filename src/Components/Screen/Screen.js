@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './../../css/Screen.css'
+import '../../css/Screen.css'
 
 class Screen extends Component {
     render = () => {
