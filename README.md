@@ -1,67 +1,68 @@
-# Pursuit-Core-Web-React-Calculator-Lab
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Overview
+## Available Scripts
 
-- You will create a React app that mimics a simple calculator
-- Please use `create-react-app` to generate your project
-- Break your application down to necessary components
+In the project directory, you can run:
 
-## UI
+### `npm start`
 
-Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-<img src="./images/exampleScreenshotOne.png" alt="Example One" width="400">
-<img src="./images/exampleScreenshotTwo.png" alt="Example Two" width="400">
-<img src="./images/exampleScreenshotThree.png" alt="Example Three" width="400">
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Functionality
+### `npm test`
 
-You must implement all features in the MVP list.  After those are completed, look at and implement as many of the stretch features as you want to.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### MVP
+### `npm run build`
 
-Ensure that your app has each of the following:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- Buttons 0-9 that can be used to input numbers
-- Addition button
-- Subtraction button
-- Multiplication button
-- Division button that support integer division
-- Equals button that executes the current operation
-- Clear button that resets everything
-- ± button that toggles between negative and positive numbers
-- Add commas appropriately in numbers (e.g turn "1000" into "1,000")
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-### Stretch Features
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- `.` button that adds a decimal point to the current number
-- `%` button that converts the current value into a percentage
-- Support large and small numbers with [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#E_notation)
-- Change the clear button to toggle between:
-    - AC Clears all of the data in the screen
-    - C: Clears only what is being displayed
-- Chain together multiple operands
-    - ex:  5 + 5 + 5
-- Chain together multiple equals sign button pushes
-    - ex: `5` `+` `5` `=` `=` `=` should display `20`
-- `()` buttons to support order of operations
-- Support exponentiation and square roots
-- Support geometric operations
+### `npm run eject`
 
-Helpful Libraries for Decimals:
-- [decimal.js](https://mikemcl.github.io/decimal.js/)
-- [math.js](https://mathjs.org/)
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## State
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-State will be an important component of your application.  It may be helpful to think about incorporating the following elements into your state:
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-- displayValue (What the screen currently displays)
-- previousValue (What value the user selected before pressing an operation button)
-- operation (What operation the user is performing (+/-/÷/x))
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Rubric
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-![calculatorRubric](./images/calculatorRubric.png)
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
