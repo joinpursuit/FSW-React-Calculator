@@ -205,6 +205,7 @@ class Calculator extends Component {
                     if(str[i] === ".") {
                         toSlice = str.slice(0, i);
                         decimal = str.slice(i);
+                        break;
                     }
                 } 
             }
