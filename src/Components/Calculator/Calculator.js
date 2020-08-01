@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Screen from '../Screen/Screen';
 import {numberCodes, operationCodes} from '../../assets/keyCodes';
 import '../../css/Calculator.css';
+import mathFunctions from '../../util/mathFunctions';
 
 let operatorLast = false;
 
@@ -10,21 +11,12 @@ class Calculator extends Component {
         super(props);
         this.handleKeyUp = this.handleKeyUp.bind(this);
     }
-    
+
     state = {
         operations: [],
         operands: ["0"],
         res: 0
     }
-
-    mathFunctions = {
-        "+": () => this.add,
-        "-": () => this.subtract,
-        "*": () => this.multiply,
-        "/": () => this.divide,
-        "^": () => this.exponent
-    }
-
     componentDidMount = () => {
         document.addEventListener("keyup", this.handleKeyUp);
     } // End of componentDidMount() function
@@ -90,10 +82,11 @@ class Calculator extends Component {
     } // End of addDecimal() function
 
     addToScreen = (input) => {
-        let {operands, res} = this.state; // Grabbing all operations and operands from state
+        let {operands, operations, res} = this.state; // Grabbing all operations and operands from state
         let lastIdx = operands.length - 1; // Grabbing the last index of the operands
         let currentOperand = operands[lastIdx]; // Grabbing the current operand (last in the arr)
         let newOperands = operands.slice(0, lastIdx); // Grabbing the operands arr w/o the current operand
+        const noRes = currentOperand === res && !operations.length;
 
         if(this.isOperator(input)) {
             // If the input is an operator, and the last input isn't an operator then the operator is set
@@ -102,7 +95,7 @@ class Calculator extends Component {
         } else {
             if(this.isDecimal(input)) {
                 this.addDecimal(input);
-            } else if(operands[0] === res.toString()) {
+            } else if(noRes) {
                 this.setState(({operands: [input], res: 0}));
             }else {
                 if(currentOperand === "0") {
@@ -147,7 +140,7 @@ class Calculator extends Component {
         this.setState({operations: [], operands: ["0"]});
     } // End of resetScreen() function
 
-    findMathFunction = (operation) => this.mathFunctions[operation]();
+    findMathFunction = (operation) => mathFunctions[operation]();
 
     findOperation = async (targetOperations, operations, operands) => {
         let i = 0;
@@ -180,20 +173,9 @@ class Calculator extends Component {
 
             await this.findOperation(["+", "-"], operationsToMutate, operandsToMutate);
 
-            this.setState({operations: [], operands: [operandsToMutate[0].toString()], res: [operandsToMutate[0]]})
+            this.setState({operations: [], operands: [operandsToMutate[0].toString()], res: operandsToMutate[0]})
         }
     } // End of calculate() function
-
-    add = (num1, num2) => num1 + num2;
-
-    subtract = (num1, num2) => num1 - num2;
-
-    multiply = (num1, num2) => num1 * num2;
-
-    divide = (num1, num2) => num1 / num2;
-
-    exponent = (num1, num2) => Math.pow(num1, num2)
-
     placeCommas = (str) => {
         let res = "";
         let toSlice = "";
@@ -275,7 +257,6 @@ class Calculator extends Component {
             }
         })
 
-        console.log(this.state);
         return (
             <div className={this.props.className}>
                 <Screen className="screen" text={screenText}/>
