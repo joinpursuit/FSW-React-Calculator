@@ -9,6 +9,8 @@ Create a React app that mimics a simple calculator
 
 ## UI
 
+Example project: https://www.coreyladovsky.com/calculator/
+
 Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
 
 <img src="./images/exampleScreenshotOne.png" alt="Example One" width="400">
@@ -22,7 +24,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 ### User Stories
 
 1. I can see a calculator UI.
-1. I can enter readable positive and negative integers.
+1. I can enter and see positive and negative integers.
 1. I can add, subtract, multiply, and divide.
 1. I can clear my input to reset everything.
 
@@ -49,7 +51,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 - I can enter a number, `+`, another number, then `=` and see the correct addition result.
 - I can enter a number, `-`, another number, then `=` and see the correct subtraction result.
 - I can enter a number, `x`, another number, then `=` and see the correct multiplication result.
-- I can enter a number, `x`, another number, then `=` and see the correct division result _to the nearest integer_.
+- I can enter a number, `x`, another number, then `=` and see the correct division result _rounded to the nearest integer_.
 
 **I can clear my input to reset everything.**
 
@@ -76,7 +78,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 - Write Cypress tests for your calculator!
 - Support large and small numbers with [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#E_notation)
 - Change the clear button to toggle between:
-    - AC Clears all of the data in the screen
+    - AC Clears all of the data in the screen and all the history
     - C: Clears only what is being displayed
 - Chain together multiple operands
     - ex:  5 + 5 + 5
