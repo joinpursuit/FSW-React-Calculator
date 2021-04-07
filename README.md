@@ -27,6 +27,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 1. I can enter and see positive and negative integers.
 1. I can add, subtract, multiply, and divide.
 1. I can clear my input to reset everything.
+1. I can visit the calculator on the Internet.
 
 ### Acceptance Criteria
 
@@ -58,6 +59,10 @@ You must implement all of the user stories and acceptance criteria below. After 
 - When I click the clear key, the number on the screen is removed.
 - When I click the clear key, I see a default number `0` on the screen.
 - When I click the clear key during a calculation in progress, the full state is reset. (When I push `=`, the screen should still say `0`)
+
+**I can visit the calculator on the Internet.**
+
+- A working public URL is submitted that loads the project.
 
 ### Code Quality Rubric
 
