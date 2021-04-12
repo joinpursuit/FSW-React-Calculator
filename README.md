@@ -108,3 +108,5 @@ State will be an important component of your application.  It may be helpful to 
 - previousValue (What value the user selected before pressing an operation button)
 - operation (What operation the user is performing (+/-/÷/x))
 
+## Deploy 
+Deploy your app following these [instructions](https://github.com/joinpursuit/Pursuit-Core-Web/tree/master/react/react_deployment)
