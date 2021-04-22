@@ -1,15 +1,26 @@
 import React from "react"
-class Equal extends React.Component{
-constructor(props){
-    super(props)
+
+const Equal = ({first,second,mod,handleEqual})=>{
+
+
+const finalEqual = {
+first:first,
+mod:mod,
+second:second
+
 }
-render(){
+
+
+
+
+
+
     return(
         <div>
-            <button>EQUAL</button>
+            <button onClick={()=> handleEqual(finalEqual)}>EQUAL</button>
         </div>
     )
-}
+
 
 
 }

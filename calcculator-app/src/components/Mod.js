@@ -6,7 +6,7 @@ const Mod = ({handleMod}) => {
   const modButtons = {
     sum:  "+", 
     subtract: "-", 
-    add:"÷",
+    divide:"÷",
     multiply: "*"}
 
 // const entry = ()=>{

@@ -5,7 +5,13 @@ import Equal from "./Equal.js";
 import "./styles/Input.css";
 
 class Input extends React.Component {
-  state = { input: "", firstDisplay: "", mod: "", secondDisplay: [] };
+  state = {
+    input: "",
+    firstDisplay: "",
+    mod: "",
+    secondDisplay: [],
+    answer: 0,
+  };
 
   handleInputChange = (event) => {
     //let display = event.target.value.split("");
@@ -41,7 +47,7 @@ class Input extends React.Component {
     } else {
       this.setState((prevState) => ({
         input: event + prevState.input,
-        firstDisplay: event + prevState.input,
+        firstDisplay: [event, ...prevState.input],
       }));
     }
 
@@ -49,16 +55,30 @@ class Input extends React.Component {
     //this.setState({ input: newButton.type+prevState.input});
   };
 
-handleMod = (event)=>{
-    console.log(event)
+  handleMod = (event) => {
+    console.log(event);
     this.setState((prevState) => ({
-        input: "",
-        mod: event,
-        secondDisplay:prevState,
-      }));
+      input: "",
+      mod: event,
+      secondDisplay: prevState,
+    }));
+  };
+
+  handleEqual = (event) => {
+    console.log(event);
+if(event.mod === "sum"){
+    let answer = Number(event.first) + Number(event.second)
+    this.setState({input:answer})
 }
+    // let answer = a + c
+    // this.setState({answer:answer})
 
-
+    // this.setState((prevState) => ({
+    //     input: "",
+    //     mod: event,
+    //     secondDisplay: prevState,
+    //   }));
+  };
 
   // .reverse().join(''), press: [newButton.type,...prevState.press]}))
 
@@ -74,8 +94,13 @@ handleMod = (event)=>{
         />
         <button onClick={this.test}></button>
         <Grid handleGrid={this.handleGrid} />
-        <Mod handleMod={this.handleMod}/>
-        <Equal first={this.state.firstDisplay} mod={this.state.mod} second={this.state.secondDisplay}/>
+        <Mod handleMod={this.handleMod} />
+        <Equal
+          first={this.state.firstDisplay}
+          mod={this.state.mod}
+          second={this.state.secondDisplay}
+          handleEqual={this.handleEqual}
+        />
       </div>
     );
   }
