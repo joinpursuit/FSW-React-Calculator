@@ -1,0 +1,13 @@
+button{
+    font-size: 30px;
+    border: black solid 2px;
+    width: 80px;
+}
+li{
+    list-style: none;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+}
