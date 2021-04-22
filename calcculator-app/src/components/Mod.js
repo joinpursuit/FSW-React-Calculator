@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/Mod.css"
 
-const Mod = () => {
+const Mod = ({handleMod}) => {
 //   const modButtons = ["+", "-", "÷", "*"];
   const modButtons = {
     sum:  "+", 
@@ -20,7 +20,7 @@ const Mod = () => {
  { Object.entries(modButtons).map((el)=>{
      return <li type={el[0]} key={el[0]} value={el[1]} className="all-mods">
 
-<button>{el[1]}</button>
+<button onClick={()=>handleMod(el[0])}>{el[1]}</button>
      </li>
  })}
   </ul>
