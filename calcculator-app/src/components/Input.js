@@ -6,8 +6,8 @@ import "./styles/Input.css";
 
 class Input extends React.Component {
   state = {
-    input: "",
-    firstDisplay: "",
+    input: [],
+    firstDisplay: [],
     mod: "",
     secondDisplay: [],
     answer: 0,
@@ -34,25 +34,19 @@ class Input extends React.Component {
     }
   };
 
-  test = () => {
-    console.log(this.state);
-  };
-
   handleGrid = (event) => {
     if (this.state.mod) {
       this.setState((prevState) => ({
-        input: [event, ...prevState.input],
-        secondDisplay: [event, ...prevState.input],
+        input: [...prevState.input,...[event]].join(''),
+        secondDisplay: [...prevState.input,...[event]].join(''),
       }));
     } else {
       this.setState((prevState) => ({
-        input: event + prevState.input,
-        firstDisplay: [event, ...prevState.input],
+        input: [...prevState.input,...[event]].join(''),
+        firstDisplay: [...prevState.input,...[event]].join(''),
       }));
     }
-
     console.log(this.state);
-    //this.setState({ input: newButton.type+prevState.input});
   };
 
   handleMod = (event) => {
@@ -60,27 +54,34 @@ class Input extends React.Component {
     this.setState((prevState) => ({
       input: "",
       mod: event,
-      secondDisplay: prevState,
+      // secondDisplay: prevState.input,
     }));
+    console.log(this.state)
   };
 
   handleEqual = (event) => {
     console.log(event);
-if(event.mod === "sum"){
-    let answer = Number(event.first) + Number(event.second)
-    this.setState({input:answer})
-}
-    // let answer = a + c
-    // this.setState({answer:answer})
+    if (event.mod === "sum") {
+      let answer = Number(event.first) + Number(event.second);
+      this.setState({ input: answer });
+    }
+    if (event.mod === "subtract") {
+      let answer = Number(event.first) - Number(event.second);
+      this.setState({ input: answer });
+    }
+    if (event.mod === "divide") {
+      let answer = Number(event.first) / Number(event.second);
+      this.setState({ input: answer });
+    }
+    if (event.mod === "multiply") {
+      let answer = Number(event.first) * Number(event.second);
+      this.setState({ input: answer });
+    }
 
-    // this.setState((prevState) => ({
-    //     input: "",
-    //     mod: event,
-    //     secondDisplay: prevState,
-    //   }));
+
+
+
   };
-
-  // .reverse().join(''), press: [newButton.type,...prevState.press]}))
 
   render() {
     return (

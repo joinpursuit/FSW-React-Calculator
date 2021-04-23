@@ -1,29 +1,27 @@
 import React from "react";
-import "./styles/Mod.css"
+import "./styles/Mod.css";
 
-const Mod = ({handleMod}) => {
-//   const modButtons = ["+", "-", "÷", "*"];
+const Mod = ({ handleMod }) => {
+  //   const modButtons = ["+", "-", "÷", "*"];
   const modButtons = {
-    sum:  "+", 
-    subtract: "-", 
-    divide:"÷",
-    multiply: "*"}
-
-// const entry = ()=>{
-//     console.log(Object.entries(modButtons))
-// }
+    sum: "+",
+    subtract: "-",
+    divide: "÷",
+    multiply: "*",
+  };
 
   return (
     <div className="modButtons">
-     {/* <button onClick={entry}>entry</button> */}
-  <ul>
- { Object.entries(modButtons).map((el)=>{
-     return <li type={el[0]} key={el[0]} value={el[1]} className="all-mods">
-
-<button onClick={()=>handleMod(el[0])}>{el[1]}</button>
-     </li>
- })}
-  </ul>
+      {/* <button onClick={entry}>entry</button> */}
+      <ul>
+        {Object.entries(modButtons).map((el) => {// use entries method to have access to both symbol and string of moderator
+          return (
+            <li type={el[0]} key={el[0]} value={el[1]} className="all-mods">
+              <button onClick={() => handleMod(el[0])}>{el[1]}</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

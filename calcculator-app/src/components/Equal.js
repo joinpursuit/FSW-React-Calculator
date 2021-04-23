@@ -1,27 +1,17 @@
-import React from "react"
+import React from "react";
+import "./styles/Equal.css"
 
-const Equal = ({first,second,mod,handleEqual})=>{
+const Equal = ({ first, second, mod, handleEqual }) => {
+  const finalEqual = {
+    first: first,
+    mod: mod,
+    second: second,
+  };
 
-
-const finalEqual = {
-first:first,
-mod:mod,
-second:second
-
-}
-
-
-
-
-
-
-    return(
-        <div>
-            <button onClick={()=> handleEqual(finalEqual)}>EQUAL</button>
-        </div>
-    )
-
-
-
-}
-export default Equal
+  return (
+    <div>
+      <button className="equal" onClick={() => handleEqual(finalEqual)}>EQUAL</button>
+    </div>
+  );
+};
+export default Equal;
