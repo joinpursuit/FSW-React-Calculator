@@ -1,21 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
 export class Screen extends Component {
-    constructor(){
-        super()
 
-        this.state = {
-            
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <input type="text" defaultValue="0"></input>
-            </div>
-        )
-    }
+  render() {
+    const { value } = this.props
+    return (
+      <div>
+        <input type="text" value={value}></input>
+      </div>
+    );
+  }
 }
 
 export default Screen
