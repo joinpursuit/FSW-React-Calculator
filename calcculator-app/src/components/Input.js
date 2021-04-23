@@ -47,6 +47,7 @@ class Input extends React.Component {
       }));
     }
     console.log(this.state);
+    
   };
 
   handleMod = (event) => {
@@ -54,32 +55,53 @@ class Input extends React.Component {
     this.setState((prevState) => ({
       input: "",
       mod: event,
-      // secondDisplay: prevState.input,
+      previous: prevState,
     }));
-    console.log(this.state)
+   
   };
 
   handleEqual = (event) => {
     console.log(event);
     if (event.mod === "sum") {
       let answer = Number(event.first) + Number(event.second);
-      this.setState({ input: answer });
+      this.setState((prevState) => ({
+        input: [...[answer]].join(''),
+        firstDisplay: [...[answer]].join(''),
+        previous: prevState,
+      }));
     }
     if (event.mod === "subtract") {
       let answer = Number(event.first) - Number(event.second);
-      this.setState({ input: answer });
+      this.setState((prevState) => ({
+        input: [...[answer]].join(''),
+        firstDisplay: [...[answer]].join(''),
+        previous: prevState,
+      }));
     }
     if (event.mod === "divide") {
       let answer = Number(event.first) / Number(event.second);
-      this.setState({ input: answer });
+      this.setState((prevState) => ({
+        input: [...[answer]].join(''),
+        firstDisplay: [...[answer]].join(''),
+        previous: prevState,
+      }));
     }
     if (event.mod === "multiply") {
       let answer = Number(event.first) * Number(event.second);
-      this.setState({ input: answer });
+      this.setState((prevState) => ({
+        input: [...[answer]].join(''),
+        firstDisplay: [...[answer]].join(''),
+        previous: prevState,
+      }));
     }
-
-
-
+    if (event.mod === "plusMinus") {
+      let answer = Number(event.first) * Number(event.second);
+      this.setState((prevState) => ({
+        input: [...[answer]].join(''),
+        firstDisplay: [...[answer]].join(''),
+        previous: prevState,
+      }));
+    }
 
   };
 

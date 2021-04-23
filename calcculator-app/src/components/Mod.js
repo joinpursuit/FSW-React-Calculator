@@ -2,12 +2,13 @@ import React from "react";
 import "./styles/Mod.css";
 
 const Mod = ({ handleMod }) => {
-  //   const modButtons = ["+", "-", "÷", "*"];
+  //   const modButtons = ["+", "-", "÷", "*","+/-"];
   const modButtons = {
     sum: "+",
     subtract: "-",
     divide: "÷",
     multiply: "*",
+    plusMinus: "+/-"
   };
 
   return (
