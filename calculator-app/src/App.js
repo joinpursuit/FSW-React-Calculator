@@ -8,24 +8,49 @@ export class App extends Component {
     super()
 
     this.state = {
-      value: ""
+      displayValue: "0",
+      currentValue: "",
+      prevValue: "",
+      operation: "",
     }
   }
   
-  displayValue = (e) => {
-    this.setState({value: this.state.value.concat(e.target.value)})
+
+  display = (e) => {
+    this.setState({ currentValue: this.state.currentValue.concat(e.target.value), displayValue: this.state.currentValue.concat(e.target.value) })
   }
 
+  negative = (e) =>{
+    this.setState({displayValue: e.target.value.concat(this.state.displayValue)})
+  }
 
-  evaluate = () => {
+  handleOperation = (e) => {
+    if(e.target.value === "+"){
+      alert(`hi`)
+    } else if (e.target.value === "-"){
+      return this.state.displayValue - this.state.prevValue
+    } else if (e.target.value === "*"){
+      return this.state.displayValue * this.state.prevValue
+    } else if (e.target.value === "/"){
+      return this.state.value / this.state.prevValue
+    }
+  }
 
+  handleResult = (e) => {
+    if(e.target.value === "="){
+
+    }
+  }
+
+  reset = () => {
+    this.setState({displayValue: "0", currentValue: "", prevValue: "", operation: ""})
   }
 
   render() {
     return (
       <div>
-        <Screen value={this.state.value} />
-        <Buttons displayValue={this.displayValue} />
+        <Screen displayValue={this.state.displayValue} />
+        <Buttons display={this.display} negative={this.negative} reset={this.reset} handleOperation={this.handleOperation} handleResult={this.handleResult}/>
       </div>
     )
   }
