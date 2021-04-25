@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Display from "./components/display";
+import Keypad from "./components/keypad";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = { numbers: 0 };
+
+  handleClick = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState((prevState) => {
+      return { numbers: [value, ...prevState.numbers]};
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Display />
+        <Keypad />
+      </div>
+    );
+  }
 }
 
 export default App;
