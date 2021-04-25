@@ -38,5 +38,7 @@
 }
 
 body{
+  display: flex;
+  justify-content: center;
   background-color: #68ABA1;
 }
