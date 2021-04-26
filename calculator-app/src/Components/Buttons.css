@@ -1,11 +1,11 @@
 .all-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 25px;
+  width: 5px;
 }
 
 .zero {
-  width: 320px;
+  width: 345px;
 }
 
 button {
@@ -15,7 +15,7 @@ button {
   font-size: larger;
   color: #233d39;
   background-color: #f1d9d9;
-  width: 80px;
+  width: 86px;
   height: 45px;
   border-radius: 5px;
 }
