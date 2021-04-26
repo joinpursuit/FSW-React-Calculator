@@ -8,10 +8,10 @@ function Buttons(props) {
     return (
         <div>
             <div className="all-buttons">
-                <button onClick={handleOperation}>+</button>
-                <button onClick={handleOperation}>-</button>
-                <button onClick={handleOperation}>*</button>
-                <button onClick={handleOperation}>/</button>
+                <button value={"+"} onClick={handleOperation}>+</button>
+                <button value={"-"} onClick={handleOperation}>-</button>
+                <button value={"*"} onClick={handleOperation}>*</button>
+                <button value={"/"} onClick={handleOperation}>/</button>
 
                 <button value={7} onClick={handleDisplay}>7</button>
                 <button value={8} onClick={handleDisplay}>8</button>

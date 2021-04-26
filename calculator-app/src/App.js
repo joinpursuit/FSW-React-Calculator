@@ -11,38 +11,39 @@ export class App extends Component {
       displayValue: "0",
       currentValue: "",
       prevValue: "",
-      operation: "",
+      result: "0",
     }
   }
   
   handleDisplay = (e) => {
     this.setState({ currentValue: this.state.currentValue.concat(e.target.value), displayValue: this.state.currentValue.concat(e.target.value) })
   }
-
+  
   handleNegative = () =>{
     this.setState({ displayValue: this.state.displayValue * -1 })
   }
-
+  
   handleOperation = (e) => {
     if(e.target.value === "+"){
-      return this.state.displayValue + this.state.prevValue
-    } else if (e.target.value === "-"){
-      return this.state.displayValue - this.state.prevValue
-    } else if (e.target.value === "*"){
-      return this.state.displayValue * this.state.prevValue
-    } else if (e.target.value === "/"){
-      return this.state.value / this.state.prevValue
+      this.setState({ prevValue: this.state.currentValue, currentValue: ""})
+    
+    } else if (e.target.value === "-") {
+      this.setState({ prevValue: this.state.currentValue, currentValue: ""})
+    
+    } else if(e.target.value === "*"){
+      this.setState({ prevValue: this.state.currentValue, currentValue: ""})
+    
+    } else if(e.target.value === "/"){
+      this.setState({ prevValue: this.state.currentValue, currentValue: ""})
     }
   }
 
-  handleResult = (e) => {
-    if(e.target.value === "="){
-
-    }
+  handleResult = () => {
+    this.setState({displayValue: this.state.result})
   }
 
   handleReset = () => {
-    this.setState({ displayValue: "0", currentValue: "", prevValue: "", operation: "" })
+    this.setState({ displayValue: "0", currentValue: "", prevValue: "", operation: "", result: "0" })
   }
 
   render() {
