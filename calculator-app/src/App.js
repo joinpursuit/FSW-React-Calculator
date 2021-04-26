@@ -31,7 +31,7 @@ export class App extends Component {
     } else if(e.target.value === "*"){
       this.setState({ prevValue: this.state.currentValue, result: Number(this.state.prevValue)*Number(this.state.currentValue), currentValue: ""})
     } else if(e.target.value === "/"){
-      this.setState({ prevValue: this.state.currentValue, result: Math.floor(Number(this.state.prevValue)/Number(this.state.currentValue)), currentValue: ""})
+      this.setState({ prevValue: this.state.currentValue, result: Math.round(Number(this.state.prevValue)/Number(this.state.currentValue)), currentValue: ""})
     }
   }
 
