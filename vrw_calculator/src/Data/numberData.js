@@ -1,0 +1,28 @@
+const numberData = [
+    {id: 1,
+    character: 1},
+    {id: 2,
+    character: 2},
+    {id: 3,
+    character: 3},
+    {id: 4,
+    character: 4},
+    {id: 5,
+    character: 5},
+    {id: 6,
+    character: 6},
+    {id: 7,
+    character: 7},
+    {id: 8,
+    character: 8},
+    {id: 9,
+    character: 9},
+    {id: 10,
+    character: 0},
+    {id: 11,
+    character: "C"},
+    {id: 12,
+    character: "."},
+]
+
+export default numberData;
