@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Keypad from "./Components/Keypad";
-import KeypadIndex from "./Components//KeypadIndex";
+import Output from "./Components/Output";
 
 class App extends React.Component {
   state = { result: '' };
@@ -31,7 +31,7 @@ class App extends React.Component {
     const clear = this.clear
     return (
       <div className="App">
-        <KeypadIndex  result={result}/>
+        <Output  result={result}/>
         <Keypad btnPressed={btnPressed} clear={clear} />
       </div>
     );

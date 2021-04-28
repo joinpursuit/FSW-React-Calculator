@@ -1,6 +1,6 @@
 import React from "react";
 
-const KeypadIndex = ({ result }) => {
+const Output = ({ result }) => {
   return (
     <section className="result">
       <p>{result || 0}</p>
@@ -8,4 +8,4 @@ const KeypadIndex = ({ result }) => {
   );
 };
 
-export default KeypadIndex;
+export default Output;

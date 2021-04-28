@@ -38,7 +38,7 @@ class Keypad extends React.Component {
           <button onClick={this.addNum} name="8">
             8
           </button>
-          <button onClick={this.addNum} name="0">
+          <button onClick={this.addNum} name="9">
             9
           </button>
           <button onClick={this.addNum} name="0">
@@ -47,7 +47,7 @@ class Keypad extends React.Component {
 
           <button onClick={this.clear}>C</button>
 
-          <button onClick={() => this.addNum(".")} name=".">
+          <button onClick={this.addNum}name=".">
             .
           </button>
           <button onClick={this.addNum} name="+/-">
@@ -60,10 +60,10 @@ class Keypad extends React.Component {
           <button onClick={this.addNum} name="-">
             -
           </button>
-          <button onClick={this.addNum} name="x">
+          <button onClick={this.addNum} name="*">
             x
           </button>
-          <button onClick={this.addNum} name="➗">
+          <button onClick={this.addNum} name="/">
             ➗
           </button>
           <button onClick={this.addNum} name="=">
