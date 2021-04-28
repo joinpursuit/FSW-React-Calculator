@@ -1,7 +1,6 @@
 .screen-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
 }
 
 .screen {
@@ -10,7 +9,7 @@
   font-size: 50px;
   font-weight: bolder;
   color: #233d39;
-  background-color: #f1d9d9;
+  background-color: #b0bacf;
   border: solid #4c7c75;
-  border-radius: 2px;
+  border-radius: 5px;
 }

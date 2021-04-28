@@ -45,7 +45,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="calc">
         <Screen displayValue={this.state.displayValue} />
         <Buttons handleDisplay={this.handleDisplay} handleNegative={this.handleNegative} handleReset={this.handleReset} handleOperation={this.handleOperation} handleResult={this.handleResult}/>
       </div>

@@ -6,7 +6,7 @@ function Buttons(props) {
   const { handleDisplay, handleNegative, handleReset, handleOperation, handleResult } = props
 
   return (
-    <div>
+    <div className="calc-background">
       <div className="all-buttons">
         <button value={"+"} onClick={handleOperation}>+</button>
         <button value={"-"} onClick={handleOperation}>-</button>

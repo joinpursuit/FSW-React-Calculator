@@ -4,6 +4,11 @@
   width: 5px;
 }
 
+.calc-background {
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
 .zero {
   width: 345px;
 }
@@ -14,8 +19,12 @@ button {
   font-weight: bolder;
   font-size: larger;
   color: #233d39;
-  background-color: #f1d9d9;
+  background-color: #8393b9;
   width: 86px;
   height: 45px;
-  border-radius: 5px;
+  border-radius: 75px;
+}
+
+button:hover{
+  background-color: rgb(109, 156, 156);
 }

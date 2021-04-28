@@ -40,5 +40,14 @@
 body {
   display: flex;
   justify-content: center;
-  background-color: #68aba1;
+  background-color: #E2E7F2;
+  margin-top: 100px;
+}
+
+.calc{
+  background-color: #424B5E;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
 }
