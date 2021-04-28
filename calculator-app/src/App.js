@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Screen from "./Components/Screen"
 import Buttons from "./Components/Buttons"
+import { evaluate } from 'mathjs'
 import "./App.css"
 
 export class App extends Component {
