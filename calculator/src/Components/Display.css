@@ -1,0 +1,11 @@
+.display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 4em;
+  /* width: 100%; */
+  background-color: black;
+  outline: 1px solid grey;
+  color: white;
+  flex: 1;
+}

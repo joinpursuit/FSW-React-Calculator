@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+	box-sizing: border-box;
+}
+
+.App {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	text-align: center;
+	margin-top: 100px;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+}
+
+.calc-container {
+	width: 400px;
+	height: 600px;
+}
