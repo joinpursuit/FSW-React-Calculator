@@ -3,15 +3,22 @@ import "./App.css";
 import KeyPad from "./Components/KeyPad";
 
 class App extends React.Component {
-  state = {result: 0}
+  state = {result: ""}
 
- 
+  handleNum = (button) => {
+    this.setState({ result: this.state.result + button });
+  }
+
+  // handleOperator = () => {
+    
+  // }
+
 
   render() {
     const {result} = this.state
     return (
       <div className="App">
-        <KeyPad result={result}/>
+        <KeyPad handleNum={this.handleNum} result={result}/>
       </div>
     );
   }
