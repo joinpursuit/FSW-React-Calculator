@@ -1,4 +1,5 @@
 import  React from 'react'
+import Display from "./components/Display";
 import SwithPanel from './components/SwitchPanel'
 import './App.css'
 
@@ -11,14 +12,12 @@ class App extends React.Component {
       operation: null,
     }
   }
-  // handleClick =buttonName =>{
-  //   this.setState(calculate(this.state.buttonName))
-  // }
+  
   render(){
   return (
     <div className ="component-app">
-  
-      <SwithPanel clickHandler ={this.handleClick} />
+    <Display value={this.state.next || this.state.total || "0"} />
+    <SwithPanel clickHandler ={this.handleClick} />
       
     </div>
   )

@@ -1,21 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './Switch.css'
 
-export default class Switch extends React.Component{
-    static propTypes ={
-        name: PropTypes.string,
-        orange: PropTypes.bool,
-        wide: PropTypes.bool,
-        clickHandler: PropTypes.func,
-
-    }
-    handleClick =()=>{
-        this.props.clickHandler(this.props.name)
-    }
-
-
-
+ class Switch extends React.Component{
+   
 render() {
     const className = [
       "component-button",
@@ -25,8 +12,9 @@ render() {
 
     return (
       <div className={className.join(" ").trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
+        <button>{this.props.name}</button>
       </div>
     );
   }
 }
+export default Switch
