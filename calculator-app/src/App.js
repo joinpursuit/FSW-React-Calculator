@@ -24,7 +24,7 @@ export class App extends Component {
   
   handleOperation = (e) => {
     if(e.target.value === "+"){
-      this.setState( prevState => ({ prevValue: prevState.prevValue + e.target.value, displayValue: this.state.prevValue, result: Number(this.state.prevValue).toLocaleString() + Number(this.state.displayValue)} ))
+      this.setState( prevState => ({ prevValue: prevState.prevValue + e.target.value, displayValue: this.state.prevValue, result: Number(this.state.prevValue) + Number(this.state.displayValue)} ))
     }
   }
 
@@ -38,10 +38,13 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="calc">
-        <Screen displayValue={this.state.displayValue} />
-        <Buttons handleDisplay={this.handleDisplay} handleNegative={this.handleNegative} handleReset={this.handleReset} handleOperation={this.handleOperation} handleResult={this.handleResult}/>
-      </div>
+      <section>
+        <h1>Simple Calculator</h1>
+        <div className="calc">
+          <Screen displayValue={this.state.displayValue} />
+          <Buttons handleDisplay={this.handleDisplay} handleNegative={this.handleNegative} handleReset={this.handleReset} handleOperation={this.handleOperation} handleResult={this.handleResult}/>
+        </div>
+      </section>
     )
   }
 }

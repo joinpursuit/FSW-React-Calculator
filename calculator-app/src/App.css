@@ -51,3 +51,11 @@ body {
   padding-top: 10px;
   border-radius: 10px;
 }
+
+h1{
+  display: flex;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 50px;
+  color: rgb(60, 100, 100);
+  justify-content: center;
+}
