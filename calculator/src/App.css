@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+  margin: auto;
+  max-width: 400px;
+}
+
+.result {
+  background-color: cadetblue;
+  height: 40px;
+  width: 100%;
+}
+.result p {
+  font-size: 35px;
+}
+
+.button {
+  display: block;
+  background-color: gray;
+}
+
+.button button {
+  width: 20%;
+  height: 60px;
+  font-size: 35px;
+}
