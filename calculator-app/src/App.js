@@ -9,14 +9,13 @@ export class App extends Component {
 
     this.state = {
       displayValue: "0",
-      currentValue: "",
       prevValue: "",
       result: "0",
     }
   }
   
   handleDisplay = (e) => {
-    this.setState({ currentValue: this.state.currentValue.concat(e.target.value), displayValue: Number(this.state.currentValue.concat(e.target.value)).toLocaleString() })
+    this.setState({ displayValue: Number(this.state.displayValue.concat(e.target.value)).toLocaleString() })
   }
   
   handleNegative = () =>{
@@ -25,22 +24,16 @@ export class App extends Component {
   
   handleOperation = (e) => {
     if(e.target.value === "+"){
-      this.setState({ prevValue: this.state.currentValue, result: Number(this.state.prevValue)+Number(this.state.currentValue), currentValue: ""})
-    } else if (e.target.value === "-") {
-      this.setState({ prevValue: this.state.currentValue, result: Number(this.state.prevValue)-Number(this.state.currentValue), currentValue: ""})
-    } else if(e.target.value === "*"){
-      this.setState({ prevValue: this.state.currentValue, result: Number(this.state.prevValue)*Number(this.state.currentValue), currentValue: ""})
-    } else if(e.target.value === "/"){
-      this.setState({ prevValue: this.state.currentValue, result: Math.round(Number(this.state.prevValue)/Number(this.state.currentValue)), currentValue: ""})
+      this.setState( prevState => ({ prevValue: prevState.prevValue + e.target.value, displayValue: this.state.prevValue, result: Number(this.state.prevValue).toLocaleString() + Number(this.state.displayValue)} ))
     }
   }
 
   handleResult = () => {
-    this.setState({displayValue: this.state.result, currentValue: "", prevValue: ""})
+    this.setState({displayValue: Number(this.state.result).toLocaleString(), prevValue: ""})
   }
 
   handleReset = () => {
-    this.setState({ displayValue: "0", currentValue: "", prevValue: "", operation: "", result: "0" })
+    this.setState({ displayValue: "0", prevValue: "", result: "0" })
   }
 
   render() {
