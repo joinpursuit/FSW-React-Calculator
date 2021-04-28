@@ -5,7 +5,8 @@
 
 .result {
   height: 90px;
-  background-color:grey;
+   /* background-color: grey; */
+   background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
  max-width: 400px;
  margin:auto;
  width: 80%;
