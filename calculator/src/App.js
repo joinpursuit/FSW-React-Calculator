@@ -4,22 +4,20 @@ import Display from "./components/display";
 import Keypad from "./components/keypad";
 
 class App extends React.Component {
-
-  state = { numbers: 0 };
+  state = {numbers: '0'}
 
   handleClick = (e) => {
-    e.preventDefault();
-    const { value } = e.target;
+    const { name, value } = e.target
     this.setState((prevState) => {
-      return { numbers: [value, ...prevState.numbers]};
-    });
-  };
+    return {numbers: prevState.numbers + value}
+    })
+  }
 
   render() {
     return (
       <div className="App">
-        <Display />
-        <Keypad />
+        <Display numbers={this.state.numbers} />
+        <Keypad handleClick={this.handleClick}/>
       </div>
     );
   }
