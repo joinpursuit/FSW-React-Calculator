@@ -1,0 +1,14 @@
+.calculator{
+    display: grid;
+    grid-template-columns: repeat(4, 4em);
+    grid-template-rows:  repeat(6, 4em);
+}
+
+.display{
+    text-align: right;
+    grid-row: 1/2;
+    grid-column: 1/5;
+}
+.eval{
+    grid-column: 1/5;
+}
