@@ -1,0 +1,56 @@
+.Calculator {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  border: 3px solid gray;
+}
+
+.Display {
+  background-color: #000;
+  border: 3px solid gray;
+  height: 50px;
+  width: 300px;
+  color: #d4af37;
+  font: 36px bold;
+  text-align: right;
+  grid-column: 1/5;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  color: #d4af37;
+  font: 36px bold;
+}
+
+.TopRow {
+  grid-row: 2;
+  font: 36px bold;
+}
+
+.SecondRow {
+  grid-row: 3;
+  font: 36px bold;
+}
+
+.ThirdRow {
+  grid-row: 4;
+  font: 36px bold;
+}
+
+.FourthRow {
+  grid-row: 5;
+  font: 36px bold;
+}
+
+.BottomRow {
+  grid-row: 6;
+  font: 36px bold;
+}
+
+.Operator {
+  background-color: slategray;
+  grid-column: 4;
+  font: 36px bold;
+}
