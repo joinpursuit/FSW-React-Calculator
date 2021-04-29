@@ -2,7 +2,7 @@ import { Component } from 'react';
 import "./calculator.css"
 
 class Calculator extends Component {
-    state = { display: "0", operand1: null, operand2: null }
+    state = { display: "0", operands: [], operandNum: 0 }
 
 
     leadingZero = (string) => {
@@ -36,6 +36,9 @@ class Calculator extends Component {
 
         this.setState({ display: newInput })
     }
+
+    
+
     handlePlus = (e) => {
         const { display, operand1 } = this.state;
         if (operand1 === null && Number(display) !== 0) {
@@ -61,33 +64,34 @@ class Calculator extends Component {
         this.setState({ display: newDisplay })
     }
 
-    evaluate = (e) =>{
+    evaluate = (e) => {
 
 
     }
 
 
     render() {
-        const { display } = this.state
+        const { display, operands } = this.state
+        console.log(operands)
         return (<section className="calculator">
             <h2 className="display">{display}</h2>
-            <button value="0" onClick={this.handleZero} >0</button>
-            <button value="1" onClick={this.handleNumber} >1</button>
-            <button value="2" onClick={this.handleNumber} >2</button>
-            <button value="3" onClick={this.handleNumber} >3</button>
-            <button value="4" onClick={this.handleNumber} >4</button>
-            <button value="5" onClick={this.handleNumber} >5</button>
-            <button value="6" onClick={this.handleNumber} >6</button>
-            <button value="7" onClick={this.handleNumber} >7</button>
-            <button value="8" onClick={this.handleNumber} >8</button>
-            <button value="9" onClick={this.handleNumber} >9</button>
-            <button value="+" onClick={this.handlePlus}>+</button>
-            <button>-</button>
-            <button>x</button>
-            <button>÷</button>
-            <button onClick={this.toggleSign}>+/-</button>
-            <button>AC</button>
-            <button className="eval" value="=" onClick={this.evaluate}>=</button>
+            <button className="keypad number" value="0" onClick={this.handleZero} >0</button>
+            <button className="keypad number" value="1" onClick={this.handleNumber} >1</button>
+            <button className="keypad number" value="2" onClick={this.handleNumber} >2</button>
+            <button className="keypad number" value="3" onClick={this.handleNumber} >3</button>
+            <button className="keypad number" value="4" onClick={this.handleNumber} >4</button>
+            <button className="keypad number" value="5" onClick={this.handleNumber} >5</button>
+            <button className="keypad number" value="6" onClick={this.handleNumber} >6</button>
+            <button className="keypad number" value="7" onClick={this.handleNumber} >7</button>
+            <button className="keypad number" value="8" onClick={this.handleNumber} >8</button>
+            <button className="keypad number" value="9" onClick={this.handleNumber} >9</button>
+            <button className="keypad sign" value="+" onClick={this.handleOperator}>+</button>
+            <button className="keypad sign">-</button>
+            <button className="keypad sign">x</button>
+            <button className="keypad sign" >÷</button>
+            <button className="keypad sign" onClick={this.toggleSign}>+/-</button>
+            <button className="keypad sign" >AC</button>
+            <button className="keypad eval" value="=" onClick={this.evaluate}>=</button>
 
         </section>)
     }

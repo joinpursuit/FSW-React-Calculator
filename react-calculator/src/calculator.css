@@ -1,14 +1,26 @@
 .calculator{
     display: grid;
-    grid-template-columns: repeat(4, 4em);
+    width: 50%;
+    grid-template-columns: repeat(4, auto);
     grid-template-rows:  repeat(6, 4em);
 }
 
 .display{
+    border: 3px solid black;
+    padding-right: 7px;
+    padding-top: 4px;
+    margin-bottom: -1px;
     text-align: right;
     grid-row: 1/2;
     grid-column: 1/5;
 }
+.keypad{
+    font-size:x-large;
+    border: 2px solid black;
+    border-radius: 3%;
+    cursor: pointer;
+}
 .eval{
     grid-column: 1/5;
+    font-size:xx-large;
 }
