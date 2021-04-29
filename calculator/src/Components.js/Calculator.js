@@ -2,14 +2,22 @@ import React from "react";
 import "./Calculator.css";
 
 class Calculator extends React.Component {
+    state = { display: 0 }
+
+    enterNumber = (e) => {
+        this.setState({ display: e.target.value })
+        debugger
+    }
+
   render() {
+      const { display } = this.state
     return (
       <div className="Calculator">
-        <div className="Display">0</div>
-        <button className="TopRow">C</button>
+        <div className="Display" value={display}>0</div>
+        <button className="TopRow">AC</button>
         <button className="TopRow">%</button>
         <button className="Operator">÷</button>
-        <button className="SecondRow">7</button>
+        <button className="SecondRow" onClick={this.enterNumber} value={7}>7</button>
         <button className="SecondRow">8</button>
         <button className="SecondRow">9</button>
         <button className="Operator">x</button>
