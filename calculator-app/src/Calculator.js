@@ -1,38 +1,161 @@
 import React from "react";
 
-class Calculator extends React.Component {
 
-state = { displayValue: [] }; 
+// addFruit = (fruit) => {
+  //   const newFruit = {id: uuid++, type: fruit}
+  //   this.setState((prevState) => ({
+    //     cart: [...prevState.cart, newFruit],
+    //   }));
+    // };
+    
+    /* <button onClick={() => this.addFruit("orange")} value={"orange"}>orange</button> */
 
-handleClick(digit) {
-this.setState((prevState)=> ({
-    displayValue: [...prevState.displayValue, digit]
-}))
-}
+    class Calculator extends React.Component {
+  state = { count: "", one: "", two: "", three: "" };
+
+  handleClick(e) {
+    this.setState({ count: e });
+    // this.setState((prevState) => {
+      // const { displayValue } = this.state;
+    //   return { count: prevState.count + value };
+    // });
+    console.log(e);
+  }
 
   render() {
+    const { count } = this.state;
     return (
       <section>
-        <p id="display">0</p>
-        <button onClick={this.handleClick}>1</button>
-        <button onClick={this.handleClick}>2</button>
-        <button onClick={this.handleClick}>3</button>
-        <button onClick={this.handleClick}>4</button>
-        <button onClick={this.handleClick}>5</button>
-        <button onClick={this.handleClick}>6</button>
-        <button onClick={this.handleClick}>7</button>
-        <button onClick={this.handleClick}>8</button>
-        <button onClick={this.handleClick}>9</button>
-        <button onClick={this.handleClick}>0</button>
-        <button onClick={this.handleClick}>+</button>
-        <button onClick={this.handleClick}>-</button>
-        <button onClick={this.handleClick}>÷</button>
-        <button onClick={this.handleClick}>=</button>
-        <button onClick={this.handleClick}>x</button>
-        <button onClick={this.handleClick}>%</button>
-        <button onClick={this.handleClick}>.</button>
-        <button onClick={this.handleClick}>AC</button>
-        <button onClick={this.handleClick}>+/-</button>
+        <p id="display">{count}</p>
+        <button onClick={() => this.handleClick(1)} value={"1"}>
+          1
+        </button>
+        <button onClick={() => this.handleClick(2)} value={"2"}>
+          2
+        </button>
+        <button onClick={() => this.handleClick(3)} value="3">
+          3
+        </button>
+        <button onClick={() => this.handleClick(4)} value="4"
+         
+        >
+          4
+        </button>
+        {/* <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="5"
+         
+        >
+          5
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="6"
+         
+        >
+          6
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="7"
+         
+        >
+          7
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="8"
+         
+        >
+          8
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="9"
+         
+        >
+          9
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="0"
+         
+        >
+          0
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="+"
+         
+        >
+          +
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="-"
+         
+        >
+          -
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="÷"
+         
+        >
+          ÷
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="="
+         
+        >
+          =
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="x"
+          type="submit"
+        >
+          x
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="%"
+          type="submit"
+        >
+          %
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="."
+          type="submit"
+        >
+          .
+        </button>
+        <button name={displayValue} onClick={this.handleClick} type="submit">
+          AC
+        </button>
+        <button
+          name={displayValue}
+          onClick={this.handleClick}
+          value="+"
+          type="submit"
+        >
+          +/-
+        </button> */}
       </section>
     );
   }
