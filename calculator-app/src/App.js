@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Screen from "./Components/Screen"
 import Buttons from "./Components/Buttons"
-import { evaluate } from 'mathjs'
+// import { evaluate } from 'mathjs'
 import "./App.css"
 
 export class App extends Component {
@@ -12,6 +12,7 @@ export class App extends Component {
       displayValue: "0",
       prevValue: "",
       result: "0",
+      operation: ""
     }
   }
   
@@ -24,13 +25,19 @@ export class App extends Component {
   }
   
   handleOperation = (e) => {
-    if(e.target.value === "+"){
-      this.setState( prevState => ({ prevValue: prevState.prevValue + e.target.value, displayValue: this.state.prevValue, result: Number(this.state.prevValue) + Number(this.state.displayValue)} ))
-    }
+    this.setState( prevState => ({ prevValue: prevState.displayValue, displayValue: "", operation: e.target.value}))
   }
 
   handleResult = () => {
-    this.setState({displayValue: Number(this.state.result).toLocaleString(), prevValue: ""})
+    if(this.state.operation === "+"){
+      this.setState({displayValue: Number(this.state.prevValue) + Number(this.state.displayValue)})
+    } else if(this.state.operation === "-"){
+      this.setState({displayValue: Number(this.state.prevValue) - Number(this.state.displayValue)})
+    } else if(this.state.operation === "*"){
+      this.setState({displayValue: Number(this.state.prevValue) * Number(this.state.displayValue)})
+    } else if(this.state.operation === "/"){
+      this.setState({displayValue: Number(this.state.prevValue) / Math.round(this.state.displayValue)})
+    }
   }
 
   handleReset = () => {
