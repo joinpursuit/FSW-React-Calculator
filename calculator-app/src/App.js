@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Screen from "./Components/Screen"
 import Buttons from "./Components/Buttons"
-// import { evaluate } from 'mathjs'
+import { evaluate } from 'mathjs'
 import "./App.css"
 
 export class App extends Component {
@@ -30,13 +30,13 @@ export class App extends Component {
 
   handleResult = () => {
     if(this.state.operation === "+"){
-      this.setState({displayValue: Number(this.state.prevValue) + Number(this.state.displayValue)})
+      this.setState({ displayValue: evaluate(this.state.prevValue + this.state.displayValue) })
     } else if(this.state.operation === "-"){
-      this.setState({displayValue: Number(this.state.prevValue) - Number(this.state.displayValue)})
+      this.setState({ displayValue: evaluate(this.state.prevValue - this.state.displayValue) })
     } else if(this.state.operation === "*"){
-      this.setState({displayValue: Number(this.state.prevValue) * Number(this.state.displayValue)})
+      this.setState({ displayValue: evaluate(this.state.prevValue * this.state.displayValue) })
     } else if(this.state.operation === "/"){
-      this.setState({displayValue: Number(this.state.prevValue) / Math.round(this.state.displayValue)})
+      this.setState({ displayValue: Math.round(evaluate(this.state.prevValue / this.state.displayValue)) })
     }
   }
 
