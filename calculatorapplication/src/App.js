@@ -2,18 +2,26 @@ import React from "react";
 import "./App.css";
 import Screen from "./Components/Screen";
 import Buttons from "./Components/Buttons";
+const numbers = "0123456789";
 
 class App extends React.Component {
-  state = { result: [{number : 0}, {positive: true }], history: [], showResult: [{value: ""}, {show: true}] };
+  state = {
+    result: "0",
+    history: [],
+    // showResult: [{ value: "" }, { show: true }],
+  };
 
-  detectClick = (name) => {
-    if(name === "-/+"){
+  detectClick = (target) => {
+    debugger
+    if (typeof this.state.result === "number") {
+      this.setState({result: Number(target.name)})
+    } else if (target.name === "-/+") {
       
-      this.setState({result: preState.result.positive? preState.result.number: -preState.result.number })
-
-    }else{
-
-      this.setState({ result: name });
+      // this.setState({result: preState.result.positive? preState.result.number: -preState.result.number })
+    } else if (numbers.includes(target.name)) {
+      this.setState({ result: Number(target.name) });
+    } else {
+      // this.setState({ result: target });
     }
   };
 
@@ -22,7 +30,7 @@ class App extends React.Component {
   };
 
   clear = () => {
-    this.setState({result:0})
+    // this.setState({result.nu})
   };
 
   render() {
