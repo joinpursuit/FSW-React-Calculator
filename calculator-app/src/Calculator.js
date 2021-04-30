@@ -1,26 +1,41 @@
 import React from "react";
 
-const Calculator = () => {
+class Calculator extends React.Component {
+
+state = { displayValue: [] }; 
+
+handleClick(digit) {
+this.setState((prevState)=> ({
+    displayValue: [...prevState.displayValue, digit]
+}))
+}
+
+  render() {
     return (
-<section>
-    <p id="display"></p>
-    <button className="button">1</button>
-    <button className="button">2</button>
-    <button className="button">3</button>
-    <button className="button">4</button>
-    <button className="button">5</button>
-    <button className="button">6</button>
-    <button className="button">7</button>
-    <button className="button">8</button>
-    <button className="button">9</button>
-    <button className="button">0</button>
-    <button className="button">+</button>
-    <button className="button">-</button>
-    <button className="button">÷</button>
-    <button className="button">=</button>
-    <button className="button">x</button>
-</section>
-    )
+      <section>
+        <p id="display">0</p>
+        <button onClick={this.handleClick}>1</button>
+        <button onClick={this.handleClick}>2</button>
+        <button onClick={this.handleClick}>3</button>
+        <button onClick={this.handleClick}>4</button>
+        <button onClick={this.handleClick}>5</button>
+        <button onClick={this.handleClick}>6</button>
+        <button onClick={this.handleClick}>7</button>
+        <button onClick={this.handleClick}>8</button>
+        <button onClick={this.handleClick}>9</button>
+        <button onClick={this.handleClick}>0</button>
+        <button onClick={this.handleClick}>+</button>
+        <button onClick={this.handleClick}>-</button>
+        <button onClick={this.handleClick}>÷</button>
+        <button onClick={this.handleClick}>=</button>
+        <button onClick={this.handleClick}>x</button>
+        <button onClick={this.handleClick}>%</button>
+        <button onClick={this.handleClick}>.</button>
+        <button onClick={this.handleClick}>AC</button>
+        <button onClick={this.handleClick}>+/-</button>
+      </section>
+    );
+  }
 }
 
 export default Calculator;
