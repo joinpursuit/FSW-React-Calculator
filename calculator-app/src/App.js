@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import Screen from "./Components/Screen"
 import Buttons from "./Components/Buttons"
-import { evaluate } from 'mathjs'
 import "./App.css"
 
 export class App extends Component {
@@ -11,13 +10,12 @@ export class App extends Component {
     this.state = {
       displayValue: "0",
       prevValue: "",
-      result: "0",
       operation: ""
     }
   }
   
   handleDisplay = (e) => {
-    this.setState({ displayValue: Number(this.state.displayValue.concat(e.target.value)).toLocaleString() })
+    this.setState({ displayValue: Number(this.state.displayValue + (e.target.value)).toLocaleString() }) //Nan is returned when another number is added to end of 1,000
   }
   
   handleNegative = () =>{
@@ -30,18 +28,18 @@ export class App extends Component {
 
   handleResult = () => {
     if(this.state.operation === "+"){
-      this.setState({ displayValue: evaluate(this.state.prevValue + this.state.displayValue) })
+      this.setState({ displayValue: ((Number(this.state.prevValue) + Number(this.state.displayValue))).toLocaleString() })
     } else if(this.state.operation === "-"){
-      this.setState({ displayValue: evaluate(this.state.prevValue - this.state.displayValue) })
+      this.setState({ displayValue: (this.state.prevValue - this.state.displayValue).toLocaleString() }) //Nan is returned is 1,111-100
     } else if(this.state.operation === "*"){
-      this.setState({ displayValue: evaluate(this.state.prevValue * this.state.displayValue) })
+      this.setState({ displayValue: (this.state.prevValue * this.state.displayValue).toLocaleString() })
     } else if(this.state.operation === "/"){
-      this.setState({ displayValue: Math.round(evaluate(this.state.prevValue / this.state.displayValue)) })
+      this.setState({ displayValue: Math.round(this.state.prevValue / this.state.displayValue).toLocaleString() }) //Nan is returned is 1,111 / 1
     }
   }
 
   handleReset = () => {
-    this.setState({ displayValue: "0", prevValue: "", result: "0" })
+    this.setState({ displayValue: "0", prevValue: "", operation: "" })
   }
 
   render() {
