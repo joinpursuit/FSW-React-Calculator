@@ -15,11 +15,11 @@ export class App extends Component {
   }
   
   handleDisplay = (e) => {
-    this.setState({ displayValue: Number(this.state.displayValue + (e.target.value)).toLocaleString() }) //Nan is returned when another number is added to end of 1,000
+    this.setState({ displayValue: Number(this.state.displayValue.concat(e.target.value)).toLocaleString() }) //Nan is returned when another number is added to end of 1,000
   }
   
   handleNegative = () =>{
-    this.setState({ displayValue: this.state.displayValue * -1})
+    this.setState({ displayValue: (this.state.displayValue * -1).toLocaleString()}) //Nan is returned when 1000 is converted to negative
   }
   
   handleOperation = (e) => {
