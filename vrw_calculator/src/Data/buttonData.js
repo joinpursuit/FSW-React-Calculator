@@ -1,4 +1,4 @@
-const numberData = [
+const buttonData = [
     {id: 1,
     character: 1},
     {id: 2,
@@ -23,6 +23,13 @@ const numberData = [
     character: "C"},
     {id: 12,
     character: "."},
+    {id: 13, character: "+/-"},
+        {id: 14, character: "x"},
+        {id: 15, character: "-"},
+        {id: 16, character: "+"},
+        {id: 17, character: "/"},
+        {id: 18, character: "="},
+        {id: 19, character: "->"}
 ]
 
-export default numberData;
+export default buttonData;

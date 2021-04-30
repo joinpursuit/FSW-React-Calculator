@@ -1,13 +1,14 @@
 import { Component } from "react";
+// import Numbers from './Components/Numbers';
+import Buttons from './Components/Buttons';
+
 import './App.css';
-import Numbers from './Components/Numbers';
-// import Operators from './Components/Operators';
 
 export default class App extends Component {
 render() {
   return (
     <div className="App">
-      <Numbers />
+      <Buttons />
       {/* <Operators />      */}
     </div>
   );
