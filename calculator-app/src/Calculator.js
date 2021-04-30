@@ -1,32 +1,19 @@
 import React from "react";
 
-
-// addFruit = (fruit) => {
-  //   const newFruit = {id: uuid++, type: fruit}
-  //   this.setState((prevState) => ({
-    //     cart: [...prevState.cart, newFruit],
-    //   }));
-    // };
-    
-    /* <button onClick={() => this.addFruit("orange")} value={"orange"}>orange</button> */
-
-    class Calculator extends React.Component {
-  state = { count: "", one: "", two: "", three: "" };
+class Calculator extends React.Component {
+  state = { numbers: [] };
 
   handleClick(e) {
-    this.setState({ count: e });
-    // this.setState((prevState) => {
-      // const { displayValue } = this.state;
-    //   return { count: prevState.count + value };
-    // });
-    console.log(e);
+    this.setState((prevState) => {
+      return { numbers: prevState.numbers + e };
+    });
   }
 
   render() {
-    const { count } = this.state;
+    const { numbers } = this.state;
     return (
       <section>
-        <p id="display">{count}</p>
+        <p id="display">{numbers}</p>
         <button onClick={() => this.handleClick(1)} value={"1"}>
           1
         </button>
@@ -36,126 +23,54 @@ import React from "react";
         <button onClick={() => this.handleClick(3)} value="3">
           3
         </button>
-        <button onClick={() => this.handleClick(4)} value="4"
-         
-        >
+        <button onClick={() => this.handleClick(4)} value="4">
           4
         </button>
-        {/* <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="5"
-         
-        >
+        <button onClick={() => this.handleClick(5)} value="5">
           5
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="6"
-         
-        >
+        <button onClick={() => this.handleClick(6)} value="6">
           6
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="7"
-         
-        >
+        <button onClick={() => this.handleClick(7)} value="7">
           7
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="8"
-         
-        >
+        <button onClick={() => this.handleClick(8)} value="8">
           8
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="9"
-         
-        >
+        <button onClick={() => this.handleClick(9)} value="9">
           9
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="0"
-         
-        >
+        <button onClick={() => this.handleClick(0)} value="0">
           0
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="+"
-         
-        >
+        <button onClick={() => this.handleClick("+")} value="+">
           +
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="-"
-         
-        >
+        <button onClick={() => this.handleClick("-")} value="-">
           -
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="÷"
-         
-        >
+        <button onClick={() => this.handleClick("÷")} value="÷">
           ÷
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="="
-         
-        >
+        <button onClick={() => this.handleClick("=")} value="=">
           =
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="x"
-          type="submit"
-        >
+        <button onClick={() => this.handleClick("x")} value="x">
           x
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="%"
-          type="submit"
-        >
+        <button onClick={() => this.handleClick("%")} value="%">
           %
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="."
-          type="submit"
-        >
+        <button onClick={() => this.handleClick(".")} value=".">
           .
         </button>
-        <button name={displayValue} onClick={this.handleClick} type="submit">
+        <button  onClick={() => this.handleClick("AC")} value="AC">
           AC
         </button>
-        <button
-          name={displayValue}
-          onClick={this.handleClick}
-          value="+"
-          type="submit"
-        >
+        <button onClick={() => this.handleClick("+")} value="+">
           +/-
-        </button> */}
+        </button>
       </section>
     );
   }
