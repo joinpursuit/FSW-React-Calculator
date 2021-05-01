@@ -1,34 +1,40 @@
 .App {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 45% 45% 45% 45% ;
-  grid-template-rows: 38% 20% 20% 20% 20% 20%;
+  grid-template-columns: 45% 45% 45% 45%;
+  grid-template-rows: 35% 20% 20% 20% 20% 20%;
+  height: 50vh;
+  width: 15vw;
+  margin-top: 50px;
 }
 
 .result {
-  border: solid black;
-  grid-column: 1/5;
+  border: solid rgb(20, 43, 73);
+  grid-column: 1/-1;
   display: flex;
   justify-content: flex-end;
   padding-right: 5mm;
-  font-size: 40px;
+  font-size: 25px;
   align-items: center;
   font-weight: normal;
+  margin: 0;
+  background-color: rgb(243, 236, 229);
+  border-radius: 5px;
 }
 
 .child {
-  border: solid black;
-  background: rgb(141, 144, 144);
+  border: solid rgb(20, 43, 73);
+  background: #545677;
   color: white;
   font-size: 18px;
   padding: 15px;
   font-weight: bolder;
   font-size: 20px;
+  border-radius: 3px;
 }
 
 .key0 {
@@ -38,38 +44,37 @@
 
 .key10 {
   grid-column: 1/3;
-  background-color: #DAE4FB; 
-  color: black
+  background-color: #ABC4C0; 
+
 }
 
 .key11 {
-  background-color: #DAE4FB; 
-  color: black
+  background-color: #ABC4C0; 
 }
 
 .key12 {
   grid-column: -1/-2;
-  background-color: #e94e1b;
+  background-color: #ABC4C0;
 }
 
 .key13 {
   grid-column: -1/-2;
-  background-color: #e94e1b;
+  background-color: #ABC4C0;
 }
 
 .key14 {
   grid-column: -1/-2;
-  background-color: #e94e1b;
+  background-color: #ABC4C0;
 }
 
 .key15 {
   grid-column: -1/-2;
-  background-color: #e94e1b;
+  background-color: #ABC4C0
 }
 
 .key16 {
   grid-column: -1/-2;
-  background-color: #e94e1b;
+  background-color: #ABC4C0;
 }
 
 .key1 {
