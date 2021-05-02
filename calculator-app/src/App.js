@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Screen from "./Components/Screen"
 import Buttons from "./Components/Buttons"
+import numeral from "numeral"
 import "./App.css"
 
 export class App extends Component {
@@ -15,11 +16,11 @@ export class App extends Component {
   }
   
   handleDisplay = (e) => {
-    this.setState({ displayValue: Number(this.state.displayValue.concat(e.target.value)).toLocaleString() }) //Nan is returned when another number is added to end of 1,000
+    this.setState({ displayValue: numeral((this.state.displayValue.concat(e.target.value))).format('0,0') })
   }
   
   handleNegative = () =>{
-    this.setState({ displayValue: (this.state.displayValue * -1).toLocaleString()}) //Nan is returned when 1000 is converted to negative
+    this.setState({ displayValue: String(this.state.displayValue.split(',').join("") * -1) })
   }
   
   handleOperation = (e) => {
@@ -28,13 +29,13 @@ export class App extends Component {
 
   handleResult = () => {
     if(this.state.operation === "+"){
-      this.setState({ displayValue: ((Number(this.state.prevValue) + Number(this.state.displayValue))).toLocaleString() })
+      this.setState({ displayValue: String(Number(this.state.prevValue.split(',').join("")) + Number(this.state.displayValue.split(',').join(""))) })
     } else if(this.state.operation === "-"){
-      this.setState({ displayValue: (this.state.prevValue - this.state.displayValue).toLocaleString() }) //Nan is returned is 1,111-100
+      this.setState({ displayValue: String(this.state.prevValue.split(',').join("") - this.state.displayValue.split(',').join("")) })
     } else if(this.state.operation === "*"){
-      this.setState({ displayValue: (this.state.prevValue * this.state.displayValue).toLocaleString() })
+      this.setState({ displayValue: String(this.state.prevValue.split(',').join("") * this.state.displayValue.split(',').join("")) })
     } else if(this.state.operation === "/"){
-      this.setState({ displayValue: Math.round(this.state.prevValue / this.state.displayValue).toLocaleString() }) //Nan is returned is 1,111 / 1
+      this.setState({ displayValue: String(Math.round(this.state.prevValue.split(',').join("") / this.state.displayValue.split(',').join(""))) })
     }
   }
 
