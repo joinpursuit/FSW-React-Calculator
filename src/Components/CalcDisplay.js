@@ -1,9 +1,14 @@
 import React from 'react';
+import { Input } from './Input';
 
-export default class CalcDisplay extends React.Component {
+export default class CalcDisplay extends React.Component {    
     render () {
+        const {result,input} = this.props;
         return (
-            <p className="Output">Hello World</p>
+            <div>
+                <Input input={input}/>
+                <p className="Output">{result}</p>
+            </div>
         )
     }
 }

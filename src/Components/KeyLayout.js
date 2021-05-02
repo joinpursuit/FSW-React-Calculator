@@ -1,28 +1,32 @@
 import React from 'react';
+import Button from './Button';
+import { ClearButton } from './ClearButton';
 
 export default class KeyLayout extends React.Component {
     render () {
+        const {handleClear,handleClick, handleEqual} = this.props;
         return (
             <div className='CalcButtons'>
-                <button>AC</button>
-                <button>±</button>
-                <button>%</button>
-                <button>÷</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>x</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
-                <button className='ZeroKey'>0</button>
-                <button>.</button>
-                <button>=</button>
+                <ClearButton icon={'AC'} handleClear={handleClear}/>
+                <Button icon={'±'} handleClick={handleClick}/>
+                <Button icon={'%'} handleClick={handleClick}/>
+                <Button icon={'÷'} handleClick={handleClick}/>
+                <Button icon={'7'} handleClick={handleClick}/>
+                <Button icon={'8'} handleClick={handleClick}/>
+                <Button icon={'9'} handleClick={handleClick}/>
+                <Button icon={'*'} handleClick={handleClick}/>
+                <Button icon={'4'} handleClick={handleClick}/>
+                <Button icon={'5'} handleClick={handleClick}/>
+                <Button icon={'6'} handleClick={handleClick}/>
+                <Button icon={'-'} handleClick={handleClick}/>
+                <Button icon={'1'} handleClick={handleClick}/>
+                <Button icon={'2'} handleClick={handleClick}/>
+                <Button icon={'3'} handleClick={handleClick}/>
+                <Button icon={'+'} handleClick={handleClick}/>
+                <Button icon={'0'} handleClick={handleClick}/>
+                <Button icon={'.'} handleClick={handleClick}/>
+                <Button icon={'='} handleClick={() => handleEqual()}/>
+                {/* <button className='ZeroKey'>0</button> */}
             </div>
         )
     }
