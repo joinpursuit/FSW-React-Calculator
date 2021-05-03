@@ -53,3 +53,7 @@
   .Calculator input[type="button"]:active {
       background-color: #3d949f;
   }
+
+  .focus:focus{
+    background-color: #3d949f;
+  }
