@@ -1,75 +1,110 @@
 import React from "react";
+import "./Calculator.css";
 
 class Calculator extends React.Component {
-  state = { numbers: [] };
+  state = { result: [] };
 
-  handleClick(e) {
-    this.setState((prevState) => {
-      return { numbers: prevState.numbers + e };
-    });
+  handleClick(userInput) {
+    const { result } = this.state;
+    if (userInput === "=") {
+      this.calculate();
+    } else if (userInput === "AC") {
+      this.setState({
+        result: [],
+      });
+    } else if (userInput === "del") {
+      this.setState({
+        result: result.slice(0, -1),
+      });
+    } else {
+      this.setState({
+        result: result + userInput,
+      });
+    }
   }
 
+  calculate = () => {
+    const { result } = this.state;
+    if (result.includes("+")) {
+      this.setState({
+        result: Number(result[0]) + Number(result[2]),
+      });
+    } else if (result.includes("-")) {
+      this.setState({
+        result: Number(result[0]) - Number(result[2]),
+      });
+    } else if (result.includes("x")) {
+      this.setState({
+        result: Number(result[0]) * Number(result[2]),
+      });
+    } else if (result.includes("\u00F7")) {
+      this.setState({
+        result: Number(result[0]) / Number(result[2]),
+      });
+    }
+  };
+
   render() {
-    const { numbers } = this.state;
+    const { result } = this.state;
     return (
-      <section>
-        <p id="display">{numbers}</p>
-        <button onClick={() => this.handleClick(1)} value={"1"}>
+      <section id="calculator">
+        <p id="display">{result}</p>
+        <button className="one" onClick={() => this.handleClick("1")}>
           1
         </button>
-        <button onClick={() => this.handleClick(2)} value={"2"}>
+        <button className="two" onClick={() => this.handleClick("2")}>
           2
         </button>
-        <button onClick={() => this.handleClick(3)} value="3">
+        <button className="three" onClick={() => this.handleClick("3")}>
           3
         </button>
-        <button onClick={() => this.handleClick(4)} value="4">
+        <button className="four" onClick={() => this.handleClick("4")}>
           4
         </button>
-        <button onClick={() => this.handleClick(5)} value="5">
+        <button className="five" onClick={() => this.handleClick("5")}>
           5
         </button>
-        <button onClick={() => this.handleClick(6)} value="6">
+        <button className="six" onClick={() => this.handleClick("6")}>
           6
         </button>
-        <button onClick={() => this.handleClick(7)} value="7">
+        <button className="seven" onClick={() => this.handleClick("7")}>
           7
         </button>
-        <button onClick={() => this.handleClick(8)} value="8">
+        <button className="eight" onClick={() => this.handleClick("8")}>
           8
         </button>
-        <button onClick={() => this.handleClick(9)} value="9">
+        <button className="nine" onClick={() => this.handleClick("9")}>
           9
         </button>
-        <button onClick={() => this.handleClick(0)} value="0">
+        <button className="zero" onClick={() => this.handleClick("0")}>
           0
         </button>
-        <button onClick={() => this.handleClick("+")} value="+">
+        <button className="plus" onClick={() => this.handleClick("+")}>
           +
         </button>
-        <button onClick={() => this.handleClick("-")} value="-">
+        <button className="minus" onClick={() => this.handleClick("-")}>
           -
         </button>
-        <button onClick={() => this.handleClick("÷")} value="÷">
-          ÷
+        <button className="divide" onClick={() => this.handleClick("\u00F7")}>
+        ÷
         </button>
-        <button onClick={() => this.handleClick("=")} value="=">
-          =
-        </button>
-        <button onClick={() => this.handleClick("x")} value="x">
+        <button className="multiply" onClick={() => this.handleClick("x")}>
           x
         </button>
-        <button onClick={() => this.handleClick("%")} value="%">
-          %
-        </button>
-        <button onClick={() => this.handleClick(".")} value=".">
+        <button className="decimal" onClick={() => this.handleClick(".")}>
           .
         </button>
-        <button  onClick={() => this.handleClick("AC")} value="AC">
+        <button className="allClear" onClick={() => this.handleClick("AC")}>
           AC
         </button>
-        <button onClick={() => this.handleClick("+")} value="+">
+        <button className="delete" onClick={() => this.handleClick("del")}>
+          DEL
+        </button>
+        <button className="sign" onClick={() => this.handleClick("-")}>
           +/-
+        </button>
+        <button className="equal" onClick={() => this.handleClick("=")}>
+          =
         </button>
       </section>
     );
