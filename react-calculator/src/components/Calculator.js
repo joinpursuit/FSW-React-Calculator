@@ -21,10 +21,10 @@ class Calculator extends Component {
 
   handleSpecialKeys = (e) => {
     const { value } = e.target;
-    let { input } = this.state;
+    let { input, memory, operator } = this.state;
 
     if (value === "+/-") {
-      this.setState({ input: Number(input) * -1 });
+      this.setState({ input: input * -1 });
     }
     if (value === "AC" || value === "C") {
       this.setState({
@@ -37,25 +37,34 @@ class Calculator extends Component {
     if (value === "%") {
       this.setState({ input: input / 100 });
     }
+    if (value === "=") {
+        if (operator === "+") {
+        this.setState({ input: memory + Number(input) });
+      } else if (operator === "-") {
+        this.setState({ input: memory - input });
+      } else if (operator === "*") {
+        this.setState({ input: memory * input });
+      } else if (operator === "/") {
+        this.setState({ input: memory / input });
+      }
+      this.setState({ memory: null, isOperand: true });
+    }
   };
 
   handleOperators = (operatorKey) => {
     const { input, operator, memory } = this.state;
     const num = Number(input);
-
     const operations = {
       "/": (memory, num) => memory / num,
       "*": (memory, num) => memory * num,
       "-": (memory, num) => memory - num,
       "+": (memory, num) => memory + num,
-      "=": (memory, num) => num,
     };
 
     if (memory === null) {
       this.setState({ memory: num });
     } else if (operator) {
-      const currentValue = memory || 0;
-      const math = operations[operator](currentValue, num);
+      const math = operations[operator](memory, num);
       this.setState({ memory: math, input: math });
     }
     this.setState({
@@ -69,7 +78,7 @@ class Calculator extends Component {
   };
 
   render() {
-    const { input, isFocus } = this.state;
+    const { input } = this.state;
     return (
       <main className="wrapper">
         <section className="Calculator">
@@ -128,14 +137,14 @@ class Calculator extends Component {
                 type="button"
                 value="+"
                 onClick={() => this.handleOperators("+")}
-                className={isFocus ? "focus" : ""}
+                className="focus"
               />
             </div>
             <div>
               <input type="button" value="0" onClick={this.handleNumbers} />
               <input type="button" value="00" onClick={this.handleNumbers} />
               <input type="button" value="." onClick={this.handleSpecialKeys} />
-              <input type="button" value="=" onClick={this.handleOperators} />
+              <input type="button" value="=" onClick={this.handleSpecialKeys} />
             </div>
           </form>
         </section>
