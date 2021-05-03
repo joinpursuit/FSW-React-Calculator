@@ -1,28 +1,31 @@
 import React from "react";
 
 class Calculator extends React.Component {
-  state = { total: "0", display: [], defaultDisplay: [0] };
+  state = { total: "0", display: [0], defaultDisplay: [0] };
 
   enterNum = (num) => {
-    const { display,defaultDisplay } = this.state;
+    const { display, defaultDisplay } = this.state;
     let currentNum = num;
-    
-    this.setState({defaultDisplay: []})
 
-   
+    if (display[0] === 0) {
+      this.setState({ display: [] });
       this.setState((prevState) => ({
         display: [...prevState.display, currentNum],
       }));
-    
+    } else {
+      this.setState((prevState) => ({
+        display: [...prevState.display, currentNum],
+      }));
+    }
   };
 
   render() {
-    const { display, defaultDisplay} = this.state;
+    const { display, defaultDisplay } = this.state;
 
     return (
       <div>
         <h2>{display}</h2>
-        <h2>{defaultDisplay}</h2>
+        
 
         <button onClick={() => this.enterNum("1")} value={"1"}>
           1
