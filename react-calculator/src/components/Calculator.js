@@ -21,7 +21,7 @@ class Calculator extends Component {
 
   handleSpecialKeys = (e) => {
     const { value } = e.target;
-    let { input, memory, operator } = this.state;
+    let { input, memory, operator, isOperand } = this.state;
 
     if (value === "+/-") {
       this.setState({ input: input * -1 });
@@ -36,6 +36,12 @@ class Calculator extends Component {
     }
     if (value === "%") {
       this.setState({ input: input / 100 });
+    } if (value === ".") {
+        if (isOperand) {
+            this.setState({input: ".", isOperand: false}) 
+        } else if (input.indexOf(".") === -1){
+            this.setState({input: input + "."})
+        }
     }
     if (value === "=") {
         if (operator === "+") {
