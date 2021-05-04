@@ -1,0 +1,20 @@
+.App{
+  border: black 2px solid
+}
+
+button{
+  /* display:grid;
+  grid-row: 5; */
+  width: 25%;
+  height: 60px;
+  font-size: 30px;
+  border-radius: 10%;
+}
+
+
+.display{
+  height: 60px;
+  background-color: greenyellow;
+  width: 100%;
+  
+}
