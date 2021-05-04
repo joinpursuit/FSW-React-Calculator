@@ -2,7 +2,7 @@
     display: grid;
     width: 50%;
     grid-template-columns: repeat(4, auto);
-    grid-template-rows:  repeat(6, 4em);
+    grid-template-rows:  6em repeat(6, 4em);
 }
 
 .display{
@@ -13,6 +13,7 @@
     text-align: right;
     grid-row: 1/2;
     grid-column: 1/5;
+    font-size: 1.3em;
 }
 .keypad{
     font-size:x-large;
