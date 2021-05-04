@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import KeyLayout from './Components/KeyLayout';
 import CalcDisplay from  './Components/CalcDisplay';
-import { evaluate } from 'mathjs';
+import { evaluate, typeOf } from 'mathjs';
 
 export default class App extends React.Component{
   state = {
@@ -10,35 +10,55 @@ export default class App extends React.Component{
     result: ''
   }
 
-  onButtonPress = (e) => {
-    this.setState({
-      result: e.target.value
-    })
-  }
-
   handleClear = () => {
     this.setState({
-      input: ''
+      input: '',
+      result: ''
     })
   }
 
   handleClick = val => {
     const {input} = this.state;
-    // console.log(val)
+    if(typeOf(val) === 'Object'){
+      val = val.icon
+    }
     this.setState({
-      input: input + val.icon
+      input: input + val
     })
   }
 
   handleEqual = () => {
     const {input} = this.state;
     this.setState({
-      input: evaluate(input)
+      input: '',
+      result: evaluate(input),
     })
   }
-
+  handleZero = val => {
+    const {input} = this.state;
+    if(input !== ''){
+      this.setState({
+        input: input + val.icon
+      })
+    }
+  }
+  handleDecimal = val => {
+    const {input} = this.state;
+    let hasDouble = /(\.)\1/.test(input);
+    if(hasDouble){
+      console.log("help")
+    }
+    if(typeOf(val) === 'Object'){
+      val = val.icon
+    }
+    this.setState({
+      input: input + val
+    })
+  }
+  
   render() {
     const {result,input} = this.state;
+    console.log(input)
     return (
       <div className="App">
         <div className="CalcBody">
@@ -47,7 +67,9 @@ export default class App extends React.Component{
             handleEqual={this.handleEqual}
             handleClick={this.handleClick}
             handleClear={this.handleClear}
-            onButtonPress={this.onButtonPress}/>
+            handleZero={this.handleZero}
+            handleDecimal={this.handleDecimal}
+          />
         </div>
       </div>
     );

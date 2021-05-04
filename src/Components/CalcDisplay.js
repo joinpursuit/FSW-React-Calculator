@@ -5,9 +5,8 @@ export default class CalcDisplay extends React.Component {
     render () {
         const {result,input} = this.props;
         return (
-            <div>
-                <Input input={input}/>
-                <p className="Output">{result}</p>
+            <div className='CalcDisplay'>
+                <Input input={input} result={result}/>
             </div>
         )
     }
