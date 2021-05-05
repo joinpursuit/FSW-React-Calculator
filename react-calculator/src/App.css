@@ -1,34 +1,39 @@
 .App {
   text-align: center;
-  
 }
 
 .result {
   height: 90px;
-   /* background-color: grey; */
-   background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
- max-width: 400px;
- margin:auto;
- width: 80%;
- 
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+  max-width: 400px;
+  margin: auto;
+  width: 80%;
 }
 
 .result p {
   font-size: 40px;
-text-align: center;
-} 
+  text-align: center;
+}
 
 .calc {
   max-width: 400px;
   margin: auto;
 }
 
-.button {
+/* .button {
   display: block;
-  
-}
+  border-radius: 30%;
+} */
 
 .button button {
   width: 20%;
-  height: 50px;
+  height: 60px;
+}
+
+.pink:hover {
+  background-color: lightpink;
+}
+
+p {
+  font-family: Roboto;
 }

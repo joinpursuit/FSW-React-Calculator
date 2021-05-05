@@ -4,11 +4,10 @@ import Cal from "./Calculator";
 import "./App.css";
 
 export default class App extends Component {
-  //results beggining stage
   state = {
     result: "",
   };
-  //results after number clicked
+
   select = (buttonN) => {
     if (buttonN === "=") {
       this.math();
@@ -25,26 +24,21 @@ export default class App extends Component {
         result: this.state.result + buttonN,
       });
   };
-  //positive and negitive intigers
   posneg = () => {
     this.setState({
-      result:  Math.abs(-this.state.result)
+      result: parseInt(this.state.result) * -1,
     });
   };
-  //percent
   percent = () => {
     this.setState({
       result: this.state.result / 100,
     });
   };
-  //delete
   delete = () => {
     this.setState({
       result: this.state.result.slice(0, -1),
     });
   };
-
-  //reset
   reset = () => {
     this.setState({
       result: "",
@@ -54,7 +48,7 @@ export default class App extends Component {
   math = () => {
     try {
       this.setState({
-        result: eval(this.state.result),
+        result: (eval(this.state.result) || "") + "",
       });
     } catch (e) {
       this.setState({
@@ -67,7 +61,7 @@ export default class App extends Component {
       <div className="App">
         <div className="calc">
           <Tot result={this.state.result} />
-          <Cal select={this.select || 0} />
+          <Cal select={this.select} />
         </div>
       </div>
     );

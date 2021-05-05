@@ -8,19 +8,19 @@ export default class Cal extends Component {
   render() {
     return (
       <div className="button">
-        <button className= 'hotpink' name="AC" onClick={this.select}>
+        <button className="pink" name="AC" onClick={this.select}>
           {" "}
           AC{" "}
         </button>
-        <button className='pink' name="+/-" onClick={this.select}>
+        <button className="pink" name="+/-" onClick={this.select}>
           {" "}
           +/-
         </button>
-        <button className= 'pink' name="%" onClick={this.select}>
+        <button className="pink" name="%" onClick={this.select}>
           {" "}
           %{" "}
         </button>
-        <button className='pink' name="/" onClick={this.select}>
+        <button className="pink" name="/" onClick={this.select}>
           {" "}
           /{" "}
         </button>
@@ -39,7 +39,7 @@ export default class Cal extends Component {
           {" "}
           9{" "}
         </button>
-        <button className='pink' name="*" onClick={this.select}>
+        <button className="pink" name="*" onClick={this.select}>
           {" "}
           *{" "}
         </button>
@@ -56,7 +56,7 @@ export default class Cal extends Component {
           {" "}
           6{" "}
         </button>
-        <button className='pink' name="-" onClick={this.select}>
+        <button className="pink" name="-" onClick={this.select}>
           {" "}
           -{" "}
         </button>
@@ -73,7 +73,7 @@ export default class Cal extends Component {
           {" "}
           3{" "}
         </button>
-        <button className='pink' name="+" onClick={this.select}>
+        <button className="pink" name="+" onClick={this.select}>
           {" "}
           +{" "}
         </button>
@@ -82,15 +82,15 @@ export default class Cal extends Component {
           {" "}
           0{" "}
         </button>
-        <button name="." onClick={this.select}>
+        <button class="pink" name="." onClick={this.select}>
           {" "}
           .{" "}
         </button>
-        <button name="Delete" onClick={this.select}>
+        <button class="pink" name="Delete" onClick={this.select}>
           {" "}
           Delete{" "}
         </button>
-        <button className ='hotpink' name="=" onClick={this.select}>
+        <button className="pink" name="=" onClick={this.select}>
           {" "}
           ={" "}
         </button>
