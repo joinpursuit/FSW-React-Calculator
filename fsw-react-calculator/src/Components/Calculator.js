@@ -1,70 +1,70 @@
 import React from "react";
+import Buttons from "./Buttons";
+
+
 
 class Calculator extends React.Component {
-  state = { total: "0", display: [0], defaultDisplay: [0] };
+  state = { display: "0", userNum1: "", userNum2: "", operator: "" };
 
   enterNum = (num) => {
-    const { display, defaultDisplay } = this.state;
-    let currentNum = num;
+   this.setState((prevState) => {
+      let newDisplay;
+      if (prevState.display === "0") {
+        newDisplay = num;
+      } else {
+        newDisplay = prevState.display + num;
+      }
+      return {
+        display: newDisplay,
+        userNum2: newDisplay
+      };
+    });
+  };
 
-    if (display[0] === 0) {
-      this.setState({ display: [] });
-      this.setState((prevState) => ({
-        display: [...prevState.display, currentNum],
-      }));
-    } else {
-      this.setState((prevState) => ({
-        display: [...prevState.display, currentNum],
-      }));
-    }
+  addNums = (addition) => {
+    this.setState((prevState) => {
+      return {
+        userNum1: prevState.display,
+        display: "",
+        operator: addition,
+      };
+    });
+  };
+
+  equals = () => {
+    this.setState((prevState) => {
+        let total
+      if (prevState.operator === "addition"){
+          total = Number(prevState.userNum1) + Number(prevState.userNum2)
+      }
+        return {
+          display: total
+        };
+    });
+  };
+  componentDidUpdate() {
+    
+    // debugger;
+  }
+
+  posNegButton = () => {
+    const { display } = this.state;
+    this.setState({ display: Number(display) * -1 });
   };
 
   render() {
-    const { display, defaultDisplay } = this.state;
+    const { display } = this.state;
 
     return (
       <div>
-        <h2>{display}</h2>
-        
-
-        <button onClick={() => this.enterNum("1")} value={"1"}>
-          1
-        </button>
-        <button onClick={() => this.enterNum("2")} value={"2"}>
-          2
-        </button>
-        <button onClick={() => this.enterNum("3")} value={"3"}>
-          3
-        </button>
-        <button onClick={() => this.enterNum("4")} value={"4"}>
-          4
-        </button>
-        <button onClick={() => this.enterNum("5")} value={"5"}>
-          5
-        </button>
-        <button onClick={() => this.enterNum("6")} value={"6"}>
-          6
-        </button>
-        <button onClick={() => this.enterNum("7")} value={"7"}>
-          7
-        </button>
-        <button onClick={() => this.enterNum("8")} value={"8"}>
-          8
-        </button>
-        <button onClick={() => this.enterNum("9")} value={"9"}>
-          9
-        </button>
-        <button onClick={() => this.enterNum("0")} value={"0"}>
-          0
-        </button>
-
-        <button>&#43;</button>
-        <button>&minus;</button>
-        <button>&times;</button>
-        <button>&divide;</button>
-        <button>&#61;</button>
-        <button>&#177;</button>
-        <button>AC</button>
+        <Buttons
+          displayString={Number(display).toLocaleString()}
+          enterNum={this.enterNum}
+          addNums={this.addNums}
+          posNegButton={this.posNegButton}
+          equals={this.equals}
+        />
+     
       </div>
     );
   }
