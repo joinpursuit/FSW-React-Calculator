@@ -30,7 +30,7 @@ class Calculator extends Component {
     /* Returns true if last character is 0 */
     leadingZero = (string) => {
         const lastOperand = this.getLastElement(string)
-        return lastOperand.charAt(0) === "0"; 
+        return lastOperand === "0"; 
     }
 
     /* prevents 00  */
@@ -121,7 +121,7 @@ class Calculator extends Component {
             case 'x':
                 return firstNumber * secondNumber;
             case '/':
-                return secondNumber / firstNumber;
+                return Math.round(secondNumber / firstNumber);
             default:
         }
     }
