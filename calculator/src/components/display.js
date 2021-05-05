@@ -1,9 +1,9 @@
 import React from "react";
 
-const Display = ({ numbers }) => {
+const Display = ({ input, display }) => {
     return (
       <section className="outputDisplay">
-          {numbers}
+          {display}
       </section>
     );
   }
