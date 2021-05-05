@@ -42,11 +42,19 @@ export default class App extends React.Component{
       })
     }
   }
+
+  //iterate string backwards and check for an operator
+  // meets and operator allow a decimal again
+  //no arg needed just handle "."
   handleDecimal = val => {
+    
+    // "+-/*"
     const {input} = this.state;
     let hasDouble = /(\.)\1/.test(input);
+    let value = val.icon;
     if(hasDouble){
-      console.log("help")
+      value = value.replace(/\.+/g, ".")
+      console.log(value)
     }
     if(typeOf(val) === 'Object'){
       val = val.icon
