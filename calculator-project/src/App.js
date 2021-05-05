@@ -3,36 +3,55 @@ import "./App.css";
 import KeyPad from "./Components/KeyPad";
 
 class App extends React.Component {
-  state = { result: "" };
+ 
+  state = { result: "", prevNum: "", operator: "" };
+
+  //   hit a number
+  // 	- the number pressed pops up if previous key has been pressed or an operation was pressed
+  // 	- if the previous key was number, then append the number at the end
+
 
   handleNum = (value) => {
     this.setState({ result: this.state.result + value });
   };
-
+  
   handleZero = (value) => {
     if (this.state.result !== "") {
       this.setState({ result: this.state.result + value });
     }
   }
 
+  // Operators
+  // 	- stores the operator that you pressed 
+  // 	- if there's an operation that's taken place, then you calculate the value and store the operator that you pressed
   handleOperator = (value) => {
-    const { result } = this.state;
-    if (value === "+/-") {
-      this.setState({ result: result * -1 });
-    } else if (value === "AC") {
-      this.setState({ result: "" });
-    } else if (value === "+") {
-      this.adder();
-    } else {
-      this.setState({
-        result: result + value,
-      });
-      debugger;
+    const {result} = this.state
+    if (value === "+") {
+      this.setState({operator: "+", prevNum: result, result: ""})
+    } else if (value === "-") {
+      this.setState({operator: "-", prevNum: result, result: ""})
+    } else if (value === "x") {
+      this.setState({operator: "x", prevNum: result, result: ""})
+    } else if (value === "÷") {
+      this.setState({operator: "÷", prevNum: result, result: ""})
     }
-  };
+  }
 
-  adder = (value) => {
-    this.setState({result: this.state.result + ""});
+  handleOther = (value) => {
+    const { result, operator, prevNum } = this.state;
+    if (value === "+/-") {
+      this.setState({ result: parseInt(result) * -1});
+    } else if (value === "AC") {
+      this.setState({result: "", prevNum: "", operator: ""});
+    } else if (operator === "+") {
+      this.setState({result: parseInt(prevNum) + parseInt(result)})
+    } else if (operator === "-") {
+      this.setState({result: parseInt(prevNum) - parseInt(result)})
+    } else if (operator === "x") {
+      this.setState({result: parseInt(prevNum) * parseInt(result)})
+    } else if (operator === "÷") {
+      this.setState({result: parseInt(prevNum) / parseInt(result)})
+    }
   };
 
   render() {
@@ -44,6 +63,7 @@ class App extends React.Component {
           handleOperator={this.handleOperator}
           handleNum={this.handleNum}
           result={result}
+          handleOther={this.handleOther}
         />
       </div>
     );
