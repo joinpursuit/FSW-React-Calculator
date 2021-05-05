@@ -1,75 +1,81 @@
 import React from "react";
-
-import "./Keypad.css";
 class Keypad extends React.Component {
-
-  addNum = (e) => {
-    this.props.btnPressed(e.target.name)
-  };
-
-  clear = (e) => {
-      this.props.clear(e.target.name)
-  }
   render() {
+    const {
+      btnPressed,
+      calculate,
+      clear,
+      handleDecimal,
+      toggleSign,
+      addOperand,
+      subtractOperand,
+      divisionOperand,
+      multiplicationOperand,
+    } = this.props;
     return (
-        <section className="button">
-          <button onClick={this.addNum} name="1">
-            1
-          </button>
-          <button onClick={this.addNum} name="2">
-            2
-          </button>
-          <button onClick={this.addNum} name="3">
-            3
-          </button>
+      <section className="button">
+        <button onClick={btnPressed} value="7">
+          7
+        </button>
+        <button onClick={btnPressed} value="8">
+          8
+        </button>
+        <button onClick={btnPressed} value="9">
+          9
+        </button>
+        <button onClick={multiplicationOperand} value="*">
+          x
+        </button>
+        <button onClick={divisionOperand} value="/">
+          ➗
+        </button>
+        <button onClick={btnPressed} value="6">
+          6
+        </button>
+        <button onClick={btnPressed} value="5">
+          5
+        </button>
+        <button onClick={btnPressed} value="4">
+          4
+        </button>
+        <button onClick={addOperand} value="+">
+          +
+        </button>
+        <button onClick={subtractOperand} value="-">
+          -
+        </button>
+        <button onClick={btnPressed} value="1">
+          1
+        </button>
+        <button onClick={btnPressed} value="2">
+          2
+        </button>
+        <button onClick={btnPressed} value="3">
+          3
+        </button>
 
-          <button onClick={this.addNum} name="4">
-            4
-          </button>
-          <button onClick={this.addNum} name="5">
-            5
-          </button>
-          <button onClick={this.addNum} name="6">
-            6
-          </button>
-          <button  onClick={this.addNum} name="7">
-            7
-          </button>
-          <button onClick={this.addNum} name="8">
-            8
-          </button>
-          <button onClick={this.addNum} name="9">
-            9
-          </button>
-          <button onClick={this.addNum} name="0">
-            0
-          </button>
+        <button onClick={clear}>C</button>
 
-          <button onClick={this.clear}>C</button>
+        <button onClick={toggleSign} value="">
+          +/-
+        </button>
+        <button onClick={handleDecimal} value=".">
+          .
+        </button>
+        <button onClick={btnPressed} value="0">
+          0
+        </button>
 
-          <button onClick={this.addNum}name=".">
-            .
-          </button>
-          <button onClick={this.addNum} name="+/-">
-            +/-
-          </button>
-
-          <button onClick={this.addNum} name="+">
-            +
-          </button>
-          <button onClick={this.addNum} name="-">
-            -
-          </button>
-          <button onClick={this.addNum} name="*">
-            x
-          </button>
-          <button onClick={this.addNum} name="/">
-            ➗
-          </button>
-          <button onClick={this.addNum} name="=">
-            =
-          </button>
-        </section>
+        <button onClick={calculate} value="=">
+          =
+        </button>
+        <button onClick={btnPressed} value="(">
+          (
+        </button>
+        <button onClick={btnPressed} value=")">
+          )
+        </button>
+      </section>
     );
   }
 }
