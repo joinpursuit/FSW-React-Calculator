@@ -2,9 +2,44 @@ import React from "react";
 import "./Calculator.css";
 
 class OperatorButtons extends React.Component {
-  handleOperators = () => {
+  handlePosOrNeg = () => {
     const { posOrNeg, showNums } = this.props;
     posOrNeg(showNums);
+    
+  };
+
+
+
+  handleOperators = (e) => {
+    const { getOperator } = this.props;
+    const oper = e.target.value;
+    getOperator(oper);
+  };
+
+  handleEqualBtn = () => {
+    const {
+      addTwoNums,
+      showNums,
+      showOldNums,
+      subtractNums,
+      operator,
+      multiplyNums,
+      divideNums,
+    } = this.props;
+    if (operator === "+") {
+      addTwoNums(showNums, showOldNums);
+    } else if (operator === "-") {
+      subtractNums(showOldNums, showNums);
+    } else if (operator === "*") {
+      multiplyNums(showOldNums, showNums);
+    } else if (operator === "/") {
+      divideNums(showOldNums, showNums);
+    }
+  };
+
+  handleAC = () => {
+    const { resetState } = this.props;
+    resetState();
   };
 
   render() {
@@ -42,19 +77,14 @@ class OperatorButtons extends React.Component {
         >
           /
         </button>
-        <button
-          type="button"
-          name="AC"
-          value={"AC"}
-          onClick={this.handleOperators}
-        >
+        <button type="button" name="AC" value={"AC"} onClick={this.handleAC}>
           AC
         </button>
         <button
           type="button"
           name="+/-"
           value={"+/-"}
-          onClick={this.handleOperators}
+          onClick={this.handlePosOrNeg}
         >
           +/-
         </button>
@@ -64,7 +94,7 @@ class OperatorButtons extends React.Component {
           type="button"
           name="="
           value={"="}
-          onClick={this.handleOperators}
+          onClick={this.handleEqualBtn}
         >
           =
         </button>
