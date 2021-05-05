@@ -1,7 +1,7 @@
 import { Component } from "react";
 class Buttons extends Component {
   render() {
-    const { displayString, enterNum, addNums, posNegButton,equals} = this.props;
+    const { displayString, enterNum, addition, subtraction, posNegButton,equals,clear} = this.props;
     // const displayString = Number(display.join("").toString()).toLocaleString();
   
     return (
@@ -39,8 +39,8 @@ class Buttons extends Component {
           0
         </button>
 
-        <button onClick={() => addNums("addition")} value={"addition"}>&#43;</button>
-        <button>&minus;</button>
+        <button onClick={() => addition("addition")} value={"addition"}>&#43;</button>
+        <button onClick={() => subtraction("subtraction")} value={"subtraction"}>&minus;</button>
         <button>&times;</button>
         <button>&divide;</button>
         <button onClick={() => equals()} value={"equals"}>&#61;</button>
@@ -50,7 +50,7 @@ class Buttons extends Component {
         >
           &#177;
         </button>
-        <button>AC</button>
+        <button onClick={() => clear()}>AC</button>
       </div>
     );
   }

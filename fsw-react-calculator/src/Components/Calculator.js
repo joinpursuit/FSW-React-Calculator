@@ -1,13 +1,11 @@
 import React from "react";
 import Buttons from "./Buttons";
 
-
-
 class Calculator extends React.Component {
   state = { display: "0", userNum1: "", userNum2: "", operator: "" };
 
   enterNum = (num) => {
-   this.setState((prevState) => {
+    this.setState((prevState) => {
       let newDisplay;
       if (prevState.display === "0") {
         newDisplay = num;
@@ -16,12 +14,12 @@ class Calculator extends React.Component {
       }
       return {
         display: newDisplay,
-        userNum2: newDisplay
+        userNum2: newDisplay,
       };
     });
   };
 
-  addNums = (addition) => {
+  addition = (addition) => {
     this.setState((prevState) => {
       return {
         userNum1: prevState.display,
@@ -30,20 +28,41 @@ class Calculator extends React.Component {
       };
     });
   };
+  subtraction = (subtraction) => {
+    this.setState((prevState) => {
+      return {
+        userNum1: prevState.display,
+        display: "",
+        operator: subtraction,
+      };
+    });
+  };
 
   equals = () => {
     this.setState((prevState) => {
-        let total
-      if (prevState.operator === "addition"){
-          total = Number(prevState.userNum1) + Number(prevState.userNum2)
+      let total = 0;
+      if (prevState.operator === "addition") {
+        total = Number(prevState.userNum1) + Number(prevState.userNum2);
+      } else if (prevState.operator === "subtraction") {
+        total = Number(prevState.userNum1) - Number(prevState.userNum2); 
+        debugger
       }
-        return {
-          display: total
-        };
+      return {
+        display: total,
+      };
+    });
+  };
+
+  clear = () => {
+    this.setState((prevState) => {
+      return {
+        display: "0",
+        userNum1: "",
+        userNum2: "",
+      };
     });
   };
   componentDidUpdate() {
-    
     // debugger;
   }
 
@@ -60,11 +79,12 @@ class Calculator extends React.Component {
         <Buttons
           displayString={Number(display).toLocaleString()}
           enterNum={this.enterNum}
-          addNums={this.addNums}
+          addition={this.addition}
+          subtraction={this.subtraction}
           posNegButton={this.posNegButton}
           equals={this.equals}
+          clear={this.clear}
         />
-     
       </div>
     );
   }
