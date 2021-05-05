@@ -37,6 +37,24 @@ class Calculator extends React.Component {
       };
     });
   };
+  multiplication = (multiplication) => {
+    this.setState((prevState) => {
+      return {
+        userNum1: prevState.display,
+        display: "",
+        operator: multiplication,
+      };
+    });
+  };
+  division = (division) => {
+    this.setState((prevState) => {
+      return {
+        userNum1: prevState.display,
+        display: "",
+        operator: division,
+      };
+    });
+  };
 
   equals = () => {
     this.setState((prevState) => {
@@ -44,8 +62,11 @@ class Calculator extends React.Component {
       if (prevState.operator === "addition") {
         total = Number(prevState.userNum1) + Number(prevState.userNum2);
       } else if (prevState.operator === "subtraction") {
-        total = Number(prevState.userNum1) - Number(prevState.userNum2); 
-        debugger
+        total = Number(prevState.userNum1) - Number(prevState.userNum2);
+      } else if (prevState.operator === "multiplication") {
+        total = Number(prevState.userNum1) * Number(prevState.userNum2);
+      } else if (prevState.operator === "division") {
+        total = Number(prevState.userNum1) / Number(prevState.userNum2);
       }
       return {
         display: total,
@@ -81,6 +102,8 @@ class Calculator extends React.Component {
           enterNum={this.enterNum}
           addition={this.addition}
           subtraction={this.subtraction}
+          multiplication={this.multiplication}
+          division={this.division}
           posNegButton={this.posNegButton}
           equals={this.equals}
           clear={this.clear}
