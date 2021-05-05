@@ -10,9 +10,6 @@ class Display extends React.Component {
 
 
     formatDisplay = (string) => {
-
-        
-
         if (string.length === 0) {
             return "0";
         }
@@ -21,8 +18,11 @@ class Display extends React.Component {
             if (isNaN(element)) {
                 return element;
             } else {
-                if(element.length>12){
-                    return Number(element).toExponential(10);
+                if(element.length>10){
+                    if(element % 1 !== 0){
+                        return Number(element).toFixed(5)
+                    }
+                    return Number(element).toExponential(8);
                 }
                 let nf = new Intl.NumberFormat();
                 return nf.format(element)

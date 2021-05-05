@@ -3,48 +3,51 @@ import "./calculator.css"
 import Display from "./Display"
 
 class Calculator extends Component {
-    state = { input: "" }
+    state = { input: "", result: "RESULT" }
 
     /* Returns last element in string */
     getLastElement = (string) => {
-        let arr = string.trim().split(" ");
+        const arr = string.trim().split(" ");
         return arr.pop();
     }
-    isLastElementOperator = (lastElement) => {
-        if (lastElement === "*" || lastElement === "+" || lastElement === "-" || lastElement === "/") {
-            return true;
+    /* Returns true is last element is operator */
+    isLastElementOperator = () => {
+        const { input } = this.state;
+        const arr = input.trim().split(" ");
+        const operands = "*+-/"
+        while (arr.length > 0) {
+            const lastElement = arr.pop();
+            if(operands.includes(lastElement)){
+                return true;
+            }
+            if (!isNaN(lastElement)) {
+                return false;
+            }
         }
         return false;
     }
 
     /* Returns true if last character is 0 */
     leadingZero = (string) => {
-        let lastOperand = this.getLastElement(string)
-        if (lastOperand.charAt(0) === "0") {
-            return true;
-        }
-        return false;
+        const lastOperand = this.getLastElement(string)
+        return lastOperand.charAt(0) === "0"; 
     }
 
-    handleZero = (e) => {
-        let newInput = this.state.input;
-        if (this.leadingZero(newInput)) {
-            return;
-        }
-        newInput = newInput + e.target.value;
+    /* prevents 00  */
+    handleZero = () => {
+        const newInput = this.state.input;
+        if (this.leadingZero(newInput)) return;
+        newInput = newInput + "0"
         this.setState({ input: newInput })
     }
 
-
     handleNumber = (num) => {
-        const { input } = this.state;
-        let newInput = input;
+        const { input, result } = this.state;
+        if (input === result) return;
+        let newInput = input + num;
         if (this.leadingZero(input)) {
             newInput = input.substring(0, input.length - 1) + num;
-        } else {
-            newInput = input + num;
         }
-
         this.setState({ input: newInput })
     }
 
@@ -54,15 +57,12 @@ class Calculator extends Component {
 
         let lastElement = this.getLastElement(input)
 
-        //return (do nothing) if operator is last element
-        //if (isNaN(lastElement) || lastElement === "") {
-        if (this.isLastElementOperator(lastElement) || lastElement === "") {
+        //do nothing if operator is last element
+        if (this.isLastElementOperator() || lastElement === "") {
             return;
         }
-        let newDisplay = `${input} ${value} `
-        if (lastElement === ")" || lastElement === "(") {
-            newDisplay = `${input}${value} `
-        }
+        // handle spacing in case of parenthesese
+        let newDisplay = (lastElement === ")" || lastElement === "(") ? `${input}${value} ` : `${input} ${value} `
 
         this.setState({ input: newDisplay })
     }
@@ -73,6 +73,7 @@ class Calculator extends Component {
         const { input } = this.state;
         let leftCount = 0, rightCount = 0;
         let arr = input.split(" ")
+
         for (let char of arr) {
             if (char === "(") leftCount++;
             if (char === ")") rightCount++;
@@ -84,7 +85,6 @@ class Calculator extends Component {
         let lastElement = this.getLastElement(input)
 
         let newDisplay = "";
-        //if (lastElement === "(" || lastElement === ")") {
         if (isNaN(lastElement)) {
             newDisplay = `${input}${value} `
         }
@@ -110,10 +110,6 @@ class Calculator extends Component {
         this.setState({ input: newDisplay })
     }
 
-    handlePlus = (operand1, operand2) => {
-        return operand1 + operand2;
-    }
-
     doBasicMath = (operand1, operand2, operator) => {
         let firstNumber = Number(operand1)
         let secondNumber = Number(operand2)
@@ -121,71 +117,54 @@ class Calculator extends Component {
             case '+':
                 return firstNumber + secondNumber;
             case '-':
-                return firstNumber - secondNumber;
+                return secondNumber - firstNumber;
             case 'x':
                 return firstNumber * secondNumber;
             case '/':
-                return firstNumber / secondNumber;
+                return secondNumber / firstNumber;
             default:
         }
-
     }
 
-    Dijkstra = () => {
+    evaluate = () => {
         let operands = [], operators = [], result = 0;
         const { input } = this.state;
         let arr = input.trim().split(" ");
+        if (this.isLastElementOperator() || arr.length < 3) return;
+
+        //DIJKSTRA'S algorithm
         while (arr.length > 0) {
             let currentElement = arr.shift();
             if (!isNaN(currentElement)) {
                 operands.push(currentElement)
-            } else if (currentElement === "*" || currentElement === "+" || currentElement === "-" || currentElement === "/") {
+            } else if (currentElement === "x" || currentElement === "+" || currentElement === "-" || currentElement === "/") {
                 operators.push(currentElement)
             } else if (currentElement === ")") {
+                if (operands.length < 2) { continue; }
                 let firstOperand = operands.pop();
                 let secondOperand = operands.pop();
-                let firstOperator = operators.length ? operators.pop() : "*"
+                let firstOperator = operators.length ? operators.pop() : "x"
                 result = this.doBasicMath(firstOperand, secondOperand, firstOperator);
 
                 operands.push(result)
-                
-            } else {
 
-            }
+            } else {  }
         }
-        while (operators.length > 0) {
-            result = this.doBasicMath(operands.pop(), operands.pop(), operators.pop());
+
+        while (operands.length > 1) {
+            let firstOperand = operands.pop();
+            let secondOperand = operands.pop();
+            let firstOperator = operators.length ? operators.pop() : "x"
+            result = this.doBasicMath(firstOperand, secondOperand, firstOperator);
             operands.push(result)
-            console.log(result + " : " + operands + " : " + operators)
-
         }
-
+        let newDisplay = "" + result;
+        this.setState({ input: newDisplay, result: newDisplay })
 
     }
 
-    evaluate = (e) => {
-        const { input } = this.state;
-        let arr = input.trim().split(" ");
-        if (arr.includes("(") || arr.includes(")")) {
-            this.Dijkstra();
-            return;
-        }
-
-        let result = 0;
-        while (arr.length > 2) {
-            result = this.doBasicMath(arr[0], arr[2], arr[1])
-            arr.shift()
-            arr.shift()
-            arr.shift()
-            arr.unshift(result)
-        }
-        let newInput = arr.join("");
-        this.setState({ input: newInput })
-
-        // this.setState((prevState) => {
-        //     return { operands: [...prevState.operands, lastElement], display: newDisplay }
-        // })
-
+    handleClearScreen = () => {
+        this.setState({ input: "" })
     }
 
 
@@ -212,7 +191,7 @@ class Calculator extends Component {
             <button className="keypad sign" value="(" onClick={this.handleParenthesis}>(</button>
             <button className="keypad sign" value=")" onClick={this.handleParenthesis}>)</button>
             <button className="keypad sign" onClick={this.toggleSign}>+/-</button>
-            <button className="keypad sign" >AC</button>
+            <button className="keypad sign" onClick={this.handleClearScreen}>AC</button>
             <button className="keypad eval" value="=" onClick={this.evaluate}>=</button>
 
         </section>)
