@@ -4,105 +4,117 @@
   grid-template-rows: repeat(12, 1fr);
 }
 
-#calculator p {
+#previousDisplay {
+  text-align: right;
   grid-column: 5/9;
-  grid-row: 2/5;
-  border: black solid 1px;
-  height: 9vh;
+  grid-row: 4/5;
+  /* border: black solid 1px; */
+  /* height: 6vh; */
   background-color: lightgrey;
-  padding-top: 10px;
+  padding: 3%;
+  margin: 0;
+}
+#display {
+  text-align: right;
+  grid-column: 5/9;
+  grid-row: 5/6;
+  /* border: black solid 1px; */
+  /* height: 5vh; */
+  background-color: lightgrey;
+  padding: 3%;
+  margin: 0;
 }
 
 .allClear {
   grid-column: 5/6;
-  grid-row: 4/5;
+  grid-row: 6/7;
 }
 
 .sign {
   grid-column: 7/8;
-  grid-row: 4/5;
+  grid-row: 6/7;
 }
 
 .delete {
   grid-column: 6/7;
-  grid-row: 4/5;
+  grid-row: 6/7;
 }
 
 .one {
   grid-column: 5/6;
-  grid-row: 5/6;
+  grid-row: 7/8;
 }
 
 .two {
   grid-column: 6/7;
-  grid-row: 5/6;
+  grid-row: 7/8;
 }
 
 .three {
   grid-column: 7/8;
-  grid-row: 5/6;
+  grid-row: 7/8;
 }
 
 .minus {
   grid-column: 8/9;
-  grid-row: 5/6;
+  grid-row: 7/8;
 }
 
 .four {
   grid-column: 5/6;
-  grid-row: 6/7;
+  grid-row: 8/9;
 }
 
 .five {
   grid-column: 6/7;
-  grid-row: 6/7;
+  grid-row: 8/9;
 }
 
 .six {
   grid-column: 7/8;
-  grid-row: 6/7;
+  grid-row: 8/9;
 }
 
 .seven {
   grid-column: 5/6;
-  grid-row: 7/8;
+  grid-row: 9/10;
 }
 
 .eight {
   grid-column: 6/7;
-  grid-row: 7/8;
+  grid-row: 9/10;
 }
 
 .nine {
   grid-column: 7/8;
-  grid-row: 7/8;
+  grid-row: 9/10;
 }
 
 .zero {
   grid-column: 5/6;
-  grid-row: 8/9;
+  grid-row: 10/11;
 }
 
 .decimal {
   grid-column: 6/7;
-  grid-row: 8/9;
+  grid-row: 10/11;
 }
 
 .equal {
   grid-column: 7/9;
-  grid-row: 8/9;
+  grid-row: 10/11;
 }
 
 .plus {
   grid-column: 8/9;
-  grid-row: 4/5;
+  grid-row: 6/7;
 }
 
 .divide {
   grid-column: 8/9;
-  grid-row: 7/8;
+  grid-row: 9/10;
 }
 .multiply {
   grid-column: 8/9;
-  grid-row: 6/7;
+  grid-row: 8/9;
 }
