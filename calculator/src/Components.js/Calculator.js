@@ -1,38 +1,103 @@
+// 1. What state is there?
+// 2. When does it change?
+
+
 import React from "react";
 import "./Calculator.css";
 
 class Calculator extends React.Component {
-    state = { display: 0 }
+  state = { display: "0", previousDisplay: "", operator: "", newNumTracker: true };
 
-    enterNumber = (e) => {
-        this.setState({ display: e.target.value })
-        debugger
+  enterNumber = (e) => {
+    // debugger;
+    this.setState((prevState) => {
+      const { display } = prevState;
+      if (display === "0") {
+        // debugger
+        return {
+          display: e.target.value,
+        };
+      } else {
+        // debugger
+        return {
+          display: prevState.display + e.target.value,
+        };
+      }
+    });
+  };
+
+  handleClear = () => {
+    this.setState({ display: "0" });
+  };
+
+  handlePlus = (e) => {
+    // debugger
+    const { previousDisplay, display, operator, newNumTracker } = this.state
+    this.setState({ previousDisplay: display, operator: "plus", newNumTracker: true })
+  }
+ 
+  handleEqual = () => {
+    const { operator, previousDisplay, display} = this.state;
+    // debugger
+    if (operator === "plus") {
+      // debugger
+      this.setState({ display: previousDisplay + display })
+      // debugger
+      }
     }
 
+
   render() {
-      const { display } = this.state
+    const { display } = this.state;
     return (
       <div className="Calculator">
-        <div className="Display" value={display}>0</div>
-        <button className="TopRow">AC</button>
+        <div className="Display" value={display}>
+          {display}
+        </div>
+        <button className="TopRow" onClick={this.handleClear} value={0}>
+          AC
+        </button>
         <button className="TopRow">%</button>
+        <button className="Blank"></button>
         <button className="Operator">÷</button>
-        <button className="SecondRow" onClick={this.enterNumber} value={7}>7</button>
-        <button className="SecondRow">8</button>
-        <button className="SecondRow">9</button>
+        <button className="SecondRow" onClick={this.enterNumber} value={7}>
+          7
+        </button>
+        <button className="SecondRow" onClick={this.enterNumber} value={8}>
+          8
+        </button>
+        <button className="SecondRow" onClick={this.enterNumber} value={9}>
+          9
+        </button>
         <button className="Operator">x</button>
-        <button className="ThirdRow">4</button>
-        <button className="ThirdRow">5</button>
-        <button className="ThirdRow">6</button>
+        <button className="ThirdRow" onClick={this.enterNumber} value={4}>
+          4
+        </button>
+        <button className="ThirdRow" onClick={this.enterNumber} value={5}>
+          5
+        </button>
+        <button className="ThirdRow" onClick={this.enterNumber} value={6}>
+          6
+        </button>
         <button className="Operator">-</button>
-        <button className="FourthRow">1</button>
-        <button className="FourthRow">2</button>
-        <button className="FourthRow">3</button>
-        <button className="Operator">+</button>
-        <button className="BottomRow">0</button>
+        <button className="FourthRow" onClick={this.enterNumber} value={1}>
+          1
+        </button>
+        <button className="FourthRow" onClick={this.enterNumber} value={2}>
+          2
+        </button>
+        <button className="FourthRow" onClick={this.enterNumber} value={3}>
+          3
+        </button>
+        <button className="Operator" onClick={this.handlePlus}>
+          +
+        </button>
+        <button className="BottomRow" onClick={this.enterNumber} value={0}>
+          0
+        </button>
         <button className="BottomRow">.</button>
         <button className="BottomRow">±</button>
-        <button className="Operator">=</button>
+        <button className="Operator" onClick={this.handleEqual}>=</button>
       </div>
     );
   }

@@ -14,6 +14,7 @@
   font: 36px bold;
   text-align: right;
   grid-column: 1/6;
+  padding-right: 15px;
 }
 
 button {
@@ -25,6 +26,12 @@ button {
 }
 
 .TopRow {
+  grid-row: 2;
+  font: 30px bold;
+}
+
+.Blank {
+  grid-column: 3/4;
   grid-row: 2;
   font: 30px bold;
 }
