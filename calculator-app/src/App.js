@@ -1,70 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import Numbers from './Components/Numbers';
-import Input from './Components/Input';
-import Results from './Components/Results';
-import Operators from './Components/Operators';
-import Equal from './Components/Equal';
-import Clear from './Components/Delete';
+import Buttons from './Components/Buttons';
+import * as math from 'mathjs';
+//import Clear from './Components/Clear';
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
-      recentlyPressedValue: '',
-      recentOperation: '',
-      input: 0,
-      result: '',
-      positive: true,
-    }
-  }
+      result: '0',
+    };
+    this.handleClear = this.handleClear.bind(this);
+  };
 
-  calculateResults = () => {
+  handleButtonClick = (button) => {
+    const { result } = this.state;
 
-  }
+    if(result === '0') {
+      this.setState({ result: '' + button})
+    } else {
+      this.setState({
+        result: result + button
+      })
+    };
+  };
 
-  inputNumber = () => {
+  handleClear = (button) => {
+    this.setState({
+      result: '0'
+    });
+  };
 
-  }
-
-  inputOperation = () => {
-
-  }
+  handleEqual = (button) => {
+    this.setState({
+      result: math.evaluate(this.state.result)
+    });
+  };
+  //formatNumber()??
+  handleSign = (button) => {
+    this.setState({
+      result: this.state.result * -1
+    });
+  };
 
   render() {
-  return (
-    <div className="calculator">
-      <section className='results-container'>
-        <Input digit={this.state.recentlyPressedValue}/>
-        <Results result={this.state.result}/>
+    return (
+      <section className='calc-container'>
+      <div className='calculator'>
+        <p className='result'>{this.state.result}</p>  
+        <Buttons 
+          className='button-container' 
+          buttonClick={this.handleButtonClick} 
+          handleSign={this.handleSign}
+        />
+        <button className='clear' name='clear' value='clear' onClick={this.handleClear}>AC</button>
+        <button className='equal' name='=' value='=' onClick={this.handleEqual}>=</button>
+       
+      </div>
       </section>
-      <section className='numbers-container'>
-        <Numbers value={1}/>
-        <Numbers value={2}/>
-        <Numbers value={3}/>
-        <Numbers value={4}/>
-        <Numbers value={5}/>
-        <Numbers value={6}/>
-        <Numbers value={7}/>
-        <Numbers value={8}/>
-        <Numbers value={9}/>
-        <Numbers value={0}/>
-        <Numbers value={'.'}/>
-      </section>
-      <section className='operations-container'>
-        <Operators op={'x'}/>
-        <Operators op={'%'}/>
-        <Operators op={'+'}/>
-        <Operators op={'-'}/>
-      </section>
-      <section className='equal-container'>
-        <Clear clear={'AC'}/>
-        <Equal equal={'='}/>
-      </section>
-    </div>
-  );
-  }
-}
+    );
+  };
+};
 
 export default App;

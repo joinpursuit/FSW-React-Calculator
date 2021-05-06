@@ -1,12 +1,15 @@
-import React from 'react'
+// import React from 'react';
 
-function Equal(props) {
-    const { clear } = props
-    return (
-        <div>
-            {clear}
-        </div>
-    )
-}
+// function Clear(props) {
+//     handleClear = (e) => {
+//         this.props.handleClear(e.target.name)
+//     };
 
-export default Equal
+//     return (
+//         <div>
+//             <button className='clear' name='clear' onClick={this.handleClear}>AC</button>
+//         </div>
+//     )
+// }
+
+// export default Clear;
