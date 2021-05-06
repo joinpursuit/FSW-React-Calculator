@@ -19,8 +19,8 @@ class App extends Component {
     else if(button === "C"){
         this.reset()
     }
-    else if(button === "CE"){
-        this.backspace()
+    else if(button === "+/-") {
+        this.negative()
     }
 
     else {
@@ -32,22 +32,22 @@ class App extends Component {
 
 
 calculate = () => {
-    var checkResult = ''
+    let answer = ''
     if(this.state.result.includes('--')){
-        checkResult = this.state.result.replace('--','+')
+        answer = this.state.result.replace('--','+')
     }
 
     else {
-        checkResult = this.state.result
+        answer = this.state.result
     }
 
     try {
         this.setState({
-            result: (eval(checkResult) || "" ) + ""
+            result: (eval(answer) || "" ) + ""
         })
     } catch (e) {
         this.setState({
-            result: "error"
+            result: ""
         })
 
     }
@@ -55,15 +55,15 @@ calculate = () => {
 
 reset = () => {
     this.setState({
-        result: ""
+        result: "" 
     })
 };
-
-backspace = () => {
+negative = () => {
     this.setState({
-        result: this.state.result.slice(0, -1)
+        result: Math.sign(-1)
     })
-};
+}
+
   render() { 
   return (
     <div className="App">

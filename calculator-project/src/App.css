@@ -9,17 +9,18 @@ color: rgb(81, 9, 139);
 
 .result {
   display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-  height: 100px;
-  background-color: #bbb;
-  width: 50%;
+  position: relative;
+  align-items: center;
+    height: 110px;
+  background-color: black;
+  width: 150%;
 }
 
 .result p {
   font-size: 40px;
   margin: 5px;
+  color: whitesmoke;
+  justify-content: center;
 
 }
 
