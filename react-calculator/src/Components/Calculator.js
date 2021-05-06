@@ -29,17 +29,18 @@ class Calculator extends React.Component {
     if (this.state.afterOperator) {
       this.saveOldNums();
     }
-    if (
-      // this.state.numbers.length === 0 ) {
-      //   if(Number(newNum >0)) {
-      //
-      //
-      this.state.numbers.length <= 8
-    ) {
-      this.setState((prevState) => ({
-        numbers: [...prevState.numbers, newNum],
-      }));
-      // }
+    if (this.state.numbers.length <= 8) {
+      if (Number(newNum) !== 0) {
+        this.setState((prevState) => ({
+          numbers: [...prevState.numbers, newNum],
+        }));
+      } else {
+        if (this.state.numbers.length > 0) {
+          this.setState((prevState) => ({
+            numbers: [...prevState.numbers, newNum],
+          }));
+        }
+      }
     }
   };
 
@@ -67,7 +68,7 @@ class Calculator extends React.Component {
 
   getNum = () => {
     let num = this.state.numbers.join("");
-    if (this.state.isPositive) {
+    if (this.state.isPositive || Number(num) === 0) {
       return Number(num);
     } else {
       return Number(num) * -1;

@@ -5,10 +5,7 @@ class OperatorButtons extends React.Component {
   handlePosOrNeg = () => {
     const { posOrNeg, showNums } = this.props;
     posOrNeg(showNums);
-    
   };
-
-
 
   handleOperators = (e) => {
     const { getOperator } = this.props;
@@ -88,7 +85,7 @@ class OperatorButtons extends React.Component {
         >
           +/-
         </button>
-        {/* <button type="button" name="+/-" value={"+/-"} onClick = {()=>posOrNeg(showNums)}>+/-</button> */}
+
         <button
           id="buttonEqual"
           type="button"
