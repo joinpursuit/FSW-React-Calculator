@@ -6,7 +6,7 @@ import React from "react";
 import "./Calculator.css";
 
 class Calculator extends React.Component {
-  state = { display: "0", previousDisplay: "", operator: "", newNumTracker: true };
+  state = { display: "0", previousDisplay: "", operator: "", newNumTracker: false };
 
   enterNumber = (e) => {
     // debugger;
@@ -32,20 +32,37 @@ class Calculator extends React.Component {
 
   handlePlus = (e) => {
     // debugger
-    const { previousDisplay, display, operator, newNumTracker } = this.state
-    this.setState({ previousDisplay: display, operator: "plus", newNumTracker: true })
+    const { display } = this.state
+    // debugger
+    this.setState({ previousDisplay: display, display: "", operator: "plus", newNumTracker: true })
+    // previousDisplay: doesnot allow single digits to be entered
+    // this.setState({ display: previousDisplay, operator: "plus", newNumTracker: true })
+    // display: previousDisplay causes number in display to disappear once operator is clicked...makes sense since it is set to previousDisplay and prevDis started as an ""
+    // debugger
   }
  
   handleEqual = () => {
-    const { operator, previousDisplay, display} = this.state;
+    // debugger
+    const { operator } = this.state;
     // debugger
     if (operator === "plus") {
       // debugger
-      this.setState({ display: previousDisplay + display })
+      this.setState({ display: this.addNumbers() })
       // debugger
       }
     }
 
+    addNumbers = () => {
+      const { display, previousDisplay } = this.state;
+      let sum = 0;
+      if (display) {
+       sum = parseInt(previousDisplay) + parseInt(display)
+      //  debugger
+      }
+      return sum
+    }
+
+  
 
   render() {
     const { display } = this.state;
