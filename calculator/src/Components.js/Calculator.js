@@ -57,6 +57,9 @@ class Calculator extends React.Component {
     if (operator === "dividedBy") {
       this.setState({ display: this.divideNumbers(), previousDisplay: display })
     }
+    if (operator === "times") {
+      this.setState({ display: this.multiplyNumbers(), previousDisplay: display})
+    }
   };
 
   handleMinusSign = () => {
@@ -74,6 +77,14 @@ class Calculator extends React.Component {
     this.setState({  previousDisplay: display,
       display: "",
       operator: "dividedBy",
+      newNumTracker: true,})
+  }
+
+  handleMultiplicationSign = () => {
+    const { display } = this.state;
+    this.setState({  previousDisplay: display,
+      display: "",
+      operator: "times",
       newNumTracker: true,})
   }
 
@@ -104,6 +115,15 @@ class Calculator extends React.Component {
       quotient = parseInt(previousDisplay) / parseInt(display)
     }
     return quotient
+  }
+
+  multiplyNumbers = () => {
+    const { previousDisplay, display } = this.state;
+    let product = 0;
+    if (display) {
+      product = parseInt(previousDisplay) * parseInt(display)
+    }
+    return product
   }
 
   render() {
