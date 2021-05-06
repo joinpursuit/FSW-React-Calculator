@@ -3,6 +3,8 @@
   justify-content: center;
 }
 
+
+
 .container {
   display: grid;
   grid-template-columns: 45% 45% 45% 45%;
@@ -24,6 +26,10 @@
   margin: 0;
   background-color: rgb(243, 236, 229);
   border-radius: 5px;
+}
+
+.result p {
+  overflow: hidden;
 }
 
 .child {
