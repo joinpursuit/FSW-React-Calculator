@@ -2,8 +2,9 @@ import { Component } from "react";
 
 class Display extends Component {
   render() {
+      const { answer } = this.props
     return <section className="display">
-                    Calculations
+                    <p>{answer}</p>
             </section>;
   }
 }

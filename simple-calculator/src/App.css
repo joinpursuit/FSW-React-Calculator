@@ -1,20 +1,50 @@
-.App{
-  border: black 2px solid
+.App {
+  width: 500px;
+  height: 1100px;
+  background: black;
+  color: white;
+  padding: 20px;
+  border-radius: 50px;
 }
 
-button{
-  /* display:grid;
-  grid-row: 5; */
-  width: 25%;
-  height: 60px;
-  font-size: 30px;
-  border-radius: 10%;
+.Zero {
+  width: 250px;
+  grid-column: 1/3;
 }
 
+button {
+  background-color: #333;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  cursor: pointer;
+}
 
-.display{
-  height: 60px;
+.top {
+  height: 100px;
+  padding: 0 20px;
+}
+
+.display {
+  font-size: 130px;
+  margin-bottom: 90px;
+  font-weight: 200;
+  text-align: right;
+  /* height: 60px;
   background-color: greenyellow;
-  width: 100%;
-  
+  width: 100%; */
+}
+
+.buttons {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bottom {
 }
