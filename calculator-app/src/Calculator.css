@@ -15,6 +15,7 @@
   margin: 0;
 }
 #display {
+  font-size: 24px;
   text-align: right;
   grid-column: 5/9;
   grid-row: 5/6;

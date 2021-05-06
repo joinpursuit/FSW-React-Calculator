@@ -2,13 +2,10 @@ import React from "react";
 import "./Calculator.css";
 
 class Calculator extends React.Component {
-  state = { userNumInput: "0", operation: "", total: "", sign: "positive" };
-
-
+  state = { userNumInput: "", operation: "", total: "0", sign: "positive" };
 
   handleAllClear = () => {
-    this.setState({ userNumInput: "0" });
-    this.setState({ total: "" });
+    this.setState({ userNumInput: "", total: "0", operation: "" });
   };
 
   handleOperand = (userInput) => {
@@ -19,14 +16,15 @@ class Calculator extends React.Component {
       this.setState({
         total: userNumInput,
         operation: userInput,
-        userNumInput: "0",
+        userNumInput: "",
       });
     }
   };
 
   handleEqual = () => {
     const { userNumInput, total, operation } = this.state;
-    this.setState({ userNumInput: "0" });
+    // add check for commas(,)
+    this.setState({ userNumInput: "" });
     switch (operation) {
       case "+":
         this.setState({
@@ -48,36 +46,15 @@ class Calculator extends React.Component {
           total: Number(total) / Number(userNumInput),
         });
         break;
-        default: break;
+      default:
+        break;
     }
   };
-  // handleEqual = () => {
-  //   // use switch
-  //   const { userNumInput, operation, total } = this.state;
-  //   // this.setState({ userNumInput: "0" });
-  // operation is the expression ???????
-  //   if (operation === "+") {
-  //     this.setState({
-  //       total: Number(userNumInput) + Number(total),
-  //     });
-  //   } else if (operation === "-") {
-  //     this.setState({
-  //       total: Number(total) - Number(userNumInput),
-  //     });
-  //   } else if (operation === "x") {
-  //     this.setState({
-  //       total: Number(userNumInput) * Number(total),
-  //     });
-  //   } else if (operation === "÷") {
-  //     this.setState({
-  //       total: Number(total) / Number(userNumInput),
-  //     });
-  //   }
-  // };
 
+  // userNumInput shows up when typed and not when operand is type
   handleDigit = (userInput) => {
     const { userNumInput } = this.state;
-    userNumInput === "0"
+    userNumInput === ""
       ? this.setState({
           userNumInput: userInput,
         })
@@ -96,11 +73,12 @@ class Calculator extends React.Component {
   };
 
   // add 0 after deleting all numbers
+  // error if negative number
   handleDelete = () => {
     const { userNumInput } = this.state;
     if (userNumInput === "") {
       this.setState({
-        userNumInput: "0",
+        userNumInput: "",
       });
     } else {
       this.setState({
@@ -109,18 +87,20 @@ class Calculator extends React.Component {
     }
   };
 
-  // stop adding sign in front of the number
+  // add condition to remove zero after pressing +/-
   handleSign = () => {
-    const { sign, userNumInput, total } = this.state;
-    if (sign === "positive") {
-      this.setState({
-        total: userNumInput,
-        sign: "negative",
-        userNumInput: -Number(userNumInput),
-      });
-      // this.setState({ userNumInput: "-" + userNumInput})
-    } else {
-      this.setState({ sign: "positive", userNumInput: total });
+    const { sign, userNumInput } = this.state;
+    if (userNumInput !== "") {
+      if (sign === "positive") {
+        this.setState({
+          sign: "negative",
+          userNumInput: userNumInput * -1,
+        });
+      } else {
+        this.setState({
+          sign: "positive",
+          userNumInput: userNumInput * -1 });
+      }
     }
   };
 
