@@ -1,5 +1,5 @@
 button{
-    font-size: 30px;
+
     border: black solid 2px;
     width: 80px;
 }
@@ -10,4 +10,10 @@ ul{
     display: flex;
     flex-direction: row;
    justify-content: center;
+}
+
+.parent-mod{
+    display: flex;
+  flex-direction: column;
+ 
 }

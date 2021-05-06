@@ -8,13 +8,14 @@ const Mod = ({ handleMod }) => {
     subtract: "-",
     divide: "÷",
     multiply: "*",
-    plusMinus: "+/-"
+    plusMinus: "+/-",
+ 
   };
 
   return (
-    <div className="modButtons">
-      {/* <button onClick={entry}>entry</button> */}
-      <ul>
+
+
+      <ul className="parent-mod">
         {Object.entries(modButtons).map((el) => {// use entries method to have access to both symbol and string of moderator
           return (
             <li type={el[0]} key={el[0]} value={el[1]} className="all-mods">
@@ -23,7 +24,7 @@ const Mod = ({ handleMod }) => {
           );
         })}
       </ul>
-    </div>
+
   );
 };
 

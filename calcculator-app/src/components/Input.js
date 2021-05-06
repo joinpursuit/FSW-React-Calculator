@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "./Grid.js";
 import Mod from "./Mod.js";
 import Equal from "./Equal.js";
+import Clear from "./Clear.js";
 import "./styles/Input.css";
 
 class Input extends React.Component {
@@ -52,33 +53,38 @@ class Input extends React.Component {
   };
 
   handleMod = (event) => {
-
-    
-    if(event === "plusMinus"){
-        this.setState((prevState) => ({
-          input: Number(prevState.input) * -1,
-          firstDisplay: Number(prevState.input) * -1,
-         mod: event,
-          previous: prevState, // no real functionality just wanted to call prevState so it wouldnt stay faded
-        }));    
-console.log(this.state)
-    }else{
-
-        this.setState((prevState) => ({
-          input: "",
-          // firstDisplay: [...[answer]].join(""),
-         mod: event,
-          previous: prevState, // no real functionality just wanted to call prevState so it wouldnt stay faded
-        }));
+    if (event === "plusMinus") {
+      this.setState((prevState) => ({
+        input: Number(prevState.input) * -1,
+        firstDisplay: Number(prevState.input) * -1,
+        mod: event,
+        previous: prevState, // no real functionality just wanted to call prevState so it wouldnt stay faded
+      }));
+      console.log(this.state);
+    } else {
+      this.setState((prevState) => ({
+        input: "",
+        // firstDisplay: [...[answer]].join(""),
+        mod: event,
+        previous: prevState, // no real functionality just wanted to call prevState so it wouldnt stay faded
+      }));
     }
+  };
 
-      }
- 
-    
 
- 
+  handleClear = (event) => {
+    this.setState((prevState) => ({
+      input: [],
+      firstDisplay: [],
+      mod: "",
+      secondDisplay: [],
+      answer: 0,
+    }));
 
-   
+
+  };
+
+
 
   handleEqual = (event) => {
     console.log(event);
@@ -90,7 +96,7 @@ console.log(this.state)
         input: [...[answer]].join(""),
         firstDisplay: [...[answer]].join(""),
         previous: prevState,
-        mod:""
+        mod: "",
       }));
     }
     if (event.mod === "subtract") {
@@ -99,7 +105,7 @@ console.log(this.state)
         input: [...[answer]].join(""),
         firstDisplay: [...[answer]].join(""),
         previous: prevState,
-        mod:""
+        mod: "",
       }));
     }
     if (event.mod === "divide") {
@@ -108,7 +114,7 @@ console.log(this.state)
         input: [...[answer]].join(""),
         firstDisplay: [...[answer]].join(""),
         previous: prevState,
-        mod:""
+        mod: "",
       }));
     }
     if (event.mod === "multiply") {
@@ -117,23 +123,20 @@ console.log(this.state)
         input: [...[answer]].join(""),
         firstDisplay: [...[answer]].join(""),
         previous: prevState,
-        mod:""
+        mod: "",
       }));
     }
-  // }else{
-  //   let answer = Number(event.first);
-  //   this.setState((prevState) => ({
-  //     input: [...[answer]].join(""),
-  //     firstDisplay: [...[answer]].join(""),
-  //     previous: prevState,
-  //   }));
-  }
-    
-  
-  
-  
+    // }else{
+    //   let answer = Number(event.first);
+    //   this.setState((prevState) => ({
+    //     input: [...[answer]].join(""),
+    //     firstDisplay: [...[answer]].join(""),
+    //     previous: prevState,
+    //   }));
+  };
+
   // if (event.mod === "plusMinus" && event.second === "") {
-  //     let answer = event.first 
+  //     let answer = event.first
   //     this.setState((prevState) => ({
   //       input: [...[answer]].join(""),
   //       firstDisplay: [...[answer]].join(""),
@@ -149,29 +152,44 @@ console.log(this.state)
 
   // }
 
-
-
-  
-
   render() {
     return (
-      <div className="main-container">
-        <input
+      <div className="main-div">
+        <div className="input-container">
+<input
           className="calc-input"
           onChange={this.handleInputChange}
           id="Number"
           name="input"
           value={this.state.input}
         />
-        <button onClick={this.test}></button>
-        <Grid handleGrid={this.handleGrid} />
-        <Mod handleMod={this.handleMod} />
-        <Equal //will loop values of state properties by making a copy of them in child component and passing in as arguments back to parent function
+
+</div>
+    
+<main className="main-container">
+
+<section className="bottom-input">
+  <Grid className="grid" handleGrid={this.handleGrid} />
+  </section>
+
+
+<div className="mod-div">
+<Mod className= "mod"handleMod={this.handleMod} handleClear={this.handleClear} />
+
+</div>
+<div className="right-side">
+<Equal  className="equal" //will loop values of state properties by making a copy of them in child component and passing in as arguments back to parent function
           first={this.state.firstDisplay}
           mod={this.state.mod}
           second={this.state.secondDisplay}
           handleEqual={this.handleEqual}
         />
+<button classNaame="button-clear" onClick={this.handleClear}>Clear</button>
+</div>
+
+
+</main>
+
       </div>
     );
   }

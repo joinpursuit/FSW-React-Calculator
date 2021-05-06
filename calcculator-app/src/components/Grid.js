@@ -1,4 +1,6 @@
 import React from "react"
+import "./styles/Grid.css"
+
 
 const Grid = ({handleGrid})=>{
 const nums = {
@@ -9,7 +11,7 @@ const nums = {
 
 return(
     <div>
-<ul>{nums.allNums.map((el,i)=>{
+<ul className="number-grid">{nums.allNums.map((el,i)=>{
  return  <li key={i}>  
  
  <button onClick={() => handleGrid(el)}>  {el}   </button>
