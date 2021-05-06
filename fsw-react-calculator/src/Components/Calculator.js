@@ -1,13 +1,14 @@
 import React from "react";
 import Buttons from "./Buttons";
+import "../calculator.css"
 
 class Calculator extends React.Component {
-  state = { display: "0", userNum1: "", userNum2: "", operator: "" };
+  state = { display: "0", userNum1: "", userNum2: "", operator: "", justEvaluated: false};
 
   enterNum = (num) => {
     this.setState((prevState) => {
       let newDisplay;
-      if (prevState.display === "0") {
+      if (prevState.display === "0" || prevState.justEvaluated) {
         newDisplay = num;
       } else {
         newDisplay = prevState.display + num;
@@ -15,6 +16,7 @@ class Calculator extends React.Component {
       return {
         display: newDisplay,
         userNum2: newDisplay,
+        justEvaluated: false
       };
     });
   };
@@ -70,6 +72,7 @@ class Calculator extends React.Component {
       }
       return {
         display: total,
+        justEvaluated: true
       };
     });
   };
@@ -96,7 +99,7 @@ class Calculator extends React.Component {
     const { display } = this.state;
 
     return (
-      <div>
+      <div className="calculator-div">
         <Buttons
           displayString={Number(display).toLocaleString()}
           enterNum={this.enterNum}
