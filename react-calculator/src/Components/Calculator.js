@@ -3,11 +3,12 @@ import "./calculator.css"
 import Display from "./Display"
 
 class Calculator extends Component {
-    state = { input: "", result: "RESULT" }
+    state = { input: "", result: "RESULT"}
 
     /* Returns last element in string */
-    getLastElement = (string) => {
-        const arr = string.trim().split(" ");
+    getLastElement = () => {
+        const {input} = this.state;
+        const arr = input.trim().split(" ");
         return arr.pop();
     }
     /* Returns true is last element is operator */
@@ -29,13 +30,13 @@ class Calculator extends Component {
 
     /* Returns true if last character is 0 */
     leadingZero = (string) => {
-        const lastOperand = this.getLastElement(string)
+        const lastOperand = this.getLastElement()
         return lastOperand === "0"; 
     }
 
     /* prevents 00  */
     handleZero = () => {
-        const newInput = this.state.input;
+        let newInput = this.state.input;
         if (this.leadingZero(newInput)) return;
         newInput = newInput + "0"
         this.setState({ input: newInput })
@@ -55,7 +56,7 @@ class Calculator extends Component {
         const { value } = e.target;
         const { input } = this.state;
 
-        let lastElement = this.getLastElement(input)
+        let lastElement = this.getLastElement()
 
         //do nothing if operator is last element
         if (this.isLastElementOperator() || lastElement === "") {
@@ -81,17 +82,21 @@ class Calculator extends Component {
         if (value === ")" && rightCount >= leftCount) {
             return;
         }
+        let lastElement = this.getLastElement()
 
-        let lastElement = this.getLastElement(input)
-
-        let newDisplay = "";
-        if (isNaN(lastElement)) {
-            newDisplay = `${input}${value} `
-        }
-        else {
-            newDisplay = `${input} ${value} `
-        }
+        let newDisplay = (isNaN(lastElement)) ? `${input}${value} ` : `${input} ${value} `;
         this.setState({ input: newDisplay })
+    }
+
+    handlePercent = () =>{
+        const {input } = this.state;
+        const lastElement = this.getLastElement()
+        if(isNaN(lastElement)) return;
+        
+        let newDisplay = input.substring(0, input.lastIndexOf(" ")) + " " + (Number(lastElement) * .01);
+
+        this.setState({ input: newDisplay })
+
     }
 
 
@@ -120,10 +125,21 @@ class Calculator extends Component {
                 return secondNumber - firstNumber;
             case 'x':
                 return firstNumber * secondNumber;
-            case '/':
+            case '÷':
                 return Math.round(secondNumber / firstNumber);
             default:
         }
+    }
+
+    orderOfOperations=(arr)=>{
+        for(let i = 1;i<arr.length-1;i++){
+            if((arr[i]==="x"||arr[i]==="÷") && !isNaN(arr[i-1]) && !isNaN(arr[i+1])){
+                arr.splice(i-1, 0, "(");
+                arr.splice(i+3, 0, ")");
+                i = i+ 3;
+            }
+        }
+        return arr;
     }
 
     evaluate = () => {
@@ -131,13 +147,13 @@ class Calculator extends Component {
         const { input } = this.state;
         let arr = input.trim().split(" ");
         if (this.isLastElementOperator() || arr.length < 3) return;
-
+        arr = this.orderOfOperations(arr);
         //DIJKSTRA'S algorithm
         while (arr.length > 0) {
             let currentElement = arr.shift();
             if (!isNaN(currentElement)) {
                 operands.push(currentElement)
-            } else if (currentElement === "x" || currentElement === "+" || currentElement === "-" || currentElement === "/") {
+            } else if (currentElement === "x" || currentElement === "+" || currentElement === "-" || currentElement === "÷") {
                 operators.push(currentElement)
             } else if (currentElement === ")") {
                 if (operands.length < 2) { continue; }
@@ -185,9 +201,9 @@ class Calculator extends Component {
             <button className="keypad sign" value="+" onClick={this.handleOperator}>+</button>
             <button className="keypad sign" value="-" onClick={this.handleOperator}>-</button>
             <button className="keypad sign" value="x" onClick={this.handleOperator}>x</button>
-            <button className="keypad sign" value="/" onClick={this.handleOperator}>÷</button>
-            <button className="keypad sign" value="." onClick={this.handleOperator}>.</button>
-            <button className="keypad sign" value="%" onClick={this.handleOperator}>%</button>
+            <button className="keypad sign" value="÷" onClick={this.handleOperator}>÷</button>
+            <button className="keypad sign" value="." onClick={this.handleDecimal}>.</button>
+            <button className="keypad sign" value="%" onClick={this.handlePercent}>%</button>
             <button className="keypad sign" value="(" onClick={this.handleParenthesis}>(</button>
             <button className="keypad sign" value=")" onClick={this.handleParenthesis}>)</button>
             <button className="keypad sign" onClick={this.toggleSign}>+/-</button>

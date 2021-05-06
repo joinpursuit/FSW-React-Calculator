@@ -5,10 +5,8 @@ class Display extends React.Component {
     constructor(props){
         super(props)
         this.state = ({displayStyle: {background: 'lightBlue', fontSize: "26px"}})
-        
     }
-
-
+    
     formatDisplay = (string) => {
         if (string.length === 0) {
             return "0";
@@ -19,11 +17,12 @@ class Display extends React.Component {
                 return element;
             } else {
                 if(element.length>10){
-                    if(element % 1 !== 0){
-                        return Number(element).toFixed(5)
+                    if(element % 1 === 0){
+                        return Number(element).toExponential(8); //exponential
                     }
-                    return Number(element).toExponential(8);
+                    element = Number(element).toFixed(5) //decimal
                 }
+                //return numbers wuth commas
                 let nf = new Intl.NumberFormat();
                 return nf.format(element)
             }
@@ -40,3 +39,5 @@ class Display extends React.Component {
 }
 
 export default Display;
+
+
