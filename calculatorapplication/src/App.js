@@ -6,39 +6,90 @@ const numbers = "0123456789";
 
 class App extends React.Component {
   state = {
-    result: "0",
+    currentInput: "0",
     history: [],
-    // showResult: [{ value: "" }, { show: true }],
+    // showcurrentInput: [{ value: "" }, { show: true }],
   };
 
   detectClick = (target) => {
-    debugger
-    if (typeof this.state.result === "number") {
-      this.setState({result: Number(target.name)})
-    } else if (target.name === "-/+") {
-      
-      // this.setState({result: preState.result.positive? preState.result.number: -preState.result.number })
+    // debugger;
+    const { currentInput } = this.state;
+    if (
+      numbers.includes(target.name) &&
+      currentInput.length > 0 &&
+      currentInput !== "0"
+    ) {
+      if (currentInput.length > 3 && currentInput.includes(".")) {
+      }
+      this.setState((prevState) => {
+        return {
+          currentInput: prevState.currentInput + target.name,
+        };
+      });
     } else if (numbers.includes(target.name)) {
-      this.setState({ result: Number(target.name) });
+      this.setState({ currentInput: target.name });
+    }
+
+    if (target.name === "-/+") {
+      this.changePositivity();
     } else {
-      // this.setState({ result: target });
+      console.log("nothing");
     }
   };
 
-  calculate = () => {
-    console.log("calculate");
+  changePositivity = () => {
+    const { currentInput } = this.state;
+    if( !currentInput.includes("-")){
+      this.setState({currentInput: "-"+currentInput})
+    }else{
+      this.setState({currentInput: currentInput.filter("-")})
+    }
+
+  };
+  operation = (target) => {
+    const { currentInput } = this.state;
+    let result = 0;
+    switch (target.name) {
+      case "+":
+        result =
+          currentInput + target.name
+        break;
+      case "-":
+        result =
+          currentInput + target.name
+        break;
+      case "*":
+        result =
+          currentInput + target.name
+        break;
+      case "/":
+        result =
+          currentInput + target.name
+        break;
+      default:
+        break;
+    }
+    this.setState({ currentInput: result });
   };
 
-  clear = () => {
-    // this.setState({result.nu})
+  clear = (e) => {
+    this.setState({ currentInput: "0" });
   };
+  calculate = ()=>{
+    console.log("calculate")
+  }
 
   render() {
-    const { result } = this.state;
+    const { currentInput } = this.state;
     return (
       <div className="App">
-        <Screen result={result} />
-        <Buttons detectClick={this.detectClick} />
+        <Screen currentInput={currentInput} />
+        <Buttons
+          detectClick={this.detectClick}
+          clear={this.clear}
+          operation={this.operation}
+          calculate={this.calculate}
+        />
       </div>
     );
   }

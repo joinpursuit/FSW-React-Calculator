@@ -2,7 +2,7 @@ import React from "react";
 
 class Buttons extends React.Component {
   render() {
-    const { detectClick } = this.props;
+    const { detectClick, clear,operation,calculate} = this.props;
     return (
       <div className="Buttons">
         <button
@@ -80,38 +80,38 @@ class Buttons extends React.Component {
         <button
           name="+"
           className="operation"
-          onClick={(e) => detectClick(e.target)}
+          onClick={(e) => operation(e.target)}
         >
           +
         </button>
         <button
           name="-"
           className="operation"
-          onClick={(e) => detectClick(e.target)}
+          onClick={(e) => operation(e.target)}
         >
           -
         </button>
         <button
           name="*"
           className="operation"
-          onClick={(e) => detectClick(e.target)}
+          onClick={(e) => operation(e.target)}
         >
           *
         </button>
         <button
           name="/"
           className="operation"
-          onClick={(e) => detectClick(e.target)}
+          onClick={(e) => operation(e.target)}
         >
           /
         </button>
-        <button name="=" onClick={(e) => detectClick(e.target)}>
+        <button name="=" onClick={(e) => calculate(e.target)}>
           =
         </button>
         <button name="-/+" onClick={(e) => detectClick(e.target)}>
           -/+
         </button>
-        <button name="CE" onClick={(e) => detectClick(e.target)}>
+        <button name="CE" onClick={(e) => clear(e.target)}>
           CE
         </button>
         <button name="." onClick={(e) => detectClick(e.target)}>
