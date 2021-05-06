@@ -58,7 +58,7 @@ class Calculator extends React.Component {
       this.setState({ display: this.divideNumbers(), previousDisplay: display })
     }
     if (operator === "times") {
-      this.setState({ display: this.multiplyNumbers(), previousDisplay: display})
+      this.setState({ display: this.multiplyNumbers(), previousDisplay: display })
     }
   };
 
@@ -88,7 +88,21 @@ class Calculator extends React.Component {
       newNumTracker: true,})
   }
 
+  handleToggleInteger = () => {
+    const { display } = this.state 
+    this.setState({ display: -(display) })
+  }
   
+  // doMath = () => {
+  //   const { previousDisplay, display, operator } = this.state;
+  //   let result = 0;
+  //   if (operator === "plus") {
+  //     result = parseInt(previousDisplay) + parseInt(display);
+  //     debugger
+  //     this.setState({ display: result });
+  //   }
+  // };
+
   addNumbers = () => {
     const { previousDisplay, display } = this.state;
     let sum = 0;
@@ -179,7 +193,7 @@ class Calculator extends React.Component {
           0
         </button>
         <button className="BottomRow">.</button>
-        <button className="BottomRow">±</button>
+        <button className="BottomRow" onClick={this.handleToggleInteger}>±</button>
         <button className="Operator" onClick={this.handleEqualSign}>
           =
         </button>
