@@ -4,7 +4,7 @@ import React from "react"
 class Display extends React.Component {
     constructor(props){
         super(props)
-        this.state = ({displayStyle: {background: 'lightBlue', fontSize: "26px"}})
+        this.state = ({displayStyle: {fontSize: "26px"}})
     }
     
     formatDisplay = (string) => {
