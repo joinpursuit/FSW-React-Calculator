@@ -31,10 +31,10 @@ class Calculator extends React.Component {
   };
 
   handleClear = () => {
-    this.setState({ display: "0" });
+    this.setState({ display: "0", previousDisplay: "" });
   };
 
-  handlePlus = () => {
+  handlePlusSign = () => {
     // debugger
     const { display } = this.state;
     // debugger
@@ -46,12 +46,12 @@ class Calculator extends React.Component {
     });
   };
 
-  handleEqual = () => {
+  handleEqualSign = () => {
     // debugger
     const { operator, display } = this.state;
     // debugger
     if (operator === "plus") {
-      debugger;
+      // debugger;
       this.setState({ display: this.addNumbers(), previousDisplay: display });
       // debugger
     }
@@ -60,7 +60,7 @@ class Calculator extends React.Component {
     }
   };
 
-  handleMinus = () => {
+  handleMinusSign = () => {
     const { display } = this.state;
     this.setState({
       previousDisplay: display,
@@ -70,6 +70,7 @@ class Calculator extends React.Component {
     });
   };
 
+  
   addNumbers = () => {
     const { previousDisplay, display } = this.state;
     let sum = 0;
@@ -101,7 +102,7 @@ class Calculator extends React.Component {
         </button>
         <button className="TopRow">%</button>
         <button className="Blank"></button>
-        <button className="Operator">÷</button>
+        <button className="Operator" onClick={this.handleDivision}>÷</button>
         <button className="SecondRow" onClick={this.enterNumber} value={7}>
           7
         </button>
@@ -111,7 +112,7 @@ class Calculator extends React.Component {
         <button className="SecondRow" onClick={this.enterNumber} value={9}>
           9
         </button>
-        <button className="Operator" onClick={this.handleMinus}>
+        <button className="Operator" onClick={this.handleMultiplicationSign}>
           x
         </button>
         <button className="ThirdRow" onClick={this.enterNumber} value={4}>
@@ -123,7 +124,7 @@ class Calculator extends React.Component {
         <button className="ThirdRow" onClick={this.enterNumber} value={6}>
           6
         </button>
-        <button className="Operator" onClick={this.handleMinus}>
+        <button className="Operator" onClick={this.handleMinusSign}>
           -
         </button>
         <button className="FourthRow" onClick={this.enterNumber} value={1}>
@@ -135,7 +136,7 @@ class Calculator extends React.Component {
         <button className="FourthRow" onClick={this.enterNumber} value={3}>
           3
         </button>
-        <button className="Operator" onClick={this.handlePlus}>
+        <button className="Operator" onClick={this.handlePlusSign}>
           +
         </button>
         <button className="BottomRow" onClick={this.enterNumber} value={0}>
@@ -143,7 +144,7 @@ class Calculator extends React.Component {
         </button>
         <button className="BottomRow">.</button>
         <button className="BottomRow">±</button>
-        <button className="Operator" onClick={this.handleEqual}>
+        <button className="Operator" onClick={this.handleEqualSign}>
           =
         </button>
       </div>
