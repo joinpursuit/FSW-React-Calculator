@@ -47,16 +47,15 @@ class Calculator extends React.Component {
   };
 
   handleEqualSign = () => {
-    // debugger
     const { operator, display } = this.state;
-    // debugger
     if (operator === "plus") {
-      // debugger;
-      this.setState({ display: this.addNumbers(), previousDisplay: display });
-      // debugger
+      this.setState({ display: this.addNumbers(), previousDisplay: display })
     }
     if (operator === "minus") {
       this.setState({ display: this.subtractNumbers(), previousDisplay: display });
+    }
+    if (operator === "dividedBy") {
+      this.setState({ display: this.divideNumbers(), previousDisplay: display })
     }
   };
 
@@ -69,6 +68,14 @@ class Calculator extends React.Component {
       newNumTracker: true,
     });
   };
+
+  handleDivisionSign = () => {
+    const { display } = this.state;
+    this.setState({  previousDisplay: display,
+      display: "",
+      operator: "dividedBy",
+      newNumTracker: true,})
+  }
 
   
   addNumbers = () => {
@@ -90,6 +97,15 @@ class Calculator extends React.Component {
     return difference;
   };
 
+  divideNumbers = () => {
+    const { previousDisplay, display } = this.state;
+    let quotient = 0;
+    if (display) {
+      quotient = parseInt(previousDisplay) / parseInt(display)
+    }
+    return quotient
+  }
+
   render() {
     const { display } = this.state;
     return (
@@ -102,7 +118,7 @@ class Calculator extends React.Component {
         </button>
         <button className="TopRow">%</button>
         <button className="Blank"></button>
-        <button className="Operator" onClick={this.handleDivision}>÷</button>
+        <button className="Operator" onClick={this.handleDivisionSign}>÷</button>
         <button className="SecondRow" onClick={this.enterNumber} value={7}>
           7
         </button>
