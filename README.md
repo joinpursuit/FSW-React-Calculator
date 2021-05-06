@@ -1,5 +1,8 @@
 # Calculator
 
+[Live Site](https://daniel-naranjo-calculator.netlify.app/)
+
+`https://daniel-naranjo-calculator.netlify.app/`
 
 [Trello Board](https://trello.com/b/6aZbDUXd/daniel-naranjos-react-calculator)
 
