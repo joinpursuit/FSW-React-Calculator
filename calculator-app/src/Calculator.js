@@ -1,14 +1,16 @@
 import React from "react";
 import "./Calculator.css";
 
-// Still need to handle:
-// default zero display
-// multiple digit numbers
-// switching signs
-// ??? whole numbers
-
 class Calculator extends React.Component {
   state = { userNumInput: "0", operation: "", total: "", sign: "positive" };
+
+
+
+  handleAllClear = () => {
+    this.setState({ userNumInput: "0" });
+    this.setState({ total: "" });
+  };
+
   handleOperand = (userInput) => {
     const { userNumInput, operation } = this.state;
     if (operation !== "") {
@@ -22,33 +24,56 @@ class Calculator extends React.Component {
     }
   };
 
-  handleAllClear = () => {
-    this.setState({ userNumInput: "0" });
-    this.setState({ total: ""})
-  };
-
   handleEqual = () => {
-    // use switch
-    const { userNumInput, operation, total } = this.state;
+    const { userNumInput, total, operation } = this.state;
     this.setState({ userNumInput: "0" });
-    if (operation === "+") {
-      this.setState({
-        total: Number(userNumInput) + Number(total),
-      });
-    } else if (operation === "-") {
-      this.setState({
-        total: Number(total) - Number(userNumInput),
-      });
-    } else if (operation === "x") {
-      this.setState({
-        total: Number(userNumInput) * Number(total),
-      });
-    } else if (operation === "÷") {
-      this.setState({
-        total: Number(total) / Number(userNumInput),
-      });
+    switch (operation) {
+      case "+":
+        this.setState({
+          total: Number(userNumInput) + Number(total),
+        });
+        break;
+      case "-":
+        this.setState({
+          total: Number(total) - Number(userNumInput),
+        });
+        break;
+      case "x":
+        this.setState({
+          total: Number(userNumInput) * Number(total),
+        });
+        break;
+      case "÷":
+        this.setState({
+          total: Number(total) / Number(userNumInput),
+        });
+        break;
+        default: break;
     }
   };
+  // handleEqual = () => {
+  //   // use switch
+  //   const { userNumInput, operation, total } = this.state;
+  //   // this.setState({ userNumInput: "0" });
+  // operation is the expression ???????
+  //   if (operation === "+") {
+  //     this.setState({
+  //       total: Number(userNumInput) + Number(total),
+  //     });
+  //   } else if (operation === "-") {
+  //     this.setState({
+  //       total: Number(total) - Number(userNumInput),
+  //     });
+  //   } else if (operation === "x") {
+  //     this.setState({
+  //       total: Number(userNumInput) * Number(total),
+  //     });
+  //   } else if (operation === "÷") {
+  //     this.setState({
+  //       total: Number(total) / Number(userNumInput),
+  //     });
+  //   }
+  // };
 
   handleDigit = (userInput) => {
     const { userNumInput } = this.state;
@@ -81,7 +106,6 @@ class Calculator extends React.Component {
       this.setState({
         userNumInput: userNumInput.slice(0, -1),
       });
-
     }
   };
 
@@ -89,7 +113,11 @@ class Calculator extends React.Component {
   handleSign = () => {
     const { sign, userNumInput, total } = this.state;
     if (sign === "positive") {
-      this.setState({ total: userNumInput, sign: "negative", userNumInput: - Number(userNumInput) });
+      this.setState({
+        total: userNumInput,
+        sign: "negative",
+        userNumInput: -Number(userNumInput),
+      });
       // this.setState({ userNumInput: "-" + userNumInput})
     } else {
       this.setState({ sign: "positive", userNumInput: total });
@@ -106,7 +134,7 @@ class Calculator extends React.Component {
   };
 
   render() {
-    const { userNumInput, total, sign } = this.state;
+    const { userNumInput, total } = this.state;
     return (
       <section id="calculator">
         <p id="previousDisplay">{userNumInput}</p>
@@ -162,10 +190,9 @@ class Calculator extends React.Component {
         <button className="delete" onClick={this.handleDelete}>
           DEL
         </button>
-        <button className="sign" onClick={this.handleSign} value={sign}>
+        <button className="sign" onClick={this.handleSign}>
           +/-
         </button>
-        {/* not implemented */}
         <button className="equal" onClick={this.handleEqual}>
           =
         </button>
@@ -175,22 +202,3 @@ class Calculator extends React.Component {
 }
 
 export default Calculator;
-
-// handleEqual = () => {
-//   // use switch
-//   const { userNumInput, operation, total } = this.state;
-//   switch (operation) {
-//     case "-":
-//       this.setState({ total: Number(userNumInput) - Number(total) });
-//       break;
-//     case "/":
-//       this.setState({ total: Number(userNumInput) / Number(total) });
-//       break;
-//     case "*":
-//       this.setState({ total: Number(userNumInput) * Number(total) });
-//       break;
-//     default:
-//       this.setState({ total: Number(userNumInput) + Number(total) });
-//   }
-
-
