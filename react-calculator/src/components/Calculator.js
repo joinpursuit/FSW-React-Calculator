@@ -51,7 +51,7 @@ class Calculator extends Component {
       } else if (operator === "*") {
         this.setState({ input: memory * input });
       } else if (operator === "/") {
-        this.setState({ input: memory / input });
+        this.setState({ input: Math.round(memory / input) });
       }
       this.setState({ memory: null, isOperand: true });
     }
@@ -61,7 +61,7 @@ class Calculator extends Component {
     const { input, operator, memory } = this.state;
     const num = Number(input);
     const operations = {
-      "/": (memory, num) => memory / num,
+      "/": (memory, num) => Math.round(memory / num),
       "*": (memory, num) => memory * num,
       "-": (memory, num) => memory - num,
       "+": (memory, num) => memory + num,
