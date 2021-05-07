@@ -9,6 +9,7 @@ class Calculator extends React.Component {
     display: "0",
     previousDisplay: "",
     operator: "",
+    value: "",
     newNumTracker: false,
   };
 
@@ -17,12 +18,14 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       const { display } = prevState;
       if (display === "0") {
+        // changing this to just display and not display === 0, fixed the 0 populate inbetween the + sign. It also helped with keeping the digit onscreen.
+        // if (display) {
         // debugger
         return {
           display: e.target.value,
         };
       } else {
-        // debugger
+        debugger
         return {
           display: prevState.display + e.target.value,
         };
@@ -40,26 +43,32 @@ class Calculator extends React.Component {
     // debugger
     this.setState({
       previousDisplay: display,
-      display: "",
+      display: "0",
+      //there is a link between this display and the conditional in enterNumber
       operator: "plus",
       newNumTracker: true,
     });
   };
 
   handleEqualSign = () => {
-    const { operator, display } = this.state;
+    const { operator, display, value } = this.state;
+    console.log("handleEqualSign", display)
     if (operator === "plus") {
       this.setState({ display: this.addNumbers(), previousDisplay: display })
     }
-    if (operator === "minus") {
+    else if (operator === "minus") {
       this.setState({ display: this.subtractNumbers(), previousDisplay: display });
     }
-    if (operator === "dividedBy") {
+    else if (operator === "dividedBy") {
       this.setState({ display: this.divideNumbers(), previousDisplay: display })
     }
-    if (operator === "times") {
+    else if (operator === "times") {
       this.setState({ display: this.multiplyNumbers(), previousDisplay: display })
     }
+    else if (value) {
+debugger
+      this.setState({ display: value, previousDisplay: ""})
+    } 
   };
 
   handleMinusSign = () => {
@@ -142,10 +151,11 @@ class Calculator extends React.Component {
 
   render() {
     const { display } = this.state;
+    console.log("render", display)
     return (
       <div className="Calculator">
         <div className="Display" value={display}>
-          {display}
+          {parseInt(display).toLocaleString()}
         </div>
         <button className="TopRow" onClick={this.handleClear} value={0}>
           AC
