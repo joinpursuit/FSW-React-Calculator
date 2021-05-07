@@ -8,7 +8,7 @@ class App extends React.Component {
             display: 0 };
 
   handleClear = (e) => {
-    this.setState({ input: '', display: 0});
+    this.setState({ input: ' ', display: 0});
   };
 
   posNeg = () => {
@@ -36,8 +36,15 @@ class App extends React.Component {
   };
 
   calculate = (e) => {
-    this.setState( {display: eval(this.state.input)} )
-  }
+    try {
+       this.setState({display: eval(this.state.input), input: eval(this.state.input)})
+      }
+       catch (err) {
+         console.log(err)
+         this.setState({display: "Error"})
+       }
+    }
+  
 
   render() {
     return (
