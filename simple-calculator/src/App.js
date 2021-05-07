@@ -6,21 +6,31 @@ import Button from "./Button"
 
 class App extends Component {
   // state = { answer: "" };
-  state = { value: "0", setValue:""}
+  state = { value: "0", pendingOp: false, operator: null}
 
   inputInteger = (integer) => {
-    const { value } = this.state
-    this.setState({
-      value: value === "0" ? String(integer) : value + integer
-    })
+    const { value, pendingOp } = this.state
+    if(pendingOp){
+      this.setState({value: integer, pendingOp: false})
+    } else {
+      this.setState({
+        value: value === "0" ? String(integer) : value + integer
+      })
+      
+    }
   } 
 
   inputDot = () => {
-    const { value } = this.state
-    if(!value.includes("."))
+    const { value, pendingOp} = this.state
+    if(pendingOp){
+      this.setState({ value: "0.", pendingOp: false})
+    }
+    else if(!value.includes(".")){
     this.setState({
-      value: value + "."
+      value: value + ".", pendingOp: false
     })
+  }
+
   }
 
   clear = () => {
@@ -41,6 +51,11 @@ class App extends Component {
     this.setState({
       value: String(Number(value)/100) 
     })
+  }
+
+  operation = (operator) => {
+    this.setState({pendingOp: true, operator: operator})
+    
   }
   // onClick = (button) => {
     // const { answer } = this.state;
@@ -86,7 +101,8 @@ class App extends Component {
               inputDot={this.inputDot} 
               clear={this.clear} 
               turnNegative={this.turnNegative}
-              percentage={this.percentage}/>
+              percentage={this.percentage}
+              operation={this.operation}/>
         {/* <div className="buttons">
           <Button onClick={this.handleClick} content="AC" type="function"/>
           <Button onClick={this.handleClick} content="±" type="function"/>

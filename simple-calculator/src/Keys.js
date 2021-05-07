@@ -4,29 +4,29 @@ import "./Button.css";
 class Keys extends Component {
   
   render() {
-    const { value, inputInteger, inputDot, clear, turnNegative, percentage } = this.props;
+    const { value, inputInteger, inputDot, clear, turnNegative, percentage, operation } = this.props;
 
     return (
       <section className="buttons">
         <button className="function" onClick={() => clear()}>AC </button>
         <button className="function" onClick={() => turnNegative()}>±</button>
         <button className="function" onClick={() => percentage()}>%</button>
-        <button className="operator">÷</button>
+        <button className="operator" onClick={() => operation("/")}>÷</button>
         <button className="integer" onClick={() => inputInteger(7)}>7</button>
         <button className="integer" onClick={() => inputInteger(8)}>8</button>
         <button className="integer" onClick={() => inputInteger(9)}>9</button>
-        <button className="operator">x</button>
+        <button className="operator"onClick={() => operation("*")}>x</button>
         <button className="integer" onClick={() => inputInteger(4)}>4</button>
         <button className="integer" onClick={() => inputInteger(5)}>5</button>
         <button className="integer" onClick={() => inputInteger(6)}>6</button>
-        <button className="operator">−</button>
+        <button className="operator"onClick={() => operation("-")}>−</button>
         <button className="integer" onClick={() => inputInteger(1)}>1</button>
         <button className="integer" onClick={() => inputInteger(2)}>2</button>
         <button className="integer" onClick={() => inputInteger(3)}>3</button>
-        <button className="operator" > +</button>
+        <button className="operator" onClick={() => operation("+")}>+</button>
         <button className="integer" onClick={() => inputInteger(0)}>0</button>
         <button className="integer" onClick={() => inputDot()}>.</button>
-        <button className="operator">=</button>
+        <button className="operator" onClick={() => operation("=")}>=</button>
 
         {/* <button value="C" onClick={(e) => onClick(e.target.value)}>
           C
