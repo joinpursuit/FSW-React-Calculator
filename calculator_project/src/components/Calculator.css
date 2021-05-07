@@ -25,15 +25,6 @@
     background-color: rgb(255,180,164);
 }
 
-/* #calculator .displayPeach {
-    color: black;
-    background-color: rgb(255,180,164);
-} */
-
-/* #calculator .displayPeach:hover {
-    background-color: black;
-    color: rgb(255,180,164);
-} */
 
 .display {
     grid-column: 1/-1;
@@ -41,6 +32,6 @@
     font-size: 30px;
     padding-top: 10px;
     padding-right: 5px;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(29, 29, 29);
     color: wheat;
 }

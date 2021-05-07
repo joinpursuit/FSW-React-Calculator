@@ -1,36 +1,117 @@
-import React from 'react'
-import './Calculator.css'
+import React from "react";
+import "./Calculator.css";
 
 class Calculator extends React.Component {
-    state = {}
-
-    render() {
-        return (
-            <div id="calculator">
-                <div className="display">0</div>
-                <button className="displayPeach">A/C</button>
-                <button className="displayPeach">C</button>
-                <button className="displayPeach">%</button>
-                <button className="displayPeach">/</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button className="displayPeach">x</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button className="displayPeach">-</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button className="displayPeach">+</button>
-                <button>+/-</button>
-                <button>0</button>
-                <button>.</button>
-                <button className="displayPeach">=</button>
-            </div>
-        )
-    }
+  render() {
+    const {
+      input,
+      handleClear,
+      handleButton,
+      handleOperation,
+      handleDecimal,
+      handlePercentage,
+      handlePosNeg,
+      handleZero,
+      calculate,
+    } = this.props;
+    return (
+      <div id="calculator">
+        <div className="display">{input === "" ? "0" : input}</div>
+        <button
+          onClick={handleClear}
+          value="A/C"
+          className="displayPeach"
+        >
+          A/C
+        </button>
+        <button
+          onClick={handleClear}
+          value="C"
+          className="displayPeach"
+        >
+          C
+        </button>
+        <button
+          onClick={handlePercentage}
+          value="%"
+          className="displayPeach"
+        >
+          %
+        </button>
+        <button
+          onClick={handleOperation}
+          value="/"
+          className="displayPeach"
+        >
+          /
+        </button>
+        <button onClick={handleButton} value="1">
+          1
+        </button>
+        <button onClick={handleButton} value="2">
+          2
+        </button>
+        <button onClick={handleButton} value="3">
+          3
+        </button>
+        <button
+          onClick={handleOperation}
+          value="x"
+          className="displayPeach"
+        >
+          x
+        </button>
+        <button onClick={handleButton} value="4">
+          4
+        </button>
+        <button onClick={handleButton} value="5">
+          5
+        </button>
+        <button onClick={handleButton} value="6">
+          6
+        </button>
+        <button
+          onClick={handleOperation}
+          value="-"
+          className="displayPeach"
+        >
+          -
+        </button>
+        <button onClick={handleButton} value="7">
+          7
+        </button>
+        <button onClick={handleButton} value="8">
+          8
+        </button>
+        <button onClick={handleButton} value="9">
+          9
+        </button>
+        <button
+          onClick={handleOperation}
+          value="+"
+          className="displayPeach"
+        >
+          +
+        </button>
+        <button onClick={handlePosNeg} value="+/-">
+          +/-
+        </button>
+        <button onClick={handleZero} value="0">
+          0
+        </button>
+        <button onClick={handleDecimal} value=".">
+          .
+        </button>
+        <button
+          onClick={calculate}
+          value="="
+          className="displayPeach"
+        >
+          =
+        </button>
+      </div>
+    );
+  }
 }
 
-export default Calculator
+export default Calculator;
