@@ -17,6 +17,15 @@ class App extends React.Component {
       }
   };
 
+  handlePosNeg = (e) => {
+    const {value} = e.target
+    const {input} = this.state
+    if(!input.includes("-")) {
+      this.setState({input: input * -1})
+    } else {
+      this.setState({input: input * 1})
+    }
+  }
 
   handleZero = (e) => {
     const {value} = e.target;
