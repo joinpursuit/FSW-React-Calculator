@@ -20,7 +20,7 @@ export class App extends Component {
   }
   
   handleNegative = () =>{
-    this.setState({ displayValue: String(this.state.displayValue.split(',').join("") * -1) })
+    this.setState({ displayValue: (numeral(this.state.displayValue.split(',').join("") * -1)).format('0,0') })
   }
   
   handleOperation = (e) => {
