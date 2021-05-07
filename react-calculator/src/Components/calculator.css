@@ -16,10 +16,12 @@
     grid-column: 1/5;
     font-size: 1.3em;
     background-color: rgb(232, 248, 222);
+    font-size: 26px;
 }
+
 .keypad{
     font-size:x-large;
-    background-color: #ffe5d9;
+    background-color: #f1d3c5;
     border: 2px solid black;
     border-radius: 3%;
     cursor: pointer;
@@ -27,12 +29,19 @@
 .parentheses{
     background-color: #f1e3dd;
 }
+
 .top-row{
     background-color: #ffcad4;
 }
+
 .right-col{
     background-color: #e7a0ab;
 }
+
 .equal {
     background-color: #f181a1;
+}
+
+.keypad:hover {
+    filter: brightness(92%);
 }

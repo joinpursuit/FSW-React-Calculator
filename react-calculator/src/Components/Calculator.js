@@ -11,11 +11,12 @@ class Calculator extends Component {
         const arr = input.trim().split(" ");
         return arr.pop();
     }
+
     /* Returns true is last element is operator */
     isLastElementOperator = () => {
         const { input } = this.state;
         const arr = input.trim().split(" ");
-        const operands = "x+-/"
+        const operands = "x+-÷"
         while (arr.length > 0) {
             const lastElement = arr.pop();
             if (operands.includes(lastElement)) {
@@ -45,10 +46,7 @@ class Calculator extends Component {
     handleNumber = (num) => {
         const { input, result } = this.state;
         if (input === result) return;
-        let newInput = input + num;
-        if (this.leadingZero(input)) {
-            newInput = input.substring(0, input.length - 1) + num;
-        }
+        let newInput = (this.leadingZero(input)) ? input.substring(0, input.length - 1) + num : input + num
         this.setState({ input: newInput })
     }
 
@@ -93,10 +91,8 @@ class Calculator extends Component {
         if (isNaN(lastElement)) return;
 
         let newDisplay = input.substring(0, input.lastIndexOf(" ")) + " " + (Number(lastElement) * .01);
-
         this.setState({ input: newDisplay })
     }
-
 
     toggleSign = () => {
         let arr = this.state.input.split(" ");
@@ -129,7 +125,26 @@ class Calculator extends Component {
         }
     }
 
-    //put parentheses around x and / equations to preserve order
+    /* place (x) between adjacent numbers to deal with parentheses multiplication*/
+    multiplyParentheses = (arr) => {
+        const operators = "+-x÷"
+        let numberRecentlyVisited = false;
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (!isNaN(arr[i]) && numberRecentlyVisited) {
+                arr.splice(i, 0, "x");
+                numberRecentlyVisited = true;
+                i++;
+            } else if (!isNaN(arr[i])) {
+                numberRecentlyVisited = true;
+            } else if (operators.includes(arr[i])) {
+                numberRecentlyVisited = false;
+            }
+        }
+        return arr;
+    }
+
+    //put parentheses around x and / equations to preserve order of operations
     orderOfOperations = (arr) => {
         for (let i = 1; i < arr.length - 1; i++) {
             if ((arr[i] === "x" || arr[i] === "÷") && !isNaN(arr[i - 1]) && !isNaN(arr[i + 1])) {
@@ -146,7 +161,9 @@ class Calculator extends Component {
         const { input } = this.state;
         let arr = input.trim().split(" ");
         if (this.isLastElementOperator() || arr.length < 3) return;
+        arr = this.multiplyParentheses(arr)
         arr = this.orderOfOperations(arr);
+
         //DIJKSTRA'S algorithm
         while (arr.length > 0) {
             let currentElement = arr.shift();
@@ -155,7 +172,7 @@ class Calculator extends Component {
             } else if (currentElement === "x" || currentElement === "+" || currentElement === "-" || currentElement === "÷") {
                 operators.push(currentElement)
             } else if (currentElement === ")") {
-                if (operands.length < 2) { continue; }//to skip in case of early parenthesis before numbers
+                if (operands.length < 2) { continue; }//to skip in case of early parenthesis before 2 numbers
                 result = this.doBasicMath(operands.pop(), operands.pop(), operators.length ? operators.pop() : "x");
                 operands.push(result)
             }
@@ -183,7 +200,6 @@ class Calculator extends Component {
             <button className="keypad top-row" onClick={this.toggleSign}>+/-</button>
             <button className="keypad top-row" value="%" onClick={this.handlePercent}>%</button>
             <button className="keypad right-col" value="+" onClick={this.handleOperator}>+</button>
-
             <button className="keypad number" value="1" onClick={() => this.handleNumber(1)} >1</button>
             <button className="keypad number" value="2" onClick={() => this.handleNumber(2)} >2</button>
             <button className="keypad number" value="3" onClick={() => this.handleNumber(3)} >3</button>
@@ -200,8 +216,6 @@ class Calculator extends Component {
             <button className="keypad number" value="0" onClick={this.handleZero} >0</button>
             <button className="keypad parentheses" value=")" onClick={this.handleParenthesis}>)</button>
             <button className="keypad equal" value="=" onClick={this.evaluate}>=</button>
-
-
 
         </section>)
     }

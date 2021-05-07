@@ -2,22 +2,18 @@ import React from "react"
 
 
 class Display extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = ({displayStyle: {fontSize: "26px"}})
-    }
-    
+
     formatDisplay = (string) => {
-        if (string.length === 0) {
-            return "0";
-        }
+
+        if (string.length === 0) { return "0"; }
+
         let arr = string.trim().split(" ");
         let newArr = arr.map(element => {
             if (isNaN(element)) {
                 return element;
             } else {
-                if(element.length>10){
-                    if(element % 1 === 0){
+                if (element.length > 10) {
+                    if (element % 1 === 0) {
                         return Number(element).toExponential(8); //exponential
                     }
                     element = Number(element).toFixed(5) //decimal
@@ -32,8 +28,7 @@ class Display extends React.Component {
     }
 
     render() {
-        return (<p className="display" style={this.state.displayStyle}>{this.formatDisplay(this.props.display)}</p>
-        )
+        return (<p className="display" >{this.formatDisplay(this.props.display)}</p> )
     }
 
 }
