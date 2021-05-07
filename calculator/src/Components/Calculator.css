@@ -25,7 +25,27 @@ button {
   font: 30px bold;
 }
 
-button:active {
+.TopRow:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
+}
+.Operator:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
+}
+.SecondRow:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
+}
+.ThirdRow:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
+}
+.FourthRow:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
+}
+.BottomRow:active {
   background-color: white;
   box-shadow: 0 3px gray;
 }
