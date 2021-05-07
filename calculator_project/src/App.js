@@ -7,10 +7,12 @@ class App extends React.Component {
 
   handleButton = (e) => {
     const { value } = e.target;
-    if (this.state.startNewNum) {
-      this.setState({ input: value, startNewNum: false });
-    } else {
-      this.setState({ input: this.state.input + value });
+    if(this.state.input.length < 9) {
+      if (this.state.startNewNum) {
+        this.setState({ input: value, startNewNum: false });
+      } else {
+        this.setState({ input: this.state.input + value });
+      }
     }
   };
 
@@ -31,6 +33,7 @@ class App extends React.Component {
   handleOperation = (e) => {
     const { value } = e.target;
     this.setState({
+      input: "",
       startNewNum: true,
       prevNum: this.state.input,
       operator: value,
