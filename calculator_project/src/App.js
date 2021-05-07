@@ -5,6 +5,17 @@ import "./App.css";
 
 class App extends React.Component {
 
+  state = { input: "", prevNum: "", startNewNum: true, operator: "" };
+
+  handleButton = (e) => {
+    const {value} = e.target
+      if(this.state.startNewNum) {
+        this.setState({input: value, startNewNum: false})
+      } else {
+        console.log("else")
+        this.setState({input: this.state.input + value})
+      }
+  };
 
   render() {
     return (
