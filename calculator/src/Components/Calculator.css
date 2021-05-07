@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  border: 3px solid gray;
+  border: 9px solid gray;
 }
 
 .Display {
@@ -23,6 +23,11 @@ button {
   background-color: black;
   color: #d4af37;
   font: 30px bold;
+}
+
+button:active {
+  background-color: white;
+  box-shadow: 0 3px gray;
 }
 
 .TopRow {

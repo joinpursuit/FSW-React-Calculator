@@ -25,7 +25,7 @@ class Calculator extends React.Component {
           display: e.target.value,
         };
       } else {
-        debugger
+        // debugger;
         return {
           display: prevState.display + e.target.value,
         };
@@ -34,11 +34,11 @@ class Calculator extends React.Component {
   };
 
   handleClear = () => {
-    this.setState({ display: "0", previousDisplay: "" });
+    this.setState({ display: "0", previousDisplay: "", operator: "", newNumTracker: false});
   };
 
   handlePlusSign = () => {
-    // debugger
+    // debugger;
     const { display } = this.state;
     // debugger
     this.setState({
@@ -51,25 +51,40 @@ class Calculator extends React.Component {
   };
 
   handleEqualSign = () => {
-    const { operator, display, value } = this.state;
-    console.log("handleEqualSign", display)
+    const { operator, display } = this.state;
+    console.log("handleEqualSign", display);
+    // debugger;
     if (operator === "plus") {
-      this.setState({ display: this.addNumbers(), previousDisplay: display })
+      this.setState({ display: this.addNumbers(), previousDisplay: display });
+    } else if (operator === "minus") {
+      this.setState({
+        display: this.subtractNumbers(),
+        previousDisplay: display,
+      });
+    } else if (operator === "dividedBy") {
+      this.setState({
+        display: this.divideNumbers(),
+        previousDisplay: display,
+      });
+    } else if (operator === "times") {
+      this.setState({
+        display: this.multiplyNumbers(),
+        previousDisplay: display,
+      });
     }
-    else if (operator === "minus") {
-      this.setState({ display: this.subtractNumbers(), previousDisplay: display });
-    }
-    else if (operator === "dividedBy") {
-      this.setState({ display: this.divideNumbers(), previousDisplay: display })
-    }
-    else if (operator === "times") {
-      this.setState({ display: this.multiplyNumbers(), previousDisplay: display })
-    }
-    else if (value) {
-debugger
-      this.setState({ display: value, previousDisplay: ""})
-    } 
   };
+
+//   handleOperators = () => {
+//     const { display } = this.state;
+//     if (operator === "minus") {
+//       this.setState({
+//         previousDisplay: display,
+//         display: "0",
+//         operator: "minus",
+//         newNumTracker: true,
+//       })
+//   }
+// }
 
   handleMinusSign = () => {
     const { display } = this.state;
@@ -83,25 +98,29 @@ debugger
 
   handleDivisionSign = () => {
     const { display } = this.state;
-    this.setState({  previousDisplay: display,
+    this.setState({
+      previousDisplay: display,
       display: "0",
       operator: "dividedBy",
-      newNumTracker: true,})
-  }
+      newNumTracker: true,
+    });
+  };
 
   handleMultiplicationSign = () => {
     const { display } = this.state;
-    this.setState({  previousDisplay: display,
+    this.setState({
+      previousDisplay: display,
       display: "0",
       operator: "times",
-      newNumTracker: true,})
-  }
+      newNumTracker: true,
+    });
+  };
 
   handleToggleInteger = () => {
-    const { display } = this.state 
-    this.setState({ display: -(display) })
-  }
-  
+    const { display } = this.state;
+    this.setState({ display: -display });
+  };
+
   // doMath = () => {
   //   const { previousDisplay, display, operator } = this.state;
   //   let result = 0;
@@ -135,23 +154,23 @@ debugger
     const { previousDisplay, display } = this.state;
     let quotient = 0;
     if (display) {
-      quotient = parseInt(previousDisplay) / parseInt(display)
+      quotient = parseInt(previousDisplay) / parseInt(display);
     }
-    return quotient
-  }
+    return quotient;
+  };
 
   multiplyNumbers = () => {
     const { previousDisplay, display } = this.state;
     let product = 0;
     if (display) {
-      product = parseInt(previousDisplay) * parseInt(display)
+      product = parseInt(previousDisplay) * parseInt(display);
     }
-    return product
-  }
+    return product;
+  };
 
   render() {
     const { display } = this.state;
-    console.log("render", display)
+    console.log("render", display);
     return (
       <div className="Calculator">
         <div className="Display" value={display}>
@@ -162,7 +181,9 @@ debugger
         </button>
         <button className="TopRow">%</button>
         <button className="Blank"></button>
-        <button className="Operator" onClick={this.handleDivisionSign}>÷</button>
+        <button className="Operator" onClick={this.handleDivisionSign}>
+          ÷
+        </button>
         <button className="SecondRow" onClick={this.enterNumber} value={7}>
           7
         </button>
@@ -203,7 +224,9 @@ debugger
           0
         </button>
         <button className="BottomRow">.</button>
-        <button className="BottomRow" onClick={this.handleToggleInteger}>±</button>
+        <button className="BottomRow" onClick={this.handleToggleInteger}>
+          ±
+        </button>
         <button className="Operator" onClick={this.handleEqualSign}>
           =
         </button>
