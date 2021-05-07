@@ -1,5 +1,4 @@
-import Calculator from "./components/Calculator";
-import Calculation from "./components/Calculation";
+import CalcButton from "./components/CalcButtons";
 import React from "react";
 import "./App.css";
 
@@ -20,11 +19,7 @@ class App extends React.Component {
   handlePosNeg = (e) => {
     const {value} = e.target
     const {input} = this.state
-    if(!input.includes("-")) {
-      this.setState({input: input * -1})
-    } else {
-      this.setState({input: input * 1})
-    }
+    this.setState({input: input * -1})
   }
 
   handleZero = (e) => {
@@ -78,8 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Calculator handleButton={this.handleButton} handleClear={this.handleClear} handlePosNeg={this.handlePosNeg} handleOperation={this.handleOperation} input={this.state.input} handleDecimal={this.handleDecimal} handlePercentage={this.handlePercentage} handleZero={this.handleZero} calculate={this.calculate}/>
-        <Calculation input={this.state.input} />
+        <CalcButton handleButton={this.handleButton} handleClear={this.handleClear} handlePosNeg={this.handlePosNeg} handleOperation={this.handleOperation} input={this.state.input} handleDecimal={this.handleDecimal} handlePercentage={this.handlePercentage} handleZero={this.handleZero} calculate={this.calculate}/>
       </div>
     );
   }

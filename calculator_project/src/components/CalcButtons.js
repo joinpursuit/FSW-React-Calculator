@@ -1,7 +1,7 @@
 import React from "react";
 import "./Calculator.css";
 
-class Calculator extends React.Component {
+class CalcButton extends React.Component {
   render() {
     const {
       input,
@@ -114,4 +114,4 @@ class Calculator extends React.Component {
   }
 }
 
-export default Calculator;
+export default CalcButton;
