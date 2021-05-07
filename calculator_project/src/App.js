@@ -17,6 +17,20 @@ class App extends React.Component {
       }
   };
 
+  handleZero = (e) => {
+    const {value} = e.target;
+    const {input} = this.state;
+    if(input !== "") {
+      this.setState({input: input + value})
+    }   
+  handleOperation = (e) => {
+    const {value} = e.target;
+    this.setState({startNewNum: true, prevNum: this.state.input, operator: value})
+  }
+
+
+
+
   render() {
     return (
       <div className="App">
