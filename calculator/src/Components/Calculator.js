@@ -75,7 +75,7 @@ debugger
     const { display } = this.state;
     this.setState({
       previousDisplay: display,
-      display: "",
+      display: "0",
       operator: "minus",
       newNumTracker: true,
     });
@@ -84,7 +84,7 @@ debugger
   handleDivisionSign = () => {
     const { display } = this.state;
     this.setState({  previousDisplay: display,
-      display: "",
+      display: "0",
       operator: "dividedBy",
       newNumTracker: true,})
   }
@@ -92,7 +92,7 @@ debugger
   handleMultiplicationSign = () => {
     const { display } = this.state;
     this.setState({  previousDisplay: display,
-      display: "",
+      display: "0",
       operator: "times",
       newNumTracker: true,})
   }
