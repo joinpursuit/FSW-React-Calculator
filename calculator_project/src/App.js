@@ -17,19 +17,54 @@ class App extends React.Component {
       }
   };
 
+
   handleZero = (e) => {
     const {value} = e.target;
     const {input} = this.state;
     if(input !== "") {
       this.setState({input: input + value})
-    }   
+    } 
+  }
+  
   handleOperation = (e) => {
     const {value} = e.target;
     this.setState({startNewNum: true, prevNum: this.state.input, operator: value})
   }
 
+  handleDecimal = (e) => {
+    const {value} = e.target;
+    const {input} = this.state;
+    if(!input.includes(value)) {
+      this.setState({input: input + value })
+    }
+  }
 
+  handlePercentage = (e) => {
+    const {value} = e.target;
+    this.setState({input: this.state.input / 100})
+  }
 
+  handleClear = (e) => {
+    const {value} = e.target;
+    if(value === "A/C") {
+      this.setState({input: "", prevNum: "", operator: "", startNewNum: true})
+    } if(value === "C") {
+      this.setState({input: "", prevNum: "", operator: "", startNewNum: true})
+    }
+  }
+
+  calculate = (e) => {
+    const {value} = e.target;
+    if(this.state.operator === "+") {
+      this.setState({input: parseFloat(this.state.input) + parseFloat(this.state.prevNum), startNewNum: true})
+    } else if(this.state.operator === "-") {
+      this.setState({input:  parseFloat(this.state.prevNum) - parseFloat(this.state.input), startNewNum: true})
+    } else if(this.state.operator === "x") {
+      this.setState({input:  parseFloat(this.state.prevNum) * parseFloat(this.state.input), startNewNum: true})
+    }else if(this.state.operator === "/") {
+      this.setState({input:  parseFloat(this.state.prevNum) / parseFloat(this.state.input), startNewNum: true})
+    }
+  }
 
   render() {
     return (
