@@ -25,6 +25,10 @@
     background-color: rgb(255,180,164);
 }
 
+#calculator button:active {
+    font-size: 14px;
+}
+
 
 .display {
     grid-column: 1/-1;
