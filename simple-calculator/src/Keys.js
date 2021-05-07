@@ -2,28 +2,30 @@ import { Component } from "react";
 import "./Button.css";
 
 class Keys extends Component {
+  
   render() {
-    const { value } = this.props;
+    const { value, inputInteger, inputDot, clear, turnNegative, percentage } = this.props;
+
     return (
       <section className="buttons">
-        <button className="function">AC </button>
-        <button className="function">±</button>
-        <button className="function">%</button>
+        <button className="function" onClick={() => clear()}>AC </button>
+        <button className="function" onClick={() => turnNegative()}>±</button>
+        <button className="function" onClick={() => percentage()}>%</button>
         <button className="operator">÷</button>
-        <button className="integer">7</button>
-        <button className="integer">8</button>
-        <button className="integer">9</button>
+        <button className="integer" onClick={() => inputInteger(7)}>7</button>
+        <button className="integer" onClick={() => inputInteger(8)}>8</button>
+        <button className="integer" onClick={() => inputInteger(9)}>9</button>
         <button className="operator">x</button>
-        <button className="integer">4</button>
-        <button className="integer">5</button>
-        <button className="integer"> 6</button>
+        <button className="integer" onClick={() => inputInteger(4)}>4</button>
+        <button className="integer" onClick={() => inputInteger(5)}>5</button>
+        <button className="integer" onClick={() => inputInteger(6)}>6</button>
         <button className="operator">−</button>
-        <button className="integer"> 1</button>
-        <button className="integer"> 2</button>
-        <button className="integer"> 3</button>
-        <button className="operator"> +</button>
-        <button className="integer">0</button>
-        <button className="integer">.</button>
+        <button className="integer" onClick={() => inputInteger(1)}>1</button>
+        <button className="integer" onClick={() => inputInteger(2)}>2</button>
+        <button className="integer" onClick={() => inputInteger(3)}>3</button>
+        <button className="operator" > +</button>
+        <button className="integer" onClick={() => inputInteger(0)}>0</button>
+        <button className="integer" onClick={() => inputDot()}>.</button>
         <button className="operator">=</button>
 
         {/* <button value="C" onClick={(e) => onClick(e.target.value)}>
