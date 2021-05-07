@@ -36,22 +36,23 @@ class Calculator extends Component {
     }
     if (value === "%") {
       this.setState({ input: input / 100 });
-    } if (value === ".") {
-        if (isOperand) {
-            this.setState({input: ".", isOperand: false}) 
-        } else if (input.indexOf(".") === -1){
-            this.setState({input: input + "."})
-        }
+    }
+    if (value === ".") {
+      if (isOperand) {
+        this.setState({ input: value, isOperand: false });
+      } else if (!input.includes(value)) {
+        this.setState({ input: input.toString() + value });
+      }
     }
     if (value === "=") {
-        if (operator === "+") {
+      if (operator === "+") {
         this.setState({ input: memory + Number(input) });
       } else if (operator === "-") {
         this.setState({ input: memory - input });
       } else if (operator === "*") {
         this.setState({ input: memory * input });
       } else if (operator === "/") {
-        this.setState({ input: Math.round(memory / input) });
+        this.setState({ input: memory / input });
       }
       this.setState({ memory: null, isOperand: true });
     }
@@ -61,7 +62,7 @@ class Calculator extends Component {
     const { input, operator, memory } = this.state;
     const num = Number(input);
     const operations = {
-      "/": (memory, num) => Math.round(memory / num),
+      "/": (memory, num) => memory / num,
       "*": (memory, num) => memory * num,
       "-": (memory, num) => memory - num,
       "+": (memory, num) => memory + num,
@@ -93,6 +94,7 @@ class Calculator extends Component {
               type="text"
               value={formatNums(input.toString()) || 0}
               readOnly={true}
+              maxLength={11}
             />
             <div>
               <input

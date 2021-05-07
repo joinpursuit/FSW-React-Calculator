@@ -1,6 +1,6 @@
 .Squares {
     position: absolute;
-    bottom: 0px;
+    bottom: -400px;
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -22,7 +22,7 @@
    
   @keyframes toTop {
     100% {
-      transform: translateY(-120vh);
+      transform: translateY(-160vh);
     }
   }
   
