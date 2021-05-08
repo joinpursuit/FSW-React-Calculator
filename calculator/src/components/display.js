@@ -4,7 +4,7 @@ import "../styles/display.css"
 const Display = ({ display }) => {
     return (
       <section className="outputDisplay">
-          {display}
+          {Number(display).toLocaleString()}
       </section>
     );
   }
