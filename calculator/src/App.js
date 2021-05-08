@@ -8,9 +8,11 @@ class App extends React.Component {
 		currNum: "",
 		operator: "",
 		// sequence: [],
+		// check if i need to start a new number... after i hit an operator button
 	};
 
 	handleClick = (e) => {
+		// is the event an operator?
 		this.setState({ input: this.state.input + e.target.value });
 	};
 
@@ -69,7 +71,7 @@ class App extends React.Component {
 	evaluate = () => {
 		if (this.state.input === "") {
 			this.setState({
-				input: 0,
+				input: "",
 				prevNum: "",
 				operator: "",
 			});
@@ -106,17 +108,22 @@ class App extends React.Component {
 				<div className="calc-container ">
 					{/* D I S P L A Y S */}
 					<section id="display">
+						
+						{/* TOP display that shows the sequence of numbers and operators */}
 						<div className="display">
 							{/* {sequence.map((item) => {
 								return <p>{item}</p>;
 							})} */}
 							{/* <p>This is where the sequence displays</p> */}
 						</div>
-						{/* add the comma to the input */}
+
+						{/* BOTTOM display where the answer and input shows */}
 						<div className="display">
+							{/* add the comma to the input */}
 							{new Intl.NumberFormat().format(input)}
 						</div>
 					</section>
+
 					{/* B U T T O N S */}
 					<section id="btn-container">
 						<div className="row">
