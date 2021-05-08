@@ -142,7 +142,9 @@ class App extends React.Component {
 							<button onClick={this.handleClick} value="9">
 								9
 							</button>
-							<button className="operator">x</button>
+							<button className="operator" onClick={this.multiply}>
+								x
+							</button>
 						</div>
 
 						<div className="row">
