@@ -45,7 +45,6 @@ class App extends React.Component {
     const { value } = e.target;
     const { input, startNewNum } = this.state;
     if(startNewNum) {
-      // this.setState({input: value, startNewNum: false})
       this.setState({input: "0" + value, startNewNum: false})
     } else if (!input.includes(value)) {
         this.setState({ input: input + value});

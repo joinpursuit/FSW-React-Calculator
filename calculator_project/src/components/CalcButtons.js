@@ -16,7 +16,7 @@ class CalcButton extends React.Component {
     } = this.props;
     return (
       <div id="calculator">
-        <div className="display">{input === "" ? "0" : input}</div>
+        <div className="display">{input === "" ? "0" : parseFloat(input).toLocaleString()}</div>
         <button
           onClick={handleClear}
           value="A/C"
