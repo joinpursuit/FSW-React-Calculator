@@ -41,10 +41,14 @@ class App extends React.Component {
   };
 
   handleDecimal = (e) => {
+    console.log("decimal working")
     const { value } = e.target;
-    const { input } = this.state;
-    if (!input.includes(value)) {
-      this.setState({ input: input + value, startNewNum: false });
+    const { input, startNewNum } = this.state;
+    if(startNewNum) {
+      // this.setState({input: value, startNewNum: false})
+      this.setState({input: "0" + value, startNewNum: false})
+    } else if (!input.includes(value)) {
+        this.setState({ input: input + value});
     }
   };
 
