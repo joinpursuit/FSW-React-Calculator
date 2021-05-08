@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super(); 
     this.state = {
-      result: "",
+      result: "0",
       operators: "",
       num1: "",
       previousNum: ""
@@ -55,26 +55,23 @@ calculate = () => {
 
 reset = () => {
   this.setState({
-      result: "",
+      result: "0",
       num1: "",
       previousNum: "",
       operators: ""
   })
 };
 negative = () => {
-  const {input, display} = this.state
-  if (display > 0) {
-    this.setState({ input: 0 - Number(input), display: 0 - Number(display) });
-  } else {
-    this.setState({ input: Math.abs(input), display: Math.abs(display)  });
-  }
+  this.setState({
+    result: this.state.result * -1
+  })
 };
 
 render() { 
 return (
   <div className="App">
     <h1>React Calculator</h1>
-    <CalcOutput className="output" result={this.state.result}/>
+    <CalcOutput result={this.state.result}/>
     <Keypad handleClick ={this.handleClick} calculate={this.calculate} addition = {this.addition} subtract = {this.subtract} division = {this.division} multiplication = {this.multiplication} negative = {this.negative} reset = {this.reset}/>
   </div>
 );
