@@ -1,6 +1,3 @@
-// 1. What state is there?
-// 2. When does it change?
-
 import React from "react";
 import "./Calculator.css";
 
@@ -14,18 +11,14 @@ class Calculator extends React.Component {
   };
 
   enterNumber = (e) => {
-    // debugger;
     this.setState((prevState) => {
       const { display } = prevState;
       if (display === "0") {
-        // changing this to just display and not display === 0, fixed the 0 populate inbetween the + sign. It also helped with keeping the digit onscreen.
-        // if (display) {
-        // debugger
         return {
           display: e.target.value,
         };
       } else {
-        // debugger;
+  
         return {
           display: prevState.display + e.target.value,
         };
@@ -38,13 +31,10 @@ class Calculator extends React.Component {
   };
 
   handlePlusSign = () => {
-    // debugger;
     const { display } = this.state;
-    // debugger
     this.setState({
       previousDisplay: display,
       display: "0",
-      //there is a link between this display and the conditional in enterNumber
       operator: "plus",
       newNumTracker: true,
     });
@@ -52,8 +42,6 @@ class Calculator extends React.Component {
 
   handleEqualSign = () => {
     const { operator, display } = this.state;
-    console.log("handleEqualSign", display);
-    // debugger;
     if (operator === "plus") {
       this.setState({ display: this.addNumbers(), previousDisplay: display });
     } else if (operator === "minus") {
@@ -73,18 +61,6 @@ class Calculator extends React.Component {
       });
     }
   };
-
-//   handleOperators = () => {
-//     const { display } = this.state;
-//     if (operator === "minus") {
-//       this.setState({
-//         previousDisplay: display,
-//         display: "0",
-//         operator: "minus",
-//         newNumTracker: true,
-//       })
-//   }
-// }
 
   handleMinusSign = () => {
     const { display } = this.state;
@@ -121,22 +97,11 @@ class Calculator extends React.Component {
     this.setState({ display: -display });
   };
 
-  // doMath = () => {
-  //   const { previousDisplay, display, operator } = this.state;
-  //   let result = 0;
-  //   if (operator === "plus") {
-  //     result = parseInt(previousDisplay) + parseInt(display);
-  //     debugger
-  //     this.setState({ display: result });
-  //   }
-  // };
-
   addNumbers = () => {
     const { previousDisplay, display } = this.state;
     let sum = 0;
     if (display) {
       sum = parseInt(previousDisplay) + parseInt(display);
-      //  debugger
     }
     return sum;
   };
@@ -170,7 +135,6 @@ class Calculator extends React.Component {
 
   render() {
     const { display } = this.state;
-    console.log("render", display);
     return (
       <div className="Calculator">
         <div className="Display" value={display}>
@@ -237,6 +201,3 @@ class Calculator extends React.Component {
 
 export default Calculator;
 
-// else if (operator === "equal") {
-//   this.setState({ prevDisplay: this.addNumbers() })
-// }
