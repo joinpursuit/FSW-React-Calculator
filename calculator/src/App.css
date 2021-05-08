@@ -17,7 +17,7 @@ body {
   height: 80vh;
   width: 50vh;
   background-color: black;
-  border-radius: 1rem;
+  border-radius: 2rem;
   padding: 1rem;
 }
 
@@ -34,7 +34,7 @@ body {
   grid-column: 1 / -1;
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.6rem;
   font-size: 4rem;
 }
 
@@ -46,4 +46,31 @@ body {
   color: white;
   cursor: pointer;
   font-weight: bold;
+  font-size: 35px;
+}
+
+#AC {
+  background-color: orange;
+}
+
+#plusminus {
+  background-color: orange;
+}
+
+#percent {
+  background-color: orange;
+}
+
+#divide {
+  background-color: orange;
+}
+
+#times {
+  background-color: orange;
+}
+#subtract {
+  background-color: orange;
+}
+#add {
+  background-color: orange;
 }
