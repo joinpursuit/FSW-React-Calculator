@@ -4,65 +4,66 @@ import Buttons from "./Components/Buttons";
 import Output from "./Components/Output";
 
 class App extends Component {
-
   state = {
-    result: ''
-  }
+    result: "",
+  };
 
   buttonPressed = (buttonName) => {
-    if(buttonName === "=") {
-      this.calculate()
+    if (buttonName === "=") {
+      this.calculate();
+    } else if (buttonName === "=" && this.state.result === "") {
+      this.reset();
     } else if (buttonName === "AC") {
-      this.reset()
+      this.reset();
     } else if (buttonName === "C") {
-      this.backspace()
+      this.reset();
     } else if (buttonName === "%") {
-      this.percent()
+      this.percent();
     } else if (buttonName === "+-") {
-      this.inverse()
-    } else 
-    this.setState({
-      result: this.state.result + buttonName 
-    })
-  }
+      this.inverse();
+    } else
+      this.setState({
+        result: this.state.result + buttonName,
+      });
+  };
 
   calculate = () => {
-    try{
+    try {
       this.setState({
-        result: (eval(this.state.result) || "") + ""
-      })
+        result: (eval(this.state.result).toFixed(0) || "") + "",
+      });
     } catch (e) {
       this.setState({
-        result: "error"
-      })
+        result: "error",
+      });
     }
-  }
+  };
 
   reset = () => {
     this.setState({
-      result: ""
-    })
-  }
-
-  backspace = () => {
-    this.setState({
-      result: this.state.result.slice(0, -1)
-    })
-  }
+      result: "",
+    });
+  };
 
   percent = () => {
     this.setState({
-      result: this.state.result / 100
-    })
-  }
+      result: this.state.result / 100,
+    });
+  };
 
-
+  inverse = () => {
+    this.setState({
+      result: -this.state.result,
+    });
+  };
 
   render() {
     return (
       <div className="calculator">
-        <Output result={this.state.result}/>
-        <Buttons buttonPressed={this.buttonPressed} />
+        <div className="container">
+          <Output result={this.state.result} />
+          <Buttons buttonPressed={this.buttonPressed} />
+        </div>
       </div>
     );
   }

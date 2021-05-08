@@ -2,30 +2,33 @@
   text-align: center;
 }
 
-.calculator {
+.container {
   max-width: 400px;
   margin: auto;
+  margin-top: 100px;
 }
 
-.result {
+.result .inputscreen {
   height: 60px;
   background-color: lavender;
   width: 100%;
   text-align: center;
-}
-
-.result p {
-  font-size: 40px
+  font-size: 40px;
 }
 
 .buttons {
   display: block;
-  background-color: purple;
-  color: pink;
+  
 }
 
 .buttons button {
   width: 25%;
   height: 60px;
   font-size: 30px;
+  background-color: pink;
+  border-radius: 100px;
+}
+
+.buttons .Mint {
+  background-color: mintcream;
 }
