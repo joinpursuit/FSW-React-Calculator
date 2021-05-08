@@ -1,25 +1,196 @@
 import { Component } from "react";
 // import Numbers from './Components/Numbers';
-import Buttons from './Components/Buttons';
+import Buttons from "./Components/Buttons";
+import Display from "./Components/Display";
 
-import './App.css';
+import "./App.css";
 // import Display from "./Components/Display";
 
 export default class App extends Component {
-  // state = { value: "0", operator: "", elementOne: 0, elementTwo:0, function: "", runningTotal: 0 };
+  state = {
+    inputValue: "0",
+    operator: "",
+    elementOne: 0,
+    toggleDisplay: false,
+    functionEntered: false,
+    equalInteger: -Infinity,
+    negaviteInput: false,
+  };
+
+  // handleNegative = () => {
+  //   const { negaviteInput } = this.state;
+  //   this.setState((prevState) => ({ negaviteInput: !prevState.negaviteInput }));
+  //   if (negaviteInput) {
+  //     // -Math.abs(Number(inputValue));
+  //   }
+  // };
+
+  handleNumber = (e) => {
+    const { inputValue, negaviteInput } = this.state;
+    if (negaviteInput) {
+      if (inputValue === "0") {
+        this.setState({ inputValue: -Math.abs(Number(e.target.value)) });
+      } else {
+        this.setState((prevState) => ({
+          toggleDisplay: false,
+          inputValue: -Math.abs(prevState.inputValue + e.target.value),
+        }));
+      }
+    } else {
+      if (inputValue === "0") {
+        this.setState({ inputValue: e.target.value });
+      } else {
+        this.setState((prevState) => ({
+          toggleDisplay: false,
+          inputValue: prevState.inputValue + e.target.value,
+        }));
+      }
+    }
+  };
+
+  handleOperator = (e) => {
+    if (this.state.elementOne === 0) {
+      this.setState((prevState) => ({
+        operator: e.target.value,
+        functionEntered: true,
+        toggleDisplay: true,
+        elementOne: Number(prevState.inputValue),
+        inputValue: "",
+      }));
+    } else {
+      const { operator } = this.state;
+      switch (operator) {
+        case "+":
+          this.setState((prevState) => ({
+            toggleDisplay: true,
+            elementOne: prevState.elementOne + Number(prevState.inputValue),
+            operator: e.target.value,
+            inputValue: "",
+          }));
+          break;
+        case "−":
+          this.setState((prevState) => ({
+            toggleDisplay: true,
+            elementOne: prevState.elementOne - Number(prevState.inputValue),
+            operator: e.target.value,
+            inputValue: "",
+          }));
+          break;
+        case "×":
+          this.setState((prevState) => ({
+            toggleDisplay: true,
+            elementOne: prevState.elementOne * Number(prevState.inputValue),
+            operator: e.target.value,
+            inputValue: "",
+          }));
+          break;
+        case "÷":
+          this.setState((prevState) => ({
+            toggleDisplay: true,
+            elementOne: prevState.elementOne / Number(prevState.inputValue),
+            operator: e.target.value,
+            inputValue: "",
+          }));
+          break;
+        case "=":
+          this.setState(
+            {
+              toggleDisplay: true,
+            },
+            this.handleEqual(),
+            { operator: e.target.value },
+            { inputValue: "" }
+          );
+          break;
+
+        default:
+          break;
+      }
+    }
+  };
+
+  handleClear = () => {
+    this.setState({
+      inputValue: "0",
+      operator: "",
+      elementOne: 0,
+      toggleDisplay: false,
+      functionEntered: false,
+      equalInteger: -Infinity,
+      negaviteInput: false,
+    });
+  };
+
+  handleEqual = (equalOperator) => {
+    switch (equalOperator) {
+      case "+":
+        this.setState((prevState) => ({
+          toggleDisplay: true,
+          elementOne: prevState.elementOne + Number(prevState.inputValue),
+          equalInteger: Number(prevState.inputValue),
+          inputValue: "",
+        }));
+        break;
+      case "−":
+        this.setState((prevState) => ({
+          toggleDisplay: true,
+          elementOne: prevState.elementOne - Number(prevState.inputValue),
+          equalInteger: Number(prevState.inputValue),
+          inputValue: "",
+        }));
+        break;
+      case "×":
+        this.setState((prevState) => ({
+          toggleDisplay: true,
+          elementOne: prevState.elementOne * Number(prevState.inputValue),
+          equalInteger: Number(prevState.inputValue),
+          inputValue: "",
+        }));
+        break;
+      case "÷":
+        this.setState((prevState) => ({
+          toggleDisplay: true,
+          elementOne: prevState.elementOne / Number(prevState.inputValue),
+          equalInteger: Number(prevState.inputValue),
+          inputValue: "",
+        }));
+        break;
+
+      default:
+        break;
+    }
+  };
 
   render() {
-  return (
-    <div className="App">
-      <br></br>
-      <br></br>
-      <br></br>
-      {/* <Display  state/>      */}
-      <Buttons />
-    </div>
-  );
+    console.log(this.state);
+    const {
+      inputValue,
+      toggleDisplay,
+      functionEntered,
+      elementOne,
+      operator,
+    } = this.state;
 
+    return (
+      <div className="App">
+        <br></br>
+        <br></br>
+        <br></br>
+        <Display
+          inputValue={inputValue}
+          toggleDisplay={toggleDisplay}
+          functionEntered={functionEntered}
+          elementOne={elementOne}
+        />
+        <Buttons
+          // negaviteInput={this.negaviteInput}
+          operator={operator}
+          handleNumber={this.handleNumber}
+          handleClear={this.handleClear}
+          handleOperator={this.handleOperator}
+          handleEqual={this.handleEqual}
+        />
+      </div>
+    );
+  }
 }
-
-}
-

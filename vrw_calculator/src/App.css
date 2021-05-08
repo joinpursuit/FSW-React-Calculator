@@ -1,28 +1,40 @@
-.characters {
-  grid-area: ch;
+.numero {
+  grid-area: nm;
 }
-.operations {
+.operator {
   grid-area: op;
 }
-.checkout {
-  grid-area: co;
+.equal {
+  grid-area: eq;
 }
+.decmile {
+  grid-area: dm;
+}
+.posNeg {
+  grid-area: ne;
+}
+.display {
+  grid-area: dp;
+}
+
+
 
 
 .app {
   display: grid;
-  grid-template-columns: .5fr 1fr .25fr 1fr .25fr 1fr .25fr 1fr .25fr 1fr .5fr;
-  grid-template-rows: .4fr 1fr .4fr .6fr .2fr .6fr .2fr .6fr .2fr .6fr .4fr;
+  width: fit-content;
+  grid-template-columns: 12fr;
+  grid-template-rows: 11fr;
   grid-template-areas:
-      ". . . . . . . . . . ."
-      ". . . . . . . . . . ."
-      ". . . . . . . . . . ."
-      ". ch . ch . ch . op . op ."
-      ". . . . . . . . . . ."
-      ". ch . ch . ch . op . op ."
-      ". . . . . . . . . . ."
-      ". ch . ch . ch . op . op ."
-      ". . . . . . . . . op ."
-      ". ch . ch . ch . op . op ."
+      ". . . . . . . . . . . ."
+      ". . dp dp dp dp dp dp dp dp dp ."
+      ". . . . . . . . . . . ."
+      ". . nm . nm . nm . op . op ."
+      ". . . . . . . . . . . ."
+      ". . nm . nm . nm . op . op ."
+      ". . . . . . . . . . . ."
+      ". . nm . nm . nm . op . op ."
+      ". . . . . . . . . . op ."
+      ". . nm . nm . nm . op . op ."
       ". . . . . . . . . . ."
 }
