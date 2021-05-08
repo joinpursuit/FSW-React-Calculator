@@ -10,32 +10,29 @@ class Calculator extends React.Component {
     history: "",
   };
 
-  // previousDisplay shows up when typed and not when operand is type
-  // need to handle multi digit after operand is clicked
-  // if (operation !== "" \\ operation !== "="){
-  // this.setState((prevState) => ({
-  //   display: prevState.display + userInput,
-  //   history: prevState.history + userInput,
-  // }));
-  // }
-
   handleDigit = (userInput) => {
     const { display, operation } = this.state;
     if (operation === "=") {
       this.setState({
         history: "",
       });
-    }
-
-    display === "0"
-      ? this.setState({
-          display: userInput,
-          history: userInput,
-        })
-      : this.setState((prevState) => ({
-          display: userInput,
+    } else if (
+      display === "0") {
+        this.setState({
+            display: userInput,
+            history: userInput,
+          })
+      } else if ( operation === "" ) {
+        this.setState((prevState) => ({
+            display: prevState.display + userInput,
+            history: prevState.history + userInput,
+          }));
+      } else if (operation !== "") {
+        this.setState((prevState) => ({
+          display: "" + userInput,
           history: prevState.history + userInput,
         }));
+      }
   };
 
   handleOperand = (userInput) => {
@@ -85,7 +82,6 @@ class Calculator extends React.Component {
     }
   };
 
-  // prevent more than two decimal places after the decimal
   handleDecimal = () => {
     const { previousDisplay } = this.state;
     if (!previousDisplay.includes(".")) {
@@ -97,8 +93,6 @@ class Calculator extends React.Component {
     }
   };
 
-  // add 0 after deleting all numbers
-  // error if negative number
   handleDelete = () => {
     const { previousDisplay, display, history } = this.state;
     if (previousDisplay === "") {
@@ -124,7 +118,6 @@ class Calculator extends React.Component {
     });
   };
 
-  // codesmell
   handleSign = () => {
     const { sign, previousDisplay, history, display } = this.state;
     if (previousDisplay !== "") {
@@ -156,12 +149,11 @@ class Calculator extends React.Component {
   };
 
   render() {
-    const { previousDisplay, display, history } = this.state;
+    const { display, history } = this.state;
     return (
       <section id="calculator">
-        <p id="history">{history} - history</p>
-        <p id="previousDisplay">{previousDisplay} - previousDisplay</p>
-        <p id="display">{display} - Display</p>
+        <p id="history">{history}</p>
+        <p id="display">{display}</p>
         <button className="one" onClick={() => this.handleDigit("1")}>
           1
         </button>
