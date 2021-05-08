@@ -2,48 +2,82 @@ import React from "react";
 import "./Calculator.css";
 
 class Calculator extends React.Component {
-  state = { userNumInput: "", operation: "", total: "0", sign: "positive" };
+  state = {
+    previousDisplay: "",
+    operation: "",
+    display: "0",
+    sign: "positive",
+    history: "",
+  };
 
-  handleAllClear = () => {
-    this.setState({ userNumInput: "", total: "0", operation: "" });
+  // previousDisplay shows up when typed and not when operand is type
+  // need to handle multi digit after operand is clicked
+  // if (operation !== "" \\ operation !== "="){
+  // this.setState((prevState) => ({
+  //   display: prevState.display + userInput,
+  //   history: prevState.history + userInput,
+  // }));
+  // }
+
+  handleDigit = (userInput) => {
+    const { display, operation } = this.state;
+    if (operation === "=") {
+      this.setState({
+        history: "",
+      });
+    }
+
+    display === "0"
+      ? this.setState({
+          display: userInput,
+          history: userInput,
+        })
+      : this.setState((prevState) => ({
+          display: userInput,
+          history: prevState.history + userInput,
+        }));
   };
 
   handleOperand = (userInput) => {
-    const { userNumInput, operation } = this.state;
+    const { operation, display } = this.state;
     if (operation !== "") {
       this.setState({ operation: userInput });
     } else {
-      this.setState({
-        total: userNumInput,
+      this.setState((prevState) => ({
         operation: userInput,
-        userNumInput: "",
-      });
+        history: prevState.display + userInput,
+        previousDisplay: display,
+      }));
     }
   };
 
   handleEqual = () => {
-    const { userNumInput, total, operation } = this.state;
+    const { previousDisplay, display, operation } = this.state;
     // add check for commas(,)
-    this.setState({ userNumInput: "" });
+    this.setState((prevState) => ({
+      previousDisplay: "",
+      history: prevState.history + "=",
+      operation: "=",
+    }));
     switch (operation) {
       case "+":
         this.setState({
-          total: Number(userNumInput) + Number(total),
+          display: Number(previousDisplay) + Number(display),
         });
         break;
       case "-":
         this.setState({
-          total: Number(total) - Number(userNumInput),
+          display: Number(previousDisplay) - Number(display),
         });
         break;
       case "x":
         this.setState({
-          total: Number(userNumInput) * Number(total),
+          display: Number(previousDisplay) * Number(display),
         });
         break;
       case "÷":
         this.setState({
-          total: Number(total) / Number(userNumInput),
+          display: Number(previousDisplay) / Number(display),
         });
         break;
       default:
@@ -51,23 +85,14 @@ class Calculator extends React.Component {
     }
   };
 
-  // userNumInput shows up when typed and not when operand is type
-  handleDigit = (userInput) => {
-    const { userNumInput } = this.state;
-    userNumInput === ""
-      ? this.setState({
-          userNumInput: userInput,
-        })
-      : this.setState((prevState) => ({
-          userNumInput: prevState.userNumInput + userInput,
-        }));
-  };
-
+  // prevent more than two decimal places after the decimal
   handleDecimal = () => {
-    const { userNumInput } = this.state;
-    if (!userNumInput.includes(".")) {
+    const { previousDisplay } = this.state;
+    if (!previousDisplay.includes(".")) {
       this.setState((prevState) => ({
-        userNumInput: prevState.userNumInput + ".",
+        previousDisplay: prevState.previousDisplay + ".",
+        display: prevState.display + ".",
+        history: prevState.history + ".",
       }));
     }
   };
@@ -75,50 +100,68 @@ class Calculator extends React.Component {
   // add 0 after deleting all numbers
   // error if negative number
   handleDelete = () => {
-    const { userNumInput } = this.state;
-    if (userNumInput === "") {
+    const { previousDisplay, display, history } = this.state;
+    if (previousDisplay === "") {
       this.setState({
-        userNumInput: "",
+        previousDisplay: "",
       });
     } else {
       this.setState({
-        userNumInput: userNumInput.slice(0, -1),
+        previousDisplay: previousDisplay.slice(0, -1),
+        display: display.slice(0, -1),
+        history: history.slice(0, -1),
       });
     }
   };
 
-  // add condition to remove zero after pressing +/-
+  handleAllClear = () => {
+    this.setState({
+      previousDisplay: "",
+      display: "0",
+      history: "",
+      operation: "",
+      sign: "positive",
+    });
+  };
+
+  // codesmell
   handleSign = () => {
-    const { sign, userNumInput } = this.state;
-    if (userNumInput !== "") {
+    const { sign, previousDisplay, history, display } = this.state;
+    if (previousDisplay !== "") {
       if (sign === "positive") {
         this.setState({
           sign: "negative",
-          userNumInput: userNumInput * -1,
+          previousDisplay: previousDisplay * -1,
+          display: display * -1,
+          history: history * -1,
         });
       } else {
         this.setState({
           sign: "positive",
-          userNumInput: userNumInput * -1 });
+          previousDisplay: previousDisplay * -1,
+          display: display * -1,
+          history: history * -1,
+        });
       }
     }
   };
 
   handleZero = () => {
-    const { userNumInput } = this.state;
-    if (userNumInput !== "0") {
+    const { previousDisplay } = this.state;
+    if (previousDisplay !== "0") {
       this.setState((prevState) => ({
-        userNumInput: prevState.userNumInput + "0",
+        previousDisplay: prevState.previousDisplay + "0",
       }));
     }
   };
 
   render() {
-    const { userNumInput, total } = this.state;
+    const { previousDisplay, display, history } = this.state;
     return (
       <section id="calculator">
-        <p id="previousDisplay">{userNumInput}</p>
-        <p id="display">{total}</p>
+        <p id="history">{history} - history</p>
+        <p id="previousDisplay">{previousDisplay} - previousDisplay</p>
+        <p id="display">{display} - Display</p>
         <button className="one" onClick={() => this.handleDigit("1")}>
           1
         </button>
