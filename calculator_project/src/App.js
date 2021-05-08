@@ -5,6 +5,15 @@ import "./App.css";
 class App extends React.Component {
   state = { input: "", prevNum: "", startNewNum: true, operator: "" };
 
+  handleDisplay = () => {
+    const {input} = this.state;
+    if(input.length < 3) {
+      return input
+    } else {
+      return parseFloat(input).toLocaleString()
+    }
+  }
+
   handleButton = (e) => {
     const { value } = e.target;
     if(this.state.input.length < 9) {
@@ -41,7 +50,6 @@ class App extends React.Component {
   };
 
   handleDecimal = (e) => {
-    console.log("decimal working")
     const { value } = e.target;
     const { input, startNewNum } = this.state;
     if(startNewNum) {
@@ -124,6 +132,7 @@ class App extends React.Component {
           handlePercentage={this.handlePercentage}
           handleZero={this.handleZero}
           calculate={this.calculate}
+          handleDisplay={this.handleDisplay}
         />
       </div>
     );

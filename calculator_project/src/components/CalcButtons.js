@@ -13,10 +13,11 @@ class CalcButton extends React.Component {
       handlePosNeg,
       handleZero,
       calculate,
+      handleDisplay,
     } = this.props;
     return (
       <div id="calculator">
-        <div className="display">{input === "" ? "0" : parseFloat(input).toLocaleString()}</div>
+        <div className="display">{input === "" ? "0" : handleDisplay()}</div>
         <button
           onClick={handleClear}
           value="A/C"
