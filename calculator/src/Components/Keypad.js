@@ -27,7 +27,7 @@ class Keypad extends React.Component {
           x
         </button>
         <button onClick={divisionOperand} value="/">
-          ➗
+          ÷
         </button>
         <button onClick={btnPressed} value="6">
           6
