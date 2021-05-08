@@ -1,44 +1,44 @@
 import React from 'react';
 import './Buttons.css'; 
 
-const Buttons = (props) => {
-    const {value, operators} = props;
-
-    return (
-        <div className="calcu-Container">
-            <div className ="row">
-                <button className="button-wrapper">AC</button> 
-                <button className="button-wrapper">+/-</button>
-                <button className="button-wrapper">%</button>
-                <button className="button-wrapper" id="operator" >/</button>
+const Buttons = (props) =>  {
+   
+   return (
+        <div className="calculator-container">
+          
+           <div className ="row">
+                <button onClick={() => props.handleClick(props.children)} className="buttons">AC</button> 
+                <button onClick={() => props.handleClick(props.children)}className="buttons">+/-</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">%</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons" id="operator" >÷</button>
              </div>
 
              <div className ="row">
-                <button className="button-wrapper">7</button> 
-                <button className="button-wrapper">8</button>
-                <button className="button-wrapper">9</button>
-                <button className="button-wrapper" id="operator">X</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">7</button> 
+                <button onClick={() => props.handleClick(props.children)}className="buttons">8</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">9</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons" id="operator">x</button>
              </div>
 
              <div className ="row">
-                <button className="button-wrapper">4</button> 
-                <button className="button-wrapper">5</button>
-                <button className="button-wrapper">6</button>
-                <button className="button-wrapper" id="operator">-</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">4</button> 
+                <button onClick={() => props.handleClick(props.children)}className="buttons">5</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">6</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons" id="operator">-</button>
              </div>
 
              <div className ="row">
-                <button className="button-wrapper">1</button> 
-                <button className="button-wrapper">2</button>
-                <button className="button-wrapper">3</button>
-                <button className="button-wrapper" id="operator">+</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">1</button> 
+                <button onClick={() => props.handleClick(props.children)}className="buttons">2</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">3</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons" id="operator">+</button>
              </div>
 
              <div className ="row">
-                <button className="button-wrapper">0</button>
-                <br></br> 
-                <button className="button-wrapper">.</button>
-                <button className="button-wrapper" id="operator">=</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">0</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">00</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons">.</button>
+                <button onClick={() => props.handleClick(props.children)}className="buttons" id="operator">=</button>
                 
              </div>
 
