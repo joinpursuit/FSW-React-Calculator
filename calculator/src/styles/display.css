@@ -1,0 +1,10 @@
+.outputDisplay {
+    border: 1px solid #f4acb7;
+    width: 84%;
+    height: 48px;
+    font-size: 30px;
+    margin-top: 10px;
+    background-color: #faedcb;
+    color: #ff928b;
+   text-align: end;
+}

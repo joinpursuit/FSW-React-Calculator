@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import Display from "./components/display";
 import Keypad from "./components/keypad";
 
@@ -40,8 +40,7 @@ class App extends React.Component {
        this.setState({display: eval(this.state.input), input: eval(this.state.input)})
       }
        catch (err) {
-         console.log(err)
-         this.setState({display: "Error"})
+         this.setState({display:0, input:""})
        }
     }
   
