@@ -7,7 +7,7 @@ class CalcOuput extends Component {
         const {result} = this.props
         return (
             <div className='result'>
-                <p>{result}</p>
+                <p>{Number(result).toLocaleString('en-US')} </p>
             </div>
         )
     }
