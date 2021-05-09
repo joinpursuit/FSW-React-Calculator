@@ -2,94 +2,112 @@ import React from "react";
 import "./App.css";
 import Screen from "./Components/Screen";
 import Buttons from "./Components/Buttons";
-const numbers = "0123456789";
+// import * as math from "mathjs";
 
 class App extends React.Component {
   state = {
     currentInput: "0",
-    history: [],
-    // showcurrentInput: [{ value: "" }, { show: true }],
+    history: "",
+    toCalculate: false,
+    operator: null,
   };
 
   detectClick = (target) => {
-    // debugger;
-    const { currentInput } = this.state;
-    if (
-      numbers.includes(target.name) &&
-      currentInput.length > 0 &&
-      currentInput !== "0"
-    ) {
-      if (currentInput.length > 3 && currentInput.includes(".")) {
-      }
+    const { currentInput, toCalculate, history, operator } = this.state;
+
+    if (toCalculate) {
       this.setState((prevState) => {
         return {
-          currentInput: prevState.currentInput + target.name,
+          toCalculate: false,
+          currentInput: target.name,
+          history: prevState.history + prevState.currentInput + operator,
         };
       });
-    } else if (numbers.includes(target.name)) {
-      this.setState({ currentInput: target.name });
-    }
-
-    if (target.name === "-/+") {
-      this.changePositivity();
     } else {
-      console.log("nothing");
+      this.setState((prevState) => {
+        return {
+          currentInput:
+            currentInput === "0"
+              ? target.name
+              : prevState.currentInput + target.name,
+        };
+      });
     }
   };
 
-  changePositivity = () => {
-    const { currentInput } = this.state;
-    if( !currentInput.includes("-")){
-      this.setState({currentInput: "-"+currentInput})
-    }else{
-      this.setState({currentInput: currentInput.filter("-")})
-    }
-
-  };
   operation = (target) => {
-    const { currentInput } = this.state;
-    let result = 0;
-    switch (target.name) {
-      case "+":
-        result =
-          currentInput + target.name
-        break;
-      case "-":
-        result =
-          currentInput + target.name
-        break;
-      case "*":
-        result =
-          currentInput + target.name
-        break;
-      case "/":
-        result =
-          currentInput + target.name
-        break;
-      default:
-        break;
+    this.setState({
+      toCalculate: true,
+      operator: target.name,
+    });
+  };
+
+  changePositivity = (target) => {
+    const { currentInput, operator } = this.state;
+    if (typeof currentInput === "number") {
+      this.setState((prevState) => {
+        return {
+          currentInput: prevState.currentInput * -1,
+        };
+      });
+    } else {
+      this.setState((prevState) => {
+        return {
+          currentInput:
+            prevState.currentInput.charAt(0) === "-"
+              ? prevState.currentInput.substr(1)
+              : "-" + prevState.currentInput,
+        };
+      });
     }
-    this.setState({ currentInput: result });
   };
 
   clear = (e) => {
     this.setState({ currentInput: "0" });
   };
-  calculate = ()=>{
-    console.log("calculate")
-  }
+
+  calculate = () => {
+    const { currentInput, toCalculate, operator, history } = this.state;
+    // debugger
+    this.setState({
+      currentInput: eval(history + currentInput),
+      history: "",
+      operator: "",
+    });
+  };
+
+  addDecimal = () => {
+    const { currentInput, toCalculate } = this.state;
+    if (toCalculate) {
+      this.setState({ currentInput: "0.", toCalculate: false });
+    } else {
+      if (currentInput.indexOf(".") === -1) {
+        this.setState((prevState) => {
+          return {
+            currentInput: prevState.currentInput + ".",
+          };
+        });
+      }
+    }
+  };
 
   render() {
+    console.log(this.state);
+    // debugger
     const { currentInput } = this.state;
     return (
       <div className="App">
-        <Screen currentInput={currentInput} />
-        <Buttons
-          detectClick={this.detectClick}
-          clear={this.clear}
-          operation={this.operation}
-          calculate={this.calculate}
-        />
+        <section className="calculator-container">
+          <Screen currentInput={currentInput} />
+          <Buttons
+            detectClick={this.detectClick}
+            clear={this.clear}
+            operation={this.operation}
+            calculate={this.calculate}
+            addDecimal={this.addDecimal}
+            changePositivity={this.changePositivity}
+          />
+        </section>
       </div>
     );
   }
