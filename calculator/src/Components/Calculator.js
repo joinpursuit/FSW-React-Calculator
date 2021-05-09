@@ -14,9 +14,12 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       const { display } = prevState;
       if (display === "0") {
-        // debugger
         return {
           display: e.target.value,
+        };
+      } else {
+        return {
+          display: prevState.display + e.target.value,
         };
       }
     });
@@ -28,7 +31,7 @@ class Calculator extends React.Component {
 
   handlePlusSign = () => {
     const { display } = this.state;
-    // debugger
+    debugger
     this.setState({
       previousDisplay: display,
       display: "0",
@@ -98,7 +101,7 @@ class Calculator extends React.Component {
     const { previousDisplay, display } = this.state;
     let sum = 0;
     if (display) {
-      sum = Number(previousDisplay) + Number(display);
+      sum = parseInt(previousDisplay) + parseInt(display);
     }
     return sum;
   };
