@@ -5,18 +5,21 @@
   display: grid;
   grid-template-rows: 6rem 3rem 3rem 3rem 3rem 3rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 50vw;
-  margin-left: 1vw;
+  width: 40vw;
+  margin-left: 3vw;
 }
 .display {
+  
   grid-column-start: 1;
   grid-column-end: 5;
   text-align: end;
+  grid-row: 1;
   border: black solid 1px;
   border-radius: 2px;
-  padding-right: 3px;
-  font-size: 6vw;
-  margin-bottom: 0vw;
+  padding-right: 1rem;
+  font-size: 40px;
+  
+  height: 55.8%;
   background-color: cornsilk;
 }
 .zero {
@@ -27,15 +30,19 @@
   cursor: pointer;
 }
 .math {
+  font-size: 20px;
   background-color: rgba(0, 255, 170, 0.103);
 }
 .grey {
+  font-size: 20px;
   background-color: rgba(165, 42, 42, 0.427);
 }
 .number {
+  font-size: 20px;
   background-color: burlywood;
 }
 .equal{
+  font-size: 20px;
   grid-column-start: 3;
   grid-column-end: 5;
 }
