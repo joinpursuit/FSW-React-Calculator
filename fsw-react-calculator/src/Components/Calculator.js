@@ -3,20 +3,22 @@ import Buttons from "./Buttons";
 import "../calculator.css"
 
 class Calculator extends React.Component {
-  state = { display: "0", userNum1: "", userNum2: "", operator: "", justEvaluated: false};
+  state = { display: "0", userNum1: "", userNum2: "", operator: "", justEvaluated: false, enterSecondNum: false};
 
   enterNum = (num) => {
     this.setState((prevState) => {
       let newDisplay;
-      if (prevState.display === "0" || prevState.justEvaluated) {
+      if (prevState.display === "0" || prevState.justEvaluated || prevState.enterSecondNum) {
         newDisplay = num;
-      } else {
+     
+      } else  {
         newDisplay = prevState.display + num;
       }
       return {
         display: newDisplay,
         userNum2: newDisplay,
-        justEvaluated: false
+        justEvaluated: false,
+        enterSecondNum: false
       };
     });
   };
@@ -25,8 +27,8 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       return {
         userNum1: prevState.display,
-        display: "",
         operator: addition,
+        enterSecondNum: true
       };
     });
   };
@@ -34,8 +36,8 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       return {
         userNum1: prevState.display,
-        display: "",
         operator: subtraction,
+        enterSecondNum: true
       };
     });
   };
@@ -43,8 +45,8 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       return {
         userNum1: prevState.display,
-        display: "",
         operator: multiplication,
+        enterSecondNum: true
       };
     });
   };
@@ -52,8 +54,8 @@ class Calculator extends React.Component {
     this.setState((prevState) => {
       return {
         userNum1: prevState.display,
-        display: "",
         operator: division,
+        enterSecondNum: true
       };
     });
   };
@@ -72,7 +74,8 @@ class Calculator extends React.Component {
       }
       return {
         display: total,
-        justEvaluated: true
+        justEvaluated: true,
+        enterSecondNum: false
       };
     });
   };
@@ -83,12 +86,11 @@ class Calculator extends React.Component {
         display: "0",
         userNum1: "",
         userNum2: "",
+        enterSecondNum: false
       };
     });
   };
-  componentDidUpdate() {
-    // debugger;
-  }
+
 
   posNegButton = () => {
     const { display } = this.state;
