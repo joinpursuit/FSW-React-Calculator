@@ -8,14 +8,26 @@ class Calculator extends React.Component {
     operator: "",
     value: "",
     newNumTracker: false,
+    operatorJustPressed: false,
+  };
+
+  handleClear = () => {
+    this.setState({
+      display: "0",
+      previousDisplay: "",
+      operator: "",
+      newNumTracker: false,
+      operatorJustPressed: false,
+    });
   };
 
   enterNumber = (e) => {
     this.setState((prevState) => {
-      const { display } = prevState;
-      if (display === "0") {
+      const { display, operatorJustPressed } = prevState;
+      if (display === "0" || operatorJustPressed) {
         return {
           display: e.target.value,
+          operatorJustPressed: false,
         };
       } else {
         return {
@@ -25,18 +37,48 @@ class Calculator extends React.Component {
     });
   };
 
-  handleClear = () => {
-    this.setState({ display: "0", previousDisplay: "", operator: "", newNumTracker: false});
-  };
-
   handlePlusSign = () => {
     const { display } = this.state;
-    debugger
+    // debugger
     this.setState({
       previousDisplay: display,
-      display: "0",
+      // display: "0",
       operator: "plus",
       newNumTracker: true,
+      operatorJustPressed: true,
+    });
+  };
+
+  handleMinusSign = () => {
+    const { display } = this.state;
+    this.setState({
+      previousDisplay: display,
+      // display: "0",
+      operator: "minus",
+      newNumTracker: true,
+      operatorJustPressed: true,
+    });
+  };
+
+  handleDivisionSign = () => {
+    const { display } = this.state;
+    this.setState({
+      previousDisplay: display,
+      // display: "0",
+      operator: "dividedBy",
+      newNumTracker: true,
+      operatorJustPressed: true,
+    });
+  };
+
+  handleMultiplicationSign = () => {
+    const { display } = this.state;
+    this.setState({
+      previousDisplay: display,
+      // display: "0",
+      operator: "times",
+      newNumTracker: true,
+      operatorJustPressed: true,
     });
   };
 
@@ -60,36 +102,6 @@ class Calculator extends React.Component {
         previousDisplay: display,
       });
     }
-  };
-
-  handleMinusSign = () => {
-    const { display } = this.state;
-    this.setState({
-      previousDisplay: display,
-      display: "0",
-      operator: "minus",
-      newNumTracker: true,
-    });
-  };
-
-  handleDivisionSign = () => {
-    const { display } = this.state;
-    this.setState({
-      previousDisplay: display,
-      display: "0",
-      operator: "dividedBy",
-      newNumTracker: true,
-    });
-  };
-
-  handleMultiplicationSign = () => {
-    const { display } = this.state;
-    this.setState({
-      previousDisplay: display,
-      display: "0",
-      operator: "times",
-      newNumTracker: true,
-    });
   };
 
   handleToggleInteger = () => {
@@ -200,4 +212,3 @@ class Calculator extends React.Component {
 }
 
 export default Calculator;
-
