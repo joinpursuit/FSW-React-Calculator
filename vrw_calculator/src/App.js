@@ -1,10 +1,10 @@
 import { Component } from "react";
-// import Numbers from './Components/Numbers';
+
 import Buttons from "./Components/Buttons";
 import Display from "./Components/Display";
 
 import "./App.css";
-// import Display from "./Components/Display";
+
 
 export default class App extends Component {
   state = {
@@ -14,10 +14,21 @@ export default class App extends Component {
     toggleDisplay: false,
     functionEntered: false,
     equalInteger: -Infinity,
-    negaviteInput: false,
+    negativeInput: false,
   };
 
-  // handleNegative = () => {
+
+
+  handleNegative = () => {
+    const {inputValue, negativeInput} = this.state;
+    if(!negativeInput && inputValue !== "0") {
+      this.setState({inputValue: `-${inputValue}`, negativeInput: true});
+    } else if(inputValue.charAt(0) === "-") {
+      debugger
+      this.setState({inputValue: inputValue.substring(1), negativeInput: false})
+    }
+  }
+    
   //   const { negaviteInput } = this.state;
   //   this.setState((prevState) => ({ negaviteInput: !prevState.negaviteInput }));
   //   if (negaviteInput) {
@@ -25,28 +36,25 @@ export default class App extends Component {
   //   }
   // };
 
+
+
   handleNumber = (e) => {
-    const { inputValue, negaviteInput } = this.state;
-    if (negaviteInput) {
+    const { inputValue } = this.state;
       if (inputValue === "0") {
-        this.setState({ inputValue: -Math.abs(Number(e.target.value)) });
+        this.setState({ inputValue: Math.abs(Number(e.target.value)) });
       } else {
         this.setState((prevState) => ({
           toggleDisplay: false,
-          inputValue: -Math.abs(prevState.inputValue + e.target.value),
+          inputValue: Math.abs(prevState.inputValue + e.target.value),
         }));
       }
-    } else {
-      if (inputValue === "0") {
-        this.setState({ inputValue: e.target.value });
-      } else {
-        this.setState((prevState) => ({
-          toggleDisplay: false,
-          inputValue: prevState.inputValue + e.target.value,
-        }));
-      }
-    }
   };
+
+  // handleDecimal = (e) => {
+  //   const { decimal } = this.state;
+  //   this.setState({decimal: true})
+  //   this.handleNumber(e);
+  // }
 
   handleOperator = (e) => {
     if (this.state.elementOne === 0) {
@@ -189,6 +197,8 @@ export default class App extends Component {
           handleClear={this.handleClear}
           handleOperator={this.handleOperator}
           handleEqual={this.handleEqual}
+          handleDecimal={this.handleDecimal}
+          handleNegative={this.handleNegative}
         />
       </div>
     );
