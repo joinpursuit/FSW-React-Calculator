@@ -5,7 +5,6 @@ export default class Calculator extends Component {
     state = { num1: 0, num2: 0, math: "", toggleNum: true }
     handleNumber = (num) => {
         const { num1, num2, toggleNum } = this.state
-        console.log(num)
         if (toggleNum || Number(num1) === 0) {
             this.setState((prevState) => ({
                 num1: prevState.num1 + num.toString()
@@ -43,9 +42,6 @@ export default class Calculator extends Component {
     }
     handleMath = (value) => {
         if (this.state.math !== "") {
-            // this.setState((prevState) => ({
-            //     toggleNum: !prevState.toggleNum
-            // }))
             this.handleEqual()
         }
         this.setState({ math: value })
@@ -75,9 +71,6 @@ export default class Calculator extends Component {
             }
         }
         if (this.state.math !== "") {
-            // this.setState((prevState) => ({
-            //     toggleNum: !prevState.toggleNum
-            // }))
             this.setState({ num2: 0, toggleNum: false })
         } else {
             this.setState({ num2: 0, math: "", toggleNum: true })
