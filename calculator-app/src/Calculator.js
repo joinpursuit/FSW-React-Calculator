@@ -28,7 +28,7 @@ class Calculator extends React.Component {
       }));
     } else if (operation.length === 1) {
       this.setState((prevState) => ({
-        display: prevState.display +userInput,
+        display: prevState.display + userInput,
         history: prevState.history + userInput,
       }));
     }
@@ -36,12 +36,12 @@ class Calculator extends React.Component {
 
   handleOperand = (userInput) => {
     const { display } = this.state;
-      this.setState((prevState) => ({
-        operation: userInput,
-        history: prevState.display + userInput,
-        previousDisplay: display,
-        display: ""
-      }));
+    this.setState((prevState) => ({
+      operation: userInput,
+      history: prevState.display + userInput,
+      previousDisplay: display,
+      display: "",
+    }));
   };
 
   handleEqual = () => {
@@ -96,7 +96,7 @@ class Calculator extends React.Component {
         previousDisplay: "",
         operation: "",
         display: "0",
-        history: ""
+        history: "",
       });
     } else {
       this.setState({
@@ -138,10 +138,11 @@ class Calculator extends React.Component {
   };
 
   handleZero = () => {
-    const { previousDisplay } = this.state;
-    if (previousDisplay !== "0") {
+    const { display } = this.state;
+    if (display !== "0") {
       this.setState((prevState) => ({
-        previousDisplay: prevState.previousDisplay + "0",
+        display: prevState.display + "0",
+        history: prevState.history + "0",
       }));
     }
   };
