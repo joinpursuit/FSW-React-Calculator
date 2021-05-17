@@ -5,47 +5,79 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentNumber: "",
+      currentNumber: 0,
       operation: "",
       previousNumber: "",
+      resetScreen: true,
     };
   }
 
   onOperation = (op) => {
     console.log(op);
-    this.setState({ 
-      operation: op, 
-      previousNumber:this.state.currentNumber,
-      currentNumber: "",
-    });
-  };
-  onNumber = (digit) => {
     this.setState({
-      currentNumber: this.state.currentNumber + digit
+      operation: op,
+      previousNumber: this.state.currentNumber,
+      resetScreen: true,
     });
   };
+
+  onNumber = (digit) => {
+    const { resetScreen } = this.state;
+    if (resetScreen) {
+      this.setState({ currentNumber: digit, resetScreen: false });
+    } else {
+      this.setState({
+        currentNumber: this.state.currentNumber + digit,
+      });
+    }
+  };
+
+  // Math.round(num * 100) / 100
+  round = (num) => Math.round(num * 1000000) / 1000000;
 
   calculate = () => {
     const { operation, currentNumber, previousNumber } = this.state;
-    const current = parseFloat(currentNumber)
-    const prev= parseFloat(previousNumber)
+    const current = parseFloat(currentNumber);
+    const prev = parseFloat(previousNumber);
     if (operation === "-") {
-      this.setState({ currentNumber: prev - current});
+      this.setState({ currentNumber: prev - current, resetScreen: true });
     }
     if (operation === "+") {
-      this.setState({currentNumber: prev + current})
-      console.log(prev + current);
+      this.setState({ currentNumber: prev + current, resetScreen: true });
     }
     if (operation === "/") {
-      this.setState({currentNumber:prev / current})
+      this.setState({
+        currentNumber: this.round(prev / current),
+        resetScreen: true,
+      });
     }
     if (operation === "*") {
-      this.setState({currentNumber:prev * current})
-    } 
+      this.setState({
+        currentNumber: this.round(prev * current),
+        resetScreen: true,
+      });
+    }
   };
-
+  percent = () => {
+    this.setState({
+      currentNumber:
+        (this.state.previousNumber * this.state.currentNumber) / 100,
+      resetScreen: true,
+    });
+  };
+  posneg = () => {
+    const { currentNumber } = this.state;
+    this.setState({
+      currentNumber: currentNumber * -1,
+    });
+  };
   clear = () => {
-    this.setState({ previousNumber: "", currentNumber: "", operation: "" });
+    this.setState({
+      previousNumber: "",
+      currentNumber: 0,
+      operation: "",
+      resetScreen: true,
+    });
   };
 
   render() {
@@ -54,13 +86,15 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="Calculator">
-          <section className="Results">{currentNumber}</section>
+          <section className="Results">{parseFloat(currentNumber).toLocaleString()}</section>
           <section className="Keypad">
             <button onClick={this.clear}>AC</button>
-            <button value="+/-" onClick={() => this.posneg}>
+            <button value="+/-" onClick={this.posneg}>
               +/-
             </button>
-            <button value="%">%</button>
+            <button value="%" onClick={this.percent}>
+              %
+            </button>
             <button value="+" onClick={() => this.onOperation("/")}>
               ÷
             </button>
@@ -73,7 +107,7 @@ export default class App extends Component {
             <button value="9" onClick={() => this.onNumber("9")}>
               9
             </button>
-            <button value="x" onClick={() => this.onOperation("x")}>
+            <button value="x" onClick={() => this.onOperation("*")}>
               x
             </button>
             <button value="4" onClick={() => this.onNumber("4")}>
@@ -105,7 +139,7 @@ export default class App extends Component {
             <button value="0" onClick={() => this.onNumber("0")}>
               0
             </button>
-            <button value="." className="btn">
+            <button value="." onClick={() => this.onNumber(".")}>
               .
             </button>
             <button value="=" onClick={this.calculate}>
