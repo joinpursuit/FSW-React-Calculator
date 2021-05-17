@@ -13,8 +13,11 @@ class Calculator extends React.Component {
   handleDigit = (userInput) => {
     const { display, operation } = this.state;
     if (operation === "=") {
+      // debugger
       this.setState({
         history: "",
+        display: userInput,
+        operation: ""
       });
     } else if (display === "0") {
       this.setState({
