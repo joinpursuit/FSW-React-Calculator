@@ -16,36 +16,32 @@ class Calculator extends React.Component {
       this.setState({
         history: "",
       });
-    } else if (
-      display === "0") {
-        this.setState({
-            display: userInput,
-            history: userInput,
-          })
-      } else if ( operation === "" ) {
-        this.setState((prevState) => ({
-            display: prevState.display + userInput,
-            history: prevState.history + userInput,
-          }));
-      } else if (operation !== "") {
-        this.setState((prevState) => ({
-          display: "" + userInput,
-          history: prevState.history + userInput,
-        }));
-      }
+    } else if (display === "0") {
+      this.setState({
+        display: userInput,
+        history: userInput,
+      });
+    } else if (operation === "") {
+      this.setState((prevState) => ({
+        display: prevState.display + userInput,
+        history: prevState.history + userInput,
+      }));
+    } else if (operation.length === 1) {
+      this.setState((prevState) => ({
+        display: prevState.display +userInput,
+        history: prevState.history + userInput,
+      }));
+    }
   };
 
   handleOperand = (userInput) => {
-    const { operation, display } = this.state;
-    if (operation !== "") {
-      this.setState({ operation: userInput });
-    } else {
+    const { display } = this.state;
       this.setState((prevState) => ({
         operation: userInput,
         history: prevState.display + userInput,
         previousDisplay: display,
+        display: ""
       }));
-    }
   };
 
   handleEqual = () => {
@@ -95,9 +91,12 @@ class Calculator extends React.Component {
 
   handleDelete = () => {
     const { previousDisplay, display, history } = this.state;
-    if (previousDisplay === "") {
+    if (display.length === 1) {
       this.setState({
         previousDisplay: "",
+        operation: "",
+        display: "0",
+        history: ""
       });
     } else {
       this.setState({
@@ -120,23 +119,22 @@ class Calculator extends React.Component {
 
   handleSign = () => {
     const { sign, previousDisplay, history, display } = this.state;
-    if (previousDisplay !== "") {
-      if (sign === "positive") {
-        this.setState({
-          sign: "negative",
-          previousDisplay: previousDisplay * -1,
-          display: display * -1,
-          history: history * -1,
-        });
-      } else {
-        this.setState({
-          sign: "positive",
-          previousDisplay: previousDisplay * -1,
-          display: display * -1,
-          history: history * -1,
-        });
-      }
+    if (sign === "positive") {
+      this.setState({
+        sign: "negative",
+        previousDisplay: previousDisplay * -1,
+        display: display * -1,
+        history: history * -1,
+      });
+    } else {
+      this.setState({
+        sign: "positive",
+        previousDisplay: previousDisplay * -1,
+        display: display * -1,
+        history: history * -1,
+      });
     }
+    // }
   };
 
   handleZero = () => {
