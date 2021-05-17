@@ -13,7 +13,6 @@ export default class App extends Component {
   }
 
   onOperation = (op) => {
-    console.log(op);
     this.setState({
       operation: op,
       previousNumber: this.state.currentNumber,
@@ -32,7 +31,6 @@ export default class App extends Component {
     }
   };
 
-  // Math.round(num * 100) / 100
   round = (num) => Math.round(num * 1000000) / 1000000;
 
   calculate = () => {
@@ -81,12 +79,13 @@ export default class App extends Component {
   };
 
   render() {
-    const { operation, currentNumber, previousNumber } = this.state;
-    console.log(previousNumber, operation, currentNumber);
+    const {currentNumber,} = this.state;
     return (
       <div className="App">
         <div className="Calculator">
-          <section className="Results">{parseFloat(currentNumber).toLocaleString()}</section>
+          <section className="Results">
+            {parseFloat(currentNumber).toLocaleString()}
+          </section>
           <section className="Keypad">
             <button onClick={this.clear}>AC</button>
             <button value="+/-" onClick={this.posneg}>
