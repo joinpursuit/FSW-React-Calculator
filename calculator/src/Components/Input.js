@@ -1,10 +1,10 @@
 import React from "react";
 import './Input.css'
 
-const Input = (props) => {
+const Input = ({input}) => {
   return (
     <div className="input">
-        {props.input}
+        {input}
     </div>
   )
 };
