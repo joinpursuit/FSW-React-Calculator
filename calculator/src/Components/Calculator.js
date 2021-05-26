@@ -39,10 +39,8 @@ class Calculator extends React.Component {
 
   handlePlusSign = () => {
     const { display } = this.state;
-    // debugger
     this.setState({
       previousDisplay: display,
-      // display: "0",
       operator: "plus",
       newNumTracker: true,
       operatorJustPressed: true,
@@ -53,7 +51,6 @@ class Calculator extends React.Component {
     const { display } = this.state;
     this.setState({
       previousDisplay: display,
-      // display: "0",
       operator: "minus",
       newNumTracker: true,
       operatorJustPressed: true,
@@ -64,7 +61,6 @@ class Calculator extends React.Component {
     const { display } = this.state;
     this.setState({
       previousDisplay: display,
-      // display: "0",
       operator: "dividedBy",
       newNumTracker: true,
       operatorJustPressed: true,
@@ -75,7 +71,6 @@ class Calculator extends React.Component {
     const { display } = this.state;
     this.setState({
       previousDisplay: display,
-      // display: "0",
       operator: "times",
       newNumTracker: true,
       operatorJustPressed: true,
@@ -104,6 +99,22 @@ class Calculator extends React.Component {
     }
   };
 
+  handlePercentageSign = () => {
+    const { display } = this.state;
+    let decimal = 0;
+    if (display) {
+      decimal = Number(display) / 100;
+    }
+    this.setState({
+      display: decimal,
+      previousDisplay: display,
+      operator: "percentage",
+      newNumTracker: true,
+      operatorJustPressed: true,
+    });
+  };
+
+
   handleToggleInteger = () => {
     const { display } = this.state;
     this.setState({ display: -display });
@@ -113,7 +124,7 @@ class Calculator extends React.Component {
     const { previousDisplay, display } = this.state;
     let sum = 0;
     if (display) {
-      sum = parseInt(previousDisplay) + parseInt(display);
+      sum = Number(previousDisplay) + Number(display);
     }
     return sum;
   };
@@ -122,7 +133,7 @@ class Calculator extends React.Component {
     const { previousDisplay, display } = this.state;
     let difference = 0;
     if (display) {
-      difference = parseInt(previousDisplay) - parseInt(display);
+      difference = Number(previousDisplay) - Number(display);
     }
     return difference;
   };
@@ -131,7 +142,7 @@ class Calculator extends React.Component {
     const { previousDisplay, display } = this.state;
     let quotient = 0;
     if (display) {
-      quotient = parseInt(previousDisplay) / parseInt(display);
+      quotient = Number(previousDisplay) / Number(display);
     }
     return quotient;
   };
@@ -140,7 +151,7 @@ class Calculator extends React.Component {
     const { previousDisplay, display } = this.state;
     let product = 0;
     if (display) {
-      product = parseInt(previousDisplay) * parseInt(display);
+      product = Number(previousDisplay) * Number(display);
     }
     return product;
   };
@@ -150,12 +161,14 @@ class Calculator extends React.Component {
     return (
       <div className="Calculator">
         <div className="Display" value={display}>
-          {parseInt(display).toLocaleString()}
+          {Number(display).toLocaleString()}
         </div>
         <button className="TopRow" onClick={this.handleClear} value={0}>
           AC
         </button>
-        <button className="TopRow">%</button>
+        <button className="TopRow" onClick={this.handlePercentageSign}>
+          %
+        </button>
         <button className="Blank"></button>
         <button className="Operator" onClick={this.handleDivisionSign}>
           ÷
