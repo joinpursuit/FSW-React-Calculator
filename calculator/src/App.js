@@ -7,15 +7,15 @@ import Input from "./Components/Input";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { input: "", operator: "", previousNumber: "", currentNumber: "" };
+    this.state = { input: "0", operator: "", previousNumber: ""};
   }
 
 
  
 
-  handleInput = (value) => {
+  handleInput = (e) => {
     
-    this.setState({ input: this.state.input + value});
+    this.setState({ input: e.target.value});
   };
 
    handleZero = (value) => {
@@ -27,19 +27,26 @@ class App extends Component {
   
 
    handleOp = (e) => {
-     const { operator } = this.state;
      this.setState({
-       operator: e.target.value, 
-     })
+       operator: e.target.value, previousNumber: this.state.input })
    }
 
 
-   handleEqual = () => {
-    try {
-      const result = eval(this.state.input);
-      this.state({input: result});
-    }catch (err) {
-      this.setState({input: ""})
+   handleEqual = () => { 
+     const {operator, input, previousNumber} = this.state
+     let sum = 0
+    if (operator === "/"){
+      sum = Number(previousNumber) / Number(input)
+      this.setState({input: sum})
+    } else if (operator === "*") {
+      sum = Number(previousNumber) * Number(input)
+      this.setState({input: sum})
+    } else if (operator === "-"){
+      sum = Number(previousNumber) - Number(input)
+      this.setState({input: sum})
+    } else if (operator === "+"){
+      sum = Number(previousNumber) + Number(input)
+      this.setState({input: sum})
     }
    }
 
@@ -55,7 +62,7 @@ class App extends Component {
         <div className="calculator-container">
           <Input input={this.state.input} />
           <div className="row">
-            <Buttons handleInput={this.handleInput} handleEqual={this.handleEqual} input={this.state.input} operator={this.handleOp} handleClear={this.handleClear}/>
+            <Buttons handleInput={this.handleInput} handleEqual={this.handleEqual} handleOp={this.handleOp} handleClear={this.handleClear}/>
           </div>
         </div>
       </div>

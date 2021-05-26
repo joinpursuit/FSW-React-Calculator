@@ -1,7 +1,7 @@
 import React from 'react';
 import './Buttons.css'; 
 
-const Buttons = ({handleInput, input, handleEqual, handleClear, handleOp, operator, handleZero }) =>  {
+const Buttons = ({handleInput, handleEqual, handleClear, handleOp, handleZero }) =>  {
    
    return (
         <div className="calculator-container">
