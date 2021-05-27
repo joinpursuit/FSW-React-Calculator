@@ -1,34 +1,116 @@
-#calculator {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  
+#calculater {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#display {
-  font-size: 24px;
-  text-align: right;
-  grid-column: 5/9;
-  grid-row: 5/6;
+.Outter-Container {
+  background-color: #303030;
+  width: 300px;
+  height: 500px;
+  border-radius: 15% 15% 40% 40%;
+  position: absolute;
+}
+
+.Inner-Container {
+  background-color: red;
+  width: 275px;
+  height: 450px;
+  border-radius: 15% 15% 40% 40%;
+  border: black solid 3px;
+  position: absolute;
+  z-index: 1;
+}
+
+#screen {
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
   background-color: lightgrey;
-  height: 10vh;
-  padding: 3%;
-  margin: 0;
-  border-right: black solid 1px;
-  border-left: black solid 1px;
+  border: black solid 2px;
+  margin: 10px 0 0 0;
 }
 
 #history {
+  border: black solid 2px;
+
+  /* padding: 0 5px 0 0; */
   text-align: right;
-  grid-column: 5/9;
-  grid-row: 4/5;
-  background-color: lightgrey;
-  height: 10vh;
-  padding: 3%;
-  margin: 0;
-  border-right: black solid 1px;
+  height: 15px;
+  width: 215px;
+  margin: 8px 0;
+  /* border-right: black solid 1px;
   border-left: black solid 1px;
-  border-top: black solid 1px;
+  border-top: black solid 1px; */
+  /* border-radius: 15% 15% 0 0; */
+  /* background-color: lightgrey; */
+}
+
+#display {
+  text-align: right;
+  font-size: 24px;
+  /* background-color: lightgrey; */
+  height: 30px;
+  width: 225px;
+  margin: 0 0 8px 0;
+  /* border-right: black solid 1px;
+  border-left: black solid 1px; */
+  position: relative;
+  z-index: 2;
+}
+
+#digits {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  row-gap: 8px;
+  column-gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  font-size: 18px;
+  font-weight: bolder;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: black outset 3px;
+}
+
+
+.allClear,
+.delete,
+.sign,
+.plus {
+  grid-row: 1/2;
+}
+
+.one,
+.two,
+.three,
+.minus {
+  grid-row: 2/3;
+}
+
+.four,
+.five,
+.six,
+.multiply {
+  grid-row: 3/4;
+}
+.seven,
+.eight,
+.nine,
+.divide {
+  grid-row: 4/5;
+}
+
+.zero,
+.decimal,
+.equal {
+  grid-row: 5/6;
 }
 
 .allClear,
@@ -36,27 +118,7 @@
 .four,
 .seven,
 .zero {
-  grid-column: 5/6;
-}
-
-.allClear {
-  grid-row: 6/7;
-}
-
-.one {
-  grid-row: 7/8;
-}
-
-.four {
-  grid-row: 8/9;
-}
-
-.seven {
-  grid-row: 9/10;
-}
-
-.zero {
-  grid-row: 10/11;
+  grid-column: 1/2;
 }
 
 .delete,
@@ -64,75 +126,24 @@
 .five,
 .eight,
 .decimal {
-  grid-column: 6/7;
-}
-
-.delete {
-  grid-row: 6/7;
-}
-
-.two {
-  grid-row: 7/8;
-}
-
-.five {
-  grid-row: 8/9;
-}
-
-.eight {
-  grid-row: 9/10;
-}
-
-.decimal {
-  grid-row: 10/11;
+  grid-column: 2/3;
 }
 
 .sign,
 .three,
 .six,
 .nine {
-  grid-column: 7/8;
-}
-
-.sign {
-  grid-row: 6/7;
-}
-
-.three {
-  grid-row: 7/8;
-}
-
-.six {
-  grid-row: 8/9;
-}
-
-.nine {
-  grid-row: 9/10;
+  grid-column: 3/4;
 }
 
 .equal {
-  grid-column: 7/9;
-  grid-row: 10/11;
+  grid-column: 3/5;
+  width: 110px;
 }
 
 .minus,
 .plus,
 .divide,
 .multiply {
-  grid-column: 8/9;
-}
-
-.minus {
-  grid-row: 7/8;
-}
-
-.plus {
-  grid-row: 6/7;
-}
-
-.divide {
-  grid-row: 9/10;
-}
-.multiply {
-  grid-row: 8/9;
+  grid-column: 4/5;
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import "./Calculator.css";
 
+// fix trailing double zeros
+
 class Calculator extends React.Component {
   state = {
     previousDisplay: "",
@@ -13,23 +15,17 @@ class Calculator extends React.Component {
   handleDigit = (userInput) => {
     const { display, operation } = this.state;
     if (operation === "=") {
-      // debugger
       this.setState({
         history: "",
         display: userInput,
-        operation: ""
+        operation: "",
       });
     } else if (display === "0") {
       this.setState({
         display: userInput,
         history: userInput,
       });
-    } else if (operation === "") {
-      this.setState((prevState) => ({
-        display: prevState.display + userInput,
-        history: prevState.history + userInput,
-      }));
-    } else if (operation.length === 1) {
+    } else {
       this.setState((prevState) => ({
         display: prevState.display + userInput,
         history: prevState.history + userInput,
@@ -44,12 +40,12 @@ class Calculator extends React.Component {
       history: prevState.display + userInput,
       previousDisplay: display,
       display: "",
+      operandPressed: true,
     }));
   };
 
   handleEqual = () => {
     const { previousDisplay, display, operation } = this.state;
-    // add check for commas(,)
     this.setState((prevState) => ({
       previousDisplay: "",
       history: prevState.history + "=",
@@ -93,13 +89,19 @@ class Calculator extends React.Component {
   };
 
   handleDelete = () => {
-    const { previousDisplay, display, history } = this.state;
+    const { previousDisplay, display, history, operation } = this.state;
     if (display.length === 1) {
       this.setState({
         previousDisplay: "",
         operation: "",
         display: "0",
         history: "",
+      });
+    } else if (operation === "=") {
+      this.setState({
+        previousDisplay: "previousDisplay.slice(0, -1)",
+        display: "display.slice(0, -1)",
+        history: "history.slice(0, -1)",
       });
     } else {
       this.setState({
@@ -137,7 +139,6 @@ class Calculator extends React.Component {
         history: history * -1,
       });
     }
-    // }
   };
 
   handleZero = () => {
@@ -150,69 +151,88 @@ class Calculator extends React.Component {
     }
   };
 
+  // finish function
+  // formatNumber = () => {
+  //   const { display } = this.state;
+  //   if(display !== "") {
+  //     // parseInt(display).toLocaleString()
+  //     display.toLocaleString()
+
+  //   } else {
+  //   }
+  // }
+
   render() {
     const { display, history } = this.state;
     return (
-      <section id="calculator">
-        <p id="history">{history}</p>
-        <p id="display">{display}</p>
-        <button className="one" onClick={() => this.handleDigit("1")}>
-          1
-        </button>
-        <button className="two" onClick={() => this.handleDigit("2")}>
-          2
-        </button>
-        <button className="three" onClick={() => this.handleDigit("3")}>
-          3
-        </button>
-        <button className="four" onClick={() => this.handleDigit("4")}>
-          4
-        </button>
-        <button className="five" onClick={() => this.handleDigit("5")}>
-          5
-        </button>
-        <button className="six" onClick={() => this.handleDigit("6")}>
-          6
-        </button>
-        <button className="seven" onClick={() => this.handleDigit("7")}>
-          7
-        </button>
-        <button className="eight" onClick={() => this.handleDigit("8")}>
-          8
-        </button>
-        <button className="nine" onClick={() => this.handleDigit("9")}>
-          9
-        </button>
-        <button className="zero" onClick={this.handleZero}>
-          0
-        </button>
-        <button className="plus" onClick={() => this.handleOperand("+")}>
-          +
-        </button>
-        <button className="minus" onClick={() => this.handleOperand("-")}>
-          -
-        </button>
-        <button className="divide" onClick={() => this.handleOperand("÷")}>
-          ÷
-        </button>
-        <button className="multiply" onClick={() => this.handleOperand("x")}>
-          x
-        </button>
-        <button className="decimal" onClick={this.handleDecimal}>
-          .
-        </button>
-        <button className="allClear" onClick={this.handleAllClear}>
-          AC
-        </button>
-        <button className="delete" onClick={this.handleDelete}>
-          DEL
-        </button>
-        <button className="sign" onClick={this.handleSign}>
-          +/-
-        </button>
-        <button className="equal" onClick={this.handleEqual}>
-          =
-        </button>
+      <section id="calculater">
+        <div className="Outter-Container"></div>
+        <div className="Inner-Container"></div>
+        <section id="screen">
+          <p id="history">{history}</p>
+          <p id="display">{Number(display).toLocaleString()}</p>
+          {/* <p id="display">{display}</p> */}
+          {/* <p id="display">{this.formatNumber()}</p> */}
+        </section>
+        <section id="digits">
+          <button className="second-row one" onClick={() => this.handleDigit("1")}>
+            1
+          </button>
+          <button className="second-row two" onClick={() => this.handleDigit("2")}>
+            2
+          </button>
+          <button className="second-row three" onClick={() => this.handleDigit("3")}>
+            3
+          </button>
+          <button className="third-row four" onClick={() => this.handleDigit("4")}>
+            4
+          </button>
+          <button className="third-row five" onClick={() => this.handleDigit("5")}>
+            5
+          </button>
+          <button className="third-row six" onClick={() => this.handleDigit("6")}>
+            6
+          </button>
+          <button className="fourth-row seven" onClick={() => this.handleDigit("7")}>
+            7
+          </button>
+          <button className="fourth-row eight" onClick={() => this.handleDigit("8")}>
+            8
+          </button>
+          <button className="fourth-row nine" onClick={() => this.handleDigit("9")}>
+            9
+          </button>
+          <button className="fifth-row zero" onClick={this.handleZero}>
+            0
+          </button>
+          <button className="first-row plus" onClick={() => this.handleOperand("+")}>
+            +
+          </button>
+          <button className="second-row minus" onClick={() => this.handleOperand("-")}>
+            -
+          </button>
+          <button className="fourth-row divide" onClick={() => this.handleOperand("÷")}>
+            ÷
+          </button>
+          <button className="third-row multiply" onClick={() => this.handleOperand("x")}>
+            x
+          </button>
+          <button className="fifth-row decimal" onClick={this.handleDecimal}>
+            .
+          </button>
+          <button className="first-row allClear" onClick={this.handleAllClear}>
+            AC
+          </button>
+          <button className="first-row delete" onClick={this.handleDelete}>
+            DEL
+          </button>
+          <button className="first-row sign" onClick={this.handleSign}>
+            +/-
+          </button>
+          <button className="fifth-row equal" onClick={this.handleEqual}>
+            =
+          </button>
+        </section>
       </section>
     );
   }
