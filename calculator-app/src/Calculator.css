@@ -1,4 +1,4 @@
-#calculater {
+#calculator {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,13 +9,34 @@
   width: 300px;
   height: 500px;
   border-radius: 15% 15% 40% 40%;
+  border: rgba(0, 0, 0, .7) solid 1px;
   position: absolute;
+  background-size: 10px 10px;
+  background-color: black;
+  box-shadow: 2px 4px 3px 1px black;
+  background-image: linear-gradient(
+      45deg,
+      #333 25%,
+      transparent 25%,
+      transparent 75%,
+      #333 75%,
+      #333
+    ),
+    linear-gradient(
+      -45deg,
+      #333 25%,
+      transparent 25%,
+      transparent 75%,
+      #333 75%,
+      #333
+    );
 }
 
 .Inner-Container {
-  background-color: red;
+  background-color: #333;
+  box-shadow: 2px 4px 3px -1px black;
   width: 275px;
-  height: 450px;
+  height: 490px;
   border-radius: 15% 15% 40% 40%;
   border: black solid 3px;
   position: absolute;
@@ -26,59 +47,88 @@
   position: relative;
   z-index: 2;
   border-radius: 20px;
-  background-color: lightgrey;
-  border: black solid 2px;
-  margin: 10px 0 0 0;
+  background-color: white;
+  /* background-image: linear-gradient(120deg, lightgrey 60%, white 85%, grey); */
+  border: black solid 5px;
+  margin: 30px 0 0 0;
+  width: 225px;
+  height: 75px;
+  box-shadow:
+  1px 0 1px 1px black,
+  inset 3px 1px 6px 3px black;
 }
 
 #history {
-  border: black solid 2px;
-
-  /* padding: 0 5px 0 0; */
+  /* border: black solid 2px; */
   text-align: right;
   height: 15px;
   width: 215px;
-  margin: 8px 0;
-  /* border-right: black solid 1px;
-  border-left: black solid 1px;
-  border-top: black solid 1px; */
-  /* border-radius: 15% 15% 0 0; */
-  /* background-color: lightgrey; */
+  margin-top: 5px;
 }
 
 #display {
+  /* border: black solid 2px; */
   text-align: right;
   font-size: 24px;
-  /* background-color: lightgrey; */
   height: 30px;
-  width: 225px;
-  margin: 0 0 8px 0;
-  /* border-right: black solid 1px;
-  border-left: black solid 1px; */
+  width: 215px;
+  margin: 15px 0 8px 0;
   position: relative;
   z-index: 2;
+  
 }
 
 #digits {
-  margin-top: 25px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  row-gap: 8px;
+  row-gap: 10px;
   column-gap: 8px;
   position: relative;
   z-index: 2;
 }
 
 button {
+  background-color: #333;
+  color: black;
   font-size: 18px;
+  box-shadow: 2px 2px 3px 1px black,
+  -2px 2px 7px 1px grey;
+  /* inset 3px 3px 5px 1px black; */
+
   font-weight: bolder;
+  text-shadow: .75px .20px 1px grey;
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  border: black outset 3px;
+  border: black solid 3px;
 }
 
+button:hover {
+  color: greenyellow;
+}
+
+.delete,
+.allClear {
+  font-size: 14px;
+}
+
+.decimal {
+  padding-bottom: 15px;
+  font-size: 24px;
+}
+
+.multiply {
+  font-size: 20px;
+}
+
+.equal,
+.plus,
+.minus,
+.divide {
+  font-size: 24px;
+}
 
 .allClear,
 .delete,
