@@ -11,7 +11,7 @@
   border-radius: 15% 15% 40% 40%;
   border: rgba(0, 0, 0, .7) solid 1px;
   position: absolute;
-  background-size: 10px 10px;
+  background-size: 3px 3px;
   background-color: black;
   box-shadow: 2px 4px 3px 1px black;
   background-image: linear-gradient(
@@ -44,10 +44,11 @@
 }
 
 #screen {
+  font-family: sans-serif;
   position: relative;
   z-index: 2;
   border-radius: 20px;
-  background-color: white;
+  background-color: beige;
   /* background-image: linear-gradient(120deg, lightgrey 60%, white 85%, grey); */
   border: black solid 5px;
   margin: 30px 0 0 0;
@@ -59,20 +60,18 @@
 }
 
 #history {
-  /* border: black solid 2px; */
   text-align: right;
   height: 15px;
   width: 215px;
-  margin-top: 5px;
+  margin: 12px 8px 10px 0;
 }
 
 #display {
-  /* border: black solid 2px; */
   text-align: right;
   font-size: 24px;
   height: 30px;
   width: 215px;
-  margin: 15px 0 8px 0;
+  margin: 0;
   position: relative;
   z-index: 2;
   
@@ -93,20 +92,21 @@ button {
   background-color: #333;
   color: black;
   font-size: 18px;
+  cursor: pointer;
   box-shadow: 2px 2px 3px 1px black,
   -2px 2px 7px 1px grey;
   /* inset 3px 3px 5px 1px black; */
 
   font-weight: bolder;
-  text-shadow: .75px .20px 1px grey;
+  text-shadow: -1px 0 1px rgba(163, 161, 161, 0.61);
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  border: black solid 3px;
+  border: black solid 2px;
 }
 
 button:hover {
-  color: greenyellow;
+  border: inset black solid 2px;
 }
 
 .delete,
