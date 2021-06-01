@@ -15,7 +15,11 @@ const Calculator = () => {
     if (operandPressed) {
       setOperandPressed(false);
       setDisplay(userInput);
-      setHistory(history + userInput)
+      setHistory(history + userInput);
+    } else if (operation === "=") {
+      setHistory("");
+      setDisplay(userInput);
+      setOperation("");
     } else {
       // this.setState((prevState) => ({
       //   display: prevState.display + userInput,
@@ -24,14 +28,9 @@ const Calculator = () => {
       setDisplay(display + userInput);
       setHistory(history + userInput);
       setPreviousDisplay(previousDisplay + userInput);
-
     }
 
-    // if (operation === "=") {
-    //   setHistory("");
-    //   setDisplay(userInput);
-    //   setOperation("");
-    // } else if (display === "0") {
+    //  else if (display === "0") {
     //   setDisplay(...userInput, userInput);
     //   setHistory(...userInput, userInput);
   };
@@ -40,7 +39,7 @@ const Calculator = () => {
   const handleOperand = (userInput) => {
     setOperation(userInput);
     setHistory(display + userInput);
-    setPreviousDisplay(display)
+    setPreviousDisplay(display);
     // setDisplay(previousDisplay)
     setOperandPressed(true);
   };
@@ -83,6 +82,7 @@ const Calculator = () => {
       setDisplay("");
       setHistory("");
     } else if (operation === "=") {
+      // display shows NaN history shows string
       setPreviousDisplay(previousDisplay.slice(0, -1));
       setDisplay(display.slice(0, -1));
       setHistory(history.slice(0, -1));
