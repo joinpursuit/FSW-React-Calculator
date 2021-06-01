@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "./Calculator.css";
 
-// fix trailing double zeros
-
 const Calculator = () => {
-  const [previousDisplay, setPreviousDisplay] = useState("");
-  const [operation, setOperation] = useState("");
   const [display, setDisplay] = useState("");
+  const [operation, setOperation] = useState("");
   const [sign, setSign] = useState("positive");
   const [history, setHistory] = useState("");
   const [operandPressed, setOperandPressed] = useState(false);
+  const [previousDisplay, setPreviousDisplay] = useState("");
 
   const handleDigit = (userInput) => {
     if (operandPressed) {
@@ -21,26 +19,16 @@ const Calculator = () => {
       setDisplay(userInput);
       setOperation("");
     } else {
-      // this.setState((prevState) => ({
-      //   display: prevState.display + userInput,
-      //   history: prevState.history + userInput,
-      // }));
       setDisplay(display + userInput);
       setHistory(history + userInput);
       setPreviousDisplay(previousDisplay + userInput);
     }
-
-    //  else if (display === "0") {
-    //   setDisplay(...userInput, userInput);
-    //   setHistory(...userInput, userInput);
   };
 
-  // negative zero is displayed after pressing operand
   const handleOperand = (userInput) => {
     setOperation(userInput);
     setHistory(display + userInput);
     setPreviousDisplay(display);
-    // setDisplay(previousDisplay)
     setOperandPressed(true);
   };
 
@@ -66,7 +54,6 @@ const Calculator = () => {
     }
   };
 
-  // error when pressed after numbers are already keyed in
   const handleDecimal = () => {
     if (!previousDisplay.includes(".")) {
       setPreviousDisplay(previousDisplay + ".");
@@ -82,9 +69,10 @@ const Calculator = () => {
       setDisplay("");
       setHistory("");
     } else if (operation === "=") {
-      // display shows NaN history shows string
-      setPreviousDisplay(previousDisplay.slice(0, -1));
-      setDisplay(display.slice(0, -1));
+      handleAllClear();
+    } else if (operandPressed) {
+      setOperation("");
+      setOperandPressed(false);
       setHistory(history.slice(0, -1));
     } else {
       setPreviousDisplay(previousDisplay.slice(0, -1));
@@ -102,36 +90,25 @@ const Calculator = () => {
   };
 
   const handleSign = () => {
-    if (sign === "positive") {
-      setSign("negative");
-      setPreviousDisplay(previousDisplay * -1);
-      setDisplay(display * -1);
-      setHistory(history * -1);
-    } else {
-      setSign("positive");
-      setPreviousDisplay(previousDisplay * -1);
-      setDisplay(display * -1);
-      setHistory(history * -1);
+    if (display.length) {
+      return sign
+        ? (setSign("negative"),
+          setPreviousDisplay(previousDisplay * -1),
+          setDisplay(display * -1),
+          setHistory(history * -1))
+        : (setSign("positive"),
+          setPreviousDisplay(previousDisplay * -1),
+          setDisplay(display * -1),
+          setHistory(history * -1));
     }
   };
 
   const handleZero = () => {
-    if (display !== "0") {
+    if (display) {
       setDisplay(display + "0");
       setHistory(history + "0");
     }
   };
-
-  // finish function
-  // formatNumber = () => {
-  //   const { display } = this.state;
-  //   if(display !== "") {
-  //     // parseInt(display).toLocaleString()
-  //     display.toLocaleString()
-
-  //   } else {
-  //   }
-  // }
 
   return (
     <section id="calculator">
@@ -140,8 +117,6 @@ const Calculator = () => {
       <section id="screen">
         <p id="history">{history}</p>
         <p id="display">{Number(display).toLocaleString()}</p>
-        {/* <p id="display">{display}</p> */}
-        {/* <p id="display">{this.formatNumber()}</p> */}
       </section>
       <section id="digits">
         <button className="second-row one" onClick={() => handleDigit("1")}>
