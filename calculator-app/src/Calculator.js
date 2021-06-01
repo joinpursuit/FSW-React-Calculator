@@ -23,6 +23,8 @@ const Calculator = () => {
       // }));
       setDisplay(display + userInput);
       setHistory(history + userInput);
+      setPreviousDisplay(previousDisplay + userInput);
+
     }
 
     // if (operation === "=") {
@@ -75,16 +77,15 @@ const Calculator = () => {
   };
 
   const handleDelete = () => {
-    if (display.length === 1) {
+    if (display.length === 1 && history.length === 1) {
       setPreviousDisplay("");
       setOperation("");
-      setDisplay("0");
+      setDisplay("");
       setHistory("");
     } else if (operation === "=") {
-      // display shows NaN history shows string
-      setPreviousDisplay("previousDisplay.slice(0, -1)");
-      setDisplay("display.slice(0, -1)");
-      setHistory("history.slice(0, -1)");
+      setPreviousDisplay(previousDisplay.slice(0, -1));
+      setDisplay(display.slice(0, -1));
+      setHistory(history.slice(0, -1));
     } else {
       setPreviousDisplay(previousDisplay.slice(0, -1));
       setDisplay(display.slice(0, -1));
