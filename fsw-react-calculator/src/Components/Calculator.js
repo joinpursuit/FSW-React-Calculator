@@ -1,5 +1,6 @@
 import React from "react";
 import Buttons from "./Buttons";
+
 import "../calculator.css"
 
 class Calculator extends React.Component {
@@ -102,6 +103,7 @@ class Calculator extends React.Component {
 
     return (
       <div className="calculator-div">
+        
         <Buttons
           displayString={Number(display).toLocaleString()}
           enterNum={this.enterNum}
