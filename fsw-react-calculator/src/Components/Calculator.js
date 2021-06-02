@@ -64,14 +64,22 @@ class Calculator extends React.Component {
   equals = () => {
     this.setState((prevState) => {
       let total = 0;
-      if (prevState.operator === "addition") {
-        total = Number(prevState.userNum1) + Number(prevState.userNum2);
-      } else if (prevState.operator === "subtraction") {
-        total = Number(prevState.userNum1) - Number(prevState.userNum2);
-      } else if (prevState.operator === "multiplication") {
-        total = Number(prevState.userNum1) * Number(prevState.userNum2);
-      } else if (prevState.operator === "division") {
-        total = Number(prevState.userNum1) / Number(prevState.userNum2);
+ 
+switch(prevState.operator){
+        case "addition":
+          total = Number(prevState.userNum1) + Number(prevState.userNum2);
+          break;  
+        case "subtraction":
+          total = Number(prevState.userNum1) - Number(prevState.userNum2);
+          break;  
+        case "multiplication":
+          total = Number(prevState.userNum1) * Number(prevState.userNum2);
+          break;  
+        case "division":
+          total = Number(prevState.userNum1) / Number(prevState.userNum2);
+          break;  
+        default:
+          total = 'no operator chosen'
       }
       return {
         display: total,
