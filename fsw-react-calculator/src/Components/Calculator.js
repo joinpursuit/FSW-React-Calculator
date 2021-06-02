@@ -98,7 +98,7 @@ class Calculator extends React.Component {
   };
 
   render() {
-    const { display } = this.state;
+    const { display} = this.state;
 
     return (
       <div className="calculator-div">

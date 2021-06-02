@@ -33,7 +33,7 @@
   /* grid-gap: 1px; */
   grid-template-areas:
     "d d d d"
-    "c c p m"
+    "c c p m" 
     "s g n q"
     "f i x u"
     "o t h a"

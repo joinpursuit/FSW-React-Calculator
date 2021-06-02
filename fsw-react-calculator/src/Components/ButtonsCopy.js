@@ -1,96 +1,90 @@
-import React from 'react'
-
-
-// const Buttons  = ({displayString, enterNum, addition, subtraction, multiplication, division, posNegButton, equals, clear}) => {
-function Buttons (props) {
-  
- 
-    // const {
-    //   displayString,
-    //   enterNum,
-    //   addition,
-    //   subtraction,
-    //   multiplication,
-    //   division,
-    //   posNegButton,
-    //   equals,
-    //   clear,
-    // } = props;
-
-    const displayString2 = props.displayString
+import { Component } from "react";
+class Buttons extends Component {
+  render() {
+    const {
+      displayString,
+      enterNum,
+      addition,
+      subtraction,
+      multiplication,
+      division,
+      posNegButton,
+      equals,
+      clear,
+    } = this.props;
 
 
     return (
       <div className="button-container">
 
-        <h1 className="display">{props.displayString}</h1>
+        <h1 className="display">{displayString}</h1>
 
         <button
           className="one-button"
-          onClick={() => props.enterNum("1")}
+          onClick={() => enterNum("1")}
           value={"1"}
         >
           1
         </button>
         <button
           className="two-button"
-          onClick={() => props.enterNum("2")}
+          onClick={() => enterNum("2")}
           value={"2"}
         >
           2
         </button>
         <button
           className="three-button"
-          onClick={() => props.enterNum("3")}
+          onClick={() => enterNum("3")}
           value={"3"}
         >
           3
         </button>
         <button
           className="four-button"
-          onClick={() => props.enterNum("4")}
+          onClick={() => enterNum("4")}
           value={"4"}
         >
           4
         </button>
         <button
           className="five-button"
-          onClick={() => props.enterNum("5")}
+          onClick={() => enterNum("5")}
           value={"5"}
         >
           5
         </button>
         <button
           className="six-button"
-          onClick={() => props.enterNum("6")}
+          onClick={() => enterNum("6")}
           value={"6"}
         >
           6
         </button>
         <button
           className="seven-button"
-          onClick={() => props.enterNum("7")}
+          onClick={() => enterNum("7")}
           value={"7"}
         >
           7
         </button>
         <button
           className="eight-button"
-          onClick={() => props.enterNum("8")}
+          onClick={() => enterNum("8")}
           value={"8"}
         >
           8
         </button>
         <button
           className="nine-button"
-          onClick={() => props.enterNum("9")}
+          onClick={() => enterNum("9")}
           value={"9"}
         >
           9
         </button>
         <button
           className="zero-button"
-          onClick={() => props.enterNum("0")}
+          onClick={() => enterNum("0")}
           value={"0"}
         >
           0
@@ -98,52 +92,52 @@ function Buttons (props) {
 
         <button
           className="add-button"
-          onClick={() => props.addition("addition")}
+          onClick={() => addition("addition")}
           value={"addition"}
         >
           &#43;
         </button>
         <button
           className="subtract-button"
-          onClick={() => props.subtraction("subtraction")}
+          onClick={() => subtraction("subtraction")}
           value={"subtraction"}
         >
           &minus;
         </button>
         <button
           className="multiply-button"
-          onClick={() => props.multiplication("multiplication")}
+          onClick={() => multiplication("multiplication")}
           value={"multiplication"}
         >
           &times;
         </button>
         <button
           className="divide-button"
-          onClick={() => props.division("division")}
+          onClick={() => division("division")}
           value={"division"}
         >
           &divide;
         </button>
         <button
           className="equals-button"
-          onClick={() => props.equals()}
+          onClick={() => equals()}
           value={"equals"}
         >
           &#61;
         </button>
         <button
           className="pos-neg-button"
-          onClick={() => props.posNegButton(displayString2)}
-          value={displayString2}
+          onClick={() => posNegButton({ displayString })}
+          value={displayString}
         >
           &#177;
         </button>
-        <button className="AC-button" onClick={() => props.clear()}>
+        <button className="AC-button" onClick={() => clear()}>
           AC
         </button>
       </div>
     );
-  
+  }
 }
 
 export default Buttons;
