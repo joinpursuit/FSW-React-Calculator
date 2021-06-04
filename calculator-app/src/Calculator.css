@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: move;
+  background-color: chartreuse;
 }
 
 .Outter-Container {
@@ -50,7 +50,6 @@
   z-index: 2;
   border-radius: 20px;
   background-color: beige;
-  /* background-image: linear-gradient(120deg, lightgrey 60%, white 85%, grey); */
   border: black solid 5px;
   margin: 30px 0 0 0;
   width: 225px;
@@ -58,6 +57,10 @@
   box-shadow:
   1px 0 1px 1px black,
   inset 3px 1px 6px 3px black;
+}
+
+.Outter-Container, .Inner-Container, #screen {
+  cursor: move;
 }
 
 #history {
@@ -94,20 +97,29 @@ button {
   color: black;
   font-size: 18px;
   cursor: pointer;
-  box-shadow: 2px 2px 3px 1px black,
-  -1px 1px 3px 1px grey;
-  /* inset 3px 3px 5px 1px black; */
-
+  box-shadow:
+  -1px -1px 3px rgb(116, 115, 115),
+  2px 2px 5px black;
   font-weight: bolder;
   text-shadow: -1px 0 1px rgba(163, 161, 161, 0.61);
   width: 50px;
   height: 50px;
-  border-radius: 100%;
-  border: black solid 2px;
+  border-radius: 50%;
+  border: rgb(26, 25, 25) solid 5px;
+  transform: skew(3px);
 }
 
-button:hover {
+/* use with mouseEvent */
+button:active{
+  color: #028CF3;
   border: inset black solid 2px;
+  text-shadow: none;
+  box-shadow:
+  -1px -1px 3px rgb(116, 115, 115),
+  1px 1px 5px black,
+  inset -1px -1px 3px rgb(116, 115, 115),
+  inset 1px 1px 5px black;
+  transform: scale(1.05);
 }
 
 .delete,

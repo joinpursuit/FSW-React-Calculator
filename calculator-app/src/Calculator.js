@@ -15,13 +15,17 @@ const Calculator = () => {
       setDisplay(userInput);
       setHistory(history + userInput);
     } else if (operation === "=") {
-      setHistory("");
+      setHistory(userInput);
       setDisplay(userInput);
       setOperation("");
+    } else if (operation === "") {
+      setDisplay(display + userInput);
+      setHistory(display + userInput);
+    } else if (display.includes(".")) {
+      // setDisplay(userInput)
     } else {
       setDisplay(display + userInput);
       setHistory(history + userInput);
-      setPreviousDisplay(previousDisplay + userInput);
     }
   };
 
@@ -33,12 +37,13 @@ const Calculator = () => {
   };
 
   const handleEqual = () => {
-    setPreviousDisplay("");
+    setPreviousDisplay(display);
     setHistory(history + "=");
     setOperation("=");
     switch (operation) {
       case "+":
         setDisplay(Number(previousDisplay) + Number(display));
+        setPreviousDisplay(Number(previousDisplay) + Number(display));
         break;
       case "-":
         setDisplay(Number(previousDisplay) - Number(display));
@@ -54,13 +59,70 @@ const Calculator = () => {
     }
   };
 
-  const handleDecimal = () => {
-    if (!previousDisplay.includes(".")) {
-      setPreviousDisplay(previousDisplay + ".");
+  // check if operand is presssed
+  // check if decimal is pressed
+  //
+
+  // rethink the decimal
+  const handleDecimal = (userInput) => {
+    if (operation === "=") {
+      setOperation("");
+      setPreviousDisplay(display + ".");
       setDisplay(display + ".");
-      setHistory(history + ".");
+    } else {
+      if (display.includes(".")) {
+        // setDisplay(userInput);
+        setDisplay(userInput);
+      } else {
+        setDisplay(display + ".");
+        setHistory(history + ".");
+      }
     }
   };
+
+  /////////////////////////
+  // const handleDecimal = (userInput) => {
+  //   if (operation === "=") {
+  //     setOperation("");
+  //     setPreviousDisplay(display + ".");
+  //     setDisplay(display + ".");
+  //   } else {
+  //     if (display.includes(".")) {
+  //       setDisplay(userInput);
+  //     } else {
+  //       setDisplay(display + ".");
+  //       setHistory(history + ".");
+  //     }
+  //   }
+  // };
+
+  /////////////////////////
+  // const handleDecimal = (userInput) => {
+  //   if (operandPressed) {
+  //     return display.length
+  //       ? (setDisplay(display + "."),
+  //         setPreviousDisplay(display + "."),
+  //         setHistory(previousDisplay))
+  //       : setDisplay("0.");
+  //   } else if (!history.includes(operation)) {
+  //     return display.length
+  //       ? (setDisplay(`${display}.`),
+  //         // setPreviousDisplay(display + "."),
+  //         setHistory(history + "."))
+  //       : setDisplay("0.");
+  //   } else if (!operandPressed) {
+  //     return display.length
+  //       ? (setDisplay(`${display}.`),
+  //         setPreviousDisplay(`${previousDisplay}.`),
+  //         setHistory(history + "."))
+  //       : setDisplay("0.");
+  //   }
+  //   // if (!display.includes(".")) {
+  //   //   setPreviousDisplay(previousDisplay + ".");
+  //   //   setDisplay(display + ".");
+  //   //   setHistory(history + ".");
+  //   // }
+  // };
 
   const handleDelete = () => {
     if (display.length === 1 && history.length === 1) {
@@ -105,10 +167,12 @@ const Calculator = () => {
 
   const handleZero = () => {
     if (display) {
+      setPreviousDisplay(previousDisplay + "0");
       setDisplay(display + "0");
       setHistory(history + "0");
     }
   };
+  
 
   return (
     <section id="calculator">
