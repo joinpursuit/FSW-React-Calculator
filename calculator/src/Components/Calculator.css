@@ -42,6 +42,10 @@ body {
   animation: neonPink 0.08s ease-in-out infinite alternate;
 }
 
+.neonPink:hover {
+  border: 1px solid pink;
+}
+
 .neonBlue {
   width: 90px;
   height: 90px;
@@ -52,6 +56,10 @@ body {
   border: none;
   color: #c6e2ff;
   animation: neonBlue 0.08s ease-in-out infinite alternate;
+}
+
+.neonBlue:hover {
+  border: 1px solid #c6e2ff;
 }
 
 .neonPurple {
@@ -66,6 +74,10 @@ body {
   animation: neonPurple 0.08s ease-in-out infinite alternate;
 }
 
+.neonPurple:hover {
+  border: 1px solid purple;
+}
+
 .neonGreen {
   width: 90px;
   height: 90px;
@@ -76,6 +88,10 @@ body {
   outline: none;
   border: none;
   animation: neonGreen 0.08s ease-in-out infinite alternate;
+}
+
+.neonGreen:hover {
+  border: 1px solid green;
 }
 
 @keyframes neonRed {
