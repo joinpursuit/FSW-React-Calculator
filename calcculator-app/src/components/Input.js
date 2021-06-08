@@ -17,7 +17,7 @@ class Input extends React.Component {
 
   handleInputChange = (event) => {
     //let display = event.target.value.split("");
-
+  
     if (this.state.mod) {
       const { name, value } = event.target; //this makes the state update with each change. Not quite sure why. It was part of forms lesson. I think its deconstructing in some way.
       this.setState({ [name]: value }); // this is part of that^^
@@ -38,6 +38,8 @@ class Input extends React.Component {
   };
 
   handleGrid = (event) => {
+    let num = 56789345667
+    console.log(num.toLocaleString())
     console.log(this.state);
     if (this.state.input.toString().length === 3) {
       if (this.state.mod) {
