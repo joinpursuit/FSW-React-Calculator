@@ -1,51 +1,47 @@
 import { useState } from "react";
 import "./Calculator.css";
 
-// fix trailing double zeros
-
 const Calculator = () => {
-  const [previousDisplay, setPreviousDisplay] = useState("");
-  const [operation, setOperation] = useState("");
   const [display, setDisplay] = useState("");
+  const [operation, setOperation] = useState("");
   const [sign, setSign] = useState("positive");
   const [history, setHistory] = useState("");
-  const [operandPressed, setOperandPressed] = useState(false)
+  const [operandPressed, setOperandPressed] = useState(false);
+  const [previousDisplay, setPreviousDisplay] = useState("");
 
   const handleDigit = (userInput) => {
-    if (operation === "=") {
-      setHistory("");
+    if (operandPressed) {
+      setOperandPressed(false);
+      setDisplay(userInput);
+      setHistory(history + userInput);
+    } else if (operation === "=") {
+      setHistory(userInput);
       setDisplay(userInput);
       setOperation("");
-    } else if (display === "0") {
-      setDisplay(...userInput, userInput);
-      setHistory(...userInput, userInput);
+    } else if (operation === "") {
+      setDisplay(display + userInput);
+      setHistory(display + userInput);
     } else {
-      // this.setState((prevState) => ({
-      //   display: prevState.display + userInput,
-      //   history: prevState.history + userInput,
-      // }));
-        setDisplay(display + userInput)
-        setHistory(history + userInput)
+      setDisplay(display + userInput);
+      setHistory(history + userInput);
     }
   };
 
-
-   // negative zero is displayed after pressing operand
   const handleOperand = (userInput) => {
-      setOperation(userInput)
-      setHistory(display + userInput)
-      setPreviousDisplay(display)
-      setDisplay(previousDisplay)
-      setOperandPressed(true)
+    setOperation(userInput);
+    setHistory(display + userInput);
+    setPreviousDisplay(display);
+    setOperandPressed(true);
   };
 
   const handleEqual = () => {
-      setPreviousDisplay("")
-      setHistory(history + "=")
-      setOperation("=")
+    setPreviousDisplay(display);
+    setHistory(history + "=");
+    setOperation("=");
     switch (operation) {
       case "+":
         setDisplay(Number(previousDisplay) + Number(display));
+        setPreviousDisplay(Number(previousDisplay) + Number(display));
         break;
       case "-":
         setDisplay(Number(previousDisplay) - Number(display));
@@ -61,27 +57,83 @@ const Calculator = () => {
     }
   };
 
+  // check if operand is presssed
+  // check if decimal is pressed
+  //
 
-  // error when pressed after numbers are already keyed in
-  const handleDecimal = () => {
-    if (!previousDisplay.includes(".")) {
-        setPreviousDisplay(previousDisplay + ".")
-        setDisplay(display + ".")
-        setHistory(history + ".")
+  // rethink the decimal - when a decimal is allowed
+  const handleDecimal = (userInput) => {
+    if (operation === "=") {
+      setOperation("");
+      setPreviousDisplay(display + ".");
+      setDisplay(display + ".");
+    } else {
+      if (display.includes(".")) {
+        // setDisplay(userInput);
+        // setDisplay(userInput);
+      } else {
+        setDisplay(display + ".");
+        setHistory(history + ".");
+      }
     }
   };
 
+  /////////////////////////
+  // const handleDecimal = (userInput) => {
+  //   if (operation === "=") {
+  //     setOperation("");
+  //     setPreviousDisplay(display + ".");
+  //     setDisplay(display + ".");
+  //   } else {
+  //     if (display.includes(".")) {
+  //       setDisplay(userInput);
+  //     } else {
+  //       setDisplay(display + ".");
+  //       setHistory(history + ".");
+  //     }
+  //   }
+  // };
+
+  /////////////////////////
+  // const handleDecimal = (userInput) => {
+  //   if (operandPressed) {
+  //     return display.length
+  //       ? (setDisplay(display + "."),
+  //         setPreviousDisplay(display + "."),
+  //         setHistory(previousDisplay))
+  //       : setDisplay("0.");
+  //   } else if (!history.includes(operation)) {
+  //     return display.length
+  //       ? (setDisplay(`${display}.`),
+  //         // setPreviousDisplay(display + "."),
+  //         setHistory(history + "."))
+  //       : setDisplay("0.");
+  //   } else if (!operandPressed) {
+  //     return display.length
+  //       ? (setDisplay(`${display}.`),
+  //         setPreviousDisplay(`${previousDisplay}.`),
+  //         setHistory(history + "."))
+  //       : setDisplay("0.");
+  //   }
+  //   // if (!display.includes(".")) {
+  //   //   setPreviousDisplay(previousDisplay + ".");
+  //   //   setDisplay(display + ".");
+  //   //   setHistory(history + ".");
+  //   // }
+  // };
+
   const handleDelete = () => {
-    if (display.length === 1) {
+    if (display.length === 1 && history.length === 1) {
       setPreviousDisplay("");
       setOperation("");
-      setDisplay("0");
+      setDisplay("");
       setHistory("");
     } else if (operation === "=") {
-      // display shows NaN history shows string
-      setPreviousDisplay("previousDisplay.slice(0, -1)");
-      setDisplay("display.slice(0, -1)");
-      setHistory("history.slice(0, -1)");
+      handleAllClear();
+    } else if (operandPressed) {
+      setOperation("");
+      setOperandPressed(false);
+      setHistory(history.slice(0, -1));
     } else {
       setPreviousDisplay(previousDisplay.slice(0, -1));
       setDisplay(display.slice(0, -1));
@@ -91,46 +143,34 @@ const Calculator = () => {
 
   const handleAllClear = () => {
     setPreviousDisplay("");
-    setDisplay("0");
+    setDisplay("");
     setHistory("");
     setOperation("");
     setSign("positive");
   };
 
-
- 
   const handleSign = () => {
-    if (sign === "positive") {
-      setSign("negative");
-      setPreviousDisplay(previousDisplay * -1);
-      setDisplay(display * -1);
-      setHistory(history * -1);
-    } else {
-      setSign("positive");
-      setPreviousDisplay(previousDisplay * -1);
-      setDisplay(display * -1);
-      setHistory(history * -1);
+    if (display.length) {
+      return sign
+        ? (setSign("negative"),
+          setPreviousDisplay(previousDisplay * -1),
+          setDisplay(display * -1),
+          setHistory(history * -1))
+        : (setSign("positive"),
+          setPreviousDisplay(previousDisplay * -1),
+          setDisplay(display * -1),
+          setHistory(history * -1));
     }
   };
-
 
   const handleZero = () => {
-    if (display !== "0") {
-        setDisplay(display + "0")
-        setHistory(history + "0")
+    if (display) {
+      setPreviousDisplay(previousDisplay + "0");
+      setDisplay(display + "0");
+      setHistory(history + "0");
     }
   };
-
-  // finish function
-  // formatNumber = () => {
-  //   const { display } = this.state;
-  //   if(display !== "") {
-  //     // parseInt(display).toLocaleString()
-  //     display.toLocaleString()
-
-  //   } else {
-  //   }
-  // }
+  
 
   return (
     <section id="calculator">
@@ -139,8 +179,6 @@ const Calculator = () => {
       <section id="screen">
         <p id="history">{history}</p>
         <p id="display">{Number(display).toLocaleString()}</p>
-        {/* <p id="display">{display}</p> */}
-        {/* <p id="display">{this.formatNumber()}</p> */}
       </section>
       <section id="digits">
         <button className="second-row one" onClick={() => handleDigit("1")}>
