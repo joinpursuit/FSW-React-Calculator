@@ -21,8 +21,6 @@ const Calculator = () => {
     } else if (operation === "") {
       setDisplay(display + userInput);
       setHistory(display + userInput);
-    } else if (display.includes(".")) {
-      // setDisplay(userInput)
     } else {
       setDisplay(display + userInput);
       setHistory(history + userInput);
@@ -63,7 +61,7 @@ const Calculator = () => {
   // check if decimal is pressed
   //
 
-  // rethink the decimal
+  // rethink the decimal - when a decimal is allowed
   const handleDecimal = (userInput) => {
     if (operation === "=") {
       setOperation("");
@@ -72,7 +70,7 @@ const Calculator = () => {
     } else {
       if (display.includes(".")) {
         // setDisplay(userInput);
-        setDisplay(userInput);
+        // setDisplay(userInput);
       } else {
         setDisplay(display + ".");
         setHistory(history + ".");
