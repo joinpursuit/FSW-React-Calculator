@@ -57,10 +57,6 @@ const Calculator = () => {
     }
   };
 
-  // check if operand is presssed
-  // check if decimal is pressed
-  //
-
   // rethink the decimal - when a decimal is allowed
   const handleDecimal = (userInput) => {
     if (operation === "=") {
@@ -77,50 +73,6 @@ const Calculator = () => {
       }
     }
   };
-
-  /////////////////////////
-  // const handleDecimal = (userInput) => {
-  //   if (operation === "=") {
-  //     setOperation("");
-  //     setPreviousDisplay(display + ".");
-  //     setDisplay(display + ".");
-  //   } else {
-  //     if (display.includes(".")) {
-  //       setDisplay(userInput);
-  //     } else {
-  //       setDisplay(display + ".");
-  //       setHistory(history + ".");
-  //     }
-  //   }
-  // };
-
-  /////////////////////////
-  // const handleDecimal = (userInput) => {
-  //   if (operandPressed) {
-  //     return display.length
-  //       ? (setDisplay(display + "."),
-  //         setPreviousDisplay(display + "."),
-  //         setHistory(previousDisplay))
-  //       : setDisplay("0.");
-  //   } else if (!history.includes(operation)) {
-  //     return display.length
-  //       ? (setDisplay(`${display}.`),
-  //         // setPreviousDisplay(display + "."),
-  //         setHistory(history + "."))
-  //       : setDisplay("0.");
-  //   } else if (!operandPressed) {
-  //     return display.length
-  //       ? (setDisplay(`${display}.`),
-  //         setPreviousDisplay(`${previousDisplay}.`),
-  //         setHistory(history + "."))
-  //       : setDisplay("0.");
-  //   }
-  //   // if (!display.includes(".")) {
-  //   //   setPreviousDisplay(previousDisplay + ".");
-  //   //   setDisplay(display + ".");
-  //   //   setHistory(history + ".");
-  //   // }
-  // };
 
   const handleDelete = () => {
     if (display.length === 1 && history.length === 1) {
