@@ -15,11 +15,16 @@ class App extends Component {
 
   handleButtonClick = (button) => {
     const { result } = this.state;
-
+    //let commaNum = result.toLocaleString('en-US')
     if(result === '0') {
       this.setState({ result: '' + button})
-    } else {
+    } 
+    // else if (result.length >= 3) {
+    //   this.setState({ result: result.toLocaleString('en-US') + button})
+    // } 
+    else {
       this.setState({
+        //result: result.toString() + button 
         result: result + button
       })
     };
@@ -32,11 +37,12 @@ class App extends Component {
   };
 
   handleEqual = (button) => {
+    
     this.setState({
-      result: math.evaluate(this.state.result)
+      result: Math.round(math.evaluate(this.state.result))
     });
   };
-  //formatNumber()??
+  
   handleSign = (button) => {
     this.setState({
       result: this.state.result * -1
@@ -44,16 +50,32 @@ class App extends Component {
   };
 
   render() {
+    const { result } = this.state;
+    let commaNum = result.toLocaleString('en-US')
+     const numArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    // const operators = ['+', '-', '/', '*', '.']
+
+      if(numArray.includes(result[result.length - 1])) {
+        commaNum = result.toLocaleString('en-US')
+    }
+    //else {
+    //     commaNum = result.toLocaleString('en-US')
+    //   };
+    
+    console.log(result)
+    //console.log(commaNum)
     return (
       <section className='calc-container'>
       <div className='calculator'>
-        <p className='result'>{this.state.result}</p>  
+        <p className='result'>{commaNum}</p>  
+
         <Buttons 
           className='button-container' 
           buttonClick={this.handleButtonClick} 
           handleSign={this.handleSign}
         />
-        <button className='clear' name='clear' value='clear' onClick={this.handleClear}>AC</button>
+
+        <button className='clear' name='clear' value='allClear' onClick={this.handleClear}>AC</button>
         <button className='equal' name='=' value='=' onClick={this.handleEqual}>=</button>
        
       </div>
