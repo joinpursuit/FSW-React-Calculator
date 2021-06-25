@@ -15,16 +15,14 @@ class App extends Component {
 
   handleButtonClick = (button) => {
     const { result } = this.state;
-    //let commaNum = result.toLocaleString('en-US')
+    
     if(result === '0') {
-      this.setState({ result: '' + button})
+      this.setState({ 
+        result: '' + button
+      })
     } 
-    // else if (result.length >= 3) {
-    //   this.setState({ result: result.toLocaleString('en-US') + button})
-    // } 
     else {
       this.setState({
-        //result: result.toString() + button 
         result: result + button
       })
     };
@@ -37,7 +35,6 @@ class App extends Component {
   };
 
   handleEqual = (button) => {
-    
     this.setState({
       result: Math.round(math.evaluate(this.state.result))
     });
@@ -51,23 +48,21 @@ class App extends Component {
 
   render() {
     const { result } = this.state;
-    let commaNum = result.toLocaleString('en-US')
-     const numArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    let commaResult = Number(result).toLocaleString('en-US')
+    console.log(result)
+    console.log(commaResult)
+    //const numArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     // const operators = ['+', '-', '/', '*', '.']
 
-      if(numArray.includes(result[result.length - 1])) {
-        commaNum = result.toLocaleString('en-US')
-    }
-    //else {
-    //     commaNum = result.toLocaleString('en-US')
-    //   };
-    
-    console.log(result)
-    //console.log(commaNum)
+    // if(numArray.includes(result[result.length - 1])) {
+    //   commaResult = result.toLocaleString('en-US')
+    // }
+
     return (
       <section className='calc-container'>
       <div className='calculator'>
-        <p className='result'>{commaNum}</p>  
+        <p className='expression'>{result}</p>
+        <p className='result'>{commaResult}</p>  
 
         <Buttons 
           className='button-container' 

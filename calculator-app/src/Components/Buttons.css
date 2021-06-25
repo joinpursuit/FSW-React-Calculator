@@ -5,7 +5,7 @@
 }
 
 .buttons {
-    grid-row: 2/6;
+    grid-row: 3/7;
     grid-column: 1/5;
     display: flex;
     flex-direction: row;
