@@ -35,8 +35,11 @@ class App extends Component {
   };
 
   handleEqual = (button) => {
+    const { result } = this.state;
+    const finalResult = Math.round(math.evaluate(result))
+
     this.setState({
-      result: Math.round(math.evaluate(this.state.result))
+      result: Number(finalResult).toLocaleString('en-US')
     });
   };
   
@@ -48,21 +51,11 @@ class App extends Component {
 
   render() {
     const { result } = this.state;
-    let commaResult = Number(result).toLocaleString('en-US')
-    console.log(result)
-    console.log(commaResult)
-    //const numArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    // const operators = ['+', '-', '/', '*', '.']
-
-    // if(numArray.includes(result[result.length - 1])) {
-    //   commaResult = result.toLocaleString('en-US')
-    // }
-
+  
     return (
       <section className='calc-container'>
       <div className='calculator'>
-        <p className='expression'>{result}</p>
-        <p className='result'>{commaResult}</p>  
+        <p className='result'>{result}</p>  
 
         <Buttons 
           className='button-container' 
