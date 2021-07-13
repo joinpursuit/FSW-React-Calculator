@@ -17,7 +17,7 @@ class Input extends React.Component {
 
   handleInputChange = (event) => {
     //let display = event.target.value.split("");
-  
+
     if (this.state.mod) {
       const { name, value } = event.target; //this makes the state update with each change. Not quite sure why. It was part of forms lesson. I think its deconstructing in some way.
       this.setState({ [name]: value }); // this is part of that^^
@@ -38,8 +38,8 @@ class Input extends React.Component {
   };
 
   handleGrid = (event) => {
-    let num = 56789345667
-    console.log(num.toLocaleString())
+    let num = 56789345667;
+    console.log(num.toLocaleString());
     console.log(this.state);
     if (this.state.input.toString().length === 3) {
       if (this.state.mod) {
@@ -160,15 +160,16 @@ class Input extends React.Component {
     }
   };
 
-  handleMod = (event) => {
+  handleMod = (event, eventTwo) => {//eventTwo is object in Mod component that turns input into a negative number and then passes it into this function
     if (event === "plusMinus") {
       this.setState((prevState) => ({
-        input: Number(prevState.input) * -1,
-        firstDisplay: Number(prevState.input) * -1,
+        input: Number(eventTwo.first)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        firstDisplay: Number(eventTwo.first),
         mod: event,
         previous: prevState, // no real functionality just wanted to call prevState so it wouldnt stay faded
       }));
-      console.log(this.state);
     } else {
       this.setState((prevState) => ({
         input: "",
@@ -229,6 +230,26 @@ class Input extends React.Component {
         mod: "",
       }));
     }
+    if (event.second.length < 1) {
+      this.setState((prevState) => ({
+        input: [0],
+        firstDisplay: [],
+        mod: "",
+        secondDisplay: [],
+        answer: 0,
+      }));
+    }
+
+    if (event.mod === "") {
+      //this conditional resets state if equal is pressed before problem is inputed
+      this.setState((prevState) => ({
+        input: [0],
+        firstDisplay: [],
+        mod: "",
+        secondDisplay: [],
+        answer: 0,
+      }));
+    }
   };
 
   render() {
@@ -252,6 +273,10 @@ class Input extends React.Component {
           <div className="mod-div">
             <Mod
               className="mod"
+              input={this.state.input}
+              first={this.state.firstDisplay}
+              mod={this.state.mod}
+              second={this.state.secondDisplay}
               handleMod={this.handleMod}
               handleClear={this.handleClear}
             />
