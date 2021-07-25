@@ -8,9 +8,12 @@
   max-width: 400px;
   margin: auto;
   width: 80%;
+  border: 10px;
+  border-radius: 5%;
 }
 
 .result p {
+  border: 10px;
   font-size: 40px;
   text-align: center;
 }
@@ -18,12 +21,10 @@
 .calc {
   max-width: 400px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 10px;
 }
-
-/* .button {
-  display: block;
-  border-radius: 30%;
-} */
 
 .button button {
   width: 20%;
@@ -36,4 +37,5 @@
 
 p {
   font-family: Roboto;
+  margin-top: 10px;
 }

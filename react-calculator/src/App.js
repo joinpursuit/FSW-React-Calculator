@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import Tot from "./Total";
 import Cal from "./Calculator";
@@ -48,7 +49,7 @@ export default class App extends Component {
   math = () => {
     try {
       this.setState({
-        result: (eval(this.state.result) || "") + "",
+        result: Math.round((eval(this.state.result) || "")) + "",
       });
     } catch (e) {
       this.setState({
@@ -59,6 +60,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+            <h1>Yesi's Calculator</h1>
         <div className="calc">
           <Tot result={this.state.result} />
           <Cal select={this.select} />
