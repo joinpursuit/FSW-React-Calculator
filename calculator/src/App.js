@@ -6,7 +6,7 @@ import "./App.css";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { result: "" };
+    this.state = { result: "", operator: "", previousNumber: "", startNewNum: true };
   }
   //right column stuff
   onClick = (symbol) => {
@@ -17,7 +17,9 @@ class App extends React.Component {
     } else if (symbol === "sign") {
       this.switchSign();
     } else {
-      this.setState({ result: (this.state.result + symbol).toLocaleString("en") });
+      //this uses tolocalestring?
+      //when I add Number() gets errors and nans
+      this.setState({ result: this.state.result + symbol });
     }
   };
   //all clear
@@ -41,7 +43,7 @@ class App extends React.Component {
     } else {
       resultCheck = this.state.result;
     }
-    //warning says eval is harmful?
+
     try {
       this.setState({
         result: (eval(resultCheck) || "") + "",

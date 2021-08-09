@@ -4,6 +4,7 @@ import "../Components/Button.css";
 class Button extends React.Component {
   render() {
     return (
+      //handleoperator on operator buttons - takes name and sets state of operator to name
       <div>
         <button className="button" name="AC" onClick={(e) => this.props.onClick(e.target.name)}>
           AC
