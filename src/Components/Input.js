@@ -1,10 +1,14 @@
-import React from 'react';
+import "../App.css";
 
-export const Input = ({input,result}) => {
-    return (
-        <div>
-            <div className='Display'>{input}</div>
-            <div className='Display'>{result}</div>
-        </div>
-    )
-}
+const Input = ({text, result}) => {
+  return (
+    <div className="input-wrapper">
+      <div className="result">
+        <h1>{result}</h1>
+      </div>
+      <div className="text"><h3>{text}</h3></div>
+    </div>
+  );
+};
+
+export default Input;

@@ -1,85 +1,63 @@
-import './App.css';
-import React from 'react';
-import KeyLayout from './Components/KeyLayout';
-import CalcDisplay from  './Components/CalcDisplay';
-import { evaluate, typeOf } from 'mathjs';
+import { useState } from "react";
+import "./App.css";
+import Input from "./Components/Input";
+import * as math from "mathjs";
+import KeyLayout from "./Components/KeyLayout";
 
-export default class App extends React.Component{
-  state = {
-    input: '',
-    result: ''
-  }
+const App = () => {
+  const [result, setResult] = useState("");
+  const [text, setText] = useState("0");
 
-  handleClear = () => {
-    this.setState({
-      input: '',
-      result: ''
-    })
-  }
-
-  handleClick = val => {
-    const {input} = this.state;
-    if(typeOf(val) === 'Object'){
-      val = val.icon
+  const addToText = (val) => {
+    if (text === "0") {
+      setText(val);
+    } else {
+      setText((text) => [...text, val]);
     }
-    this.setState({
-      input: input + val
-    })
-  }
+  };
 
-  handleEqual = () => {
-    const {input} = this.state;
-    this.setState({
-      input: '',
-      result: evaluate(input),
-    })
-  }
-  handleZero = val => {
-    const {input} = this.state;
-    if(input !== ''){
-      this.setState({
-        input: input + val.icon
-      })
-    }
-  }
+  const calculateResult = () => {
+    const input = text.join("");
+    console.log(input);
+    setResult(math.evaluate(input));
+  };
 
-  //iterate string backwards and check for an operator
-  // meets and operator allow a decimal again
-  //no arg needed just handle "."
-  handleDecimal = val => {
-    
-    // "+-/*"
-    const {input} = this.state;
-    let hasDouble = /(\.)\1/.test(input);
-    let value = val.icon;
-    if(hasDouble){
-      value = value.replace(/\.+/g, ".")
-      console.log(value)
+  const clearText = () => {
+    setText("0");
+    setResult("");
+  };
+
+  const calculatePercentage = (val) => {
+    let input = text;
+    if (text.length > 1) {
+      input = text.join("");
     }
-    if(typeOf(val) === 'Object'){
-      val = val.icon
+    if (text === "0") {
+      setText("0");
+    } else {
+      const percent = input / 100;
+      console.log(percent)
+      const help = [...text]
+      console.log(help)
+      // setText((text) => [...text, percent]);
     }
-    this.setState({
-      input: input + val
-    })
-  }
-  
-  render() {
-    const {result,input} = this.state;
-    console.log(input)
-    return (
-      <div className="App">
-        <div className="CalcBody">
-          <CalcDisplay result={result} input={input}/>
-          <KeyLayout
-            handleEqual={this.handleEqual}
-            handleClick={this.handleClick}
-            handleClear={this.handleClear}
-            handleZero={this.handleZero}
-            handleDecimal={this.handleDecimal}
-          />
-        </div>
+  };
+
+  return (
+    <div className="App">
+      <div className="calc-wrapper">
+        <Input text={text} result={result} />
+        <KeyLayout
+          calculatePercentage={calculatePercentage}
+          addToText={addToText}
+          calculateResult={calculateResult}
+          clearText={clearText}
+          result={result}
+          text={text}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default App;

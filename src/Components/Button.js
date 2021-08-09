@@ -1,9 +1,15 @@
-import React from 'react';
+import "../App.css";
 
-const Button = ({icon, handleClick}) => {
-    return (
-        <button onClick={() => handleClick({icon})}>{icon}</button>
-    )
-}
+const Button = ({ icon, tcolor, bcolor, handleClick }) => {
+  return (
+    <div
+      onClick={() => handleClick(icon)}
+      className="button-wrapper"
+      style={{ backgroundColor: bcolor, color: tcolor }}
+    >
+      {icon}
+    </div>
+  );
+};
 
 export default Button;
