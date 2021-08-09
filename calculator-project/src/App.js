@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super(); 
     this.state = {
-      result: ""
+      result: parseInt("0")
     }
   }
   onClick = button => {
@@ -30,7 +30,6 @@ class App extends Component {
     }
 };
 
-
 calculate = () => {
     let answer = ''
     if(this.state.result.includes('--')){
@@ -43,24 +42,30 @@ calculate = () => {
 
     try {
         this.setState({
-            result: (eval(answer) || "" ) + ""
+            result: Math.floor(eval(answer) || "" ) + ""
         })
     } catch (e) {
         this.setState({
-            result: ""
+            result: e
         })
-
     }
 };
 
 reset = () => {
     this.setState({
-        result: "" 
+        result: parseInt("0") 
     })
 };
+
 negative = () => {
     this.setState({
-        result: Math.sign(-1)
+        result: this.state.result * -1
+    })
+}
+
+division = () => {
+    this.setState({
+        result: this.state.result
     })
 }
 

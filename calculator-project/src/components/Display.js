@@ -7,7 +7,7 @@ class Display extends Component {
         const {result} = this.props
         return (
             <div className='result'>
-                <p>{result}</p>
+                <p>{result.toLocaleString('en-US')}</p>
             </div>
         )
     }
