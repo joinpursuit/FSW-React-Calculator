@@ -11,7 +11,7 @@ Create a React app that mimics a simple calculator
 
 Example project: https://www.coreyladovsky.com/calculator/
 
-Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
+Feel free to make the design your own. Here are some real calculator UIs that you can use for inspiration.
 
 <img src="./images/exampleScreenshotOne.png" alt="Example One" width="400">
 <img src="./images/exampleScreenshotTwo.png" alt="Example Two" width="400">
@@ -33,7 +33,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 
 **I can see a calculator UI.**
 
-- I can see a number keypad on the calculator with the numbers 0-9.
+- I can see a number button on the calculator with the numbers 0-9.
 - I can see keys for the plus, subtract, multiple, and divide operators.
 - I can see an equals `=` key.
 - I can see a `+/-` key.
@@ -43,7 +43,7 @@ You must implement all of the user stories and acceptance criteria below. After 
 **I can enter readable positive and negative integers.**
 
 - I can click a number key and see the number on the screen.
-- I can enter multi-digit numbers on the keypad and see them on the screen.
+- I can enter multi-digit numbers on the button and see them on the screen.
 - When I enter a number of 1,000 or more, I see commas appear in the right place to format the number. (Example: 14,563,024)
 - I can make a positive number negative (or vice versa) with the `+/-` key.
 
@@ -80,33 +80,35 @@ You must implement all of the user stories and acceptance criteria below. After 
 - Support geometric operations (`sin`, `cos`, `tan`, etc.)
 
 ### Stretchier Stretch Features
+
 - Write Cypress tests for your calculator!
 - Support large and small numbers with [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#E_notation)
 - Change the clear button to toggle between:
-    - AC Clears all of the data in the screen and all the history
-    - C: Clears only what is being displayed
+  - AC Clears all of the data in the screen and all the history
+  - C: Clears only what is being displayed
 - Chain together multiple operands
-    - ex:  5 + 5 + 5
+  - ex: 5 + 5 + 5
 
 ### Super-Stretch Features
+
 - Chain together multiple equals sign button pushes
-    - ex: `5` `+` `5` `=` `=` `=` should display `20`
+  - ex: `5` `+` `5` `=` `=` `=` should display `20`
 - `()` buttons to support order of operations
 - Implement [Dijkstra's famous two-stack algorithm](https://youtu.be/0sixdU-cehs?t=395) to calculate expressions with `()`
 
-
 Helpful Libraries for Decimals:
+
 - [decimal.js](https://mikemcl.github.io/decimal.js/)
 - [math.js](https://mathjs.org/)
 
-
 ## State
 
-State will be an important component of your application.  It may be helpful to think about incorporating the following elements into your state:
+State will be an important component of your application. It may be helpful to think about incorporating the following elements into your state:
 
 - displayValue (What the screen currently displays)
 - previousValue (What value the user selected before pressing an operation button)
 - operation (What operation the user is performing (+/-/÷/x))
 
-## Deploy 
+## Deploy
+
 Deploy your app following these [instructions](https://github.com/joinpursuit/Pursuit-Core-Web/tree/master/react/react_deployment)
