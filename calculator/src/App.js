@@ -18,7 +18,7 @@ class App extends React.Component {
     } else {
       this.setState({ input: Math.abs(input), display: Math.abs(display)  });
     }
-  };
+  }
 
   handleOperator = (e) => {
     this.setState({display: 0, input: this.state.input + e.target.value})
@@ -37,10 +37,14 @@ class App extends React.Component {
 
   calculate = (e) => {
     try {
+      if(this.state.input === '') {
+        this.setState({display: 0})
+      } else {
        this.setState({display: eval(this.state.input), input: eval(this.state.input)})
       }
+    }
        catch (err) {
-         this.setState({display:0, input:""})
+         this.setState({display: 0, input:""})
        }
     }
   
