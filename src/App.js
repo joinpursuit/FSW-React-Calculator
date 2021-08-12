@@ -9,7 +9,13 @@ const App = () => {
   const [text, setText] = useState("0");
 
   const addToText = (val) => {
-    if (text === "0") {
+    if (
+      text === "0" &&
+      val !== "+" &&
+      val !== "-" &&
+      val !== "*" &&
+      val !== "/"
+    ) {
       setText(val);
     } else {
       setText((text) => [...text, val]);
@@ -17,9 +23,13 @@ const App = () => {
   };
 
   const calculateResult = () => {
-    const input = text.join("");
-    console.log(input);
-    setResult(math.evaluate(input));
+    let input = text.toString();
+    if (text.length > 2) {
+      input = text.join("");
+    }
+    const mathOutput = math.evaluate(input).toString();
+    setResult(mathOutput.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    setText("0");
   };
 
   const clearText = () => {
@@ -27,20 +37,22 @@ const App = () => {
     setResult("");
   };
 
-  const calculatePercentage = (val) => {
+  const calculateNegativity = () => {
     let input = text;
     if (text.length > 1) {
       input = text.join("");
     }
-    if (text === "0") {
-      setText("0");
-    } else {
-      const percent = input / 100;
-      console.log(percent)
-      const help = [...text]
-      console.log(help)
-      // setText((text) => [...text, percent]);
+    const negativity = (input * -1).toString();
+    setText(negativity);
+  };
+
+  const calculatePercentage = (val) => {
+    let input = text;
+    if (text.length > 2) {
+      input = text.join("");
     }
+    const percent = input / 100;
+    setText(percent.toString());
   };
 
   return (
@@ -52,6 +64,7 @@ const App = () => {
           addToText={addToText}
           calculateResult={calculateResult}
           clearText={clearText}
+          calculateNegativity={calculateNegativity}
           result={result}
           text={text}
         />

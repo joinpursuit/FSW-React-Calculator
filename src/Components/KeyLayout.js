@@ -2,7 +2,14 @@ import React from "react";
 import Button from "./Button";
 
 const KeyLayout = (props) => {
-  const { addToText, clearText, calculateResult, calculatePercentage } = props;
+  const {
+    addToText,
+    clearText,
+    calculateResult,
+    calculatePercentage,
+    calculateNegativity,
+  } = props;
+
   const lightGray = "#D4D4D2";
   const eerieBlack = "#1C1C1C";
   const vividGamboge = "#FF9500";
@@ -15,8 +22,18 @@ const KeyLayout = (props) => {
           bcolor={lightGray}
           tcolor={eerieBlack}
         />
-        <Button icon="+/-" bcolor={lightGray} tcolor={eerieBlack} />
-        <Button icon="%" handleClick={calculatePercentage} bcolor={lightGray} tcolor={eerieBlack} />
+        <Button
+          icon="+/-"
+          handleClick={calculateNegativity}
+          bcolor={lightGray}
+          tcolor={eerieBlack}
+        />
+        <Button
+          icon="%"
+          handleClick={calculatePercentage}
+          bcolor={lightGray}
+          tcolor={eerieBlack}
+        />
         <Button icon="/" handleClick={addToText} bcolor={vividGamboge} />
       </div>
       <div className="row">
