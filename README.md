@@ -1,21 +1,9 @@
-# React Calculator
+# Adam Tahiri React Calculator
 
-Create a React app that mimics a simple calculator
+## Fully functioning beautifully designed Calculator!
 
-## Overview
 
-- Please use `create-react-app` to generate your project
-- Break your application down to necessary components
 
-## UI
-
-Example project: https://www.coreyladovsky.com/calculator/
-
-Feel free to make the design your own.  Here are some real calculator UIs that you can use for inspiration.
-
-<img src="./images/exampleScreenshotOne.png" alt="Example One" width="400">
-<img src="./images/exampleScreenshotTwo.png" alt="Example Two" width="400">
-<img src="./images/exampleScreenshotThree.png" alt="Example Three" width="400">
 
 ## User Stories, Acceptance Criteria, and Code Quality Rubric
 
