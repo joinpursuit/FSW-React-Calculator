@@ -7,8 +7,8 @@ class App extends React.Component {
         previousNum: "",
         currentNum: "",
         operator: "",
-    }
-}
+    };
+
 
 clicky = (el) => {
     this.setState({input: this.state.input + el.target.value});
@@ -89,7 +89,7 @@ clickCalc = () => {
         this.setState({
             input: Number(this.state.previousNum) / Number(this.state.input),
         });
-    }
+     }
 };
 
 render(){
@@ -166,6 +166,7 @@ render(){
                                 +
                             </button>
                             </div>
+                            
                             <div className="row5">
                             <button onClick={this.clicky} value="8">
                                 0
@@ -184,7 +185,8 @@ render(){
                 </div>
             </div>
 
-         )
+         );
     }
+}
     
-export default app;
+export default App;
