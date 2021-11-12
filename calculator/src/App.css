@@ -1,0 +1,78 @@
+#main {
+  width: 50%;
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+    "result result result result"
+    "touchZero touchOne touchTwo touchThree"
+    "touchFour touchFive touchSix touchSeven"
+    "touchEight touchNine touchTen touchEleven"
+    "touchTwelve touchThirteen touchFourteen touchFifteen"
+    "touchSixteen touchSixteen touchSeventeen touchEighteen";
+  margin: auto;
+}
+
+#result {
+  grid-area: result;
+  width: auto;
+  height: 25px;
+  border: 2px solid gray;
+}
+#touch0 {
+  grid-area: touchZero;
+}
+
+#touch1 {
+  grid-area: touchOne;
+}
+#touch2 {
+  grid-area: touchTwo;
+}
+#touch3 {
+  grid-area: touchThree;
+}
+#touch4 {
+  grid-area: touchFour;
+}
+#touch5 {
+  grid-area: touchFive;
+}
+#touch6 {
+  grid-area: touchSix;
+}
+#touch7 {
+  grid-area: touchSeven;
+}
+#touch8 {
+  grid-area: touchEight;
+}
+#touch9 {
+  grid-area: touchNine;
+}
+#touch10 {
+  grid-area: touchTen;
+}
+#touch11 {
+  grid-area: touchEleven;
+}
+#touch12 {
+  grid-area: touchTwelve;
+}
+#touch13 {
+  grid-area: touchThirteen;
+}
+#touch14 {
+  grid-area: touchFourteen;
+}
+#touch15 {
+  grid-area: touchFifteen;
+}
+#touch16 {
+  grid-area: touchSixteen;
+}
+#touch17 {
+  grid-area: touchSeventeen;
+}
+#touch18 {
+  grid-area: touchEighteen;
+}
