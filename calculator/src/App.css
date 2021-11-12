@@ -1,0 +1,32 @@
+form {
+	text-align: center;
+}
+
+.app {
+	display: flex;
+	justify-content: center;
+}
+
+div {
+	display: block;
+}
+
+.calculator {
+	margin-top: 100px;
+	border: 2px solid #a9a9a9;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 2fr repeat(5, 1fr);
+	width: 550px;
+	align-items: center;
+	text-align: center;
+	transform: scale(2);
+}
+
+button {
+	cursor: pointer;
+}
+
+.zero {
+	grid-column: span 2;
+}
