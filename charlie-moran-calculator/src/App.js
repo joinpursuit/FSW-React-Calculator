@@ -100,10 +100,12 @@ render(){
                     <section id="display">
                         <div className="display">
                         </div>
+
                         <div className="display">
-                            {/*thingy go here*/}
+                            {/*.format(input)thingy go here*/}
                         </div>
                     </section>
+
                     <section id="btn-container">
                         <div className="row1">
                             <button onClick={this.clickClear} className="clear">
@@ -119,6 +121,7 @@ render(){
                                 /
                             </button>
                         </div>
+
                         <div className="row2">
                             <button onClick={this.clicky} value="7">
                                 7
@@ -133,6 +136,7 @@ render(){
                                 x
                             </button>
                         </div>
+
                         <div className="row3">
                         <button onClick={this.clicky} value="4">
                                 4
@@ -147,6 +151,7 @@ render(){
                                 -
                             </button>
                         </div>
+
                         <div className="row4">
                             <button onClick={this.clicky} value="1">
                                 1
@@ -157,9 +162,10 @@ render(){
                             <button onClick={this.clicky} value="3">
                                 3
                             </button>
-                            <button className="operator" onClick={clickAdd}>
+                            <button className="operator" onClick={this.clickAdd}>
                                 +
                             </button>
+                            </div>
                             <div className="row5">
                             <button onClick={this.clicky} value="8">
                                 0
