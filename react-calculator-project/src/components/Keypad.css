@@ -1,0 +1,100 @@
+/* CONTAINER */
+.keypad-container {
+    border: 1px solid gold;
+    display: grid;
+    width: 300px;
+    grid-template-columns: 1fr 1fr 20%;
+    grid-template-areas:
+    "controls controls operators"
+    "keypad keypad operators"
+}
+
+/* CONTROLS */
+.keypad-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-area: controls;
+}
+
+.keypad-controls input {
+    background-color: midnightblue;
+    color: white;
+    font-size: 30px;
+}
+
+/* NUMBERS */
+.keypad-numbers {
+    /* border: 1px solid red; */
+    grid-area: keypad;
+    display: grid;
+    grid-template-areas:
+    "seven eight nine"
+    "four five six"
+    "one two three"
+    "zeronum zeronum decimalpoint"
+}
+
+.keypad-numbers input {
+    background-color: midnightblue;
+    color: white;
+    font-size: 30px;
+}
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+#zero {
+    grid-area: zeronum;
+}
+
+#decimalpoint {
+    grid-area: decimalpoint;
+}
+
+
+/* OPERATORS */
+.keypad-operators {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-area: operators;
+}
+
+.keypad-operators input {
+    background-color: teal;
+    color: white;
+    font-size: 30px;
+}
+
