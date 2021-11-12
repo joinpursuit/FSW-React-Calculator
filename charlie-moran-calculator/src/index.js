@@ -1,13 +1,11 @@
-// import React from "react";
-// import "./index.css";
-// import App from "./App";
+import React from "react";
+import "./index.css";
+import App from "./App";
+import ReactDOM from "react-dom";
 
-// class Index extends React.Component {
-//  constructor(){
-//      super()
-//  }
-//  render()
-//  return (
-//     <App />
-//  )
-// }
+ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );

@@ -9,7 +9,6 @@ class App extends React.Component {
         operator: "",
     };
 
-
 clicky = (el) => {
     this.setState({input: this.state.input + el.target.value});
 }
@@ -23,13 +22,13 @@ clickNeg = () => {
 }
 
 clickZero = () => {
-    if (this.state.input != "") {
+    if (this.state.input !== "") {
         this.setState({input: this.state.input + 0});
     }
 }
 
 clickDec = () => {
-    if (this.state.input.indexOf(".") == -1) {
+    if (this.state.input.indexOf(".") === -1) {
         this.setState({input: this.state.input + "."});
     }
 }
@@ -62,7 +61,7 @@ clickDivide = () => {
     this.setState({
         previousNum: this.state.input,
         input: "",
-        operator: "division",
+        operator: "divide",
     });
 }
 
@@ -73,19 +72,19 @@ clickCalc = () => {
             previousNum: "",
             operator: "",
         });
-    } else if (this.state.operator == "plus"){
+    } else if (this.state.operator === "plus"){
         this.setState({
             input:Number(this.state.previousNum) + Number(this.state.input),
         });
-    } else if (this.state.operator == "minus"){
+    } else if (this.state.operator === "minus"){
         this.setState({
             input: Number(this.state.previousNum) - Number(this.state.input),
         });
-    } else if (this.state.operator == "multiply"){
+    } else if (this.state.operator === "multiply"){
         this.setState({
             input: Number(this.state.previousNum) * Number(this.state.input),
         });
-    } else if (this.state.operator == "divide"){
+    } else if (this.state.operator === "divide"){
         this.setState({
             input: Number(this.state.previousNum) / Number(this.state.input),
         });
@@ -102,7 +101,7 @@ render(){
                         </div>
 
                         <div className="display">
-                            {/*.format(input)thingy go here*/}
+                            {new Intl.NumberFormat().format(input)}
                         </div>
                     </section>
 
@@ -132,7 +131,7 @@ render(){
                             <button onClick={this.clicky} value="9">
                                 9
                             </button>
-                            <button onClick={this.clicky} value="x">
+                            <button className="operator" onClick={this.clickMultiply}>
                                 x
                             </button>
                         </div>
