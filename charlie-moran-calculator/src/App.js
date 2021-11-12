@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Banana from "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/images/Banana.mp4"
 
 class App extends React.Component {
     state = {
@@ -7,13 +8,14 @@ class App extends React.Component {
         previousNum: "",
         currentNum: "",
         operator: "",
+        banana: "off",
     };
 
 clicky = (el) => {
     this.setState({input: this.state.input + el.target.value});
 }
 
-clickClear = (el) => {
+clickClear = () => {
     this.setState({input: ""});
 }
 
@@ -91,6 +93,34 @@ clickCalc = () => {
      }
 };
 
+banana = () => {
+    if (this.state.banana === "on"){
+        this.setState({banana: "off"});
+        return(<div>
+            <video autoplay loop muted style={{
+                display:"none",
+            }}>
+                <source src={Banana} type="video/mp4" />
+            </video>
+        </div>);
+
+    } else if (this.state.banana === "off"){
+        this.setState({banana: "on"});
+        return(<div>
+            <video autoplay loop muted style={{
+                position: "absolute",
+                width: "100%",
+                left: "50%",
+                height: "100%",
+                objectFit: "cover",
+                transform: "translate(-50%, -50%",
+                zIndex: "-1",
+            }}>
+                <source src={Banana} type="video/mp4" />
+            </video>
+        </div>);
+    }
+}
 render(){
     const {input} = this.state;
     return (
@@ -113,8 +143,8 @@ render(){
                             <button onClick={this.clickNeg} className="neg">
                                 +/-
                             </button>
-                            <button className="percentage">
-                                %
+                            <button className="banana" onClick={this.banana}>
+                                🍌
                             </button>
                             <button className="operator" onClick={this.clickDivide}>
                                 /
@@ -146,7 +176,7 @@ render(){
                             <button onClick={this.clicky} value="6">
                                 6
                             </button>
-                            <button onClick="operator" onClick={this.clickSubt}>
+                            <button className="operator" onClick={this.clickSubt}>
                                 -
                             </button>
                         </div>
