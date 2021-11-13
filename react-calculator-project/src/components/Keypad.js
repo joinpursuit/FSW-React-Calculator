@@ -2,13 +2,20 @@ import { Component } from "react";
 import './Keypad.css';
 
 class Keypad extends Component{
-    // constructor(){
-    //     super();
-    // }
+    constructor(){
+        super();
+
+        this.state = {
+            result: 0,
+        }
+    }
 
     render(){
         return(
             <div className="keypad-container">
+                <div className="keypad-display">
+                    <div>{this.state.result}</div>
+                </div>
                 <div className="keypad-controls">
                     <input id="all-clear" type="button" value="AC"/>
                     <input id="pos-neg" type="button" value="+/-"/>
