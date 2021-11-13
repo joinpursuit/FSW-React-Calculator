@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './App.css';
-import Keypad from './components/Keypad';
+import Calculator from './components/Calculator';
 
 class App extends Component{
   // constructor(){
@@ -11,7 +11,7 @@ class App extends Component{
     return (
       <div className="App">
         Hello Calculator
-        <Keypad />
+        <Calculator />
       </div>
     );
   }

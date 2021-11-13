@@ -17,11 +17,7 @@
     grid-template-areas:
     "display display display"
     "label label label"
-    "controls controls operators"
-    "keypad keypad operators"
-    "keypad keypad operators"
-    "keypad keypad operators"
-    "keypad keypad operators"
+    "form form form"
     "footer footer footer";
 }
 
@@ -47,14 +43,26 @@
     grid-area: label;
 }
 
+/* FORM CONTAINER */
+.form-container {
+    grid-area: form;
+    display: grid;
+    grid-template-areas:
+    "controls controls operators"
+    "keypad keypad operators"
+    "keypad keypad operators"
+    "keypad keypad operators"
+    "keypad keypad operators";
+}
+
 /* CONTROLS */
-.keypad-controls {
+form .keypad-controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-area: controls;
 }
 
-.keypad-controls input {
+form .keypad-controls input {
     background-color: hotpink;
     color: white;
     font-size: 20px;
@@ -62,7 +70,7 @@
 }
 
 /* NUMBERS */
-.keypad-numbers {
+form .keypad-numbers {
     /* border: 1px solid red; */
     grid-area: keypad;
     display: grid;
@@ -73,7 +81,7 @@
     "zeronum zeronum decimalpoint"
 }
 
-.keypad-numbers input {
+form .keypad-numbers input {
     background-color: midnightblue;
     color: white;
     font-size: 25px;
@@ -126,12 +134,12 @@
 
 
 /* OPERATORS */
-.keypad-operators {
+form .keypad-operators {
     display: grid;
     grid-area: operators;
 }
 
-.keypad-operators input {
+form .keypad-operators input {
     background-color: teal;
     color: white;
     font-size: 25px;
