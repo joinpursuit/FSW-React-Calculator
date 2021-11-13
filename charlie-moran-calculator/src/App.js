@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Banana from "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/images/Banana.mp4"
+import Intro from "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/Components/audio/Intro.mp3"
+import Outro from "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/Components/audio/Outro.mp3"
 
 class App extends React.Component {
     state = {
@@ -9,6 +11,8 @@ class App extends React.Component {
         currentNum: "",
         operator: "",
         banana: "off",
+        track: "",
+        play: "off"
     };
 
 clicky = (el) => {
@@ -93,9 +97,17 @@ clickCalc = () => {
      }
 };
 
+music = () => {
+    new Audio(this.track).play();
+}
+
+
 banana = () => {
     if (this.state.banana === "on"){
-        this.setState({banana: "off"});
+        this.setState({
+            banana: "off",
+            play: "on"
+        });
         return(<div>
             <video autoplay loop muted style={{
                 display:"none",
@@ -105,8 +117,22 @@ banana = () => {
         </div>);
 
     } else if (this.state.banana === "off"){
-        this.setState({banana: "on"});
+        this.setState({
+            banana: "on",
+            play: "on",
+        });
+        const flip = () => {
+           let x = (Math.floor(Math.random()*2 == 0));
+            if(x < 2){
+                this.setState({track: "Intro"});
+            } else {
+                this.setState({track: "Outro"})
+                }
+        }
+        flip();
+
         return(<div>
+            <this.track />
             <video autoplay loop muted style={{
                 position: "absolute",
                 width: "100%",
@@ -118,6 +144,7 @@ banana = () => {
             }}>
                 <source src={Banana} type="video/mp4" />
             </video>
+            <div />
         </div>);
     }
 }
@@ -126,6 +153,7 @@ render(){
     return (
             <div className="calculator">
                 <div className="container">
+                    <div id="track" />
                     <section id="display">
                         <div className="display">
                         </div>
@@ -197,7 +225,7 @@ render(){
                             </div>
                             
                             <div className="row5">
-                            <button onClick={this.clicky} value="8">
+                            <button onClick={this.clicky} value="0">
                                 0
                             </button>
                             <button onClick={this.clickDec}>
