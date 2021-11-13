@@ -1,0 +1,22 @@
+{
+  "name": "calculator-react-project",
+  "version": "1.0.0",
+  "description": "Module 3 calculator project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheodoreBFrazier/FSW-React-Calculator.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "Theodore Frazier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheodoreBFrazier/FSW-React-Calculator/issues"
+  },
+  "homepage": "https://github.com/TheodoreBFrazier/FSW-React-Calculator#readme"
+}
