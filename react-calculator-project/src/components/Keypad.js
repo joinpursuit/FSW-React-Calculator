@@ -6,9 +6,10 @@ class Keypad extends Component{
         super();
 
         this.state = {
+            count: 0,
             numInput: '',
-            operation: '',
-            result: 4,
+            operator: '',
+            result: 0,
         }
     }
 
@@ -17,11 +18,30 @@ class Keypad extends Component{
         console.log("submit button pressed.")
     }
 
-    /* START: CONTROLS Section - Reset, pos/neg, percentage */
-    handleControlsClick=()=>{
-        // onClick event
+    /* START: OPERATORS - calculate */
+    handleOperatorClick=(event)=>{
+        this.setState({
+            operator: event.target.value,
+        })
+        console.log(event.target.value);
     }
 
+    handleIncrement=(num)=>{
+        this.setState({
+            count: this.state.count +num,
+        })
+    }
+
+    calcSum=(arr)=>{
+        let currentValue = 0;
+        for (let num of arr) {
+            currentValue += num;
+        }
+        return currentValue;
+    }
+    /* END: OPERATORS */
+
+    /* START: CONTROLS Section - Reset, pos/neg, percentage */
     handleReset=()=>{
         this.setState({
             numInput: '',
@@ -49,15 +69,9 @@ class Keypad extends Component{
     handleNumberClick=(event)=>{
         this.setState({
             numInput: event.target.value,
+            result: event.target.value,
         })
-        console.log(event.target.value);
-    }
-
-    handleOperatorClick=(event)=>{
-        this.setState({
-            operator: event.target.value,
-        })
-        console.log(event.target.value);
+        console.log(event.target.value);       
     }
     /* END: FORM - handle click events */
 
@@ -71,45 +85,45 @@ class Keypad extends Component{
                     <p>Calculator 8.2</p>
                 </div>
                 <form onSubmit={this.handleSubmit} className="form-container">
-                    <div onClick={this.handleControlsClick} className="keypad-controls">
-                        <input 
+                    <div className="keypad-controls">
+                        <button 
                             onClick={this.handleReset} 
                             id="all-clear" 
                             type="button" 
                             value="AC"
-                        />
-                        <input 
+                        >AC</button>
+                        <button 
                             onClick={this.handlePositiveNegative}
                             id="pos-neg" 
                             type="button" 
                             value="+/-"
-                        />
-                        <input 
+                        >&#43;/&#45;</button>
+                        <button 
                             onClick={this.handlePercentage}
                             id="percentage" 
                             type="button" 
                             value="%"
-                        />
+                        >&#37;</button>
                     </div>
                     <div onClick={this.handleNumberClick} className="keypad-numbers">
-                        <input id="one" type="button" value="1"/>
-                        <input id="two" type="button" value="2"/>
-                        <input id="three" type="button" value="3"/>
-                        <input id="four" type="button" value="4"/>
-                        <input id="five" type="button" value="5"/>
-                        <input id="six" type="button" value="6"/>
-                        <input id="seven" type="button" value="7"/>
-                        <input id="eight" type="button" value="8"/>
-                        <input id="nine" type="button" value="9"/>
-                        <input id="zero" type="button" value="0"/>
-                        <input id="decimalpoint" type="button" value="."/>
+                        <button id="one" type="button" value="1">1</button>
+                        <button id="two" type="button" value="2">2</button>
+                        <button id="three" type="button" value="3">3</button>
+                        <button id="four" type="button" value="4">4</button>
+                        <button id="five" type="button" value="5">5</button>
+                        <button id="six" type="button" value="6">6</button>
+                        <button id="seven" type="button" value="7">7</button>
+                        <button id="eight" type="button" value="8">8</button>
+                        <button id="nine" type="button" value="9">9</button>
+                        <button id="zero" type="button" value="0">0</button>
+                        <button id="decimalpoint" type="button" value=".">.</button>
                     </div>
                     <div onClick={this.handleOperatorClick} className="keypad-operators">
-                        <input id="divide" type="button" value="/"/>
-                        <input id="multiply" type="button" value="*"/>
-                        <input id="subtract" type="button" value="-"/>
-                        <input id="add" type="button" value="+"/>
-                        <input id="equals" type="submit" value="="/>
+                        <button id="divide" type="button" value="/">&#247;</button>
+                        <button id="multiply" type="button" value="*">&times;</button>
+                        <button id="subtract" type="button" value="-">&#45;</button>
+                        <button onClick={()=>this.handleIncrement(this.state.numInput)} id="add" type="button" value="+">&#43;</button>
+                        <button id="equals" type="submit" value="=">&#61;</button>
                     </div>
                 </form>
                 <div className="keypad-footer">

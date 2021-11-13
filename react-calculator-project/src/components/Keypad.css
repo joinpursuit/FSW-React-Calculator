@@ -63,7 +63,7 @@ form .keypad-controls {
     grid-area: controls;
 }
 
-form .keypad-controls input {
+form .keypad-controls button {
     background-color: hotpink;
     color: white;
     font-size: 20px;
@@ -82,7 +82,7 @@ form .keypad-numbers {
     "zeronum zeronum decimalpoint"
 }
 
-form .keypad-numbers input {
+form .keypad-numbers button {
     background-color: midnightblue;
     color: white;
     font-size: 25px;
@@ -140,7 +140,7 @@ form .keypad-operators {
     grid-area: operators;
 }
 
-form .keypad-operators input {
+form .keypad-operators button {
     background-color: teal;
     color: white;
     font-size: 25px;
