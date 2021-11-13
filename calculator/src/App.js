@@ -46,24 +46,17 @@ class App extends React.Component {
           finalResult:Math.round(pValue/Number(currenInput))
         })
         break;
-      case "%":
-        this.setState({
-          currenInput:pValue/100
-        })
-        break;
-      case "+/-":
-        this.setState({
-          currenInput:-pValue
-        })
-        break;
     
       default:
+        this.setState({
+          finalResult:Number(currenInput)
+        })
         break;
     }
   }
 
   handleClick=(e)=>{
-    const operators=["+/-","%","/","*","-","+"];
+    const operators=["/","*","-","+"];
     const validDisplay=["1","2","3","4","5","6","0",".","7","8","9"];
     // if number display
     if(validDisplay.includes(e.target.value)){
@@ -92,18 +85,37 @@ class App extends React.Component {
       touches.unshift("AC")
       this.setState({
         currenInput:"",
-        isTyping:false
+        isTyping:false,
+        touches:touches
       })
     }
     if(operators.includes(e.target.value)){
       this.setState({
         pValue:this.state.finalResult || Number(this.state.currenInput),
-        finalResult:Number(this.state.currenInput),
+        // finalResult:Number(this.state.currenInput),
         currenInput:"",
         isTyping:true,
         operator:e.target.value
       })
 
+    }
+    if(e.target.value==="+/-") {
+      if(this.state.finalResult) this.setState({
+        finalResult:-this.state.finalResult
+        
+      });
+      else this.setState({
+        currenInput:-this.state.currenInput
+      })
+    }
+    if(e.target.value==="%") {
+      if(this.state.finalResult) this.setState({
+        finalResult:this.state.finalResult/100
+        
+      });
+      else this.setState({
+        currenInput:this.state.currenInput/100
+      })
     }
 
     if(e.target.value==="="){
@@ -114,12 +126,24 @@ class App extends React.Component {
     }
 
   }
+
+  formatting=(str)=>{
+    if(str.length>=4){
+   
+      const newStr=str.split("").reverse().join("");
+      const newArr=newStr.match(/\d{3}/g)||[];
+      const revStr=newArr.join("");
+      const returnVal=(newArr.join(",")+","+newStr.slice(revStr.length)).split("").reverse().join("");
+      return returnVal[0]===","?returnVal.slice(1):returnVal
+    }
+    return str;
+  }
  
   
   render() { 
     return (
       <div id="main">
-        <div id="result">{ this.state.isTyping? this.state.currenInput : this.state.finalResult}</div>
+        <div id="result">{ this.state.isTyping? this.formatting(this.state.currenInput) : this.formatting(this.state.finalResult)}</div>
         <Touches onSelectDigit={this.handleClick} touches={this.state.touches}/>
 
       </div>
