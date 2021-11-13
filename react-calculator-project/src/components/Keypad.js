@@ -6,26 +6,92 @@ class Keypad extends Component{
         super();
 
         this.state = {
-            input: '',
+            numInput: '',
+            operation: '',
+            result: 4,
         }
     }
+
+    handleSubmit=(event)=>{
+        event.preventDefault();
+        console.log("submit button pressed.")
+    }
+
+    /* START: CONTROLS Section - Reset, pos/neg, percentage */
+    handleControlsClick=()=>{
+        // onClick event
+    }
+
+    handleReset=()=>{
+        this.setState({
+            numInput: '',
+            operation: '',
+            result: 0,
+        })
+        console.log(this.state);
+    }
+
+    handlePositiveNegative=(event)=>{
+        // onClick event
+        // if positive, make negative.
+        // if negative, make positive.
+        console.log(event.target.value);
+    }
+
+    handlePercentage=(event)=>{
+        // onClick event
+        // divide by 100 with decimal point rounded.
+        console.log(event.target.value);
+    }
+    /* END: CONTROLS Section - Reset, pos/neg, percentage */
+
+    /* START: FORM - handle click events */
+    handleNumberClick=(event)=>{
+        this.setState({
+            numInput: event.target.value,
+        })
+        console.log(event.target.value);
+    }
+
+    handleOperatorClick=(event)=>{
+        this.setState({
+            operator: event.target.value,
+        })
+        console.log(event.target.value);
+    }
+    /* END: FORM - handle click events */
 
     render(){
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    <div>Result</div>
+                    <div>{this.state.result}</div>
                 </div>
                 <div className="keypad-label">
                     <p>Calculator 8.2</p>
                 </div>
-                <form className="form-container">
-                    <div className="keypad-controls">
-                        <input id="all-clear" type="button" value="AC"/>
-                        <input id="pos-neg" type="button" value="+/-"/>
-                        <input id="percentage" type="button" value="%"/>
+                <form onSubmit={this.handleSubmit} className="form-container">
+                    <div onClick={this.handleControlsClick} className="keypad-controls">
+                        <input 
+                            onClick={this.handleReset} 
+                            id="all-clear" 
+                            type="button" 
+                            value="AC"
+                        />
+                        <input 
+                            onClick={this.handlePositiveNegative}
+                            id="pos-neg" 
+                            type="button" 
+                            value="+/-"
+                        />
+                        <input 
+                            onClick={this.handlePercentage}
+                            id="percentage" 
+                            type="button" 
+                            value="%"
+                        />
                     </div>
-                    <div className="keypad-numbers">
+                    <div onClick={this.handleNumberClick} className="keypad-numbers">
                         <input id="one" type="button" value="1"/>
                         <input id="two" type="button" value="2"/>
                         <input id="three" type="button" value="3"/>
@@ -38,9 +104,9 @@ class Keypad extends Component{
                         <input id="zero" type="button" value="0"/>
                         <input id="decimalpoint" type="button" value="."/>
                     </div>
-                    <div className="keypad-operators">
-                        <input id="divide" type="button" value="÷"/>
-                        <input id="multiply" type="button" value="x"/>
+                    <div onClick={this.handleOperatorClick} className="keypad-operators">
+                        <input id="divide" type="button" value="/"/>
+                        <input id="multiply" type="button" value="*"/>
                         <input id="subtract" type="button" value="-"/>
                         <input id="add" type="button" value="+"/>
                         <input id="equals" type="submit" value="="/>
