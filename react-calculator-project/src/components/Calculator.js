@@ -14,7 +14,6 @@ class Calculator extends Component{
     render(){
         return(
             <div className="calculator-container">
-                Calculator
                 <Keypad />
             </div>
         )
