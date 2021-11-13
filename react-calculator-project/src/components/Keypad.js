@@ -16,6 +16,9 @@ class Keypad extends Component{
                 <div className="keypad-display">
                     <div>{this.state.result}</div>
                 </div>
+                <div className="keypad-label">
+                    <p>Calculator 8.2</p>
+                </div>
                 <div className="keypad-controls">
                     <input id="all-clear" type="button" value="AC"/>
                     <input id="pos-neg" type="button" value="+/-"/>
@@ -40,6 +43,9 @@ class Keypad extends Component{
                     <input id="subtract" type="button" value="-"/>
                     <input id="add" type="button" value="+"/>
                     <input id="equals" type="submit" value="="/>
+                </div>
+                <div className="keypad-footer">
+                    <br />
                 </div>
             </div>
         )

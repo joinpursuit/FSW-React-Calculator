@@ -1,18 +1,27 @@
 /* EVERYTHING inside CONTAINER */
 .keypad-container * {
-    font-family: monospace;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CONTAINER */
 .keypad-container {
     border: 1px solid gold;
+    border-radius: 35px;
+    background-color: #777;
     display: grid;
     width: 300px;
+    height: 400px;
+    padding: 20px;
     grid-template-columns: 1fr 1fr 20%;
     grid-template-areas:
     "display display display"
+    "label label label"
     "controls controls operators"
     "keypad keypad operators"
+    "keypad keypad operators"
+    "keypad keypad operators"
+    "keypad keypad operators"
+    "footer footer footer";
 }
 
 /* DISPLAY */
@@ -28,6 +37,13 @@
     grid-area: display;
 }
 
+/* BLANK */
+.keypad-label {
+    color: white;
+    text-transform: capitalize;
+    grid-area: label;
+}
+
 /* CONTROLS */
 .keypad-controls {
     display: grid;
@@ -38,7 +54,7 @@
 .keypad-controls input {
     background-color: hotpink;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     height: 50px;
 }
 
@@ -109,7 +125,6 @@
 /* OPERATORS */
 .keypad-operators {
     display: grid;
-    grid-template-columns: 1fr;
     grid-area: operators;
 }
 
@@ -120,3 +135,9 @@
     height: 50px;
 }
 
+/* FOOTER */
+.keypad-footer {
+    /* border: 1px solid red; */
+    height: 25px;
+    grid-area: footer;
+}
