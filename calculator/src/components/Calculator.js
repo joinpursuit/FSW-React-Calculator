@@ -1,4 +1,5 @@
 import { Component } from "react";
+import images from "/Users/toplouie/Desktop/pursuit/module-3/week 3/lab/FSW-React-Calculator/calculator/src/images/divide.png";
 
 class Calculator extends Component {
 	constructor() {
@@ -8,7 +9,6 @@ class Calculator extends Component {
 			secondInput: "",
 			clearDisplay: "AC",
 			operation: "",
-			comma: ",",
 		};
 	}
 
@@ -22,7 +22,7 @@ class Calculator extends Component {
 	onSubmit = () => {
 		// let addAll =
 		// 	this.state.display  {this.state.operation} this.state.secondInput;
-		this.setState({
+		let operationAll = this.setState({
 			display: "",
 		});
 	};
@@ -64,21 +64,10 @@ class Calculator extends Component {
 	// when the number keys are pressed
 	numberKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
-		if (this.state.display.length < 11) {
+		if (this.state.display.length < 9) {
 			this.setState({
 				display: inputString,
 				clearDisplay: "C",
-			});
-		}
-
-		// if (this.state.display.length === 3) {
-		// 	this.setState({
-		// 		display: (this.state.display[1] = ","),
-		// 	});
-		// }
-		if (this.state.display.length === 3 || this.state.display.length === 7) {
-			this.setState({
-				display: this.state.display + this.state.comma,
 			});
 		}
 	};
@@ -92,9 +81,10 @@ class Calculator extends Component {
 
 	// when the operation keys are pressed
 	operationKeyPressed = (e) => {
+		let inputString = this.state.display + e.target.value;
 		this.setState({
 			operation: e.target.value,
-			display: this.state.display.replaceAll(",", ""),
+			display: inputString,
 		});
 		console.log(this.state.operation);
 	};
@@ -103,10 +93,18 @@ class Calculator extends Component {
 		return (
 			<div className="calculator">
 				<input
-					className="display"
+					className="inputForm "
 					placeholder="0"
 					onInput={this.displays}
 					value={this.state.display}
+					disabled
+				/>
+				<input
+					className="display"
+					placeholder="0"
+					disabled
+					// onInput={this.displays}
+					// value={this.state.display}
 				/>
 				<button className="operationBtn" onClick={this.clear}>
 					{this.state.clearDisplay}

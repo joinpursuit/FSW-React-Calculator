@@ -4,7 +4,12 @@
 }
 
 .calculator {
-	background-image: linear-gradient(315deg, #537895 0%, #112f55 74%);
+	background-image: linear-gradient(
+		159deg,
+		#bdecff 60%,
+		#ffffff 20%,
+		#abfff7 80%
+	);
 	border: 1px solid #000000;
 	padding: 10px;
 	margin-top: 150px;
@@ -13,33 +18,39 @@
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: 2fr repeat(5, 1fr);
 	width: 240px;
-	height: 400px;
+	height: 420px;
 	align-items: center;
 	transform: scale(1.2);
 	box-shadow: 10px 9px 10px -9px;
 	border-radius: 3%;
 }
-.calculator:hover {
-	opacity: 1;
-}
-
-.display {
+.inputForm {
 	text-align: right;
 	grid-column: span 4;
 	border: 1px solid rgb(255, 255, 255);
 	line-height: 15px;
-	padding: 20px;
-	text-decoration: underline;
-	text-decoration-color: #90aed4;
+	padding: 16px;
 	color: white;
-	background-color: #0f0d0d;
-	border-radius: 10%;
+	background-color: #231f20;
+	border-radius: 7%;
 	font-size: larger;
 	animation: ease-in;
 	transition: 0.3s;
 }
-.display:hover {
-	opacity: 0.6;
+.display {
+	text-align: right;
+	grid-column: span 4;
+	border: 1px solid rgb(255, 255, 255);
+	line-height: 10px;
+	padding: 10px;
+	text-decoration: underline;
+	text-decoration-color: #90aed4;
+	color: white;
+	background-color: #231f20;
+	border-radius: 7%;
+	font-size: larger;
+	animation: ease-in;
+	transition: 0.3s;
 }
 
 /* All Button  */
@@ -48,7 +59,7 @@ button {
 	cursor: pointer;
 	padding: 10px;
 	margin: 3px;
-	opacity: 0.6;
+	opacity: 0.8;
 	font-weight: bolder;
 }
 
@@ -57,6 +68,7 @@ button {
 	grid-column: span 3;
 	color: white;
 	background-color: #000000;
+	opacity: 0.8;
 	border-radius: 10px;
 	transition: 0.6s;
 	animation: ease-in;
@@ -75,6 +87,7 @@ button {
 	color: white;
 	background-color: #000000;
 	transition: 0.3s;
+	opacity: 0.8;
 	animation: ease-in;
 	border-radius: 30%;
 }
@@ -84,6 +97,7 @@ button {
 }
 .operationBtn {
 	border-radius: 50%;
+	opacity: 0.8;
 	border: 2px solid black;
 	background-color: #ffffff;
 }
