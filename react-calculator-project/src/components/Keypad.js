@@ -38,8 +38,8 @@ class Keypad extends Component{
     handleSubmit=(event)=>{
         event.preventDefault();
         console.log("submit button pressed.")
-    
-        
+        let makeEquation = (Number(this.state.selectedNum) + this.state.operation + Number(this.state.selectedNum))
+        console.log("makeEquation", makeEquation); // result is a string
     }
 
     handleNumberClick=(event)=>{
@@ -51,7 +51,7 @@ class Keypad extends Component{
     }
 
     handleOperationChange=(event)=>{
-        console.log(event.target.value);
+        console.log("huh", event.target.value);
         this.setState({
             operation: event.target.value,
         })
@@ -62,6 +62,7 @@ class Keypad extends Component{
             selectedNum: this.state.count +num,
         })
       }
+
 
     // calcSum=(arr)=>{
     //     let currentValue = 0;
