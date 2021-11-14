@@ -11,7 +11,7 @@ class Keypad extends Component{
             numInput: '',
             selectedNum: 0,
             operation: '',
-            result: 4323500.02,
+            result: 4323500.03,
         }
     }
 
