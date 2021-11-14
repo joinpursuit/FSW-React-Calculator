@@ -6,35 +6,28 @@ class Calculator extends Component {
 		this.state = {
 			display: "",
 			secondDisplay: "",
-			firstInput: "",
-			secondInput: "",
 			clearDisplay: "AC",
 			operation: "",
 		};
 	}
 
-	// firstDisplay = this.state.display.replaceAll(",", "");
-	//  remove all the (,) then change the string into a number then
-	// and then somehow try to do the operation with the other numbers
-	// the other number also has to be changed similarly
-
 	// When you press =
 	onSubmit = () => {
-		let addAll = this.state.display(this.state.operation)(this.state.display);
-		console.log(addAll);
-		// this.setState({
-		// 	display: addAll,
-		// });
+		this.setState({
+			secondDisplay: eval(this.state.display),
+		});
 	};
 
-	// which will delete everything in the input field
+	// which will delete 1 by 1
 	backSpace = () => {
 		this.setState({
-			display: this.state.display.slice(0, this.state.display.length - 1),
+			display: this.state.display.slice(0, -1),
 			secondDisplay: "",
 			clearDisplay: "AC",
 		});
 	};
+
+	// which will delete everything in the input field
 	clear = () => {
 		this.setState({
 			display: "",
@@ -43,23 +36,27 @@ class Calculator extends Component {
 		});
 	};
 
+	// Event listener for number 0
 	numberZero = (e) => {
-		let inputString = this.state.display + e.target.value;
 		if (this.state.display !== "") {
+			let inputString = this.state.display + e.target.value;
 			this.setState({
 				display: inputString,
 				clearDisplay: "C",
 			});
 		}
 	};
+	// changing - to +
+	changedOp = () => {};
 
 	dot = (e) => {
-		console.log(e.target.value);
-		let inputString = this.state.display + e.target.value;
-		this.setState({
-			display: inputString,
-			clearDisplay: "C",
-		});
+		if (this.state.display !== "") {
+			let inputString = this.state.display + e.target.value;
+			this.setState({
+				display: inputString,
+				clearDisplay: "C",
+			});
+		}
 	};
 
 	// the numbers that show up in the input field
@@ -68,6 +65,7 @@ class Calculator extends Component {
 			display: e.target.value,
 		});
 	};
+
 	// when the number keys are pressed
 	numberKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
@@ -79,17 +77,10 @@ class Calculator extends Component {
 		}
 	};
 
-	// the percentage button
-	percentageBtn = () => {
-		this.setState({
-			secondDisplay: this.state.display / 100,
-		});
-	};
-
 	// when the operation keys are pressed
 	operationKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
-		let secondInput = this.state.secondInput + e.target.value;
+		// let secondInput = this.state.secondInput + e.target.value;
 		this.setState({
 			operation: e.target.value,
 			display: inputString,
@@ -116,8 +107,14 @@ class Calculator extends Component {
 				<button className="operationBtn" onClick={this.clear}>
 					{this.state.clearDisplay}
 				</button>
-				<button className="operationBtn">+/-</button>
-				<button className="operationBtn" value="%" onClick={this.percentageBtn}>
+				<button className="operationBtn" onClick={this.changedOp}>
+					+/-
+				</button>
+				<button
+					className="operationBtn"
+					value="%"
+					onClick={this.operationKeyPressed}
+				>
 					%
 				</button>
 				<button
@@ -175,11 +172,7 @@ class Calculator extends Component {
 				>
 					+
 				</button>
-				<button
-					value="0"
-					onClick={(this.numberZero, this.numberKeyPressed)}
-					className="zero"
-				>
+				<button value="0" onClick={this.numberZero} className="zero">
 					0
 				</button>
 				<button className="operationBtn" value="." onClick={this.dot}>
