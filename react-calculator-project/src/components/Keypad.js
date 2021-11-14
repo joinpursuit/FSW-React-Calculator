@@ -38,8 +38,11 @@ class Keypad extends Component{
     handleSubmit=(event)=>{
         event.preventDefault();
         console.log("submit button pressed.")
-        let makeEquation = (Number(this.state.selectedNum) + this.state.operation + Number(this.state.selectedNum))
-        console.log("makeEquation", makeEquation); // result is a string
+        let makeEquation = (this.state.selectedNum + this.state.operation + this.state.selectedNum) // adding strings together
+        console.log("makeEquation", makeEquation); // result is a string '3+3' and does not calculate
+        this.setState({
+            result: makeEquation,
+        })
     }
 
     handleNumberClick=(event)=>{
