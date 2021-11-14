@@ -27,11 +27,11 @@ class Keypad extends Component{
 
         /* First half of number without decimals */
         let roundResult = Math.round(this.state.result)
-        let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+        let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
         roundResultCommas = roundResultCommas.split("")
 
         /* Second half of number - decimals */
-        let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+        let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
         let getDecimal = removeCommas.split("").splice(-2).join("")
         getDecimal = getDecimal.split(",")
 
@@ -165,8 +165,8 @@ class Keypad extends Component{
                         <button onClick={this.handleOperationChange} id="divide" type="button" value="/">&#247;</button>
                         <button onClick={this.handleOperationChange} id="multiply" type="button" value="*">&times;</button>
                         <button onClick={this.handleOperationChange} id="subtract" type="button" value="-">&#45;</button>
-                        <button onClick={()=>this.handleOperationChange(this.state.operation)} id="add" type="button" value="+">+Custom</button>
-                        {/* <button onClick={this.handleOperationChange} id="add" type="button" value="+">&#43;</button>  */}
+                        {/* <button onClick={()=>this.handleOperationChange(this.state.operation)} id="add" type="button" value="+">+</button> */}
+                        <button onClick={this.handleOperationChange} id="add" type="button" value="+">&#43;</button> 
                         <button id="equals" type="submit" value="=">&#61;</button>
                     </div>
                 </form>
