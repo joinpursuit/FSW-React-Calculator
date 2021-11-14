@@ -1,8 +1,8 @@
 
 import './App.css';
-import './components/KeyPad'
 import KeyPad from './components/KeyPad';
 import {Component} from 'react'
+import Display from './components/Display';
 
 
 
@@ -50,9 +50,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "calcBorder">
         Testing Fonts
-       <KeyPad />
+        <Display />
+        <KeyPad />
       </div>
     );
   }
