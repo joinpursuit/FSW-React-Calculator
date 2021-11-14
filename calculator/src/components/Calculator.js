@@ -1,11 +1,12 @@
 import { Component } from "react";
-import images from "/Users/toplouie/Desktop/pursuit/module-3/week 3/lab/FSW-React-Calculator/calculator/src/images/divide.png";
 
 class Calculator extends Component {
 	constructor() {
 		super();
 		this.state = {
 			display: "",
+			secondDisplay: "",
+			firstInput: "",
 			secondInput: "",
 			clearDisplay: "AC",
 			operation: "",
@@ -13,25 +14,31 @@ class Calculator extends Component {
 	}
 
 	// firstDisplay = this.state.display.replaceAll(",", "");
-
 	//  remove all the (,) then change the string into a number then
 	// and then somehow try to do the operation with the other numbers
 	// the other number also has to be changed similarly
 
 	// When you press =
 	onSubmit = () => {
-		// let addAll =
-		// 	this.state.display  {this.state.operation} this.state.secondInput;
-		let operationAll = this.setState({
-			display: "",
-		});
+		let addAll = this.state.display(this.state.operation)(this.state.display);
+		console.log(addAll);
+		// this.setState({
+		// 	display: addAll,
+		// });
 	};
 
 	// which will delete everything in the input field
+	backSpace = () => {
+		this.setState({
+			display: this.state.display.slice(0, this.state.display.length - 1),
+			secondDisplay: "",
+			clearDisplay: "AC",
+		});
+	};
 	clear = () => {
-		console.log("Cleared");
 		this.setState({
 			display: "",
+			secondDisplay: "",
 			clearDisplay: "AC",
 		});
 	};
@@ -75,13 +82,14 @@ class Calculator extends Component {
 	// the percentage button
 	percentageBtn = () => {
 		this.setState({
-			display: this.state.display / 100,
+			secondDisplay: this.state.display / 100,
 		});
 	};
 
 	// when the operation keys are pressed
 	operationKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
+		let secondInput = this.state.secondInput + e.target.value;
 		this.setState({
 			operation: e.target.value,
 			display: inputString,
@@ -103,8 +111,7 @@ class Calculator extends Component {
 					className="display"
 					placeholder="0"
 					disabled
-					// onInput={this.displays}
-					// value={this.state.display}
+					value={this.state.secondDisplay}
 				/>
 				<button className="operationBtn" onClick={this.clear}>
 					{this.state.clearDisplay}
@@ -184,6 +191,9 @@ class Calculator extends Component {
 					type="submit"
 				>
 					=
+				</button>{" "}
+				<button className="operationBtn" onClick={this.backSpace}>
+					Del
 				</button>
 			</div>
 		);
