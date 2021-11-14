@@ -6,48 +6,45 @@ class Keypad extends Component{
         super();
 
         this.state = {
-            // firstNumSelect: '',
-            // secondNumSelect: '',
-            numInput: '',
+            // numInput: '',
             selectedNum: 0,
             operation: '',
-            result: 33243500.03,
+            nextSelectedNumber: '',
+            result: 3500,
         }
     }
+
+    // handleCommas=()=>{
+    //     /* START: FOR comma every 3 digits */
+    //     /* First half of number without decimals */
+    //     let roundResult = Math.round(this.state.result)
+    //     let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+    //     roundResultCommas = roundResultCommas.split("")
+    //     /* Second half of number - decimals */
+    //     let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+    //     let getDecimal = removeCommas.split("").splice(-2).join("")
+    //     getDecimal = getDecimal.split(",")
+    //     /* Join the 2 arrays together using spread operator */
+    //     let joinedResult = roundResultCommas
+    //     let arr2 = getDecimal
+    //     joinedResult = [...joinedResult, '.', arr2].join("");
+    //     // for comma every 3 digits
+    //     this.setState({
+    //         result: joinedResult,
+    //     })
+    //     /* END: FOR comma every 3 digits */
+    // }
 
     handleSubmit=(event)=>{
         event.preventDefault();
         console.log("submit button pressed.")
-        // this.setState({
-        //     result: event.target.value,
-        // })
-        // console.log("state is:", this.state.result)
-        // let result = this.state.result;
-        // this.props.handleCalculatorResult(result);  
-
-        /* First half of number without decimals */
-        let roundResult = Math.round(this.state.result)
-        let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
-        roundResultCommas = roundResultCommas.split("")
-
-        /* Second half of number - decimals */
-        let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
-        let getDecimal = removeCommas.split("").splice(-2).join("")
-        getDecimal = getDecimal.split(",")
-
-        /* Join the 2 arrays together using spread operator */
-        let joinedResult = roundResultCommas
-        let arr2 = getDecimal
-        joinedResult = [...joinedResult, '.', arr2].join("");
-
-        // for comma every 3 digits
-        this.setState({
-            result: joinedResult,
-        })
+    
+        
     }
 
     handleNumberClick=(event)=>{
         console.log("selected number is:", event.target.value); // to see the input in console as you click
+        // Store selected number
         this.setState({
             selectedNum: event.target.value,
         })
@@ -66,13 +63,6 @@ class Keypad extends Component{
         })
       }
 
-    /* START: OPERATORS - calculate */
-    // handleIncrement=(num)=>{
-    //     this.setState({
-    //         count: this.state.count +num,
-    //     })
-    // }
-
     // calcSum=(arr)=>{
     //     let currentValue = 0;
     //     for (let num of arr) {
@@ -82,23 +72,6 @@ class Keypad extends Component{
     // }
     /* END: OPERATORS */
 
-    /* START: CONTROLS Section - Reset, pos/neg, percentage */
-  
-
-    // handlePositiveNegative=(event)=>{
-    //     // onClick event
-    //     // if positive, make negative.
-    //     // if negative, make positive.
-    //     console.log(event.target.value);
-    // }
-
-    // handlePercentage=(event)=>{
-    //     // onClick event
-    //     // divide by 100 with decimal point rounded.
-    //     console.log(event.target.value);
-    // }
-    /* END: CONTROLS Section - Reset, pos/neg, percentage */
-
     /* START: FORM - handle click events */
     // add to the display the number selected
     // set the state to have the 2 numbers with operator being added or whatever
@@ -106,14 +79,27 @@ class Keypad extends Component{
 
     handleReset=()=>{
         this.setState({
-            // firstNumSelect: '',
-            // secondNumSelect: '',
             // numInput: '',
-            operation: '',
             selectedNum: 0,
+            operation: '',
+            nextSelectedNumber: '',
             result: 0,
         })
         console.log("reset what this.state is using:", this.state);
+    }
+
+    handlePercent=(event)=>{
+        console.log("Add code for handlePercent", event.target.value);
+    }
+    handlePosNeg=(event)=>{
+        console.log("Add code for handlePosNeg", event.target.value);
+    }
+    handleDecimal=(event)=>{
+        console.log("Add code for handleDecimal", event.target.value);
+    }
+
+    calculateEquals=()=>{
+
     }
 
     render(){
@@ -122,7 +108,7 @@ class Keypad extends Component{
             const buttonArr = [];
             for (let i = 9; i >=0; i--) {
                 buttonArr.push(
-                <button key={i} id={"n" + i} value={i} type="button">{i}</button>
+                <button onClick={this.handleNumberClick} key={i} id={"n" + i} value={i} type="button">{i}</button>
                 )};
             return buttonArr;
         }
@@ -130,11 +116,11 @@ class Keypad extends Component{
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    {/* <div>{this.state.selectedNum}</div> */}
+                    <div>{this.state.selectedNum}</div>
                     <div>{this.state.result}</div>
                 </div>
                 <div className="keypad-label">
-                    <p>••• Calculator 8.2 ••••••••••• (10-digit) •••</p>
+                    {/* <p>••• Calculator 8.2 ••••••••••• (10-digit) •••</p> */}
                 </div>
                 <form onSubmit={this.handleSubmit} className="form-container">
                     <div className="keypad-controls">
@@ -145,27 +131,26 @@ class Keypad extends Component{
                             value="AC"
                         >AC</button>
                         <button 
-                            onClick={this.handlePositiveNegative}
+                            onClick={this.handlePosNeg}
                             id="pos-neg" 
                             type="button" 
                             value="+/-"
                         >&#43;/&#45;</button>
                         <button 
-                            onClick={this.handlePercentage}
+                            onClick={this.handlePercent}
                             id="percentage" 
                             type="button" 
                             value="%"
                         >&#37;</button>
                     </div>
-                    <div onClick={this.handleNumberClick} className="keypad-numbers">
+                    <div className="keypad-numbers">
                         { zeroToNineButtons() }
-                        <button id="decimalpoint" type="button" value=".">.</button>
+                        <button onClick={this.handleDecimal} id="decimalpoint" type="button" value=".">.</button>
                     </div>
                     <div className="keypad-operators">
                         <button onClick={this.handleOperationChange} id="divide" type="button" value="/">&#247;</button>
                         <button onClick={this.handleOperationChange} id="multiply" type="button" value="*">&times;</button>
                         <button onClick={this.handleOperationChange} id="subtract" type="button" value="-">&#45;</button>
-                        {/* <button onClick={()=>this.handleOperationChange(this.state.operation)} id="add" type="button" value="+">+</button> */}
                         <button onClick={this.handleOperationChange} id="add" type="button" value="+">&#43;</button> 
                         <button id="equals" type="submit" value="=">&#61;</button>
                     </div>
