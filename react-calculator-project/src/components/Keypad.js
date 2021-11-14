@@ -27,31 +27,24 @@ class Keypad extends Component{
 
         /* First half of number without decimals */
         let roundResult = Math.round(this.state.result)
-        console.log("here:", roundResult)
         let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
         roundResultCommas = roundResultCommas.split("")
-        console.log("here again:", roundResultCommas)
 
         /* Second half of number - decimals */
         let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
         let getDecimal = removeCommas.split("").splice(-2).join("")
         getDecimal = getDecimal.split(",")
-        console.log("decimal:", getDecimal)
 
         /* Join the 2 arrays together using spread operator */
         let joinedResult = roundResultCommas
         let arr2 = getDecimal
         joinedResult = [...joinedResult, '.', arr2].join("");
-        console.log("joined result:", joinedResult);
 
-        // works for numbers with no decimal
+        // for comma every 3 digits
         this.setState({
-            // for comma every 3 digits
             result: joinedResult,
         })
     }
-    // result: 78,
-    // result: this.state.result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
 
     handleNumberClick=(event)=>{
         console.log("selected number is:", event.target.value); // to see the input in console as you click
