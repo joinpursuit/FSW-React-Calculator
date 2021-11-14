@@ -11,9 +11,9 @@ class Calculator extends Component{
         }
     }
 
-    handleCalculatorResult=(result)=>{
+    handleCalculatorResult=(selectedNum)=>{
         this.setState({
-            displayResult: result,
+            displayResult: selectedNum,
         })
     }
 

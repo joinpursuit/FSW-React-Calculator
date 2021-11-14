@@ -8,9 +8,10 @@ class Keypad extends Component{
         this.state = {
             // firstNumSelect: '',
             // secondNumSelect: '',
-            // numInput: '',
-            // operator: '',
-            result: 0,
+            numInput: '',
+            selectedNum: 0,
+            operation: '',
+            result: 4323500.02,
         }
     }
 
@@ -22,26 +23,57 @@ class Keypad extends Component{
         // })
         // console.log("state is:", this.state.result)
         // let result = this.state.result;
-        // this.props.handleCalculatorResult(result); 
+        // this.props.handleCalculatorResult(result);  
+
+        /* First half of number without decimals */
+        let roundResult = Math.round(this.state.result)
+        console.log("here:", roundResult)
+        let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+        roundResultCommas = roundResultCommas.split("")
+        console.log("here again:", roundResultCommas)
+
+        /* Second half of number - decimals */
+        let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index != 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
+        let getDecimal = removeCommas.split("").splice(-2).join("")
+        getDecimal = getDecimal.split(",")
+        console.log("decimal:", getDecimal)
+
+        /* Join the 2 arrays together using spread operator */
+        let joinedResult = roundResultCommas
+        let arr2 = getDecimal
+        joinedResult = [...joinedResult, '.', arr2].join("");
+        console.log("joined result:", joinedResult);
+
+        // works for numbers with no decimal
+        this.setState({
+            // for comma every 3 digits
+            result: joinedResult,
+        })
     }
+    // result: 78,
+    // result: this.state.result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
 
     handleNumberClick=(event)=>{
+        console.log("selected number is:", event.target.value); // to see the input in console as you click
         this.setState({
-            // numInput: event.target.value,
-            result: event.target.value,
+            selectedNum: event.target.value,
         })
-        console.log("number click is:", event.target.value);       
     }
 
+    handleOperationChange=(event)=>{
+        console.log(event.target.value);
+        this.setState({
+            operation: event.target.value,
+        })
+    }
+
+    handleIncrement=(num)=>{
+        this.setState({
+            selectedNum: this.state.count +num,
+        })
+      }
 
     /* START: OPERATORS - calculate */
-    // handleOperatorClick=(event)=>{
-    //     this.setState({
-    //         operator: event.target.value,
-    //     })
-    //     console.log(event.target.value);
-    // }
-
     // handleIncrement=(num)=>{
     //     this.setState({
     //         count: this.state.count +num,
@@ -84,10 +116,11 @@ class Keypad extends Component{
             // firstNumSelect: '',
             // secondNumSelect: '',
             // numInput: '',
-            // operation: '',
+            operation: '',
+            selectedNum: 0,
             result: 0,
         })
-        console.log(this.state);
+        console.log("reset what this.state is using:", this.state);
     }
 
     render(){
@@ -104,7 +137,8 @@ class Keypad extends Component{
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    <div>{this.state.result}</div>
+                    <div>curr: {this.state.selectedNum}</div>
+                    <div>rslt: {this.state.result}</div>
                 </div>
                 <div className="keypad-label">
                     <p>Calculator 8.2</p>
@@ -134,11 +168,12 @@ class Keypad extends Component{
                         { zeroToNineButtons() }
                         <button id="decimalpoint" type="button" value=".">.</button>
                     </div>
-                    <div onClick={this.handleOperatorClick} className="keypad-operators">
-                        <button id="divide" type="button" value="/">&#247;</button>
-                        <button id="multiply" type="button" value="*">&times;</button>
-                        <button id="subtract" type="button" value="-">&#45;</button>
-                        <button onClick={()=>this.handleIncrement(this.state.numInput)} id="add" type="button" value="+">&#43;</button>
+                    <div className="keypad-operators">
+                        <button onClick={this.handleOperationChange} id="divide" type="button" value="/">&#247;</button>
+                        <button onClick={this.handleOperationChange} id="multiply" type="button" value="*">&times;</button>
+                        <button onClick={this.handleOperationChange} id="subtract" type="button" value="-">&#45;</button>
+                        <button onClick={()=>this.handleOperationChange(this.state.operation)} id="add" type="button" value="+">+Custom</button>
+                        {/* <button onClick={this.handleOperationChange} id="add" type="button" value="+">&#43;</button>  */}
                         <button id="equals" type="submit" value="=">&#61;</button>
                     </div>
                 </form>
