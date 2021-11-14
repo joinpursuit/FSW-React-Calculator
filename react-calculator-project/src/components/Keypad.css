@@ -89,43 +89,43 @@ form .keypad-numbers button {
     height: 50px;
 }
 
-#one {
+#n1 {
     grid-area: one;
 }
 
-#two {
+#n2 {
     grid-area: two;
 }
 
-#three {
+#n3 {
     grid-area: three;
 }
 
-#four {
+#n4 {
     grid-area: four;
 }
 
-#five {
+#n5 {
     grid-area: five;
 }
 
-#six {
+#n6 {
     grid-area: six;
 }
 
-#seven {
+#n7 {
     grid-area: seven;
 }
 
-#eight {
+#n8 {
     grid-area: eight;
 }
 
-#nine {
+#n9 {
     grid-area: nine;
 }
 
-#zero {
+#n0 {
     grid-area: zeronum;
 }
 

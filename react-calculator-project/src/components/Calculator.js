@@ -11,10 +11,17 @@ class Calculator extends Component{
         }
     }
 
+    handleCalculatorResult=(result)=>{
+        this.setState({
+            displayResult: result,
+        })
+    }
+
     render(){
         return(
             <div className="calculator-container">
-                <Keypad />
+                <Keypad handleCalculatorResult={this.handleCalculatorResult}/>
+                <p>{this.state.displayResult}</p>
             </div>
         )
     }

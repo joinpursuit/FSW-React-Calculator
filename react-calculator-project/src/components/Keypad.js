@@ -6,9 +6,10 @@ class Keypad extends Component{
         super();
 
         this.state = {
-            count: 0,
-            numInput: '',
-            operator: '',
+            // firstNumSelect: '',
+            // secondNumSelect: '',
+            // numInput: '',
+            // operator: '',
             result: 0,
         }
     }
@@ -16,66 +17,90 @@ class Keypad extends Component{
     handleSubmit=(event)=>{
         event.preventDefault();
         console.log("submit button pressed.")
+        // this.setState({
+        //     result: event.target.value,
+        // })
+        // console.log("state is:", this.state.result)
+        // let result = this.state.result;
+        // this.props.handleCalculatorResult(result); 
     }
+
+    handleNumberClick=(event)=>{
+        this.setState({
+            // numInput: event.target.value,
+            result: event.target.value,
+        })
+        console.log("number click is:", event.target.value);       
+    }
+
 
     /* START: OPERATORS - calculate */
-    handleOperatorClick=(event)=>{
-        this.setState({
-            operator: event.target.value,
-        })
-        console.log(event.target.value);
-    }
+    // handleOperatorClick=(event)=>{
+    //     this.setState({
+    //         operator: event.target.value,
+    //     })
+    //     console.log(event.target.value);
+    // }
 
-    handleIncrement=(num)=>{
-        this.setState({
-            count: this.state.count +num,
-        })
-    }
+    // handleIncrement=(num)=>{
+    //     this.setState({
+    //         count: this.state.count +num,
+    //     })
+    // }
 
-    calcSum=(arr)=>{
-        let currentValue = 0;
-        for (let num of arr) {
-            currentValue += num;
-        }
-        return currentValue;
-    }
+    // calcSum=(arr)=>{
+    //     let currentValue = 0;
+    //     for (let num of arr) {
+    //         currentValue += num;
+    //     }
+    //     return currentValue;
+    // }
     /* END: OPERATORS */
 
     /* START: CONTROLS Section - Reset, pos/neg, percentage */
+  
+
+    // handlePositiveNegative=(event)=>{
+    //     // onClick event
+    //     // if positive, make negative.
+    //     // if negative, make positive.
+    //     console.log(event.target.value);
+    // }
+
+    // handlePercentage=(event)=>{
+    //     // onClick event
+    //     // divide by 100 with decimal point rounded.
+    //     console.log(event.target.value);
+    // }
+    /* END: CONTROLS Section - Reset, pos/neg, percentage */
+
+    /* START: FORM - handle click events */
+    // add to the display the number selected
+    // set the state to have the 2 numbers with operator being added or whatever
+    /* END: FORM - handle click events */
+
     handleReset=()=>{
         this.setState({
-            numInput: '',
-            operation: '',
+            // firstNumSelect: '',
+            // secondNumSelect: '',
+            // numInput: '',
+            // operation: '',
             result: 0,
         })
         console.log(this.state);
     }
 
-    handlePositiveNegative=(event)=>{
-        // onClick event
-        // if positive, make negative.
-        // if negative, make positive.
-        console.log(event.target.value);
-    }
-
-    handlePercentage=(event)=>{
-        // onClick event
-        // divide by 100 with decimal point rounded.
-        console.log(event.target.value);
-    }
-    /* END: CONTROLS Section - Reset, pos/neg, percentage */
-
-    /* START: FORM - handle click events */
-    handleNumberClick=(event)=>{
-        this.setState({
-            numInput: event.target.value,
-            result: event.target.value,
-        })
-        console.log(event.target.value);       
-    }
-    /* END: FORM - handle click events */
-
     render(){
+        // make buttons for 0-9
+        const zeroToNineButtons = () => {
+            const buttonArr = [];
+            for (let i = 9; i >=0; i--) {
+                buttonArr.push(
+                <button key={i} id={"n" + i} value={i} type="button">{i}</button>
+                )};
+            return buttonArr;
+        }
+
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
@@ -106,16 +131,7 @@ class Keypad extends Component{
                         >&#37;</button>
                     </div>
                     <div onClick={this.handleNumberClick} className="keypad-numbers">
-                        <button id="one" type="button" value="1">1</button>
-                        <button id="two" type="button" value="2">2</button>
-                        <button id="three" type="button" value="3">3</button>
-                        <button id="four" type="button" value="4">4</button>
-                        <button id="five" type="button" value="5">5</button>
-                        <button id="six" type="button" value="6">6</button>
-                        <button id="seven" type="button" value="7">7</button>
-                        <button id="eight" type="button" value="8">8</button>
-                        <button id="nine" type="button" value="9">9</button>
-                        <button id="zero" type="button" value="0">0</button>
+                        { zeroToNineButtons() }
                         <button id="decimalpoint" type="button" value=".">.</button>
                     </div>
                     <div onClick={this.handleOperatorClick} className="keypad-operators">
