@@ -47,7 +47,11 @@ class Calculator extends Component {
 		}
 	};
 	// changing - to +
-	changedOp = () => {};
+	changedOp = () => {
+		this.setState({
+			display: this.state.display * -1,
+		});
+	};
 
 	dot = (e) => {
 		if (this.state.display !== "") {
