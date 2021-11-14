@@ -13,9 +13,15 @@ class Calculator extends Component {
 
 	// When you press =
 	onSubmit = () => {
-		this.setState({
-			secondDisplay: eval(this.state.display),
-		});
+		try {
+			this.setState({
+				secondDisplay: eval(this.state.display.toString()),
+			});
+		} catch (err) {
+			this.setState({
+				secondDisplay: "ERROR",
+			});
+		}
 	};
 
 	// which will delete 1 by 1
@@ -84,7 +90,6 @@ class Calculator extends Component {
 	// when the operation keys are pressed
 	operationKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
-		// let secondInput = this.state.secondInput + e.target.value;
 		this.setState({
 			operation: e.target.value,
 			display: inputString,
