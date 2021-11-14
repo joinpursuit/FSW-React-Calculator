@@ -11,7 +11,7 @@ class Keypad extends Component{
             numInput: '',
             selectedNum: 0,
             operation: '',
-            result: 4323500.03,
+            result: 33243500.03,
         }
     }
 
@@ -130,11 +130,11 @@ class Keypad extends Component{
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    <div>curr: {this.state.selectedNum}</div>
-                    <div>rslt: {this.state.result}</div>
+                    {/* <div>{this.state.selectedNum}</div> */}
+                    <div>{this.state.result}</div>
                 </div>
                 <div className="keypad-label">
-                    <p>Calculator 8.2</p>
+                    <p>••• Calculator 8.2 ••••••••••• (10-digit) •••</p>
                 </div>
                 <form onSubmit={this.handleSubmit} className="form-container">
                     <div className="keypad-controls">
