@@ -35,10 +35,24 @@ class App extends Component {
 
     else {
       this.setState({
-        displaySays: this.state.displaySays 
+        displaySays: this.state.displaySays + button
       })
     }
 
+  }
+
+execute = () => {
+    
+  try {
+    this.setState ({
+      displaySays: (eval(this.state.displaySays))
+    })
+  } catch (error) {
+    this.setState({
+      result: 
+      "e"
+    })
+  }
   }
 
   reset = () => {
@@ -51,8 +65,8 @@ class App extends Component {
   render() {
     return (
       <div className = "calcBorder">
-        <Display />
-        <KeyPad />
+        <Display displaySays = {this.state.displaySays}/>
+        <KeyPad onClick = {this.onClick}/>
       </div>
     );
   }

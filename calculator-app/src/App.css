@@ -13,30 +13,31 @@
 
 .calcButtons button:hover {
   color: yellow;
-  background-color: #363636;
+  background-color: #606060;
   border: none;
   height: 75px;
   width: 75px;
-  font-size: 21pt;
+  font-size: 24pt;
   font-family: 'Rokkitt', serif;
 }
 
 
-.calculate-button button {
-  border: none;
-  height: 65px;
-  background-color: #606060;
-  color: white;
-  width: 300px;
-  font-family: 'Rokkitt', serif;
-}
+
 
 .function-buttons button {
   color: black;
-  background-color: #8d8d8d;
+  background-color: #606060;
   font-size: 21pt;
   font-family: 'Rokkitt', serif;
 }
+
+.function-buttons button:hover {
+  color: white;
+  background-color: #8d8d8d;
+  font-size: 36pt;
+  font-family: 'Rokkitt', serif;
+}
+
 
 .additional-function-buttons button {
   font-size: 21pt;
@@ -48,16 +49,42 @@
 #negative-positive {
   background-color: #606060;
   color: white;
+ 
 }
 
-#divide {
+#negative-positive :hover {
   background-color: #606060;
   color: white;
 }
 
+
 #clear-bttn {
   background-color: #D22B2B;
   color: white;
+}
+
+#clear-bttn :hover {
+  background-color: #D22B2B;
+  color: white;
+}
+
+.calculate-button button {
+  border: none;
+  height: 75px;
+  background-color: #606060;
+  color: white;
+  width: 300px;
+  font-family: 'Rokkitt', serif;
+}
+
+.calculate-button button:hover {
+  border: none;
+  height: 75px;
+  background-color: #4CBB17;
+  color: white;
+  width: 300px;
+  font-family: 'Rokkitt', serif;
+font-size: 24pt;
 }
 
 .display {
@@ -68,4 +95,6 @@
   margin: 25px;
   background-color: white;
   font-family: 'Raleway', sans-serif;
+  font-size: 36pt;
 }
+
