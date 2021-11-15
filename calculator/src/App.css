@@ -4,12 +4,7 @@
 }
 
 .calculator {
-	background-image: linear-gradient(
-		159deg,
-		#2879d7 60%,
-		#5448b7 60%,
-		#2668d9 80%
-	);
+	background-image: linear-gradient(159deg, #546fff 60%, #a6a4f1 80%);
 	border: 1px solid #000000;
 	padding: 10px;
 	margin-top: 150px;
@@ -27,7 +22,7 @@
 .inputForm {
 	text-align: right;
 	grid-column: span 4;
-	border: 1px solid rgb(255, 255, 255);
+	border: 1px solid rgb(233, 212, 212);
 	line-height: 15px;
 	padding: 16px;
 	color: white;
@@ -36,18 +31,16 @@
 	font-size: larger;
 	letter-spacing: 1px;
 }
+
 .display {
+	color: white;
 	letter-spacing: 1px;
+	background-color: #231f20;
 	padding-top: 100px;
 	text-align: right;
 	grid-column: span 4;
-	border: 1px solid rgb(255, 255, 255);
 	line-height: 10px;
 	padding: 10px;
-	text-decoration: underline;
-	text-decoration-color: #90aed4;
-	color: white;
-	background-color: #231f20;
 	border-radius: 7%;
 	font-size: larger;
 }
@@ -63,7 +56,7 @@ button {
 }
 
 .zero {
-	border: 1px solid white;
+	border: 1px solid rgb(233, 212, 212);
 	grid-column: span 3;
 	color: white;
 	background-color: #000000;
@@ -74,7 +67,7 @@ button {
 }
 .zero:hover {
 	color: black;
-	background-color: white;
+	background-color: rgb(233, 212, 212);
 }
 
 .equals-btn {
@@ -82,7 +75,7 @@ button {
 }
 
 .numBtn {
-	border: 1px solid white;
+	border: 1px solid rgb(233, 212, 212);
 	color: white;
 	background-color: #000000;
 	transition: 0.3s;
@@ -92,7 +85,7 @@ button {
 }
 .numBtn:hover {
 	color: rgb(3, 3, 3);
-	background-color: #ffffff;
+	background-color: rgb(233, 212, 212);
 }
 .operationBtn {
 	border-radius: 50%;
@@ -100,7 +93,7 @@ button {
 	transition: 0.3s;
 	animation: cubic-bezier(0, -0.74, 1, 1);
 	border: 2px solid black;
-	background-color: #ffffff;
+	background-color: rgb(233, 212, 212);
 }
 .operationBtn:hover {
 	background-color: #000000;
