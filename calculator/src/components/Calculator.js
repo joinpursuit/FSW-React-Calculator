@@ -13,18 +13,37 @@ class Calculator extends Component {
 		};
 	}
 
-	// When you press =
 	onSubmit = () => {
-		console.log(this.state.display);
-		let displayNum = Number(this.state.display);
-		console.log(displayNum);
-		try {
+		// changing the input to a number
+		const { operation, firstInput, secondInputStored } = this.state;
+		let firstNumber = Number(firstInput);
+		let secondNumber = Number(secondInputStored);
+
+		let addition = firstNumber + secondNumber;
+		let multiply = firstNumber * secondNumber;
+		let division = firstNumber / secondNumber;
+		let subtract = firstNumber - secondNumber;
+		let percentage = (firstNumber * secondNumber) / 100;
+
+		if (operation === "+") {
 			this.setState({
-				secondDisplay: eval(this.state.display.toString()),
+				secondDisplay: addition,
 			});
-		} catch (err) {
+		} else if (operation === "*") {
 			this.setState({
-				secondDisplay: "ERROR",
+				secondDisplay: multiply,
+			});
+		} else if (operation === "/") {
+			this.setState({
+				secondDisplay: division,
+			});
+		} else if (operation === "-") {
+			this.setState({
+				secondDisplay: subtract,
+			});
+		} else if (operation === "%") {
+			this.setState({
+				secondDisplay: percentage,
 			});
 		}
 	};
@@ -61,7 +80,7 @@ class Calculator extends Component {
 	};
 
 	dot = (e) => {
-		if (this.state.display !== "" || this.state.display !== ".") {
+		if (this.state.display !== "") {
 			let inputString = this.state.display + e.target.value;
 			this.setState({
 				display: inputString,
@@ -77,22 +96,6 @@ class Calculator extends Component {
 		});
 	};
 
-	// Event listener for number 0
-	numberZero = (e) => {
-		if (this.state.display !== "") {
-			let inputString = this.state.display + e.target.value;
-			this.setState({
-				display: inputString,
-				clearDisplay: "C",
-			});
-		}
-		if (this.state.operation === "") {
-			this.setState({
-				firstInput: this.state.firstInput + e.target.value,
-			});
-		}
-	};
-
 	// when the number keys are pressed
 	numberKeyPressed = (e) => {
 		let inputString = this.state.display + e.target.value;
@@ -106,8 +109,7 @@ class Calculator extends Component {
 			this.setState({
 				firstInput: this.state.firstInput + e.target.value,
 			});
-		}
-		if (this.state.operation !== "") {
+		} else {
 			this.setState({
 				secondInputStored: this.state.secondInputStored + e.target.value,
 				clearDisplay: "C",
@@ -123,7 +125,6 @@ class Calculator extends Component {
 			operation: e.target.value,
 			display: inputString,
 		});
-		console.log(this.state.operation);
 	};
 
 	render() {
@@ -205,7 +206,7 @@ class Calculator extends Component {
 				>
 					+
 				</button>
-				<button value="0" onClick={this.numberZero} className="zero">
+				<button value="0" onClick={this.numberKeyPressed} className="zero">
 					0
 				</button>
 				<button className="operationBtn" value="." onClick={this.dot}>
