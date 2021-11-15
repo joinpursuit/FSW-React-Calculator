@@ -51,7 +51,6 @@ class App extends Component {
   render() {
     return (
       <div className = "calcBorder">
-        Testing Fonts
         <Display />
         <KeyPad />
       </div>
