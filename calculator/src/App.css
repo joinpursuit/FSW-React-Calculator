@@ -7,7 +7,7 @@
 	background-image: linear-gradient(159deg, #546fff 60%, #a6a4f1 80%);
 	border: 1px solid #000000;
 	padding: 10px;
-	margin-top: 150px;
+	margin-top: 250px;
 	grid-gap: 2px;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -15,7 +15,7 @@
 	width: 240px;
 	height: 450px;
 	align-items: center;
-	transform: scale(1.2);
+	transform: scale(1.4);
 	box-shadow: 10px 9px 10px -9px;
 	border-radius: 3%;
 }
@@ -36,6 +36,7 @@
 	color: white;
 	letter-spacing: 1px;
 	background-color: #231f20;
+	border: 1px solid rgb(233, 212, 212);
 	padding-top: 100px;
 	text-align: right;
 	grid-column: span 4;

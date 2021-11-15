@@ -5,7 +5,7 @@ class Calculator extends Component {
 		super();
 		this.state = {
 			display: "",
-			secondDisplay: "0",
+			secondDisplay: "",
 			firstInput: "",
 			secondInputStored: "",
 			clearDisplay: "AC",
@@ -14,7 +14,6 @@ class Calculator extends Component {
 	}
 
 	onSubmit = () => {
-		// changing the input to a number
 		const { operation, firstInput, secondInputStored } = this.state;
 		let firstNumber = Number(firstInput);
 		let secondNumber = Number(secondInputStored);
@@ -23,7 +22,7 @@ class Calculator extends Component {
 		let multiply = firstNumber * secondNumber;
 		let division = firstNumber / secondNumber;
 		let subtract = firstNumber - secondNumber;
-		let percentage = (firstNumber * secondNumber) / 100;
+		let percentage = (firstNumber / 100) * secondNumber;
 
 		if (operation === "+") {
 			this.setState({
@@ -81,10 +80,14 @@ class Calculator extends Component {
 
 	dot = (e) => {
 		if (this.state.display !== "") {
-			let inputString = this.state.display + e.target.value;
 			this.setState({
-				display: inputString,
+				display: this.state.display + e.target.value,
 				clearDisplay: "C",
+			});
+		}
+		if (this.state.display.length - 1 === e.target.value) {
+			this.setState({
+				display: this.state.display,
 			});
 		}
 	};
@@ -116,15 +119,34 @@ class Calculator extends Component {
 				display: inputString,
 			});
 		}
+		if (this.state.secondDisplay > 0) {
+			this.setState({
+				display: "",
+				secondDisplay: "0",
+				clearDisplay: "AC",
+				firstInput: "",
+				operation: "",
+				secondInputStored: "",
+			});
+		}
 	};
 
 	// when the operation keys are pressed
 	operationKeyPressed = (e) => {
-		let inputString = this.state.display + e.target.value;
 		this.setState({
 			operation: e.target.value,
-			display: inputString,
+			display: this.state.display + e.target.value,
 		});
+		if (this.state.secondDisplay > 0) {
+			this.setState({
+				display: "",
+				secondDisplay: "0",
+				clearDisplay: "AC",
+				firstInput: "",
+				operation: "",
+				secondInputStored: "",
+			});
+		}
 	};
 
 	render() {
@@ -137,7 +159,12 @@ class Calculator extends Component {
 					value={this.state.display}
 					disabled
 				/>
-				<input className="display" disabled value={this.state.secondDisplay} />
+				<input
+					className="display"
+					placeholder="0"
+					disabled
+					value={this.state.secondDisplay}
+				/>
 				<button className="operationBtn" onClick={this.clear}>
 					{this.state.clearDisplay}
 				</button>
