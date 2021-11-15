@@ -60,13 +60,13 @@
 }
 
 /* CONTROLS */
-form .keypad-controls {
+div .keypad-controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-area: controls;
 }
 
-form .keypad-controls button {
+div .keypad-controls button {
     background-color: hotpink;
     color: white;
     font-size: 20px;
@@ -74,7 +74,7 @@ form .keypad-controls button {
 }
 
 /* NUMBERS */
-form .keypad-numbers {
+div .keypad-numbers {
     /* border: 1px solid red; */
     grid-area: keypad;
     display: grid;
@@ -85,7 +85,7 @@ form .keypad-numbers {
     "zeronum zeronum decimalpoint"
 }
 
-form .keypad-numbers button {
+div .keypad-numbers button {
     background-color: midnightblue;
     color: white;
     font-size: 25px;
