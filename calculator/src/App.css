@@ -1,0 +1,100 @@
+/* body {
+  text-align: center;
+} */
+
+#container {
+  margin: 10% auto;
+  display: grid;
+  grid-template-areas:
+    "view view view view"
+    "ac rev percent divide"
+    "seven eight nine multi"
+    "four five six subt"
+    "one two three plus"
+    "zerobttn zerobttn period equal";
+  width: 30%;
+  grid-gap: 2px;
+  font-weight: bold;
+}
+button {
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(125, 115, 115);
+  color: white;
+  border: 1px solid black;
+}
+
+#numbers-view {
+  grid-area: view;
+  border: 1px solid grey;
+  background-color: rgb(54, 53, 53);
+  font-size: 20px;
+  padding: 20px 20px;
+  color: white;
+  border: 1px solid black;
+  text-align: right;
+  height: 20px;
+}
+
+#AC-button {
+  grid-area: ac;
+}
+#rev-button {
+  grid-area: rev;
+}
+#percent-button {
+  grid-area: percent;
+}
+#divide-button {
+  grid-area: divide;
+}
+#seven-button {
+  grid-area: seven;
+}
+#eight-button {
+  grid-area: eight;
+}
+#nine-button {
+  grid-area: nine;
+}
+#multi-button {
+  grid-area: multi;
+}
+#four-button {
+  grid-area: four;
+}
+#five-button {
+  grid-area: five;
+}
+#six-button {
+  grid-area: six;
+}
+#sub-button {
+  grid-area: subt;
+}
+#one-button {
+  grid-area: one;
+}
+#two-button {
+  grid-area: two;
+}
+#three-button {
+  grid-area: three;
+}
+#plus-button {
+  grid-area: plus;
+}
+#zero-button {
+  grid-area: zerobttn;
+}
+#period-button {
+  grid-area: period;
+}
+#equal-button {
+  grid-area: equal;
+}
+
+button.orange {
+  background-color: orange;
+}
