@@ -89,12 +89,13 @@ font-size: 24pt;
 
 .display {
   /* 65 x 3 = 195 */
-  margin: 25px;
-  width: 250px;
-  height: 90px;
-  margin: 25px;
+  
+  width: 300px;
+  height: 75px;
+  
   background-color: white;
   font-family: 'Raleway', sans-serif;
   font-size: 36pt;
+  border: 1px solid black;
 }
 
