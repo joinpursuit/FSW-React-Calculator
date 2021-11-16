@@ -70,11 +70,20 @@ class Calculator extends Component {
 		});
 	};
 	// changing - to +
+
 	changedOp = () => {
-		this.setState({
-			display: this.state.display * -1,
-		});
+		if (this.state.operation === "") {
+			this.setState({
+				display: this.state.display * -1,
+				firstInput: this.state.firstInput * -1,
+			});
+		} else {
+			this.setState({
+				secondInputStored: this.state.secondInputStored * -1,
+			});
+		}
 	};
+
 	// the numbers that show up in the input field
 	displays = (e) => {
 		this.setState({
