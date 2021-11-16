@@ -8,7 +8,7 @@
     "touchFour touchFive touchSix touchSeven"
     "touchEight touchNine touchTen touchEleven"
     "touchTwelve touchThirteen touchFourteen touchFifteen"
-    "touchSixteen touchSixteen touchSeventeen touchEighteen";
+    "touchSixteen touchSeventeen touchEighteen touchNineteen";
   margin: 100px auto;
   background-color: beige;
   border: 10px solid black;
@@ -17,7 +17,7 @@
 #result {
   grid-area: result;
   width: auto;
-  height: 25px;
+  height: 50px;
   border: 1px solid gray;
   background-color: black;
   color: white;
@@ -25,6 +25,9 @@
 }
 #touch0 {
   grid-area: touchZero;
+  background-color: red;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #touch1 {
@@ -81,9 +84,26 @@
 #touch18 {
   grid-area: touchEighteen;
 }
+#touch19 {
+  grid-area: touchNineteen;
+}
 .touches {
   min-width: 50px;
   border-radius: 25px;
   box-shadow: 5px 5px 15px 3px;
   background-color: white;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+.hidden {
+  visibility: hidden;
+}
+
+.currentResult {
+  font-size: medium;
+}
+#previousVal {
+  font-size: small;
 }

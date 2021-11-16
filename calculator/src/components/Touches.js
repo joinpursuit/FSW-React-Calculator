@@ -5,7 +5,7 @@ class Touches extends React.Component {
     render() { 
         return (
             <React.Fragment >
-                {this.props.touches.map((val,i)=> <Touch onSelectDigit={this.props.onSelectDigit} key={i} id={"touch"+i} val={val}/>)}
+                {this.props.touches.map((val,i)=> <Touch onSelectDigit={this.props.onSelectDigit} key={"key"+i} id={"touch"+i} val={val}/>)}
             
             </React.Fragment>
         );
