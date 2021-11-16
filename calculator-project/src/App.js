@@ -1,6 +1,5 @@
 import {Component} from "react";
 import './App.css';
-import data from "./data/calckeys"
 
 class App extends Component{
   constructor(){
@@ -32,12 +31,34 @@ class App extends Component{
       inputs:""
     })
   }
+  handleDecimalClick=()=>{
+    this.setState({
+      inputs: this.state.inputs / 100
+    })
+  }
   handleResultsClick=(e)=>{
     if(this.state.operator === "+"){
       this.setState({
         inputs: this.state.calculatedValue + Number(this.state.inputs)
       })
-    }
+    } else if(this.state.operator === "-"){
+      this.setState({
+        inputs: this.state.calculatedValue - Number(this.state.inputs)
+      })
+    } else if(this.state.operator === "%"){
+      this.setState({
+        inputs: this.state.calculatedValue / 100 
+
+      })
+    } else if(this.state.operator === "/"){
+      this.setState({
+        inputs: this.state.calculatedValue / Number(this.state.inputs)
+      })
+    } else if(this.state.operator === "x"){
+      this.setState({
+        inputs: this.state.calculatedValue * Number(this.state.inputs)
+      })
+    } 
     
   }
 
@@ -47,7 +68,7 @@ class App extends Component{
           <input id="input" value={this.state.inputs}/>
           <button value="AC"onClick={this.handleClearClick}>{"AC"}</button>
           <button value="+" onClick={this.handleOperatorClick}>{"+"}/-</button>
-          <button value="%" onClick={this.handleOperatorClick}>{"%"}</button>
+          <button value="%" onClick={this.handleDecimalClick}>{"%"}</button>
           <button value="/"onClick={this.handleOperatorClick}>{"/"}</button>
           <button value="7" onClick={this.handleButtonClick}>{"7"}</button>
           <button value="8" onClick={this.handleButtonClick}>{"8"}</button>
@@ -62,7 +83,7 @@ class App extends Component{
           <button value="3" onClick={this.handleButtonClick}>{"3"}</button>
           <button value="+" onClick={this.handleOperatorClick}>{"+"}</button>
           <button value="0" onClick={this.handleButtonClick} id="zero">{"0"}</button>
-          <button value="." onClick={this.handleButtonClick}>.</button>
+          <button value="." onClick={this.handleButtonClick}>{"."}</button>
           <button value="=" onClick={this.handleResultsClick}>{"="}</button>                   
         </div>
         
