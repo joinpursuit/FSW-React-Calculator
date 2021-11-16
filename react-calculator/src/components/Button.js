@@ -6,7 +6,12 @@ class Button extends React.Component {
     }
     render() {
         return (
-            <button className="button" onClick={()=> this.props.handleButtons(this.props.btn)}> {this.props.btn}</button>
+            <button 
+                className="button" 
+                onClick={()=> this.props.handleButtons(this.props.btn)}
+            > 
+                {this.props.btn.display}
+             </button>
         )
     }
 }
