@@ -84,16 +84,23 @@ class Calculator extends Component {
 
 	// when the number keys are pressed
 	numberKeyPressed = (e) => {
-		let inputString = this.state.display + e.target.value;
+		let inputString = this.state.display;
+		let inputToArray = inputString.split("");
+		let theLastDigit = inputToArray[inputToArray.length - 1];
+		console.log(theLastDigit);
+
+		if (theLastDigit === "." && e.target.value === ".") {
+			return;
+		}
 
 		// if the display is empty do nothing
 		if (this.state.display === "" && e.target.value === "0") {
 			this.setState({
 				display: "",
 			});
-		} else if (this.state.display.length < 11) {
+		} else if (this.state.display.length < 10) {
 			this.setState({
-				display: inputString,
+				display: this.state.display + e.target.value,
 				clearDisplay: "C",
 			});
 		}
@@ -107,7 +114,7 @@ class Calculator extends Component {
 			this.setState({
 				secondInputStored: this.state.secondInputStored + e.target.value,
 				clearDisplay: "C",
-				display: inputString,
+				display: this.state.display + e.target.value,
 			});
 		}
 
