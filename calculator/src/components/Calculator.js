@@ -87,7 +87,6 @@ class Calculator extends Component {
 		let inputString = this.state.display;
 		let inputToArray = inputString.split("");
 		let theLastDigit = inputToArray[inputToArray.length - 1];
-		console.log(theLastDigit);
 
 		if (theLastDigit === "." && e.target.value === ".") {
 			return;
@@ -117,19 +116,6 @@ class Calculator extends Component {
 				display: this.state.display + e.target.value,
 			});
 		}
-
-		// this is to clear after the secondDisplay is more then 0
-		if (this.state.secondDisplay > 0) {
-			this.setState({
-				display: "",
-				secondDisplay: "0",
-				clearDisplay: "AC",
-				firstInput: "",
-				operation: "",
-				secondInputStored: "",
-			});
-		}
-
 		// for the 0. to appear when the . is clicked
 		if (this.state.display === "" && e.target.value === ".") {
 			this.setState({
