@@ -17,48 +17,63 @@ class App extends Component {
   }
 
   handleButtons = (btn) => {
-    // this.setState({ changeeee
-    //   num1: this.state.num1 + btn.value,
-    //   display: this.state.num1 + btn.value,
-    // })
+
     if(btn.type === "operation") {
       this.setState({
-        operation: btn.value
+        operation: btn.value,
+        isOperator: true,
       })
-      console.log(btn.value, btn.type)
+      switch(this.state.operation) {
+        case "clear": 
+          console.log("clear");
+          break;
+        case "inverse":
+          console.log("inverse");         
+          break;
+        case "percent": 
+          console.log("percent");
+          break;
+        case "divide":
+          console.log("divide");
+          break;
+        case "multiply":
+          console.log("multiply");
+          break;
+        case "subtract":
+          console.log("subtract");
+          break;
+        case "decimal":
+          console.log("decimal");
+          break;
+        case "radical":
+          console.log("radical");
+          break;
+        case "equal":
+          console.log("equal")
+          break;
+      }
     }
     else if(btn.type==="number"){
-      console.log("number")
-      console.log(btn.value, btn.type)
+      this.setState({
+        isOperator:false,
+        num1: this.state.num1 + btn.display,
+        display: this.state.num1 + btn.display
+      })
     }
-  }
-
-  handleHistoryDisplay = () => {
-    this.setState({
-      history: this.state.display
-    })
-  }
-  
-  handleOperations = () => {
-    let input = this.state.num1
   }
 
   render(){
-
     return (
       <main className="App">
         <div className="wrapper">
           <div id="display-screen">
-            <div id="previous-screen"> {this.state.history}</div>
-          {this.state.display}
+            <div id="previous-screen"> 
+              {this.state.history}
+            </div>
+          { this.state.display}
           </div>
           <div id="calculator-container">
-          <KeyPad 
-            handleButtons={this.handleButtons}
-            handleDisplay={this.handleOperations}
-            handleHistoryDisplay= {this.handleHistoryDisplay}
-
-          />
+          <KeyPad handleButtons={this.handleButtons}/>
           </div>
           8.2 calculator
       </div>

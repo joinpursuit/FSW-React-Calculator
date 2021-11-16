@@ -3,7 +3,7 @@ import Button from "./Button";
 //keypad will contain all buttons
 const btnObj = [
         // ["C", "+-", "%", "/"],
-    {display:"C",value:"C", type:"clear"}, 
+    {display:"C",value:"clear", type:"operation"}, 
     {display:"+-", value:"inverse", type:"operation"}, 
     {display:"%", value:"percent", type:"operation"}, 
     {display:"/", value:"divide", type:"operation"}, 
@@ -39,7 +39,7 @@ class KeyPad extends React.Component {
     }
 
     render() {
-        console.log("Refer to Btn Obj Here ~~~",btnObj)
+       // console.log("Refer to Btn Obj Here ~~~",btnObj)
         return (
             btnObj.map((btn, i)=> {
                return (<Button 
