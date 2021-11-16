@@ -11,7 +11,6 @@ class App extends React.Component {
     operator: "",
     banana: "off",
     track: "",
-    play: "off",
   };
 
   clicky = (el) => {
@@ -109,7 +108,9 @@ class App extends React.Component {
         track: "",
       });
       return ( console.log("🍌"),
-        <div id="banana">
+        <div id="banana" style={{
+            display: "none",
+          }}>
           <video
             autoplay
             loop
@@ -128,20 +129,24 @@ class App extends React.Component {
         banana: "on",
         play: "on",
       });
-      const flip = () => {
-        let x = Math.floor(Math.random() * 2 === 0);
-        if (x < 2) {
+      const flip = (max, min) => {
+        let x = Math.floor(Math.random() * (max - min + 1) );
+        if (x <= 3  && this.state.banana !== "on") {
+            console.log(x)
           this.setState({ track: "intro" });
-          new Audio(Intro).play();
-        } else {
+          this.audio = new Audio(Intro).play();
+        } else if (x > 3 && this.state.banana !== "on"){
+            console.log(x)
           this.setState({ track: "outro" });
-          new Audio(Outro).play();
+          this.audio = new Audio(Outro).play();
         }
       };
-      flip();
+      flip(6, 1);
 
       return ( console.log("🍌2"),
-        <div id="banana">
+        <div id="banana" style={{
+            display: "block",
+          }}>
           <video
             autoplay
             loop
@@ -167,7 +172,9 @@ class App extends React.Component {
     const { input } = this.state;
     return (
       <>
-          <div id="banana" ></div>
+          <div id="banana" style={{
+              display: "none",
+            }} ></div>
         <div className="calculator">
           <div className="container">
             <div id="track" />
