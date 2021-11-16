@@ -14,6 +14,17 @@ class App extends Component {
     };
   }
 
+  format = (num) => {
+    let modify = this.numberF(num);
+    modify = new Intl.NumberFormat().format(modify);
+    return modify;
+  };
+
+  numberF = (num) => {
+    let strnum = String(num).replace(/\,/g, "");
+    return strnum;
+  };
+
   handleNums = (value) => {
     if (this.state.display === "0") {
       this.setState({
@@ -23,7 +34,7 @@ class App extends Component {
     } else {
       this.setState({
         wait: false,
-        display: this.state.display + value,
+        display: this.format(this.state.display + value),
       });
     }
   };
@@ -40,7 +51,7 @@ class App extends Component {
         });
         break;
       case ".":
-        if (this.state.previous.includes(".")) {
+        if (this.state.display.includes(".")) {
           break;
         } else {
           this.setState({
@@ -53,7 +64,9 @@ class App extends Component {
           break;
         } else {
           this.setState({
-            display: Number(this.state.display) * 0.01,
+            display: this.format(
+              Number(this.numberF(this.state.display)) * 0.01
+            ),
           });
           break;
         }
@@ -63,7 +76,7 @@ class App extends Component {
           break;
         } else {
           this.setState({
-            display: this.state.display * -1,
+            display: this.format(Number(this.numberF(this.state.display)) * -1),
           });
           break;
         }
@@ -72,10 +85,12 @@ class App extends Component {
 
   handleOPs = (value) => {
     if (this.state.operator && !this.state.submited) {
-      let result = this.calc(
-        Number(this.state.display),
-        Number(this.state.previous),
-        this.state.operator
+      let result = this.format(
+        this.calc(
+          Number(this.numberF(this.state.display)),
+          Number(this.numberF(this.state.previous)),
+          this.state.operator
+        )
       );
       this.setState({
         operator: value,
@@ -105,10 +120,10 @@ class App extends Component {
         ? this.setState({ previous: this.state.display })
         : this.setState({ previous: this.state.previous });
 
-      let result = String(
+      let result = this.format(
         this.calc(
-          Number(this.state.display),
-          Number(this.state.previous),
+          Number(this.numberF(this.state.display)),
+          Number(this.numberF(this.state.previous)),
           this.state.operator
         )
       );
