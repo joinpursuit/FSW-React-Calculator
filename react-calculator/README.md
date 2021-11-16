@@ -33,32 +33,32 @@ You must implement all of the user stories and acceptance criteria below. After 
 
 **I can see a calculator UI.**
 
-- I can see a number keypad on the calculator with the numbers 0-9.----------done
-- I can see keys for the plus, subtract, multiple, and divide operators.
-- I can see an equals `=` key.
-- I can see a `+/-` key.
-- I can see an all clear key `AC`---------done
-- I can see a "screen" which shows a default value of 0.-----------done
+- --------------- I can see a number keypad on the calculator with the numbers 0-9.
+- --------------- I can see keys for the plus, subtract, multiple, and divide operators.
+- -------------- I can see an equals `=` key.
+- **************I can see a `+/-` key.
+- ---------------- I can see an all clear key `AC`
+- ----------------I can see a "screen" which shows a default value of 0.
 
 **I can enter readable positive and negative integers.**
 
-- I can click a number key and see the number on the screen.--------done
-- I can enter multi-digit numbers on the keypad and see them on the screen.-----------done
+- ------------- I can click a number key and see the number on the screen.
+- ------------- I can enter multi-digit numbers on the keypad and see them on the screen.
 - When I enter a number of 1,000 or more, I see commas appear in the right place to format the number. (Example: 14,563,024)
-- I can make a positive number negative (or vice versa) with the `+/-` key.
+- *************I can make a positive number negative (or vice versa) with the `+/-` key.
 
 **I can add, subtract, multiply, and divide.**
 
-- I can enter a number, `+`, another number, then `=` and see the correct addition result.
-- I can enter a number, `-`, another number, then `=` and see the correct subtraction result.
-- I can enter a number, `x`, another number, then `=` and see the correct multiplication result.
-- I can enter a number, `x`, another number, then `=` and see the correct division result _rounded to the nearest integer_.
+- ------------- I can enter a number, `+`, another number, then `=` and see the correct addition result.
+- ------------- I can enter a number, `-`, another number, then `=` and see the correct subtraction result.
+- ------------ I can enter a number, `x`, another number, then `=` and see the correct multiplication result.
+- ------------- I can enter a number, `x`, another number, then `=` and see the correct division result _rounded to the nearest integer_.
 
 **I can clear my input to reset everything.**
 
-- When I click the clear key, the number on the screen is removed.--------done
-- When I click the clear key, I see a default number `0` on the screen.----------done
-- When I click the clear key during a calculation in progress, the full state is reset. (When I push `=`, the screen should still say `0`)-----------done
+- -------------- When I click the clear key, the number on the screen is removed.
+- ------------- When I click the clear key, I see a default number `0` on the screen.
+- ------------ When I click the clear key during a calculation in progress, the full state is reset. (When I push `=`, the screen should still say `0`)
 
 **I can visit the calculator on the Internet.**
 
