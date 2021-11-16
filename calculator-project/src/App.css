@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+.calc-container{
+  width: 50px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat (4, 1 fr);
+}
