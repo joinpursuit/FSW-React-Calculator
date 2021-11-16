@@ -3,11 +3,13 @@ import './Keypad.css';
 
 class Keypad extends Component{
     render(){
+        const result = Number(this.props.display).toLocaleString();
+        
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
                     {/* <input readOnly={this.props.display} value={this.props.display.toLocaleString()} type="text"/> */}
-                    <div>{this.props.display.toLocaleString()}</div>
+                    <div>{result}</div>
                 </div>
                 <div className="keypad-label">
                   Hello Calculator

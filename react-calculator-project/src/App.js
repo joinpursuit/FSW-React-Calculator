@@ -14,10 +14,10 @@ class App extends Component {
   }
 
   handleNumberClick = (event) => {
-    // console.log("with commas: ", Number(this.state.display).toLocaleString())
-    // console.log("num clicked: ", event.target.value)
+    console.log("with commas: ", Number(this.state.display).toLocaleString())
+    console.log("num clicked: ", event.target.value)
     this.setState({
-      display: `${Number(this.state.display.toLocaleString() + event.target.value)}`,
+      display: `${Number(this.state.display + event.target.value)}`,
     });
   };
 
