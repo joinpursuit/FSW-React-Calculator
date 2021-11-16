@@ -40,36 +40,7 @@ export default{
          "digit": 9,
          "value": "nine"
       },
-      {
-         "digit": "=",
-         "value": "equal"
-      },
-      {
-         "digit": "AC",
-         "value": "clear"
-      },
-      {
-         "digit": "x" ,
-         "value": "multiply"
-      },
-      {
-         "digit": "+",
-         "value": "plus"
-      },
-      {
-         "digit": "-",
-         "value": "minus"
-      },
-      {
-         "digit": "÷",
-         "value": "divide"
-      },
-      {
-         "digit":"+/-" ,
-         "value": "pos-neg"
-      },
       
-
    ]
 }
 

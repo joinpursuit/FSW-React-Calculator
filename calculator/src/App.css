@@ -8,8 +8,7 @@
   display: grid;
   width: 400px;
   height: 400px;
-  margin-left: 400px;
-  margin-top: 300px;
+  margin: 0 auto;
   border: 8px solid gray;
   border-radius: 30px;
   background-color: peachpuff;
@@ -25,8 +24,10 @@
   border: 2px solid black;
   border-radius: 10px;
   text-align: right;
-  font-size: 90px;
+  font-size: 70px;
   box-shadow: 5px 5px 15px -5px;
+  overflow: scroll;
+  white-space: nowrap;
 }
 
 .button-container{
