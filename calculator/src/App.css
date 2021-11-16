@@ -1,0 +1,125 @@
+
+.calculator-container {
+    margin: 50px auto;
+    max-width: 330px;
+    height: 235px; 
+    border: 15px solid #9E9E9E;
+    border-radius: 10px;
+}
+
+.calculator-container .display-container {
+    height: 36%;
+}
+
+.calculator-screen {
+    width: 100%;
+    font-size: 5rem;
+    border: none;
+    background-color: #252525;
+    color: #fff;
+    text-align: right;
+}
+
+#button-container {
+    display: flex;
+    align-items: stretch; 
+    position: relative;
+    height: 60%;
+    overflow: hidden;
+    z-index: 100;
+}
+
+#button-container .general {
+    display: flex;
+    align-items: stretch;
+}
+
+#button-container .general .digits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 75%;
+    font-size: 20px;
+    color: #FFF;
+    background-color: #212121;
+}
+
+#button-container .general .digits .calc-button {
+    flex-basis: 32%;
+}
+
+#button-container .general .operator-side {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 20%;
+    font-size: 14px;
+    color: #F5F5F5;
+    background-color: #424242;
+}
+
+#button-container .general .operator-side .calc-button {
+    flex-basis: 100%;
+}
+
+#button-container .scientific {
+    position: absolute;
+    right: -75%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    font-size: 16px;
+    color: #212121;
+    background-color: #69f0ae;
+    transition: all .5s cubic-bezier(0, 1, 0.5, 1);
+}
+
+#button-container .scientific:hover {
+    right: 0;
+}
+
+#button-container .scientific:hover + .general .digits {
+    color: #424242;
+}
+
+#button-container .scientific .calc-button {
+    flex-basis: 32%;
+}
+
+.calc-button {
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+}
+
+/* button:hover {
+    background-color: #eaeaea;
+} */
+
+/* .operator {
+    color: #337cac;
+}
+
+.all-clear {
+    background-color: #f0595f;
+    border-color: #b0353a;
+    color: #fff;
+}
+
+.all-clear:hover {
+    background-color: #f17377;
+}
+
+.equal {
+    background-color: #2e86c0;
+    border-color: #337cac;
+    color: #fff
+}
+
+.equal:hover{
+    background-color: #4e9ed4;
+} */
+
