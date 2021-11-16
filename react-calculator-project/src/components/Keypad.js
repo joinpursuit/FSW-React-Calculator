@@ -6,8 +6,8 @@ class Keypad extends Component{
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    {/* <input value={this.props.display} type="text"/> */}
-                    <div>{this.props.display}</div>
+                    {/* <input readOnly={this.props.display} value={this.props.display.toLocaleString()} type="text"/> */}
+                    <div>{this.props.display.toLocaleString()}</div>
                 </div>
                 <div className="keypad-label">
                   Hello Calculator

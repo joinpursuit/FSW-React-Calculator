@@ -14,8 +14,10 @@ class App extends Component {
   }
 
   handleNumberClick = (event) => {
+    // console.log("with commas: ", Number(this.state.display).toLocaleString())
+    // console.log("num clicked: ", event.target.value)
     this.setState({
-      display: `${Number(this.state.display + event.target.value)}`,
+      display: `${Number(this.state.display.toLocaleString() + event.target.value)}`,
     });
   };
 
@@ -35,7 +37,7 @@ class App extends Component {
         display: `Error.`,
       })
     } else {
-      const result = this[operation](Number(currentNum), Number(display));
+      const result = this[operation](Number(currentNum), Number(display.toLocaleString()));
       this.setState({
         display: result,
       })
@@ -72,6 +74,14 @@ class App extends Component {
     }
   };
 
+  handleComma = () => {
+    if (this.state.display >= 3){
+      this.setState({
+        display: this.state.display + ','
+      })
+    }
+  }
+
   multiply = (a, b) => a * b;
 
   divide = (a, b) => a / b;
@@ -91,7 +101,8 @@ class App extends Component {
           handlePercent={this.handlePercent}
           handleFlipSign={this.handleFlipSign}
           handleDecimal={this.handleDecimal}
-          display={this.state.display.toLocaleString()}
+          handleComma={this.handleComma}
+          display={this.state.display}
         />
       </div>
     );
