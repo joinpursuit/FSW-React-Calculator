@@ -1,0 +1,105 @@
+.keypad-buttons {
+    display: grid;
+    width: 300px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+    "display display display display"
+    "ac posneg percent divide"
+    "seven eight nine mult"
+    "four five six minus"
+    "one two three addition"
+    "zeroArea zeroArea deci equals";
+    margin: 0 auto;
+    margin-top: 20vh;
+}
+
+
+
+#calc-app {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    display: grid;
+    align-items: center;
+}
+
+#calc-display {
+    grid-area: display;
+    text-align: center;
+}
+
+#ac {
+    grid-area: ac;
+}
+
+#posneg {
+    grid-area: posneg;
+}
+
+#percent {
+    grid-area: percent;
+}
+
+#divide {
+    grid-area: divide;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+#multiply {
+    grid-area: mult;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#minus {
+    grid-area: minus;
+}
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#add {
+    grid-area: addition;
+}
+
+#zero {
+    grid-area: zeroArea;
+}
+
+#decimal {
+    grid-area: deci;
+}
+
+#equal {
+    grid-area: equals;
+}

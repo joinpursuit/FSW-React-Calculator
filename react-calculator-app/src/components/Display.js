@@ -1,24 +1,24 @@
-import React from "react";
+// import React from "react";
 
-class Display extends ({ Component }) {
-  constructor() {
-    super();
-    this.state = {
-      displayResult: 0,
-    };
-  }
+// class Display extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       displayResult: 0,
+//     };
+//   }
   
-  handleChangeResult = () => {
+//   handleChangeResult = () => {
     
-  }
+//   }
 
-  render() {
-    return (
-      <div id="calc-display">
-        <section>{this.state.result}</section>
-      </div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div id="calc-display">
+//         {this.state.displayResult}
+//       </div>
+//     );
+//   }
+// }
 
-export default Display;
+// export default Display;
