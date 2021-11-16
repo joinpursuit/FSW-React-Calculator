@@ -37,7 +37,7 @@ class App extends Component {
         display: `Error.`,
       })
     } else {
-      const result = this[operation](Number(currentNum), Number(display.toLocaleString()));
+      const result = this[operation](Number(currentNum), Number(display));
       this.setState({
         display: result,
       })
