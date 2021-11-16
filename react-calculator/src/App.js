@@ -1,5 +1,6 @@
 import './App.css';
 import { Component } from 'react'
+import Keypad from './components/Keypad';
 
 class App extends Component {
   constructor(){
@@ -22,8 +23,6 @@ class App extends Component {
         shownValue: Number(commasRemoved + num).toLocaleString()
       })
     }
-    console.log(typeof this.state.shownValue);
-    console.log(this.state.shownValue)
   }
 
   handleEquals=()=>{
@@ -88,29 +87,10 @@ class App extends Component {
     return (
       <div id="main">
         <div id="screen">{ this.state.shownValue }</div>
+        <Keypad numberFunc={this.handleNumberButtons} OpsFunc={this.handleOperations}
+        equalsFunc={this.handleEquals} PosNegFunc={this.handlePositiveNegative}
+        clearFunc={this.handleAllClear}/>
         
-        <div id="keypad">
-            <button id="allClear" onClick={this.handleAllClear}> AC </button>
-            <button id="PosNeg" onClick={()=>this.handlePositiveNegative()}> +/- </button>
-            <br/>
-            <button className="operationButtons" onClick={()=>this.handleOperations('/')}> / </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('7')}> 7 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('8')}> 8 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('9')}> 9 </button>
-            <button className="operationButtons" onClick={()=>this.handleOperations('*')}> X </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('4')}> 4 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('5')}> 5 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('6')}> 6 </button>
-            <button className="operationButtons" onClick={()=>this.handleOperations('-')}> - </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('1')}> 1 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('2')}> 2 </button>
-            <button className="numberButtons" onClick={()=>this.handleNumberButtons('3')}> 3 </button>
-            <button className="operationButtons" onClick={()=>this.handleOperations('+')}> + </button>
-            <br/>
-            <button id="zero-button" onClick={()=>this.handleNumberButtons('0')}> 0 </button>
-            <br/> 
-            <button id="equals-button" onClick={()=>this.handleEquals()}> = </button>  
-        </div>
       </div>
     )
   }
