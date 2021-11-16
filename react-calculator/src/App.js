@@ -12,37 +12,43 @@ class App extends Component {
   }
 
   handleNumberButtons=(num)=>{
+    let commasRemoved = this.state.shownValue.replaceAll(',','');
     if(this.state.shownValue === '0'){
       this.setState({
-        shownValue:  num
+        shownValue: num
       })
     }else{
       this.setState({
-        shownValue: this.state.shownValue + num
+        shownValue: Number(commasRemoved + num).toLocaleString()
       })
     }
+    console.log(typeof this.state.shownValue);
+    console.log(this.state.shownValue)
   }
 
   handleEquals=()=>{
+    let commasRemovedShown = this.state.shownValue.replaceAll(',','');
+    let commasRemovedStored = this.state.storedValue.replaceAll(',','');
+
    switch (this.state.operation) {
      case '+':
   this.setState({
-    shownValue: Number(this.state.storedValue) + Number(this.state.shownValue)
+    shownValue: (Number(commasRemovedStored) + Number(commasRemovedShown)).toLocaleString()
   })
        break;
      case '-':
   this.setState({
-    shownValue: Number(this.state.storedValue) - Number(this.state.shownValue)
+    shownValue: (Number(commasRemovedStored) - Number(commasRemovedShown)).toLocaleString()
   })
        break;
      case '*':
   this.setState({
-    shownValue: Number(this.state.storedValue) * Number(this.state.shownValue)
+    shownValue: (Number(commasRemovedStored) * Number(commasRemovedShown)).toLocaleString()
   })
        break;
      case '/':
   this.setState({
-    shownValue: Math.round(Number(this.state.storedValue) / Number(this.state.shownValue))
+    shownValue: (Math.round(Number(commasRemovedStored) / Number(commasRemovedShown))).toLocaleString()
   })
        break;
      default:
