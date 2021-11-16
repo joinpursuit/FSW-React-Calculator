@@ -65,10 +65,10 @@ class App extends Component {
   };
 
   handleDecimal = () => {
-    if (!this.state.display.includes('.')){    
-      this.setState({
-        display: this.state.display + '.'
-      })
+    if (!this.state.display.includes('.')){  
+        this.setState({
+          display: this.state.display + '.'
+        })
     }
   };
 

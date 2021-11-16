@@ -6,7 +6,15 @@
 /* CONTAINER */
 .keypad-container {
     border-radius: 30px;
+    
     background-color: #777;
+    /* background-image: url(https://st2.depositphotos.com/2060305/7239/v/600/depositphotos_72399269-stock-illustration-mathematical-symbols-seamless-pattern-with.jpg); */
+    /* background-image: url(https://us.123rf.com/450wm/vda82/vda821712/vda82171200012/91354225-halftone-numbers-background-circulary-distributed-halftone-effect-math-vector-pattern-circle-digits-.jpg?ver=6); */
+    /* background-image: url(https://www.wallpapertip.com/wmimgs/38-389286_seamless-pattern-cute-no-watermark.jpg); */
+    /* background-image: url(https://images.fineartamerica.com/images/artworkimages/medium/2/bright-seamless-pattern-in-geometric-iryna-omelchak.jpg); */
+    /* background-image: url(https://thumbs.dreamstime.com/b/geometric-seamless-background-rounded-rectangles-simple-shapes-pattern-light-pink-purple-blue-green-colors-cute-retro-backing-165816368.jpg); */
+    background-size: 50vw;
+
     box-shadow: 2px 2px 6px 4px black;
     margin: 0 auto;
     display: grid;
@@ -67,6 +75,7 @@ section .keypad-controls {
 }
 
 section .keypad-controls button {
+    border-radius: 7px;
     background-color: hotpink;
     color: white;
     font-size: 20px;
@@ -86,6 +95,7 @@ section .keypad-numbers {
 }
 
 section .keypad-numbers button {
+    border-radius: 7px;
     background-color: midnightblue;
     color: white;
     font-size: 25px;
@@ -144,6 +154,7 @@ section .keypad-operators {
 }
 
 section .keypad-operators button {
+    border-radius: 7px;
     background-color: teal;
     color: white;
     font-size: 25px;
