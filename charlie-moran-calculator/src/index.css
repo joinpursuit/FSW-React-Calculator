@@ -106,3 +106,13 @@ color: white;
     justify-content:center;
     overflow: hidden;
 }
+
+.copyright {
+    display:grid;
+    flex: 1 0 auto;
+    flex-shrink: 0;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    margin-bottom: -1px;
+}
