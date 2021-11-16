@@ -1,48 +1,44 @@
 import './App.css';
 import {Component} from "react";
+import KeyPad from './components/KeyPad';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      
+      result: "0",
+      num1: "",
+      num2: "",
+      operation:"",
+      isOperator: false,
+      display: "",
     }
   }
 
+  handleButtons = (num) => {
+    console.log(num)
+  }
+
+  handleInput = () => {
+    this.setState({
+    })
+  }
   render(){
 
     return (
       <main className="App">
-        <section id="calculator-container">
-          <section id="display-screen">  default 0  </section>
-          <section id="display-buttons"> 
-            
-            <div id="button"> AC </div>
-            <div id="button"> +/- </div>
-            <div id="button"> % </div>
-            <div id="button"> / </div>
-            <div id="button"> 7 </div>
-            <div id="button"> 8 </div>
-            <div id="button"> 9 </div>
-            <div id="button"> X </div>
-            <div id="button"> 4 </div>
-            <div id="button"> 5 </div>
-            <div id="button"> 6 </div>
-            <div id="button"> - </div>
-            <div id="button"> 1 </div>
-            <div id="button"> 2 </div>
-            <div id="button"> 3 </div>
-            <div id="button"> + </div>
-            <div id="button" className=".last"> 0 </div>
-            <div id="button"> . </div>
-            <div id="button"> = </div>
-          </section>
-        </section>
+        <div className="wrapper">
+          <div id="display-screen">
+          {this.state.result}
+          </div>
+          <div id="calculator-container">
+          <KeyPad handleButtons={this.handleButtons}/>
+          </div>
+          8.2 calculator
+      </div>
       </main>
     );
   }
 }
-
-
 
 export default App;
