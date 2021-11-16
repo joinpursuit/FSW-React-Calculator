@@ -6,12 +6,13 @@ class Keypad extends Component{
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
+                    {/* <input value={this.props.display} type="text"/> */}
                     <div>{this.props.display}</div>
                 </div>
                 <div className="keypad-label">
                   Hello Calculator
                 </div>
-                <div className="form-container">
+                <section className="section-container">
                     <div className="keypad-controls">
                         <button onClick={this.props.handleReset} id="all-clear" value="AC">AC</button>
                         <button onClick={this.props.handleFlipSign} id="flip-sign" value="+/-">&#43;/&#45;</button>
@@ -37,7 +38,7 @@ class Keypad extends Component{
                         <button onClick={()=>this.props.handleOperationChange('add')} id="add" value="+">&#43;</button> 
                         <button onClick={this.props.evaluate} id="equals" value="=">&#61;</button>
                     </div>
-                </div>
+                </section>
                 <div className="keypad-footer">
                     <br />
                 </div>

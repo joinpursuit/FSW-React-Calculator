@@ -48,7 +48,7 @@
 }
 
 /* FORM CONTAINER */
-.form-container {
+.section-container {
     grid-area: form;
     display: grid;
     grid-template-areas:
@@ -60,13 +60,13 @@
 }
 
 /* CONTROLS */
-div .keypad-controls {
+section .keypad-controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-area: controls;
 }
 
-div .keypad-controls button {
+section .keypad-controls button {
     background-color: hotpink;
     color: white;
     font-size: 20px;
@@ -74,7 +74,7 @@ div .keypad-controls button {
 }
 
 /* NUMBERS */
-div .keypad-numbers {
+section .keypad-numbers {
     /* border: 1px solid red; */
     grid-area: keypad;
     display: grid;
@@ -85,50 +85,50 @@ div .keypad-numbers {
     "zeronum zeronum decimalpoint"
 }
 
-div .keypad-numbers button {
+section .keypad-numbers button {
     background-color: midnightblue;
     color: white;
     font-size: 25px;
     height: 50px;
 }
 
-#n1 {
+#one {
     grid-area: one;
 }
 
-#n2 {
+#two {
     grid-area: two;
 }
 
-#n3 {
+#three {
     grid-area: three;
 }
 
-#n4 {
+#four {
     grid-area: four;
 }
 
-#n5 {
+#five {
     grid-area: five;
 }
 
-#n6 {
+#six {
     grid-area: six;
 }
 
-#n7 {
+#seven {
     grid-area: seven;
 }
 
-#n8 {
+#eight {
     grid-area: eight;
 }
 
-#n9 {
+#nine {
     grid-area: nine;
 }
 
-#n0 {
+#zero {
     grid-area: zeronum;
 }
 
@@ -138,12 +138,12 @@ div .keypad-numbers button {
 
 
 /* OPERATORS */
-form .keypad-operators {
+section .keypad-operators {
     display: grid;
     grid-area: operators;
 }
 
-form .keypad-operators button {
+section .keypad-operators button {
     background-color: teal;
     color: white;
     font-size: 25px;

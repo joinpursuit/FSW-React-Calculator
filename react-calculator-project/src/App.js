@@ -2,7 +2,6 @@ import { Component } from 'react';
 import './App.css';
 import Keypad from './components/Keypad';
 
-
 class App extends Component {
   constructor() {
     super();
@@ -13,15 +12,6 @@ class App extends Component {
       operation: '',
     };
   }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-    // let makeEquation = this.state.display + this.state.operation + this.state.display; // adding strings together
-    
-    // this.setState({
-    //   currentNum: makeEquation,
-    // });
-  // };
 
   handleNumberClick = (event) => {
     this.setState({
@@ -39,10 +29,17 @@ class App extends Component {
 
   evaluate = () => {
     const { display, currentNum, operation } = this.state;
-    const result = this[operation](Number(currentNum), Number(display));
-    this.setState({
-      display: result,
-    })  
+    
+    if (operation === ''){
+      this.setState({
+        display: `Error.`,
+      })
+    } else {
+      const result = this[operation](Number(currentNum), Number(display));
+      this.setState({
+        display: result,
+      })
+    }
   }
 
   handleReset = () => {
@@ -67,8 +64,10 @@ class App extends Component {
     })
   };
 
-  handleDecimal = (event) => {
-    console.log("Add code for handleDecimal", event.target.value);
+  handleDecimal = () => {
+    this.setState({
+      display: `${(Number(Math.round(this.state.display)))}`,
+    })
   };
 
   multiply = (a, b) => a * b;
@@ -79,12 +78,10 @@ class App extends Component {
 
   add = (a, b) => a + b;
 
-
   render() {
     return (
       <div className="App">
         <Keypad
-          handleSubmit={this.handleSubmit}
           handleNumberClick={this.handleNumberClick}
           handleOperationChange={this.handleOperationChange}
           evaluate={this.evaluate}
@@ -92,7 +89,7 @@ class App extends Component {
           handlePercent={this.handlePercent}
           handleFlipSign={this.handleFlipSign}
           handleDecimal={this.handleDecimal}
-          display={this.state.display}
+          display={this.state.display.toLocaleString()}
         />
       </div>
     );
