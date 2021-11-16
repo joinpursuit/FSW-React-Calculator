@@ -16,13 +16,13 @@ class Input extends Component{
     handleInputSubmission=(event)=>{
         this.setState({
             characterInput: event.target.value,
-            inputs: [...this.state.inputs,characterInput ]
+            inputs: [...this.state.inputs,characterInput]
         })
     }
     handleEqualCalculate=()=>{
         this.setState({
 
-
+            
             characterInput: "",
         })
 

@@ -1,22 +1,16 @@
 import { Component } from "react";
+import data from calckeys
+
 
 class Keypad extends Component{
     constructor(){
         super();
+        this.state = {
+            keyList: data,
+
+        }
     }
 
-     KeyGen() {
-
-        calckeys.map((key)=>{
-            return (
-                <div>
-                    <button value={key} title={key}/>
-                </div>
-            )
-        })
-        
-    
-    }
     
 
     render(){
