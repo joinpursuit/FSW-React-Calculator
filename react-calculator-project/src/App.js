@@ -30,7 +30,7 @@ class App extends Component {
   evaluate = () => {
     const { display, currentNum, operation } = this.state;
     
-    if (operation === ''){
+    if (operation === '' ){
       this.setState({
         display: `Error.`,
       })
@@ -65,9 +65,11 @@ class App extends Component {
   };
 
   handleDecimal = () => {
-    this.setState({
-      display: `${(Number(Math.round(this.state.display)))}`,
-    })
+    if (!this.state.display.includes('.')){    
+      this.setState({
+        display: this.state.display + '.'
+      })
+    }
   };
 
   multiply = (a, b) => a * b;
