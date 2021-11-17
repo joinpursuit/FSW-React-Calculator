@@ -1,0 +1,25 @@
+.App {
+  width: 400px;
+  height: 600px;
+  background-color: black;
+  color: white;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.display {
+  font-size: 55px;
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-align: right;
+}
+
+.buttons {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bottom {
+}
