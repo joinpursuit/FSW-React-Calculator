@@ -31,20 +31,30 @@ body {
 }
 #touch0 {
   grid-area: touchZero;
-  background-color: red;
+  background-image: linear-gradient(to right, black, red, black);
 }
 
 #touch1 {
   grid-area: touchOne;
+  background-image: linear-gradient(to right, black, white);
+  color: wheat;
+}
+#touch1:hover {
+  grid-area: touchOne;
+  background-color: white;
+  color: black;
 }
 #touch2 {
   grid-area: touchTwo;
+  background-color: gray;
 }
 #touch3 {
   grid-area: touchThree;
+  background: gray;
 }
 #touch4 {
   grid-area: touchFour;
+  background-image: linear-gradient(to right, black, goldenrod, white);
 }
 #touch5 {
   grid-area: touchFive;
@@ -57,6 +67,7 @@ body {
 }
 #touch8 {
   grid-area: touchEight;
+  background-image: linear-gradient(to right, black, goldenrod, white);
 }
 #touch9 {
   grid-area: touchNine;
@@ -69,6 +80,7 @@ body {
 }
 #touch12 {
   grid-area: touchTwelve;
+  background-image: linear-gradient(to right, black, goldenrod, white);
 }
 #touch13 {
   grid-area: touchThirteen;
@@ -81,6 +93,7 @@ body {
 }
 #touch16 {
   grid-area: touchSixteen;
+  background-image: linear-gradient(to right, black, goldenrod, white);
 }
 #touch17 {
   grid-area: touchSeventeen;
@@ -90,6 +103,7 @@ body {
 }
 #touch19 {
   grid-area: touchNineteen;
+  background-image: linear-gradient(to right, white, black);
 }
 .touches {
   min-width: 50px;
