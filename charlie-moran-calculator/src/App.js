@@ -3,6 +3,7 @@ import "./App.css";
 import Banana from "./Components/video/banana.mp4";
 import Intro from "./Components/audio/Intro.mp3";
 import Outro from "./Components/audio/Outro.mp3";
+import BananaSlap from "./Components/audio/bananaslap.mp3";
 
 class App extends React.Component {
   state = {
@@ -25,10 +26,14 @@ class App extends React.Component {
         previousNum: "Err",
       });
     } else if (this.state.calculated === "no" && this.state.err === "no") {
+      let thingy = () => new Audio(BananaSlap).play();
+      thingy();
       this.setState({
         input: this.state.input + el.target.value,
       });
     } else if (this.state.err === "no") {
+      let thingy = () => new Audio(BananaSlap).play();
+      thingy();
       this.setState({ input: el.target.value, calculated: "no" });
     }
   };
