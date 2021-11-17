@@ -9,8 +9,8 @@ class Music extends React.Component {
       track: "Intro",
     }
 
-    this.url1 = "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/Components/audio/Intro.mp3";
-    this.url2 = "/Users/carlosmoran/Documents/GitStuff/Classwork/FSW-React-Calculator/charlie-moran-calculator/src/Components/audio/Outro.mp3";
+    this.url1 = "./Components/audio/Intro.mp3";
+    this.url2 = "./Components/audio/Outro.mp3";
     this.audio = new Audio(this.url);
   }
 
