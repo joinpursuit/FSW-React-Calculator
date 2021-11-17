@@ -5,16 +5,9 @@ class Keypad extends Component{
     render(){
         const result = Number(this.props.display).toLocaleString();
 
-        /* Random */
-        if (this.props.display === '3781637'){
-            alert("legible.");
-          }
-
-        // console.log(three);
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
-                    {/* <input readOnly={this.props.display} value={this.props.display.toLocaleString()} type="text"/> */}
                     <div>{result}</div>
                 </div>
                 <div className="keypad-label">
