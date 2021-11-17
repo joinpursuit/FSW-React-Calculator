@@ -1,24 +1,41 @@
-.texasInstrument {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.App {
+  background-color: darkslategray;
+}
+
+h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: salmon;
+}
+
+.pursuit-instrument {
   max-width: 250px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: lightslategray;
+  margin: auto;
+  border: 3px solid royalblue;
+  margin: center;
   box-shadow: maroon 0px 30px 60px -12px, black 0px 18px 36px -18px inset;
-  border: 1px solid black;
 }
 
-.numbers,
-.operators {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+.button {
+  display: block;
+  background-color: white;
 }
 
-.disp {
-  background-color: burlywood;
+button {
+  width: 25%;
+  height: 60px;
+  font-size: 15px;
+  color: maroon;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.answer {
+  height: 60px;
+  background-color: goldenrod;
+  width: 100%;
+}
+
+.answer p {
+  font-size: 20px;
+  margin: 5px;
 }
