@@ -97,9 +97,9 @@ button:hover {
   background-color: black;
   color: white;
 }
-.hidden {
+/* .hidden {
   visibility: hidden;
-}
+} */
 
 .currentResult {
   font-size: medium;
