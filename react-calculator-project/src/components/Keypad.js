@@ -5,6 +5,11 @@ class Keypad extends Component{
     render(){
         const result = Number(this.props.display).toLocaleString();
 
+        /* Random */
+        if (this.props.display === '3781637'){
+            alert("legible.");
+          }
+
         // console.log(three);
         return(
             <div className="keypad-container">
@@ -52,40 +57,3 @@ class Keypad extends Component{
 }
 
 export default Keypad;
-
-
-
-
-    // handleCommas=()=>{
-    //     /* START: FOR comma every 3 digits */
-    //     /* First half of number without decimals */
-    //     let roundResult = Math.round(this.state.result)
-    //     let roundResultCommas = roundResult.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
-    //     roundResultCommas = roundResultCommas.split("")
-    //     /* Second half of number - decimals */
-    //     let removeCommas = this.state.result.toString().split("").reverse().map((digit, index) => index !== 0 && index % 3 === 0 ? `${digit},` : digit).reverse().join("")
-    //     let getDecimal = removeCommas.split("").splice(-2).join("")
-    //     getDecimal = getDecimal.split(",")
-    //     /* Join the 2 arrays together using spread operator */
-    //     let joinedResult = roundResultCommas
-    //     let arr2 = getDecimal
-    //     joinedResult = [...joinedResult, '.', arr2].join("");
-    //     // for comma every 3 digits
-    //     this.setState({
-    //         result: joinedResult,
-    //     })
-    //     /* END: FOR comma every 3 digits */
-    // }
-
-    // calcSum=(arr)=>{
-    //     let currentValue = 0;
-    //     for (let num of arr) {
-    //         currentValue += num;
-    //     }
-    //     return currentValue;
-    // }
-
-    // add to the display the number selected
-    // set the state to have the 2 numbers with operator being added or whatever
-
-    

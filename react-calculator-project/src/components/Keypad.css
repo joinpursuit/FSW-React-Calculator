@@ -8,7 +8,7 @@
 .keypad-container {
     border-radius: 30px;
     
-    background-color: #777;
+    background-color: #222;
     /* background-image: url(https://st2.depositphotos.com/2060305/7239/v/600/depositphotos_72399269-stock-illustration-mathematical-symbols-seamless-pattern-with.jpg); */
     /* background-image: url(https://us.123rf.com/450wm/vda82/vda821712/vda82171200012/91354225-halftone-numbers-background-circulary-distributed-halftone-effect-math-vector-pattern-circle-digits-.jpg?ver=6); */
     /* background-image: url(https://www.wallpapertip.com/wmimgs/38-389286_seamless-pattern-cute-no-watermark.jpg); */
@@ -79,10 +79,11 @@ section .keypad-controls {
 
 section .keypad-controls button {
     border-radius: 7px;
-    background-color: hotpink;
+    background-color: #333;
     color: white;
     font-size: 20px;
     height: 50px;
+    cursor: pointer;
 }
 
 /* NUMBERS */
@@ -99,10 +100,11 @@ section .keypad-numbers {
 
 section .keypad-numbers button {
     border-radius: 7px;
-    background-color: midnightblue;
+    background-color: #777;
     color: white;
     font-size: 25px;
     height: 50px;
+    cursor: pointer;
 }
 
 #one {
@@ -158,10 +160,11 @@ section .keypad-operators {
 
 section .keypad-operators button {
     border-radius: 7px;
-    background-color: teal;
+    background-color: orange;
     color: white;
     font-size: 25px;
     height: 50px;
+    cursor: pointer;
 }
 
 /* FOOTER */
@@ -169,4 +172,18 @@ section .keypad-operators button {
     /* border: 1px solid red; */
     height: 25px;
     grid-area: footer;
+}
+
+
+/* MAKE BUTTONS CHANGE COLOR ON CLICK */
+section .keypad-controls button:active {
+    background-color: #444;
+}
+
+section .keypad-numbers button:active {
+    background-color: #888;
+}
+
+section .keypad-operators button:active {
+    opacity: 80%;
 }

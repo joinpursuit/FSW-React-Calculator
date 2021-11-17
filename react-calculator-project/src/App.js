@@ -42,10 +42,6 @@ class App extends Component {
         display: result,
       })
     }
-
-    if (this.state.display === '1134'){
-      alert("hello!");
-    }
   }
 
   handleReset = () => {
