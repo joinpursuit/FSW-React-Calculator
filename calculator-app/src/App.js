@@ -35,6 +35,13 @@ class App extends Component {
       this.negative()
     }
 
+    // Any other button - needs to change the state of the display + button selected
+    else {
+      this.setState({
+        displaySays: this.state.displaySays + button
+      })
+    }
+
 
   }
 
