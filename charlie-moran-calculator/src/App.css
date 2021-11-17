@@ -17,6 +17,7 @@
     padding: 5px 20px;
     font-size: 20px;
     text-align: right;
+    justify-content: right;
     outline: 1px solid purple;
 }
 .displaySmall {
@@ -24,8 +25,8 @@
     height: 0px;
     display: flex;
     text-align:center;
-    justify-content: center;
-    padding-left: 50px;
+    justify-content: left;
+    padding-left: 2px;
 }
 .btn-container {
     display: flex;

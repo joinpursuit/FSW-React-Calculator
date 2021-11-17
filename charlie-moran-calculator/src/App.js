@@ -12,19 +12,36 @@ class App extends React.Component {
     banana: "off",
     track: "",
     calculated: "no",
+    err: "no"
   };
 
   clicky = (el) => {
-    if (this.state.calculated === "no"){
-    this.setState({ input: this.state.input + el.target.value });
-  } else {
+    let inputLength = this.state.input.length;
+    let previousLength = this.state.previousNum.length;
+    if (inputLength > 15 || previousLength > 15){
+      this.setState({
+        input: "Err",
+        err: "yes",
+      })
+    }
+    else if (this.state.calculated === "no" && this.state.err === "no"){
+    this.setState({ 
+      input: this.state.input + el.target.value,
+      });
+  } else if (this.state.err === "no"){
     this.setState({input: el.target.value,
-                  calculated: "no",})
+                  calculated: "no",
+                })
   }
   };
 
   clickClear = () => {
-    this.setState({ input: "" });
+    this.setState({ 
+      input: "",
+      previousNum: "",
+      err: "no",
+     });
+    
   };
 
   clickNeg = () => {
@@ -76,13 +93,22 @@ class App extends React.Component {
   };
 
   clickCalc = () => {
+    let inputLength = this.state.input.length;
+    let previousLength = this.state.previousNum.length;
     if (this.state.input === "") {
       this.setState({
         input: "",
         previousNum: "",
         operator: "",
       });
-    } else if (this.state.operator === "plus") {
+
+    } else if (inputLength > 15 || previousLength > 15){
+      this.setState({
+        input: "Err",
+        err: "yes",
+      });
+    }
+      else if (this.state.operator === "plus") {
       this.setState({
         input: Number(this.state.previousNum) + Number(this.state.input),
         calculated: "yes",
