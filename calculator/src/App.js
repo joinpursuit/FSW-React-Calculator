@@ -81,13 +81,13 @@ class App extends Component {
   handlePosNeg=()=>{
     if(!this.state.isActive){
      this.setState({
-       num1: Math.abs(this.state.num1) * -1,
-       numDisplay: Math.abs(this.state.num1) * -1
+       numDisplay: Number(this.state.num1) * -1,
+       num1: Number(this.state.num1) * -1,
      })
     }else if(this.state.isActive){
       this.setState({
-        num2: Math.abs(this.state.num2) * -1,
-        numDisplay: Math.abs(this.state.num1) * -1
+        numDisplay: Number(this.state.num2) * -1,
+        num2: Number(this.state.num2) * -1,
        })
     }
 
