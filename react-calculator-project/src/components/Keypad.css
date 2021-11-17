@@ -1,6 +1,7 @@
 /* EVERYTHING inside CONTAINER */
 .keypad-container * {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 /* CONTAINER */
@@ -168,9 +169,4 @@ section .keypad-operators button {
     /* border: 1px solid red; */
     height: 25px;
     grid-area: footer;
-}
-
-
-.digital-font {
-    height: 30px;
 }
