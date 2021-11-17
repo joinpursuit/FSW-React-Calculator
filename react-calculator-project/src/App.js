@@ -42,6 +42,10 @@ class App extends Component {
         display: result,
       })
     }
+
+    if (this.state.display === '1134'){
+      alert("hello!");
+    }
   }
 
   handleReset = () => {
@@ -74,14 +78,6 @@ class App extends Component {
     }
   };
 
-  handleComma = () => {
-    if (this.state.display >= 3){
-      this.setState({
-        display: this.state.display + ','
-      })
-    }
-  }
-
   multiply = (a, b) => a * b;
 
   divide = (a, b) => a / b;
@@ -101,7 +97,6 @@ class App extends Component {
           handlePercent={this.handlePercent}
           handleFlipSign={this.handleFlipSign}
           handleDecimal={this.handleDecimal}
-          handleComma={this.handleComma}
           display={this.state.display}
         />
       </div>

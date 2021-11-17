@@ -169,3 +169,8 @@ section .keypad-operators button {
     height: 25px;
     grid-area: footer;
 }
+
+
+.digital-font {
+    height: 30px;
+}

@@ -1,10 +1,21 @@
 import { Component } from "react";
 import './Keypad.css';
+import zero from './zero.png';
+import one from './one.png';
+import two from './two.png';
+import three from './three.png';
+import four from './four.png';
+import five from './five.png';
+import six from './six.png';
+import seven from './seven.png';
+import eight from './eight.png';
+import nine from './nine.png';
 
 class Keypad extends Component{
     render(){
         const result = Number(this.props.display).toLocaleString();
-        
+
+        // console.log(three);
         return(
             <div className="keypad-container">
                 <div className="keypad-display">
@@ -42,6 +53,16 @@ class Keypad extends Component{
                     </div>
                 </section>
                 <div className="keypad-footer">
+                <img src={zero} className="digital-font" alt="zero" />
+                <img src={one} className="digital-font" alt="one" />
+                <img src={two} className="digital-font" alt="two" />
+                <img src={three} className="digital-font" alt="three" />
+                <img src={four} className="digital-font" alt="four" />
+                <img src={five} className="digital-font" alt="five" />
+                <img src={six} className="digital-font" alt="six" />
+                <img src={seven} className="digital-font" alt="seven" />
+                <img src={eight} className="digital-font" alt="nine" />
+                <img src={nine} className="digital-font" alt="nine" />
                     <br />
                 </div>
             </div>
