@@ -14,7 +14,7 @@ class App extends Component {
       firstNumber: "",
       secondNumber: "",
       mode: "",
-      displaySays: 12
+      displaySays: ""
     }
   }
 
@@ -29,6 +29,7 @@ class App extends Component {
 
     else if (button === "Clear") {
       this.reset()
+
     }
 
     else if (button === "+/-") {
@@ -51,37 +52,55 @@ class App extends Component {
       displaySays: 0
     })
   }
-  // To calaculate result when = is pressed - accessed through if statement 
 
-  execute = () => {
-    //numbers
-    const { firstNumber, secondNumber } = this.state
-
-    let result = 0
-    if (this.state.mode === "x") {
-      result = Number(firstNumber) + Number(secondNumber)
-    } else if (this.state.mode === "/") {
-      result = Number(firstNumber) * Number(secondNumber)
-    } else if (this.state.mode === "+") {
-      result = Number(firstNumber) + Number(secondNumber)
-    } else if (this.state.mode === "-")
-      result = Number(firstNumber) - Number(secondNumber)
-
-
+  negative = () => {
     this.setState({
-      displaySays: result,
+      displaySays: (this.state.displaySays) * -1
     })
   }
 
-
-
-
+  // To calaculate result when = is pressed - accessed through if statement 
 
   reset = () => {
     this.setState({
-      displaySays: 0
+      displaySays: ""
     })
   }
+
+
+  execute = () => {
+    //numbers
+
+    let answer = ""
+
+    const { firstNumber, secondNumber } = this.state
+
+
+
+    if (this.state.mode === "x") {
+      answer = this.state.displaySays(Number(firstNumber) * Number(secondNumber))
+    } else if (this.state.mode === "/") {
+      answer = this.state.displaySays(Number(firstNumber) * Number(secondNumber))
+    } else if (this.state.mode === "+") {
+      answer = this.state.displaySays(Number(firstNumber) + Number(secondNumber))
+    } else if (this.state.mode === "-")
+      answer = this.state.displaySays(Number(firstNumber) - Number(secondNumber))
+
+    this.setState({
+      displaySays: this.state.answer
+    })
+
+
+
+  }
+
+
+
+
+
+
+
+ 
 
 
 
