@@ -175,7 +175,7 @@ class App extends React.Component {
             </section>
 
             <section id="btn-container">
-              <div className="row1">
+              <div className="row1" id="disco">
                 <button onClick={this.clickClear} className="clear">
                   AC
                 </button>
@@ -190,7 +190,7 @@ class App extends React.Component {
                 </button>
               </div>
 
-              <div className="row2">
+              <div className="row2" id="disco">
                 <button onClick={this.clicky} value="7">
                   7
                 </button>
@@ -205,7 +205,7 @@ class App extends React.Component {
                 </button>
               </div>
 
-              <div className="row3">
+              <div className="row3" id="disco">
                 <button onClick={this.clicky} value="4">
                   4
                 </button>
@@ -220,7 +220,7 @@ class App extends React.Component {
                 </button>
               </div>
 
-              <div className="row4">
+              <div className="row4" id="disco">
                 <button onClick={this.clicky} value="1">
                   1
                 </button>
@@ -235,7 +235,7 @@ class App extends React.Component {
                 </button>
               </div>
 
-              <div className="row5">
+              <div className="row5" id="disco">
                 <button onClick={this.clicky} value="0">
                   0
                 </button>

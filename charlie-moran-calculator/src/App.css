@@ -106,3 +106,48 @@ color: white;
 #footer {
     text-align: center;
 }
+
+
+#disco{  
+    -webkit-perspective: 30px; 
+    perspective: 50px;
+    background: pink;
+  }
+  
+#disco{    
+    -webkit-animation: anim 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count:infinite;
+    
+    animation: anim 3s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite;
+  }
+  
+  @-webkit-keyframes anim {
+      0%{text-shadow:-6px 4px 0px pink;}
+      10% {text-shadow:4px -6px 0px purple;}
+      20% {text-shadow:-9px 4px 0px blue;}
+      30% {text-shadow:4px -6px 0px yellow;}
+      40% {text-shadow:-8px 4px 0px orange;}
+      50% {text-shadow:4px 5px 0px magenta;}
+      60% {text-shadow:-6px 4px 0px brown;}
+      70% {text-shadow:4px 7px 0px pink;}
+      80% {text-shadow:-9px -4px 0px lime;}
+      90% {text-shadow:4px -6px 0px cyan;}
+      100% {text-shadow:-9px 4px 0px teal;}
+  } 
+  
+  @keyframes anim {
+      0%{text-shadow:-6px 4px 0px pink;}
+      10% {text-shadow:4px -6px 0px purple;}
+      20% {text-shadow:-9px 4px 0px pink;}
+      30% {text-shadow:4px -6px 0px purple;}
+      40% {text-shadow:-8px 4px 0px pink;}
+      50% {text-shadow:4px 5px 0px purple;}
+      60% {text-shadow:-6px 4px 0px pink;}
+      70% {text-shadow:4px 7px 0px purple;}
+      80% {text-shadow:-9px -4px 0px pink;}
+      90% {text-shadow:4px -6px 0px purple;}
+      100% {text-shadow:-9px 4px 0px magenta;}
+  } 
