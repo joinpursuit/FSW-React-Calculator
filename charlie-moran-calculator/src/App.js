@@ -18,50 +18,44 @@ class App extends React.Component {
   clicky = (el) => {
     let inputLength = this.state.input.length;
     let previousLength = this.state.previousNum.length;
-    if (inputLength > 15 || previousLength > 15){
+    if (inputLength > 15 || previousLength > 15) {
       this.setState({
         input: "Err",
         err: "yes",
         previousNum: "Err",
-      })
-    }
-    else if (this.state.calculated === "no" && this.state.err === "no"){
-    this.setState({ 
-      input: this.state.input + el.target.value,
       });
-  } else if (this.state.err === "no"){
-    this.setState({input: el.target.value,
-                  calculated: "no",
-                })
-  }
+    } else if (this.state.calculated === "no" && this.state.err === "no") {
+      this.setState({
+        input: this.state.input + el.target.value,
+      });
+    } else if (this.state.err === "no") {
+      this.setState({ input: el.target.value, calculated: "no" });
+    }
   };
 
   clickClear = () => {
-    this.setState({ 
+    this.setState({
       input: "",
       previousNum: "",
       err: "no",
-     });
-    
+    });
   };
 
   clickNeg = () => {
-    this.setState({ 
-      input: Number(this.state.input) * -1 
+    this.setState({
+      input: Number(this.state.input) * -1,
     });
   };
 
   clickZero = () => {
     if (this.state.input !== "") {
-      this.setState({ input: this.state.input + 0
-       });
+      this.setState({ input: this.state.input + 0 });
     }
   };
 
   clickDec = () => {
     if (this.state.input.indexOf(".") === -1) {
-      this.setState({ input: this.state.input + "." 
-    });
+      this.setState({ input: this.state.input + "." });
     }
   };
 
@@ -106,14 +100,13 @@ class App extends React.Component {
         previousNum: "",
         operator: "",
       });
-
-    } else if (inputLength > 15 || previousLength > 15){
+    } else if (inputLength > 15 || previousLength > 15) {
       this.setState({
         input: "Err",
         err: "yes",
+        previousNum: "Err",
       });
-    }
-      else if (this.state.operator === "plus") {
+    } else if (this.state.operator === "plus") {
       this.setState({
         input: Number(this.state.previousNum) + Number(this.state.input),
         calculated: "yes",
@@ -151,13 +144,17 @@ class App extends React.Component {
       bg.style.display = "none";
       sg.autoPlay = false;
       sg.muted = true;
-      return ( console.log("🍌"),
-        <div id="banana" style={{
-            display: "none",
-          }}>
-        </div>
+      return (
+        console.log("🍌"),
+        (
+          <div
+            id="banana"
+            style={{
+              display: "none",
+            }}
+          ></div>
+        )
       );
-
     } else if (bg.style.display === "none") {
       this.setState({
         banana: "on",
@@ -165,35 +162,44 @@ class App extends React.Component {
       });
       bg.style.display = "block";
       const flip = (max, min) => {
-        let x = Math.floor(Math.random() * (max - min + 1) );
-        if (x <= 3  && this.state.banana !== "on") {
-            sg.currentTime = 0;
-            sg.muted = false;
+        let x = Math.floor(Math.random() * (max - min + 1));
+        if (x <= 3 && this.state.banana !== "on") {
+          sg.currentTime = 0;
+          sg.muted = false;
           this.setState({ track: Intro });
-        } else if (x > 3 && this.state.banana !== "on"){
-            sg.currentTime = 0;
-            sg.muted = false;
+        } else if (x > 3 && this.state.banana !== "on") {
+          sg.currentTime = 0;
+          sg.muted = false;
           this.setState({ track: Outro });
         }
       };
       flip(6, 1);
 
-      return ( console.log("🍌🍌"),
-        <div id="banana" style={{
-            display: "block",
-          }}>
-        </div>
+      return (
+        console.log("🍌🍌"),
+        (
+          <div
+            id="banana"
+            style={{
+              display: "block",
+            }}
+          ></div>
+        )
       );
     }
   };
   render() {
     const { input } = this.state;
-    const { previousNum} = this.state;
+    const { previousNum } = this.state;
     return (
       <>
-          <div id="banana" style={{
-              display: "none",
-            }} ><video
+        <div
+          id="banana"
+          style={{
+            display: "none",
+          }}
+        >
+          <video
             autoPlay
             loop
             muted
@@ -209,15 +215,21 @@ class App extends React.Component {
           >
             <source src={Banana} type="video/mp4" />
           </video>
-          <audio src={this.state.track} id="song" muted={true} autoPlay ={true} loop/>
-          </div>
+          <audio
+            src={this.state.track}
+            id="song"
+            muted={true}
+            autoPlay={true}
+            loop
+          />
+        </div>
         <div className="calculator">
           <div className="container">
             <div id="track" />
             <section id="display">
               <div className="displaySmall">
-              ({new Intl.NumberFormat().format(previousNum)})
-                </div>
+                ({new Intl.NumberFormat().format(previousNum)})
+              </div>
               <div className="display">
                 {new Intl.NumberFormat().format(input)}
               </div>
@@ -231,10 +243,10 @@ class App extends React.Component {
                 <button onClick={this.clickNeg} className="neg">
                   +/-
                 </button>
-                <button onClick={this.banana} className="banana" >
+                <button onClick={this.banana} className="banana">
                   🍌
                 </button>
-                <button onClick={this.clickDivide} className="operator" >
+                <button onClick={this.clickDivide} className="operator">
                   /
                 </button>
               </div>
