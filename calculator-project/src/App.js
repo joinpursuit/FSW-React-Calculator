@@ -59,32 +59,32 @@ class App extends Component{
         inputs: this.state.calculatedValue * Number(this.state.inputs)
       })
     } 
-    
+
   }
 
   render(){
     return(
       <div id="app-container">
           <input id="input" value={this.state.inputs}/>
-          <button value="AC"onClick={this.handleClearClick}>{"AC"}</button>
-          <button value="+" onClick={this.handleOperatorClick}>{"+"}/-</button>
-          <button value="%" onClick={this.handleDecimalClick}>{"%"}</button>
-          <button value="/"onClick={this.handleOperatorClick}>{"/"}</button>
+          <button id="clear"className="clearButton"value="AC"onClick={this.handleClearClick}>{"AC"}</button>
+          <button className="clearButton"value="+/-" onClick={this.handleOperatorClick}>{"+/-"}-</button>
+          <button className="clearButton" value="%" onClick={this.handleDecimalClick}>{"%"}</button>
+          <button className="operator" value="/"onClick={this.handleOperatorClick}>{"/"}</button>
           <button value="7" onClick={this.handleButtonClick}>{"7"}</button>
           <button value="8" onClick={this.handleButtonClick}>{"8"}</button>
           <button value="9" onClick={this.handleButtonClick}>{"9"}</button>
-          <button value="x"  onClick={this.handleOperatorClick}>{"x"}</button>
+          <button className="operator" value="x"  onClick={this.handleOperatorClick}>{"x"}</button>
           <button value="4"  onClick={this.handleButtonClick}>{"4"}</button>
           <button value="5" onClick={this.handleButtonClick}>{"5"}</button>
           <button value="6" onClick={this.handleButtonClick}>{"6"}</button>
-          <button value="-" onClick={this.handleOperatorClick}>{"-"}</button>
+          <button className="operator" value="-" onClick={this.handleOperatorClick}>{"-"}</button>
           <button value="1" onClick={this.handleButtonClick}>{"1"}</button>
           <button value="2" onClick={this.handleButtonClick}>{"2"}</button>
           <button value="3" onClick={this.handleButtonClick}>{"3"}</button>
-          <button value="+" onClick={this.handleOperatorClick}>{"+"}</button>
+          <button className="operator" value="+" onClick={this.handleOperatorClick}>{"+"}</button>
           <button value="0" onClick={this.handleButtonClick} id="zero">{"0"}</button>
           <button value="." onClick={this.handleButtonClick}>{"."}</button>
-          <button value="=" onClick={this.handleResultsClick}>{"="}</button>                   
+          <button className="equal" value="=" onClick={this.handleResultsClick}>{"="}</button>                   
         </div>
         
     )
