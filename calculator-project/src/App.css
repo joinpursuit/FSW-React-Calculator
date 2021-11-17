@@ -1,0 +1,28 @@
+body {
+  background-color: black;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calc-container {
+  background-color: white;
+  border-radius: 20px;
+  width: 400px;
+  height: 100px;
+  position: relative;
+  margin: 25px;
+}
+
+.row {
+  display: flex;
+}
+
+

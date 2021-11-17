@@ -1,0 +1,13 @@
+ .Keypad {
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     height: 80%;
+     background: #2b293d;
+
+     padding: 16px;
+
+     align-items: center;
+     font-size: 24px;
+     justify-content: flex-end;
+ }

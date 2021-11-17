@@ -1,0 +1,27 @@
+.button-wrapper {
+    display: flex;
+    height: 4em;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #5a5a5a;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: white;
+    flex: 1;
+
+    margin: 4px;
+    border-radius: 20px;
+}
+
+.button-wrapper[data-size="4"] {
+    height: 40%;
+}
+
+.button-wrapper[data-value="null"] {
+    pointer-events: none;
+}
+
+.button-wrapper:hover {
+    background-color: #5a5a5a;
+    cursor: default;
+}
