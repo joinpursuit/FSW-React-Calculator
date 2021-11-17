@@ -1,8 +1,5 @@
-
-import './App.css';
-import KeyPad from './components/KeyPad';
 import { Component } from 'react'
-import Display from './components/Display';
+import "./App.css";
 
 
 
@@ -17,7 +14,7 @@ class App extends Component {
       firstNumber: "",
       secondNumber: "",
       mode: "",
-      displaySays: 0
+      displaySays: 12
     }
   }
 
@@ -71,6 +68,8 @@ class App extends Component {
 
 
 
+
+
   reset = () => {
     this.setState({
       displaySays: 0
@@ -90,7 +89,7 @@ class App extends Component {
         {/* <KeyPad onClick={this.onClick} /> */}
 
         <div className="display">
-          0
+          {this.state.displaySays}
         </div>
 
         <div className="calcButtons">
