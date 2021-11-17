@@ -1,79 +1,115 @@
 import './App.css';
 import {Component} from "react";
-import KeyPad from './components/KeyPad';
+import Button from './components/Button';
+import data from './components/ButtonData';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      result: "0",
+      buttons: data.buttonData,
+      result: 0,
       num1: "",
       num2: "",
       operation:"",
       isOperator: false,
-      display: "",
-      history: ""
+      display: "0",
     }
   }
 
-  handleButtons = (btn) => {
-
-    if(btn.type === "operation") {
+  handleDisplay = (btn) => {
+    if(!this.state.isOperator){
       this.setState({
-        operation: btn.value,
-        isOperator: true,
+        display: this.state.display + btn.value,
+        num1: this.state.display + btn.value,
+      }) 
+    } else {
+      this.setState({
+        display: this.state.display + btn.value,
+        num2: this.state.display + btn.value,
       })
+    }
+  }
+
+  handleOperation = (e) => {
+    this.setState({
+      operation: e.target.value,
+      isOperator:true,
+      display:"",
+    })
+  }
+
+  handleCalculation = () => {
+    let {num1, num2} = this.state;
+    let total=0;
       switch(this.state.operation) {
-        case "clear": 
-          console.log("clear");
+        case "/":
+          total = Number(num1) / Number(num2);
           break;
-        case "inverse":
-          console.log("inverse");         
+        case "X":
+          total = Number(num1) * Number(num2);
           break;
-        case "percent": 
-          console.log("percent");
+        case "-":
+          total = Number(num1) - Number(num2);
           break;
-        case "divide":
-          console.log("divide");
+        case "+":
+          total = Number(num1) + Number(num2);
           break;
-        case "multiply":
-          console.log("multiply");
-          break;
-        case "subtract":
-          console.log("subtract");
-          break;
-        case "decimal":
-          console.log("decimal");
-          break;
-        case "radical":
-          console.log("radical");
-          break;
-        case "equal":
-          console.log("equal")
-          break;
+        default: 
+        break;   
       }
-    }
-    else if(btn.type==="number"){
       this.setState({
-        isOperator:false,
-        num1: this.state.num1 + btn.display,
-        display: this.state.num1 + btn.display
+        result: total,
+        display: total,
+        isOperator:false, 
       })
-    }
   }
 
-  render(){
+  handleInverse = () => {
+
+  }
+    // else if(btn.type==="number"){
+    //   this.setState({
+    //     num1: this.state.num1 + btn.display,
+    //     display: this.state.num1 + btn.display
+    //   })
+    // }
+  
+  
+  handleReset = () => {
+    this.setState({
+      result:"0",
+      num1: "",
+      num2: "",
+      operation: "",
+      display:"",
+    })
+  }
+  render() {
+    let numbersButton= this.state.buttons.map((btn, i)=> <button className="button" value={btn.display} key={btn.value} onClick={()=> this.handleDisplay(btn)}> {btn.display} </button>)
+    // console.log(this.state.operation);
+    console.log(this.state.num1, this.state.num2)
     return (
       <main className="App">
         <div className="wrapper">
           <div id="display-screen">
-            <div id="previous-screen"> 
-              {this.state.history}
-            </div>
-          { this.state.display}
+
+          {this.state.display}
+
           </div>
           <div id="calculator-container">
-          <KeyPad handleButtons={this.handleButtons}/>
+          {numbersButton}
+          <button className="button" value="clear" onClick={this.handleReset}> C </button>
+          <button className="button" value="inverse" onClick={this.handleOperation}> +- </button>
+          <button className="button" value="%" onClick={this.handleOperation} id="percentage"> % </button>
+          <button className="button" value="/" onClick={this.handleOperation} is> / </button>
+          <button className="button" value="X" onClick={this.handleOperation}> X </button>
+          <button className="button" value="-" onClick={this.handleOperation}> - </button>
+          <button className="button" value="+" onClick={this.handleOperation}> + </button>
+          <button className="button" value="." onClick={this.handleOperation}> . </button>
+          <button className="button" value="√" onClick={this.handleOperation}> √ </button>
+          <button className="button" value="=" onClick={this.handleCalculation}> = </button>
+
           </div>
           8.2 calculator
       </div>
