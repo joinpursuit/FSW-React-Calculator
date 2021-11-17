@@ -86,21 +86,25 @@ class App extends React.Component {
       this.setState({
         input: Number(this.state.previousNum) + Number(this.state.input),
         calculated: "yes",
+        previousNum: 0,
       });
     } else if (this.state.operator === "minus") {
       this.setState({
         input: Number(this.state.previousNum) - Number(this.state.input),
         calculated: "yes",
+        previousNum: 0,
       });
     } else if (this.state.operator === "multiply") {
       this.setState({
         input: Number(this.state.previousNum) * Number(this.state.input),
         calculated: "yes",
+        previousNum: 0,
       });
     } else if (this.state.operator === "divide") {
       this.setState({
         input: Number(this.state.previousNum) / Number(this.state.input),
         calculated: "yes",
+        previousNum: 0,
       });
     }
   };
