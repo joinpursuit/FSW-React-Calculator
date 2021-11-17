@@ -12,7 +12,7 @@ class App extends React.Component {
     banana: "off",
     track: "",
     calculated: "no",
-    err: "no"
+    err: "no",
   };
 
   clicky = (el) => {
@@ -22,6 +22,7 @@ class App extends React.Component {
       this.setState({
         input: "Err",
         err: "yes",
+        previousNum: "Err",
       })
     }
     else if (this.state.calculated === "no" && this.state.err === "no"){
@@ -45,18 +46,22 @@ class App extends React.Component {
   };
 
   clickNeg = () => {
-    this.setState({ input: Number(this.state.input) * -1 });
+    this.setState({ 
+      input: Number(this.state.input) * -1 
+    });
   };
 
   clickZero = () => {
     if (this.state.input !== "") {
-      this.setState({ input: this.state.input + 0 });
+      this.setState({ input: this.state.input + 0
+       });
     }
   };
 
   clickDec = () => {
     if (this.state.input.indexOf(".") === -1) {
-      this.setState({ input: this.state.input + "." });
+      this.setState({ input: this.state.input + "." 
+    });
     }
   };
 
