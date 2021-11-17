@@ -16,8 +16,12 @@ class App extends Component {
 
   format = (num) => {
     let modify = this.numberF(num);
-    modify = new Intl.NumberFormat().format(modify);
-    return modify;
+    if (modify.slice(-2) === ".0") {
+      return modify;
+    } else {
+      modify = new Intl.NumberFormat().format(modify);
+      return modify;
+    }
   };
 
   numberF = (num) => {
@@ -55,7 +59,7 @@ class App extends Component {
           break;
         } else {
           this.setState({
-            display: this.state.display + value,
+            display: this.numberF(this.state.display + value),
           });
           break;
         }
@@ -162,11 +166,54 @@ class App extends Component {
     }
   };
 
-  // format = (num) => {};
+  handleKeyDown = (event) => {
+    console.log(event.key);
+    switch (event.key) {
+      case "0":
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+        this.handleNums(event.key);
+        break;
+      case "*":
+      case "x":
+      case "/":
+      case "+":
+      case "-":
+        this.handleOPs(event.key);
+        break;
+      case "Enter":
+      case "=":
+        this.handleEqual();
+        break;
+      case ".":
+        this.handleMods(".");
+        break;
+      case "%":
+        this.handleMods("%");
+        break;
+      case "Backspace":
+      case "c":
+        this.handleMods("reset");
+        break;
+      default:
+        break;
+    }
+  };
+
+  // componentDidMount(){}
+
+  // componentWillUnmount(){}
 
   render() {
     return (
-      <div className="App">
+      <div className="App" onKeyPress={this.handleKeyDown}>
         <Calculator
           info={this.state}
           handleNums={this.handleNums}
