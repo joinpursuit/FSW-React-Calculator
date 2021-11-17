@@ -14,7 +14,7 @@ class App extends Component {
       firstNumber: "",
       secondNumber: "",
       mode: "",
-      displaySays: ""
+      displaySays: 0,
     }
   }
 
@@ -63,7 +63,7 @@ class App extends Component {
 
   reset = () => {
     this.setState({
-      displaySays: ""
+      displaySays: 0
     })
   }
 
