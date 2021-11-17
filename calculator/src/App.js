@@ -174,6 +174,7 @@ class App extends React.Component {
  
   formatting=(str)=>{
     if(typeof str ==="number") str=str.toString();
+    if(str === "Infinity") return str;
     const isNegative=str.includes("-");
     if(isNegative) str=str.slice(1);
     const isfloatNum=str.includes(".");
