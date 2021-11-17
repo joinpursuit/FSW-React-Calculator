@@ -96,15 +96,16 @@ class App extends React.Component {
   };
 
   banana = () => {
-    var bg = document.getElementById("banana");
+    let bg = document.getElementById("banana");
+    let sg = document.getElementById("song");
     if (bg.style.display === "block") {
       this.setState({
-        // banana: "off",
+        banana: "off",
         play: "on",
-        track: "",
       });
-      this.audio = "";
       bg.style.display = "none";
+      sg.autoPlay = false;
+      sg.muted = true;
       return ( console.log("🍌"),
         <div id="banana" style={{
             display: "none",
@@ -121,13 +122,13 @@ class App extends React.Component {
       const flip = (max, min) => {
         let x = Math.floor(Math.random() * (max - min + 1) );
         if (x <= 3  && this.state.banana !== "on") {
-            console.log(x)
-          this.setState({ track: "intro" });
-          this.audio = new Audio(Intro).play();
+            sg.currentTime = 0;
+            sg.muted = false;
+          this.setState({ track: Intro });
         } else if (x > 3 && this.state.banana !== "on"){
-            console.log(x)
-          this.setState({ track: "outro" });
-          this.audio = new Audio(Outro).play();
+            sg.currentTime = 0;
+            sg.muted = false;
+          this.setState({ track: Outro });
         }
       };
       flip(6, 1);
@@ -161,7 +162,9 @@ class App extends React.Component {
             }}
           >
             <source src={Banana} type="video/mp4" />
-          </video></div>
+          </video>
+          <audio src={this.state.track} id="song" muted={true} autoPlay ={true}/>
+          </div>
         <div className="calculator">
           <div className="container">
             <div id="track" />
