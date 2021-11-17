@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import Banana from "./Components/video/banana.mp4";
-import Intro from "./Components/audio/intro.mp3";
-import Outro from "./Components/audio/outro.mp3";
+import Intro from "./Components/audio/Intro.mp3";
+import Outro from "./Components/audio/Outro.mp3";
 
 class App extends React.Component {
   state = {
@@ -95,32 +95,20 @@ class App extends React.Component {
     }
   };
 
-//   music = () => {
-//     new Audio(this.track).play();
-//   };
-
   banana = () => {
     var bg = document.getElementById("banana");
     if (bg.style.display === "block") {
       this.setState({
-        banana: "off",
+        // banana: "off",
         play: "on",
         track: "",
       });
+      this.audio = "";
+      bg.style.display = "none";
       return ( console.log("🍌"),
         <div id="banana" style={{
             display: "none",
           }}>
-          <video
-            autoplay
-            loop
-            muted
-            style={{
-              display: "none",
-            }}
-          >
-            <source src={Banana} type="video/mp4" />
-          </video>
         </div>
       );
 
@@ -129,6 +117,7 @@ class App extends React.Component {
         banana: "on",
         play: "on",
       });
+      bg.style.display = "block";
       const flip = (max, min) => {
         let x = Math.floor(Math.random() * (max - min + 1) );
         if (x <= 3  && this.state.banana !== "on") {
@@ -147,23 +136,6 @@ class App extends React.Component {
         <div id="banana" style={{
             display: "block",
           }}>
-          <video
-            autoplay
-            loop
-            muted
-            style={{
-            display:"block",
-              position: "absolute",
-              width: "100%",
-              left: "50%",
-              height: "100%",
-              objectFit: "cover",
-              transform: "translate(-50%, -50%",
-              zIndex: "-1",
-            }}
-          >
-            <source src={Banana} type="video/mp4" />
-          </video>
         </div>
       );
     }
@@ -174,7 +146,22 @@ class App extends React.Component {
       <>
           <div id="banana" style={{
               display: "none",
-            }} ></div>
+            }} ><video
+            autoPlay
+            loop
+            muted
+            style={{
+              position: "absolute",
+              width: "100%",
+              left: "50%",
+              height: "100%",
+              objectFit: "cover",
+              transform: "translate(-50%, -50%",
+              zIndex: "-1",
+            }}
+          >
+            <source src={Banana} type="video/mp4" />
+          </video></div>
         <div className="calculator">
           <div className="container">
             <div id="track" />
