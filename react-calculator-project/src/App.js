@@ -12,6 +12,8 @@ class App extends Component {
     }
   }
 
+  // let { displayValue, previousValue, operation, allClear } = this.state
+
   handleNumberPress = (num) => {
     this.setState({
       displayValue: this.state.displayValue + num,
@@ -21,7 +23,9 @@ class App extends Component {
 
   handleOperation = (op) => {
     this.setState({
-      operation: op
+      operation: op,
+      previousValue: this.state.displayValue,
+      displayValue: "",
     })
   }
 
@@ -44,6 +48,26 @@ class App extends Component {
       operation: "",
       allClear: "AC"
     })
+  }
+
+  handleEqualButton = () => {
+    if (this.state.operation === "+") {
+      this.setState({
+        displayValue: Number(this.state.previousValue) + Number(this.state.displayValue)
+      })
+    } else if (this.state.operation === "-"){
+        this.setState({
+          displayValue: Number(this.state.previousValue) - Number(this.state.displayValue)
+        })
+    } else if (this.state.operation === "x"){
+        this.setState({
+          displayValue: Number(this.state.previousValue) * Number(this.state.displayValue)
+        })
+    } else if (this.state.operation === "÷"){
+        this.setState({
+          displayValue: Math.round(Number(this.state.previousValue) / Number(this.state.displayValue))
+        })
+    } 
   }
 
   render(){
@@ -71,7 +95,7 @@ class App extends Component {
           <button className="operator-btn" onClick={()=>this.handleOperation('+')}>+</button>
           <button id="zero-btn" onClick={()=>this.handleNumberPress(0)}>0</button>
           <button onClick={()=>this.handleNumberPress('.')}>.</button>
-          <button id="equal-btn">=</button>
+          <button id="equal-btn" onClick={this.handleEqualButton}>=</button>
         </div>
       </div>
     );
