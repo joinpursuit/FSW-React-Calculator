@@ -163,7 +163,7 @@ class App extends React.Component {
           >
             <source src={Banana} type="video/mp4" />
           </video>
-          <audio src={this.state.track} id="song" muted={true} autoPlay ={true}/>
+          <audio src={this.state.track} id="song" muted={true} autoPlay ={true} loop/>
           </div>
         <div className="calculator">
           <div className="container">
