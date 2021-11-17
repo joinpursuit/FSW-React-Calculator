@@ -1,5 +1,10 @@
+body {
+  background-image: linear-gradient(to right, black, white);
+}
+
 #main {
   width: 50%;
+  height: 400px;
   display: grid;
   gap: 5px;
   grid-template-areas:
@@ -12,6 +17,7 @@
   margin: 100px auto;
   background-color: beige;
   border: 10px solid black;
+  border-radius: 10px;
 }
 
 #result {
@@ -26,8 +32,6 @@
 #touch0 {
   grid-area: touchZero;
   background-color: red;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 }
 
 #touch1 {
@@ -97,9 +101,6 @@ button:hover {
   background-color: black;
   color: white;
 }
-/* .hidden {
-  visibility: hidden;
-} */
 
 .currentResult {
   font-size: medium;
