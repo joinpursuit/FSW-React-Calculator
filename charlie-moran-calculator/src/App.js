@@ -184,9 +184,9 @@ class App extends React.Component {
           <div className="container">
             <div id="track" />
             <section id="display">
-              {/* <div className="displaySmall">
-              ({new Intl.NumberFormat().format(previousNum)}
-                </div> */}
+              <div className="displaySmall">
+              ({new Intl.NumberFormat().format(previousNum)})
+                </div>
               <div className="display">
                 {new Intl.NumberFormat().format(input)}
               </div>
