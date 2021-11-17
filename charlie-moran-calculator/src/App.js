@@ -133,7 +133,7 @@ class App extends React.Component {
       };
       flip(6, 1);
 
-      return ( console.log("🍌2"),
+      return ( console.log("🍌🍌"),
         <div id="banana" style={{
             display: "block",
           }}>
