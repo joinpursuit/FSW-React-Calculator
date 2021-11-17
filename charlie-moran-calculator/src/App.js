@@ -11,10 +11,16 @@ class App extends React.Component {
     operator: "",
     banana: "off",
     track: "",
+    calculated: "no",
   };
 
   clicky = (el) => {
+    if (this.state.calculated === "no"){
     this.setState({ input: this.state.input + el.target.value });
+  } else {
+    this.setState({input: el.target.value,
+                  calculated: "no",})
+  }
   };
 
   clickClear = () => {
@@ -79,18 +85,22 @@ class App extends React.Component {
     } else if (this.state.operator === "plus") {
       this.setState({
         input: Number(this.state.previousNum) + Number(this.state.input),
+        calculated: "yes",
       });
     } else if (this.state.operator === "minus") {
       this.setState({
         input: Number(this.state.previousNum) - Number(this.state.input),
+        calculated: "yes",
       });
     } else if (this.state.operator === "multiply") {
       this.setState({
         input: Number(this.state.previousNum) * Number(this.state.input),
+        calculated: "yes",
       });
     } else if (this.state.operator === "divide") {
       this.setState({
         input: Number(this.state.previousNum) / Number(this.state.input),
+        calculated: "yes",
       });
     }
   };
@@ -143,6 +153,7 @@ class App extends React.Component {
   };
   render() {
     const { input } = this.state;
+    const { previousNum} = this.state;
     return (
       <>
           <div id="banana" style={{
@@ -169,6 +180,9 @@ class App extends React.Component {
           <div className="container">
             <div id="track" />
             <section id="display">
+              {/* <div className="displaySmall">
+              ({new Intl.NumberFormat().format(previousNum)}
+                </div> */}
               <div className="display">
                 {new Intl.NumberFormat().format(input)}
               </div>

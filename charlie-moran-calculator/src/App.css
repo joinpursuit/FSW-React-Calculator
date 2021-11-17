@@ -19,7 +19,14 @@
     text-align: right;
     outline: 1px solid purple;
 }
-
+.displaySmall {
+    color: purple;
+    height: 0px;
+    display: flex;
+    text-align:center;
+    justify-content: center;
+    padding-left: 50px;
+}
 .btn-container {
     display: flex;
 }
