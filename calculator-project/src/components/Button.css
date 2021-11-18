@@ -23,5 +23,13 @@
 
 .button-wrapper:hover {
     background-color: #5a5a5a;
-    cursor: default;
+    cursor: pointer;
 }
+
+.button-wrapper:nth-child(4) {
+    font-size: 18px;
+    background-color: rgb(174, 137, 211);
+    color: whitesmoke;
+    height: 5.5em;
+}
+

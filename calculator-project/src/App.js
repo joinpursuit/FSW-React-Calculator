@@ -8,13 +8,13 @@ import Keypad from "./components/Keypad";
 class App extends Component {
     constructor() {
       super();
-      this.state = { data: ""}
+      this.state ={ data: "" }
     }
 
     calculateData = () => {
       try {
 
-        const result = eval(this.state.data);
+        const result = eval(this.state.data).toLocaleString();
         this.setState({ data: result });
       } catch (event) {
         this.setState({ data: "Error" })
@@ -32,8 +32,9 @@ class App extends Component {
           break;
         default:
           this.setState({ data: this.state.data + value });
-      }
+      };
   }
+
     render() {
       return (
         <div className="App">
@@ -41,12 +42,12 @@ class App extends Component {
           <Display data={this.state.data} />
           <Keypad />
 
-          <div className="row">
-            
+          <div className="row" id="divide">
             <Button onClick={this.handleClick} symbol="7" value="7" />
             <Button onClick={this.handleClick} symbol="8" value="8" />
             <Button onClick={this.handleClick} symbol="9" value="9" />
             <Button onClick={this.handleClick} symbol="/" value="/" />
+
           </div>
           <div className="row">
             <Button onClick={this.handleClick} symbol="4" value="4" />
@@ -66,9 +67,9 @@ class App extends Component {
             <Button onClick={this.handleClick} symbol="=" size="6" value="equal" />
             <Button onClick={this.handleClick} symbol="-" value="-" />
           </div>
-            <Button onClick={this.handleClick} symbol="CLEAR" value="clear" />
-        </div>
-      </div>
+            <Button className="highlight" onClick={this.handleClick} symbol="CLEAR" size="6" value="clear" />
+            </div>
+          </div>
       );
     }
   }

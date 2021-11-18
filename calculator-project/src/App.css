@@ -23,6 +23,5 @@ body {
 
 .row {
   display: flex;
+  background-image: linear-gradient(rgb(138, 91, 158), yellow, green);
 }
-
-
