@@ -12,7 +12,7 @@ class App extends Component {
     }
   }
 
-  // let { displayValue, previousValue, operation, allClear } = this.state
+  
 
   handleNumberPress = (num) => {
     this.setState({
@@ -71,11 +71,9 @@ class App extends Component {
   }
 
   render(){
-    
-
     return (
       <div className="App">
-        <div id="display">{this.state.displayValue || 0}</div>
+        <div id="display">{Number(this.state.displayValue).toLocaleString() || 0}</div> 
         <div id="buttons-container">
           <button id="all-clear-btn" onClick={this.handleAllClear}>{this.state.allClear}</button>
           <button id="pos-neg-btn" onClick={this.handlePositiveNegativeButton}>+/-</button>
