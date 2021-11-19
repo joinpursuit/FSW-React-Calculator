@@ -1,0 +1,32 @@
+#calculator {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 150px;
+}
+
+
+#display{
+  grid-column: 1/-1;
+  height: 40px;
+  width: auto;
+  border: 2px solid black;
+}
+
+#equal{
+  grid-column: 1/4;
+}
+
+#all-clear{
+  grid-column: 4/5;
+  grid-row: 5/7;
+}
+
+
+button{
+  padding: 10px;
+  border-radius: 10%;
+  margin: 15px;
+}
+
+
+
