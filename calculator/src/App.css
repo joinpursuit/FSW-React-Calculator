@@ -1,0 +1,38 @@
+#display{
+    border: 10px double rgb(186, 212, 91);
+    padding: 10px;
+    margin: 10px;
+    text-align: right;
+    background-color: rgb(199, 223, 155);
+    width: 370px;
+    font-size: x-large;
+}
+
+#all-buttons {
+    border: 50px outset rgb(199, 223, 155);
+    padding: 5px;
+    margin: 5px;
+    width: 310px;
+    height: 350px;
+    background-color: rgb(160, 224, 163);
+}
+
+.numbtn{
+    display: grid-line;
+    width: 90px;
+    padding: 15px;
+    margin: 5px;
+    background-color:rgb(245, 233, 217);
+}
+
+#zero{
+    width: 190px;
+}
+
+.funtionBtn{
+    display: grid-line;
+    width: 65px;
+    padding: 15px;
+    margin: 5px;
+    background-color: rgb(226, 174, 105);
+}
