@@ -12,6 +12,7 @@ class App extends React.Component {
   }
 
   handleInput =(e)=>{
+
     this.setState ({
       display: this.state.display + e.target.value,
       
@@ -35,6 +36,14 @@ class App extends React.Component {
 
   }
 
+  handlePosOrNeg = () => {
+    if(this.state.display){
+      this.setState({
+        display: this.state.display * -1,
+      })
+    }
+  }
+
   handleFinalResult =(e)=>{
     switch(this.state.operation){
       case "+":
@@ -52,7 +61,7 @@ class App extends React.Component {
             display: this.state.preInput * Number(this.state.display),
           }) 
           break;
-      case "/":
+      case "÷":
         this.setState({
           display: this.state.preInput/ Number(this.state.display),
         }) 
@@ -84,7 +93,7 @@ class App extends React.Component {
           </div>
           <div id="function-buttons">
             <button className="funtionBtn" value="AC" onClick={this.clearButton}>AC</button>
-            <button className="funtionBtn" value="+/-" onClick={this.handleOperation}>/-</button>
+            <button className="funtionBtn" value="+/-" onClick={this.handlePosOrNeg}>+/-</button>
             <button className="funtionBtn" value="%" onClick={this.handleOperation}>%</button>
             <button className="funtionBtn" value="÷" onClick={this.handleOperation}>÷</button>
             <button className="funtionBtn" value="*" onClick={this.handleOperation}>*</button>
