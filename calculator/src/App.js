@@ -19,7 +19,7 @@ const App = () => {
     }
 
     if(content === "±") {
-      if(num < 0) {
+      if(num) {
         setValue((num * -1).toString());
         return;
       } 
