@@ -1,9 +1,13 @@
 import { Component } from "react";
 
 class Display extends Component {
-
     render() {
-        return <div id="display-text">{this.props.result}</div>
+        return (
+            <div id="displaying-both">
+                <div className = "display-calculation"></div>
+                <div className = "display-result"></div>
+            </div>
+        )
     }
 }
 

@@ -1,58 +1,31 @@
 import { Component } from "react";
-import Button from "./Button";
+import buttons from "../data/buttonData";
 import Display from "./Display";
 
-class Keypad extends Component {
-    
-    displayKeypad = (btnNames) => {
-        return btnNames.map((el) => {
-            return <Button handleClick = {this.handleClick}>{el}</Button>
+class Keypad extends Component{
+    displayBtnData = (data) => {
+        return data.map((dataElement) => {
+            if(dataElement.type === "number") {
+                return <button className= "button" onClick={()=>this.handleNumberInput(dataElement)}>{dataElement.display}</button>
+            }
+            if(dataElement.type === "operator") {
+                return <button className= "button" onClick={()=>{this.handleOperatorInput(dataElement)}}>{dataElement.display}</button>
+            }
+            if(dataElement.type === "feature") {    
+                return <button className= "button" onClick={()=>{this.handleFeatures(dataElement)}}>{dataElement.display}</button>
+            }
+            if(dataElement.type === "equal") {
+                return <button className= "button" onClick={this.handleCalculation}>{dataElement.display}</button>
+            }
         })
-    }
+    }  
 
     render() {
-        const buttonNames = ["AC", "C", "+/-", "M",
-                             1, 2, 3, "+",
-                             4, 5, 6, "-",
-                             7, 8, 9, "*",
-                             0, ".", "=", "/"
-                            ]
-
         return(
-            /*
             <div id="keypad">
                 <div id="display"><Display /></div>
-                <div id="display-buttons">
-                    <Button>AC</Button>
-                    <Button>C</Button>
-                    <Button>+/-</Button>
-                    <Button>M</Button>
-                    <Button>1</Button>
-                    <Button>2</Button>
-                    <Button>3</Button>
-                    <Button>+</Button>
-                    <Button>4</Button>
-                    <Button>5</Button>
-                    <Button>6</Button>
-                    <Button>-</Button>
-                    <Button>7</Button>
-                    <Button>8</Button>
-                    <Button>9</Button>
-                    <Button>*</Button>
-                    <Button>0</Button>
-                    <Button>.</Button>
-                    <Button>=</Button>
-                    <Button>/</Button>
-                </div>
+                <div id="display-buttons">{this.displayBtnData(buttons)}</div>
             </div>
-            */
-            <div id="keypad">
-                <div id="display"><Display /></div>
-                <div id="display-buttons">
-                    {this.displayKeypad(buttonNames)}
-                </div>
-            </div>
-
         )
     }
 }
