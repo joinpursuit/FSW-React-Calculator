@@ -85,6 +85,22 @@ class Keypad extends Component{
         })
       }
 
+      operationAdd = (num1, num2) => {
+        return Number(num1) + Number(num2)
+      }
+    
+      operationSubtract = (num1, num2) => {
+        return num1 - num2;
+      }
+    
+      operationMultiply = (num1, num2) => {
+        return num1 * num2;
+      }
+    
+      operationDivide = (num1, num2) => {
+        return num1 / num2;
+      }      
+
     render() {
         let {result, num1, num2, displayOperator} = this.state;
         return(
