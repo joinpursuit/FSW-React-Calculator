@@ -1,46 +1,80 @@
 import './App.css';
-import {Component} from "react";
-import Button from './components/Button';
-import data from './components/ButtonData';
+import {Component } from "react";
+import buttonData from './data/buttonData';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      buttons: data.buttonData,
-      result: 0,
-      num1: "",
-      num2: "",
-      operation:"",
-      isOperator: false,
+      buttons: buttonData,
       display: "0",
+      num1: 0,
+      num2: 0,
+      operation:"",
+      isTyping: false,
     }
   }
 
-  handleDisplay = (btn) => {
-    if(!this.state.isOperator){
+  handleNumberClick = (buttonObj) => {
+    if(!this.state.isTyping){
       this.setState({
-        display: this.state.display + btn.value,
-        num1: this.state.display + btn.value,
-      }) 
-    } else {
+        num1: this.state.num1 + buttonObj.display
+      })
+    }else {
       this.setState({
-        display: this.state.display + btn.value,
-        num2: this.state.display + btn.value,
+        num2: this.state.num2 + buttonObj.display,
       })
     }
   }
 
-  handleOperation = (e) => {
+  handleOperatorClick = (buttonObj) => {
     this.setState({
-      operation: e.target.value,
-      isOperator:true,
-      display:"",
+      operation: buttonObj.display,
+      isTyping: true,
+    })
+
+  }
+
+  handleFeaturesClick = (buttonObj) => {
+    console.log("feature")
+    switch(buttonObj.value){
+      case "inverse":
+        console.log('inverse');
+        break;
+      case "percent":
+        console.log("percent");
+        break;
+      case 'divide': 
+        console.log("divide");
+        break;
+      case "decimal":
+        console.log("decimal");
+        break;
+      case 'radical':
+        console.log("radical");
+        break; 
+      default:
+        break;
+    }
+
+  }
+
+  handleClearClick = () => {
+    this.setState({
+      display: "0",
+      num1: 0,
+      num2: 0,
+      operation:"",
+      isTyping: false,
     })
   }
 
   handleCalculation = () => {
-    let {num1, num2} = this.state;
+    // if(this.state.num2 === ""){
+    //   return 
+    // }
+    console.log('calculate')
+    const {num1, num2} = this.state;
     let total=0;
       switch(this.state.operation) {
         case "/":
@@ -59,57 +93,85 @@ class App extends Component {
         break;   
       }
       this.setState({
-        result: total,
-        display: total,
-        isOperator:false, 
+        display:total,
+        num1: total,
+        num2: "",
+        operation:"",
+        isTyping:false, 
       })
+      // , ()=> {this.setState({
+      //   shouldRun:true,
+      // })}
   }
 
+    //when is operator is false what number is being worked on if operator is true what is being worked on
+  // handleInverse = (e) => {
+  //   const {isOperator, num2, num1} = this.state;
+  //   if(!isOperator && num1){
+  //     this.setState({
+  //       result: num1*-1
+  //     })
+  //   } else if (!isOperator && num2){
+  //     this.setState({
+  //       result:num2*-1
+  //     })
+  //   } 
+  // }
   handleInverse = () => {
+    const {num1, num2, isTyping} = this.state;
+    if(isTyping){
+      this.setState({
+        num2: -num2,
+      })
+    } else {
+      this.setState({
+        num1: -num1,
+      })
+    }
+  }
 
+  handlePercentage = () => {
+    const { num1, num2, isTyping,} = this.state;
+    if(isTyping){
+      this.setState({
+        num2: num2/100,
+      })
+    } else {
+      this.setState({
+        num1: num1/100,
+      })
+    }
   }
-    // else if(btn.type==="number"){
-    //   this.setState({
-    //     num1: this.state.num1 + btn.display,
-    //     display: this.state.num1 + btn.display
-    //   })
-    // }
-  
-  
-  handleReset = () => {
-    this.setState({
-      result:"0",
-      num1: "",
-      num2: "",
-      operation: "",
-      display:"",
-    })
-  }
+
   render() {
-    let numbersButton= this.state.buttons.map((btn, i)=> <button className="button" value={btn.display} key={btn.value} onClick={()=> this.handleDisplay(btn)}> {btn.display} </button>)
-    // console.log(this.state.operation);
-    console.log(this.state.num1, this.state.num2)
+
+    //Displays all of the buttons
+    let displayButtons = this.state.buttons.map((btn, i)=> {
+      let presentBtn;
+        if(btn.type === "number"){
+          presentBtn = <button key= {i} className= "number-button" onClick={()=>this.handleNumberClick(btn)}> {btn.display}</button>
+        }
+        if(btn.type === "operation"){
+          presentBtn = <button key= {i} className= "operation-button" onClick={()=>this.handleOperatorClick(btn)}> {btn.display} </button>
+        }
+        if(btn.type === "feature"){
+          presentBtn = <button key= {i} className= "feature-button" onClick={()=> this.handleFeaturesClick(btn)}> {btn.display}</button>
+        }if(btn.type === "equal"){
+          presentBtn = <button key= {i} className= "equal-button" onClick={this.handleCalculation}> {btn.display}</button>
+        }
+        if(btn.type === "clear"){
+          presentBtn = <button key= {i} className= "clear-button" onClick={this.handleClearClick}> {btn.display}</button>
+        }
+        return presentBtn;
+    })
     return (
       <main className="App">
         <div className="wrapper">
           <div id="display-screen">
 
-          {this.state.display}
-
           </div>
           <div id="calculator-container">
-          {numbersButton}
-          <button className="button" value="clear" onClick={this.handleReset}> C </button>
-          <button className="button" value="inverse" onClick={this.handleOperation}> +- </button>
-          <button className="button" value="%" onClick={this.handleOperation} id="percentage"> % </button>
-          <button className="button" value="/" onClick={this.handleOperation} is> / </button>
-          <button className="button" value="X" onClick={this.handleOperation}> X </button>
-          <button className="button" value="-" onClick={this.handleOperation}> - </button>
-          <button className="button" value="+" onClick={this.handleOperation}> + </button>
-          <button className="button" value="." onClick={this.handleOperation}> . </button>
-          <button className="button" value="√" onClick={this.handleOperation}> √ </button>
-          <button className="button" value="=" onClick={this.handleCalculation}> = </button>
-
+            {displayButtons}
           </div>
           8.2 calculator
       </div>
