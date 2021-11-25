@@ -21,11 +21,13 @@ class App extends Component {
   handleNumberClick = (buttonObj) => {
     if(!this.state.isTyping){
       this.setState({
-        num1: this.state.num1 + buttonObj.display
+        num1: this.state.num1 + buttonObj.display,
+        display: this.state.num1 + buttonObj.display
       })
     }else {
       this.setState({
         num2: this.state.num2 + buttonObj.display,
+        display: this.state.num2 + buttonObj.display
       })
     }
   }
@@ -36,32 +38,6 @@ class App extends Component {
       isTyping: true,
     })
   }
-
-  // handleInverse = () => {
-  //   const {num1, num2, isTyping} = this.state;
-  //   if(isTyping){
-  //     this.setState({
-  //       num2: -num2,
-  //     })
-  //   } else {
-  //     this.setState({
-  //       num1: -num1,
-  //     })
-  //   }
-  // }
-
-  // handlePercentage = () => {
-  //   const { num1, num2, isTyping,} = this.state;
-  //   if(isTyping){
-  //     this.setState({
-  //       num2: num2/100,
-  //     })
-  //   } else {
-  //     this.setState({
-  //       num1: num1/100,
-  //     })
-  //   }
-  // }
 
   handleFeaturesClick = (buttonObj) => {
     const {num1, num2, isTyping} = this.state;
@@ -145,7 +121,7 @@ class App extends Component {
         display:total,
         num1: total,
         num2: "",
-        operation:"",
+        operation:"=",
         isTyping:false, 
       })
       // , ()=> {this.setState({
