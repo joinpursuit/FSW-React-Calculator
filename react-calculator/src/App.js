@@ -1,3 +1,6 @@
+//OK SO WHEN YOU WAKE UP TRY TO WORK ON THE INVERSE PERCENT RAD (LEAVE THE DECIMAL ALONE) 
+//THEN TRY TO WORK ON THE NEXT PART THAT 
+//
 import './App.css';
 import {Component } from "react";
 import buttonData from './data/buttonData';
@@ -32,31 +35,77 @@ class App extends Component {
       operation: buttonObj.display,
       isTyping: true,
     })
-
   }
 
+  // handleInverse = () => {
+  //   const {num1, num2, isTyping} = this.state;
+  //   if(isTyping){
+  //     this.setState({
+  //       num2: -num2,
+  //     })
+  //   } else {
+  //     this.setState({
+  //       num1: -num1,
+  //     })
+  //   }
+  // }
+
+  // handlePercentage = () => {
+  //   const { num1, num2, isTyping,} = this.state;
+  //   if(isTyping){
+  //     this.setState({
+  //       num2: num2/100,
+  //     })
+  //   } else {
+  //     this.setState({
+  //       num1: num1/100,
+  //     })
+  //   }
+  // }
+
   handleFeaturesClick = (buttonObj) => {
+    const {num1, num2, isTyping} = this.state;
     console.log("feature")
     switch(buttonObj.value){
       case "inverse":
-        console.log('inverse');
+        if(isTyping){
+          this.setState({
+            num2: -num2,
+          });
+        } else {
+          this.setState({
+            num1: -num1,
+          });
+        };
         break;
       case "percent":
-        console.log("percent");
-        break;
-      case 'divide': 
-        console.log("divide");
+        if(isTyping){
+          this.setState({
+            num2: num2/100,
+          });
+        } else {
+          this.setState({
+            num1: num1/100,
+          });
+        }
         break;
       case "decimal":
         console.log("decimal");
         break;
       case 'radical':
-        console.log("radical");
+        if(isTyping){
+          this.setState({
+            num2: Math.sqrt(num2)
+          });
+        } else {
+          this.setState({
+            num1: Math.sqrt(num1)
+          });
+        }
         break; 
       default:
         break;
     }
-
   }
 
   handleClearClick = () => {
@@ -117,34 +166,8 @@ class App extends Component {
   //     })
   //   } 
   // }
-  handleInverse = () => {
-    const {num1, num2, isTyping} = this.state;
-    if(isTyping){
-      this.setState({
-        num2: -num2,
-      })
-    } else {
-      this.setState({
-        num1: -num1,
-      })
-    }
-  }
-
-  handlePercentage = () => {
-    const { num1, num2, isTyping,} = this.state;
-    if(isTyping){
-      this.setState({
-        num2: num2/100,
-      })
-    } else {
-      this.setState({
-        num1: num1/100,
-      })
-    }
-  }
 
   render() {
-
     //Displays all of the buttons
     let displayButtons = this.state.buttons.map((btn, i)=> {
       let presentBtn;
@@ -168,7 +191,7 @@ class App extends Component {
       <main className="App">
         <div className="wrapper">
           <div id="display-screen">
-
+          {this.state.display}
           </div>
           <div id="calculator-container">
             {displayButtons}
@@ -181,3 +204,4 @@ class App extends Component {
 }
 
 export default App;
+
