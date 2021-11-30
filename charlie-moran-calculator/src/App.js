@@ -59,9 +59,14 @@ class App extends React.Component {
   };
 
   clickDec = () => {
-    if (this.state.input.indexOf(".") === -1) {
-      this.setState({ input: this.state.input + "." });
+
+    if (this.state.input.includes("-")){
+      let seperate = this.state.input.split("-")
+      this.setState({input:seperate + "." + "-"});
     }
+    else if (this.state.input.indexOf(".") === -1) {
+      this.setState({ input: this.state.input + "." });
+    } 
   };
 
   clickAdd = () => {
@@ -197,7 +202,7 @@ class App extends React.Component {
     const { input } = this.state;
     const { previousNum } = this.state;
     return (
-      <>
+      <div>
         <div
           id="banana"
           style={{
@@ -227,7 +232,8 @@ class App extends React.Component {
             autoPlay={true}
             loop
           />
-        </div>
+  </div>
+
         <div className="calculator">
           <div className="container">
             <div id="track" />
@@ -239,80 +245,43 @@ class App extends React.Component {
                 {new Intl.NumberFormat().format(input)}
               </div>
             </section>
-
+            
             <section id="btn-container">
               <div className="row1" id="disco">
-                <button onClick={this.clickClear} className="clear">
-                  AC
-                </button>
-                <button onClick={this.clickNeg} className="neg">
-                  +/-
-                </button>
-                <button onClick={this.banana} className="banana">
-                  🍌
-                </button>
-                <button onClick={this.clickDivide} className="operator">
-                  /
-                </button>
+                <button onClick={this.clickClear} className="clear">AC</button>
+                <button onClick={this.clickNeg} className="neg">+/-</button>
+                <button onClick={this.banana} className="banana">🍌</button>
+                <button onClick={this.clickDivide} className="operator">/</button>
               </div>
 
               <div className="row2" id="disco">
-                <button onClick={this.clicky} value="7">
-                  7
-                </button>
-                <button onClick={this.clicky} value="8">
-                  8
-                </button>
-                <button onClick={this.clicky} value="9">
-                  9
-                </button>
-                <button onClick={this.clickMultiply} className="operator">
-                  x
-                </button>
+                <button onClick={this.clicky} value="7">7</button>
+                <button onClick={this.clicky} value="8">8</button>
+                <button onClick={this.clicky} value="9">9</button>
+                <button onClick={this.clickMultiply} className="operator">x</button>
               </div>
 
               <div className="row3" id="disco">
-                <button onClick={this.clicky} value="4">
-                  4
-                </button>
-                <button onClick={this.clicky} value="5">
-                  5
-                </button>
-                <button onClick={this.clicky} value="6">
-                  6
-                </button>
-                <button onClick={this.clickSubt} className="operator">
-                  -
-                </button>
+                <button onClick={this.clicky} value="4">4</button>
+                <button onClick={this.clicky} value="5">5</button>
+                <button onClick={this.clicky} value="6">6</button>
+                <button onClick={this.clickSubt} className="operator">-</button>
               </div>
 
               <div className="row4" id="disco">
-                <button onClick={this.clicky} value="1">
-                  1
-                </button>
-                <button onClick={this.clicky} value="2">
-                  2
-                </button>
-                <button onClick={this.clicky} value="3">
-                  3
-                </button>
-                <button onClick={this.clickAdd} className="operator">
-                  +
-                </button>
+                <button onClick={this.clicky} value="1">1</button>
+                <button onClick={this.clicky} value="2">2</button>
+                <button onClick={this.clicky} value="3">3</button>
+                <button onClick={this.clickAdd} className="operator">+</button>
               </div>
 
               <div className="row5" id="disco">
-                <button onClick={this.clicky} value="0">
-                  0
-                </button>
+                <button onClick={this.clicky} value="0">0</button>
                 <button onClick={this.clickDec}>.</button>
-                <button onClick={this.clicky} value="00">
-                  00
-                </button>
-                <button className="operator" onClick={this.clickCalc}>
-                  =
-                </button>
+                <button onClick={this.clicky} value="00">00</button>
+                <button className="operator" onClick={this.clickCalc}>=</button>
               </div>
+
               <footer className="copyright">
                 <small className="copyright">
                   React-Banana-Calculator-App &copy; Copyright 2021, Charlie
@@ -322,7 +291,7 @@ class App extends React.Component {
             </section>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
