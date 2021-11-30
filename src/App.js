@@ -62,7 +62,8 @@ class App extends React.Component {
 
     if (this.state.input.includes("-")){
       let seperate = this.state.input.split("-")
-      this.setState({input:seperate + "." + "-"});
+      // eslint-disable-next-line
+      this.setState({input: seperate + "." + "-"});
     }
     else if (this.state.input.indexOf(".") === -1) {
       this.setState({ input: this.state.input + "." });
