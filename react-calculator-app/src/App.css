@@ -1,6 +1,7 @@
 .keypad-buttons {
     display: grid;
-    width: 300px;
+    width: 500px;
+    height: 500px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
     "display display display display"
@@ -11,9 +12,17 @@
     "zeroArea zeroArea deci equals";
     margin: 0 auto;
     margin-top: 20vh;
+    background-color: black;
+    color: wheat;
+    font-size: 50px;
 }
 
 
+#calc-app button {
+    background-color: orange;
+    color: black;
+    font-size: 30px;
+}
 
 #calc-app {
     /* display: flex;
@@ -21,11 +30,15 @@
     justify-content: center; */
     display: grid;
     align-items: center;
+    background-color: wheat;
 }
+
 
 #calc-display {
     grid-area: display;
-    text-align: center;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 #ac {

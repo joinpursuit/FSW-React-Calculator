@@ -10,56 +10,96 @@ class App extends React.Component {
       userInput: "",
       operation: "",
       result: 0,
-      firstNumber: 0,
-      secondNumber: 0,
-      numSwitch: false,
+      firstNumber: "",
+      isOperator: false
     };
   }
   
   handleKeypad = (e) => {
-        if(numSwitch) {
-          this.setState({
-            secondNumber: this.state.secondNumber + e.target.value,
-            result: this.state.secondNumber + e.target.value
-          })
-        } else {
-          this.setState({
-            firstNumber: this.state.firstNumber + e.target.value,
-            result: this.state.firstNumber + e.target.value,
-          })
-        }
+      console.log(e.target.value)
+      this.setState({
+        result: e.target.value,
+        firstNumber: e.target.value
+      })
+        // if(numSwitch) {
+        //   this.setState({
+        //     secondNumber: secondNumber + e.target.value,
+        //     result: secondNumber + e.target.value
+        //   })
+        // } else {
+        //   this.setState({
+        //     firstNumber: firstNumber + e.target.value,
+        //     result: firstNumber + e.target.value,
+        //   })
+        // }
   }
 
-  handleOperator = (e) => {
+  handleOperation = (e) => {
     this.setState({
-      operation: e.target.value
+      operation: e.target.value,
     })
-    // if an operation wasnt chosen number switch is false so do not switch
-    if(!this.state.operation) {
-      this.setState({
-        numSwitch: !numSwitch,
-      })
-    }
-    // if both numbers are true calculate
-    if(this.state.firstNumber && this.state.secondNumber) {
-      // calculate 
-    }
-  }
+  } 
+
+//   handleOperator = (e) => {
+// const {operation, numSwitch, firstNumber, secondNumber} = this.state
+
+//     this.setState({
+//       operation: e.target.value
+//     })
+//     // if an operation wasnt chosen number switch is false so do not switch
+//     if(!operation) {
+//       this.setState({
+//         numSwitch: !numSwitch,
+//       })
+//     }
+//     // if both numbers are true calculate
+//     if(firstNumber && secondNumber) {
+//       // calculate 
+//     }
+//   }
 
   
   handlePercentage = () => {
-   //  Math.round() * 100
+    this.setState({
+      result: Math.round(this.state.result) / 100 
+    })
+   //  Math.round() / 100
   }
 
 
   handleEqualButton = () => {
     // this will perform calculations
+
+    const {operation, firstNumber, result, userInput} = this.state
+
+    switch (operation) {
+      case "+":
+        result = firstNumber + userInput;
+        break;
+      case "-":
+        result = firstNumber - userInput;
+        break;
+      case "/":
+        result = firstNumber / userInput;
+        break;
+      case "*":
+        result = firstNumber * userInput;
+        break;
+      default:
+    }
+    this.setState({
+      firstNumber: result,
+      result: firstNumber
+    });
+    console.log(result)
   }
 
   handlePosNeg = () => {
-    // if pos * -1
-    // if neg * -1
-  }
+    this.setState({
+      result: this.state.result * -1
+  })
+}
+  
 
   handleAllClear = () => {
       this.setState({
@@ -75,29 +115,29 @@ class App extends React.Component {
       <div className="keypad-buttons">
 
               <div id="calc-display">{this.state.result}</div>
-               <button id="ac" onClick={this.handleAllClear}>AC</button>
-               <button id="posneg" onClick={this.handlePosNeg}>+/-</button>
-               <button id="percent" onClick={this.handlePercentage}>%</button>
-               <button id="divide" onClick={this.handleDiv}>DIV</button>
+               <button id="ac" value="ac" onClick={this.handleAllClear}>AC</button>
+               <button id="posneg" value="+/-" onClick={this.handlePosNeg}>+/-</button>
+               <button id="percent" value="%" onClick={this.handlePercentage}>%</button>
+               <button id="divide" value="/" onClick={this.handleOperation}>DIV</button>
               
-                <button id="seven" onClick={()=>this.handleKeypad(7)}>7</button>
-                <button id="eight" onClick={()=>this.handleKeypad(8)}>8</button>
-                <button id="nine" onClick={()=>this.handleKeypad(9)}>9</button>
-                <button id="multiply" onClick={this.handleMul}>MUL</button>
+                <button id="seven" value="7" onClick={this.handleKeypad}>7</button>
+                <button id="eight" value="8" onClick={this.handleKeypad}>8</button>
+                <button id="nine" value="9" onClick={this.handleKeypad}>9</button>
+                <button id="multiply" value="x" onClick={this.handleOperation}>MUL</button>
                       
-                <button id="four" onClick={()=>this.handleKeypad(4)}>4</button>
-                <button id="five" onClick={()=>this.handleKeypad(5)}>5</button>
-                <button id="six" onClick={()=>this.handleKeypad(6)}>6</button>
-                <button id="minus" onClick={this.handleSub}>MIN</button>
+                <button id="four" value="4" onClick={this.handleKeypad}>4</button>
+                <button id="five" value="5" onClick={this.handleKeypad}>5</button>
+                <button id="six" value="6" onClick={this.handleKeypad}>6</button>
+                <button id="minus" value="-" onClick={this.handleOperation}>MIN</button>
 
-                <button id="one" onClick={()=>this.handleKeypad(1)}>1</button>
-                <button id="two" onClick={()=>this.handleKeypad(2)}>2</button>
-                <button id="three" onClick={()=>this.handleKeypad(3)}>3</button>
-                <button id="add" onClick={this.handleSum}>ADD</button>
+                <button id="one" value="1" onClick={this.handleKeypad}>1</button>
+                <button id="two" value="2" onClick={this.handleKeypad}>2</button>
+                <button id="three" value="3" onClick={this.handleKeypad}>3</button>
+                <button id="add"  value="+" onClick={this.handleOperation}>ADD</button>
               
-                <button id="zero" onClick={()=>this.handleKeypad(0)}>0</button>
-                <button id="decimal" onClick={this.handleKeypad}>.</button>
-                <button id="equal" onClick={this.handleEqualButton}>=</button>
+                <button id="zero" value="0" onClick={this.handleKeypad}>0</button>
+                <button id="decimal" value="." onClick={this.handleKeypad}>.</button>
+                <button id="equal" value="=" onClick={this.handleEqualButton}>=</button>
           </div>
     </div>
     )
