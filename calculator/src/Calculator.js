@@ -5,22 +5,66 @@ constructor(){
     super()
     this.state = {
         current: "",
-        lastNumberEntered: "",
         operator:"",
-        value:"",
-        changedOperator: false,
-        savedNewNumber: false,
+        pValue:"",
+        result:0
+        
     }
 }
 
+
 handlerValue = (event) =>{
     this.setState({
-        value: event.target.getAttribute("data"),
-        current: this.state.current + this.state.value
+     current: this.state.current + event.target.value 
 
     })
     
 
+}
+handlerOperator =(event)=>{
+    const {current,pValue,operator,result} = this.state
+    if(current&&pValue) this.handleCalculation()
+    this.setState({
+        operator: event.target.value,
+        pValue:result || current,
+        current: ""
+    })
+}
+handleCalculation =()=>{
+    const {operator,pValue,current, result} = this.state
+    switch(operator){
+        case '+':
+            this.setState({
+                result: Number(pValue) + Number(current),
+                pValue: Number(pValue) + Number(current),
+                current:""
+            })
+            break;
+        case '-':
+             this.setState({
+                 result: Number(pValue) - Number(current),
+                 pValue: Number(pValue) - Number(current),
+                current:""
+             })
+             break;
+        case 'x':
+            this.setState({
+                result: Number(pValue) * Number(current),
+                pValue: Number(pValue) * Number(current),
+                current:""
+            })
+            break;  
+        case '/':
+            this.setState({
+                result: Number(pValue) / Number(current),
+                pValue: Number(pValue) / Number(current),
+                current:""
+            })
+            break;      
+        default:
+            break;   
+    }
+        
 }
 
 handlerDelete = () =>{
@@ -31,9 +75,10 @@ handlerDelete = () =>{
 
 handleAllClear = () =>{
     this.setState({
-        current:"",
-        value:"",
-        changedOperator:false,
+        current: "",
+        operator:"",
+        pValue:"",
+        result:0
     })
 }
 
@@ -44,27 +89,26 @@ render(){
     return (
         <div className="Calculator">
         <div className="screenDisplay">
-            <div className="previousNumber"></div>
-                <div className="currentNumber">{this.state.current}</div>
+        <div className="currentNumber">{this.state.current || this.state.result}</div>
                 </div>
             <button  className="twoSpaces"  onClick={this.handleAllClear}>AC</button>
             <button className="button" onClick={this.handlerDelete}>DEL</button>
-            <button className="operation" data={"/"} >/</button>
-            <button className="button" data={"7"} onClick={this.handlerValue}>7</button>
-            <button className="button" data={"8"} onClick={this.handlerValue}>8</button>
-            <button className="button" data={"9"} onClick={this.handlerValue}>9</button>
-            <button className="operation" data={"x"} >x</button>
-            <button className="button" data={"4"} onClick={this.handlerValue}>4</button>
-            <button className="button" data={"5"} onClick={this.handlerValue}>5</button>
-            <button className="button" data={"6"} onClick={this.handlerValue}>6</button>
-            <button className="operation"  data={"+"} >+</button>
-            <button className="button" data={"1"} onClick={this.handlerValue}>1</button>
-            <button className="button" data={"2"} onClick={this.handlerValue} >2</button>
-            <button className="button" data={"3"} onClick={this.handlerValue} >3</button>
-            <button className="operation"  data={"-"} >-</button>
-            <button className="button" data={"."} onClick={this.handlerValue}>.</button>
-            <button className="button" data={"0"} onClick={this.handlerValue}>0</button>
-            <button className="twoSpaces">=</button>
+            <button className="operation" value={"/"} onClick={this.handlerOperator}>/</button>
+            <button className="button" value={"7"} onClick={this.handlerValue}>7</button>
+            <button className="button" value={"8"} onClick={this.handlerValue}>8</button>
+            <button className="button" value={"9"} onClick={this.handlerValue}>9</button>
+            <button className="operation" value={"x"} onClick={this.handlerOperator } >x</button>
+            <button className="button" value={"4"} onClick={this.handlerValue}>4</button>
+            <button className="button" value={"5"} onClick={this.handlerValue}>5</button>
+            <button className="button" value={"6"} onClick={this.handlerValue}>6</button>
+            <button className="operation"  value={"+"} onClick={this.handlerOperator} >+</button>
+            <button className="button" value={"1"} onClick={this.handlerValue}>1</button>
+            <button className="button" value={"2"} onClick={this.handlerValue} >2</button>
+            <button className="button" value={"3"} onClick={this.handlerValue} >3</button>
+            <button className="operation"  value={"-"} onClick={this.handlerOperator} >-</button>
+            <button className="button" value={"."} onClick={this.handlerValue}>.</button>
+            <button className="button" value={"0"} onClick={this.handlerValue}>0</button>
+            <button className="twoSpaces" onClick={this.handleCalculation}>=</button>
             
             
     </div>
