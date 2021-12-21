@@ -8,6 +8,7 @@
   grid-row-gap: 0px;
   display: grid;
   place-items: center;
+  margin: center;
 }
 
 .div1 {
