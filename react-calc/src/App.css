@@ -1,11 +1,23 @@
 .App {
   background-color: darkslategray;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  display: grid;
+  place-items: center;
+}
+
+.div1 {
+  grid-area: 2 / 2 / 5 / 4;
 }
 
 h1 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: salmon;
+  color: red;
 }
 
 .pursuit-instrument {
