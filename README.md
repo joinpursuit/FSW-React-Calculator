@@ -23,3 +23,4 @@ This is a stateful application. Some of the elements that use state are:
 
 ## Deploy 
 Deployed using Netlify.
+[Live](https://cassidy-beni-calculator.netlify.app/)
