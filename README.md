@@ -10,8 +10,8 @@ This is a React app that mimics a simple calculator
 - Used state to build stateful React applications
 - Used Flexbox and/or Grid to lay out a page
 
-Libraries used:
-- [math.js](https://mathjs.org/)
+npm packages used:
+- [numeral.js](https://www.npmjs.com/package/numeral)
 
 ## State
 
