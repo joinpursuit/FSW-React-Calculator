@@ -6,7 +6,6 @@ import  React from 'react';
 class App extends React.Component{
   constructor(){
     super();
-
     this.state={
       display: "", 
       operator:"",
@@ -63,29 +62,34 @@ handleOperator=(e)=>{
 
   render(){
     return (
-      <div id="calculator">
-        <div id="display">{this.state.display}</div>
-            <button id="one" value="1" onClick={this.handleInput}>1</button>
-            <button value="2" onClick={this.handleInput}>2</button>
-            <button value="3" onClick={this.handleInput}>3</button>
+      <div className="calc">
+        <div className="display">
+          <p>{this.state.display}</p>
+        </div>
+          <div className="buttons">
+            <button className="btn ac bg-grey" value="AC"onClick={this.handleClearButton}>ac</button>   
 
-            <button value="4" onClick={this.handleInput}>4</button>
-            <button value="5" onClick={this.handleInput}>5</button>
-            <button value="6" onClick={this.handleInput}>6</button>
-            
-            <button value="7" onClick={this.handleInput}>7</button>
-            <button value="8" onClick={this.handleInput}>8</button>
-            <button value="9" onClick={this.handleInput}>9 </button>
+            <button className="btn seven bg-black" value="7" onClick={this.handleInput}>7</button>
+            <button className="btn eight bg-black" value="8" onClick={this.handleInput}>8</button>
+            <button className="btn nine bg-black" value="9" onClick={this.handleInput}>9 </button>
+            <button className="btn division bg-orange" value="/" onClick={this.handleOperator}>/</button>
 
-            <button value="0" onClick={this.handleInput}>0</button>
 
-            <button id="plus" value="+" onClick={this.handleOperator}>+</button>
-            <button value="-" onClick={this.handleOperator}>-</button>
-            <button value="*" onClick={this.handleOperator}>*</button>
-            <button value="/" onClick={this.handleOperator}>/</button>
-            <button id="dot" value="." onClick={this.handleInput}>.</button>
-            <button id="all-clear"value="AC"onClick={this.handleClearButton}>AC</button>
-            <button id="equal" value="=" onClick={this.handleResult}>=</button>
+            <button className="btn four bg-black" value="4" onClick={this.handleInput}>4</button>
+            <button className="btn five bg-black" value="5" onClick={this.handleInput}>5</button>
+            <button className="btn six bg-black" value="6" onClick={this.handleInput}>6</button>
+            <button className="btn minus bg-orange" value="-" onClick={this.handleOperator}>-</button>
+
+            <button className="btn one bg-black" value="1" onClick={this.handleInput}>1</button>
+            <button className="btn two bg-black" value="2" onClick={this.handleInput}>2</button>
+            <button className="btn three bg-black" value="3" onClick={this.handleInput}>3</button>
+            <button className="btn plus bg-orange" value="+" onClick={this.handleOperator}>+</button>
+
+            <button className="btn zero bg-black" value="0" onClick={this.handleInput}>0</button>
+            <button className="btn dot bg-black" value="." onClick={this.handleInput}>.</button>
+            <button className="btn equal bg-black" value="=" onClick={this.handleResult}>=</button>
+            <button className="btn miltiply bg-orange" value="*" onClick={this.handleOperator}>*</button>
+          </div>
       </div>
     );
   }
