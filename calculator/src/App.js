@@ -7,6 +7,8 @@ class App extends React.Component{
   constructor(){
     super();
     this.state={
+      userInput: false,
+      result:0,
       display: "", 
       operator:"",
       previousValue:0,
@@ -15,7 +17,8 @@ class App extends React.Component{
 
   handleInput =(e)=>{
     this.setState({
-      display: this.state.display + e.target.value
+      display: this.state.display + e.target.value,
+      userInput: true,
     })
   }
 
@@ -24,6 +27,8 @@ class App extends React.Component{
       display: "", 
       operator:"",
       previousValue:0,
+      result: 0,
+      userInput: false,
     })
   }
 
@@ -31,32 +36,38 @@ class App extends React.Component{
     switch(this.state.operator){
       case "+":
         this.setState({
-          display: this.state.previousValue + Number(this.state.display),
+          result: this.state.previousValue + Number(this.state.display),
+          userInput: false, 
         }) 
         break;
       case "-":
         this.setState({
-          display: this.state.previousValue - Number(this.state.display),
+          result: this.state.previousValue - Number(this.state.display),
+          userInput: false,
         }) 
         break;
       case "*":
           this.setState({
-            display: this.state.previousValue * Number(this.state.display),
+            result: this.state.previousValue * Number(this.state.display),
+            userInput: false,
           }) 
           break;
       case "/":
         this.setState({
-          display: this.state.previousValue/ Number(this.state.display),
+          result: this.state.previousValue/ Number(this.state.display),
+          userInput: false,
         }) 
         break;
     }
   }
 
 handleOperator=(e)=>{
+  if(this.state.display && this.state.previousValue) this.handleResult();
   this.setState({
-    previousValue:Number(this.state.display),
+    previousValue:this.state.result || Number(this.state.display),
     display:"",
-    operator:e.target.value
+    operator:e.target.value,
+    userInput: true,
   })
 }
 
@@ -64,7 +75,7 @@ handleOperator=(e)=>{
     return (
       <div className="calc">
         <div className="display">
-          <p>{this.state.display}</p>
+          <p>{this.state.userInput? this.state.display: this.state.result}</p>
         </div>
           <div className="buttons">
             <button className="btn ac bg-grey" value="AC"onClick={this.handleClearButton}>ac</button>   
