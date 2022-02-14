@@ -14,9 +14,10 @@ margin:50px;
   grid-auto-rows: minmax(50px, auto);
 }
 
-input {
-  height: 50px;
-  width: 192px;
+.numbers-display {
+  height: 30px;
+  width: auto;
   text-align: right;
   font-size: 25px;
+  background-color: azure;
 }
