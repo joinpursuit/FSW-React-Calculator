@@ -1,16 +1,15 @@
-import { Component } from 'react';
+import React from "react";
+import { Component } from "react";
 
-class AnswerDisp extends Component{
-
-
-
-    render(){
-        return(
-            <div className="answer">
-                <p>0</p>
-            </div>
-        )
-    }
+class AnswerDisp extends Component {
+  render() {
+    let { outcome } = this.props;
+    return (
+      <div className="outcome">
+        <p>{outcome}</p>
+      </div>
+    );
+  }
 }
 
 export default AnswerDisp;
